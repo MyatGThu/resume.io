@@ -244,9 +244,9 @@
       var col = i % 4, row = Math.floor(i / 4);
       tl.to(tile, {
         // Pull every tile into a tidy 4-column cluster centred below the heading.
-        x: function () { return field.clientWidth / 2 - (tile.offsetLeft + tile.offsetWidth / 2) + (col - 1.5) * 122; },
-        y: function () { return field.clientHeight * 0.72 - (tile.offsetTop + tile.offsetHeight / 2) + (row - 1) * 88; },
-        rotation: (i % 2 ? 1 : -1) * 2,
+        x: function () { return field.clientWidth / 2 - (tile.offsetLeft + tile.offsetWidth / 2) + (col - 1.5) * 70; },
+        y: function () { return field.clientHeight * 0.72 - (tile.offsetTop + tile.offsetHeight / 2) + (row - 1) * 56; },
+        rotation: (i % 2 ? 1 : -1) * 3,
         ease: "none"
       }, 0);
     });
