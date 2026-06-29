@@ -74,18 +74,22 @@ b { font-weight: 600; color: var(--accent); }
 /* ----- Custom cursor ----- */
 .cursor {
   position: fixed; top: 0; left: 0; z-index: 950;
-  width: 10px; height: 10px; border-radius: 50%; background: var(--accent);
+  min-width: 10px; height: 10px; border-radius: 999px; background: var(--accent);
   pointer-events: none; transform: translate(-50%, -50%); display: none;
-  transition: width .3s var(--ease), height .3s var(--ease), background .3s var(--ease), mix-blend-mode .3s;
+  align-items: center; justify-content: center; box-sizing: border-box; padding: 0;
+  transition: min-width .3s var(--ease), height .3s var(--ease), padding .3s var(--ease), background .3s var(--ease);
 }
 .cursor__label {
-  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
-  color: var(--bone); font-size: 10px; font-weight: 600; letter-spacing: .04em;
-  white-space: nowrap; text-transform: uppercase; opacity: 0; transition: opacity .25s var(--ease);
+  color: var(--bone); font-size: 11px; font-weight: 600; letter-spacing: .04em;
+  white-space: nowrap; text-transform: uppercase; max-width: 0; overflow: hidden; opacity: 0;
+  transition: max-width .3s var(--ease), opacity .2s var(--ease);
 }
-.cursor.is-hover { width: 84px; height: 84px; }
-.cursor.is-hover .cursor__label { opacity: 1; }
-@media (hover: hover) and (pointer: fine) { .cursor { display: block; } }
+/* Plain hover (links without a label): a small ring. */
+.cursor.is-hover { min-width: 44px; height: 44px; }
+/* Labelled hover: a pill sized to the text — fits any length. */
+.cursor.is-label { height: auto; padding: 9px 16px; }
+.cursor.is-label .cursor__label { max-width: 60vw; opacity: 1; }
+@media (hover: hover) and (pointer: fine) { .cursor { display: flex; } }
 
 /* ----- Preloader ----- */
 .loader {

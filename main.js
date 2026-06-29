@@ -247,8 +247,15 @@
       requestAnimationFrame(render);
     })();
     document.querySelectorAll("a, button, [data-cursor], [data-magnetic]").forEach(function (el) {
-      el.addEventListener("mouseenter", function () { cursor.classList.add("is-hover"); label.textContent = el.getAttribute("data-cursor") || ""; });
-      el.addEventListener("mouseleave", function () { cursor.classList.remove("is-hover"); label.textContent = ""; });
+      el.addEventListener("mouseenter", function () {
+        var text = el.getAttribute("data-cursor");
+        if (text) { cursor.classList.add("is-label"); label.textContent = text; }
+        else { cursor.classList.add("is-hover"); }
+      });
+      el.addEventListener("mouseleave", function () {
+        cursor.classList.remove("is-hover", "is-label");
+        label.textContent = "";
+      });
     });
   }
 
