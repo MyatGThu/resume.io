@@ -288,6 +288,7 @@ section { position: relative; }
   transition: border-color .4s var(--ease), transform .4s var(--ease), box-shadow .4s var(--ease);
 }
 .logo-tile__mark { font-weight: 600; font-size: 22px; letter-spacing: -0.03em; color: var(--ink); }
+.logo-tile__mark--fc { font-size: clamp(15px, 4vw, 19px); letter-spacing: -0.04em; line-height: 1; text-align: center; white-space: nowrap; }
 .logo-tile__img { width: 100%; height: 100%; object-fit: contain; display: block; }
 /* Solid-square logos (their own background) fill the chip edge to edge. */
 .logo-tile--bleed { padding: 0; }
