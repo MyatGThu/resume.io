@@ -259,6 +259,15 @@ section { position: relative; }
 .hero__scroll i { width: 1px; height: 44px; background: var(--ink); transform-origin: top; animation: scrolldown 2s var(--ease) infinite; }
 @keyframes scrolldown { 0%{transform:scaleY(0);transform-origin:top} 40%{transform:scaleY(1);transform-origin:top} 60%{transform:scaleY(1);transform-origin:bottom} 100%{transform:scaleY(0);transform-origin:bottom} }
 @media (max-width: 720px) { .hero__foot { grid-template-columns: 1fr; } .hero__portrait { max-width: 180px; } .hero__scroll { display: none; } }
+/* Landscape tablets/phones: the title is sized by width, so on a short
+   viewport it overflows. Size the hero by height and compact it instead. */
+@media (orientation: landscape) and (max-height: 860px) and (max-width: 1200px) {
+  .hero { min-height: 0; padding-top: clamp(72px, 13vh, 112px); padding-bottom: clamp(20px, 4vh, 36px); }
+  .hero__title { font-size: clamp(48px, min(13vw, 23vh), 150px); }
+  .hero__foot { margin-top: clamp(18px, 3vh, 40px); gap: clamp(20px, 4vw, 56px); align-items: center; }
+  .hero__portrait { max-width: 160px; }
+  .hero__scroll { display: none; }
+}
 
 /* ----- MARQUEE ----- */
 .marquee { border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); padding: 20px 0; overflow: hidden; white-space: nowrap; }
