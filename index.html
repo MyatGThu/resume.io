@@ -3,218 +3,362 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Myat Thu — IT Professional | Microsoft Modern Workplace</title>
-  <meta name="description" content="Portfolio of Myat Thu, an IT professional specialising in the Microsoft ecosystem — Modern Device Management, Microsoft Intune, Entra ID, and cloud administration." />
+  <title>Myat Thu — Modern Workplace & Cloud</title>
+  <meta name="description" content="Myat Thu — an IT professional specialising in the Microsoft ecosystem: Modern Device Management, Intune, Entra ID, and cloud administration. Based in Melbourne, Australia." />
   <meta name="author" content="Myat Thu" />
-
-  <!-- Open Graph / social -->
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Myat Thu — IT Professional" />
-  <meta property="og:description" content="Microsoft Modern Workplace · Intune · Entra ID · Cloud Administration" />
+  <meta property="og:title" content="Myat Thu — Modern Workplace & Cloud" />
+  <meta property="og:description" content="Modern Device Management · Intune · Entra ID · Cloud Administration · Melbourne" />
 
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>💻</text></svg>" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%23181511'/><text x='50' y='70' font-size='56' font-family='Arial,sans-serif' font-weight='700' fill='%23f1ede5' text-anchor='middle'>M</text></svg>" />
+
+  <script>document.documentElement.classList.add('js');</script>
+
+  <link rel="preload" href="assets/fonts/outfit.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <a class="skip-link" href="#main">Skip to content</a>
+  <a class="skip-link" href="#intro">Skip to content</a>
 
-  <header class="site-header">
-    <nav class="nav" aria-label="Primary">
-      <a class="nav__brand" href="#top">MT</a>
-      <ul class="nav__links">
-        <li><a href="#about">About</a></li>
-        <li><a href="#skills">Skills</a></li>
-        <li><a href="#experience">Experience</a></li>
-        <li><a href="#certifications">Certifications</a></li>
-        <li><a href="#education">Education</a></li>
-      </ul>
-      <button class="theme-toggle" type="button" aria-label="Toggle colour theme" aria-pressed="false">
-        <span class="theme-toggle__icon" aria-hidden="true">◐</span>
-      </button>
-    </nav>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
+
+  <!-- Preloader -->
+  <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__inner">
+      <span class="loader__name">Myat&nbsp;Thu</span>
+      <span class="loader__count"><i id="loaderCount">0</i><em>%</em></span>
+    </div>
+    <div class="loader__bar"><span id="loaderBar"></span></div>
+  </div>
+
+  <!-- Header -->
+  <header class="head" id="head">
+    <a class="head__brand" href="#top" data-cursor="home" data-scramble>Myat&nbsp;Thu</a>
+    <a class="head__status" href="#contact" data-cursor="say hi">
+      <span class="head__dot"></span> <span data-scramble>Open to work</span>
+    </a>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="menu">
+      <span class="menu-btn__label" data-scramble>Menu</span>
+      <span class="menu-btn__bars"><i></i><i></i></span>
+    </button>
   </header>
 
-  <main id="main">
-    <!-- Hero -->
-    <section class="hero" id="top">
-      <div class="container hero__inner">
-        <p class="hero__eyebrow">IT Professional · Microsoft Ecosystem</p>
-        <h1 class="hero__name">Myat Thu</h1>
-        <p class="hero__tagline">
-          Modern Device Management &amp; Cloud Administration — turning support
-          into automation, security, and reliable operations.
-        </p>
-        <ul class="hero__meta">
-          <li><span aria-hidden="true">📍</span> Melbourne, Australia</li>
-          <li><span aria-hidden="true">🏢</span> Service Desk Analyst @ IPH Limited</li>
-        </ul>
-        <div class="hero__actions">
-          <a class="btn btn--primary" href="mailto:myatgeorgethu@gmail.com">
-            Get in touch
-          </a>
+  <!-- Fullscreen menu -->
+  <nav class="menu" id="menu" aria-label="Primary" aria-hidden="true">
+    <div class="menu__inner">
+      <ul class="menu__links">
+        <li><a href="#intro" data-scramble><span class="menu__idx">01</span> About</a></li>
+        <li><a href="#work" data-scramble><span class="menu__idx">02</span> Work</a></li>
+        <li><a href="#certs" data-scramble><span class="menu__idx">03</span> Credentials</a></li>
+        <li><a href="#contact" data-scramble><span class="menu__idx">04</span> Contact</a></li>
+      </ul>
+      <div class="menu__meta">
+        <div class="menu__col">
+          <span class="menu__h">Get in touch</span>
+          <a href="mailto:myatgeorgethu@gmail.com" data-cursor="email" data-scramble>myatgeorgethu@gmail.com</a>
         </div>
+        <div class="menu__col">
+          <span class="menu__h">Based in</span>
+          <span data-scramble>Melbourne, Australia</span>
+        </div>
+        <div class="menu__col">
+          <span class="menu__h">Status</span>
+          <span data-scramble>Open to opportunities — 2026</span>
+        </div>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    <!-- ============================ HERO ============================ -->
+    <section class="hero" id="top">
+      <div class="hero__bg" data-parallax="0.22" aria-hidden="true"></div>
+
+      <p class="hero__eyebrow" data-reveal>
+        <span>IT Professional</span><span>Melbourne, AU — 2026</span>
+      </p>
+
+      <div class="hero__main">
+        <h1 class="hero__title" aria-label="Myat Thu">
+          <span class="line"><span class="word" data-split>Myat</span></span>
+          <span class="line"><span class="word word--accent" data-split>Thu.</span></span>
+        </h1>
+
+        <a class="badge" href="#contact" data-cursor="let's talk" aria-label="Open to work, available 2026">
+          <svg class="badge__svg" viewBox="0 0 140 140" aria-hidden="true">
+            <defs>
+              <path id="badgePath" d="M70,70 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0" />
+            </defs>
+            <text><textPath href="#badgePath" startOffset="0">OPEN TO WORK ✦ MELBOURNE ✦ 2026 ✦ </textPath></text>
+          </svg>
+          <span class="badge__center" aria-hidden="true">↓</span>
+        </a>
+      </div>
+
+      <div class="hero__foot">
+        <div class="hero__portrait" data-parallax="-0.16" data-cursor="that's me">
+          <div class="hero__portrait-media">
+            <span class="hero__portrait-monogram" aria-hidden="true">MT</span>
+            <span class="hero__portrait-tag">Portrait placeholder</span>
+          </div>
+        </div>
+        <div class="hero__intro">
+          <p class="hero__role" data-reveal>
+            IT professional shaping the <b>Microsoft modern workplace</b> —
+            device management, identity, and cloud, tuned for automation and security.
+          </p>
+          <div class="hero__meta" data-reveal>
+            <span>Service Desk Analyst</span>
+            <span>IPH Limited</span>
+            <span>Melbourne, Australia</span>
+          </div>
+        </div>
+      </div>
+
+      <a class="hero__scroll" href="#intro" data-cursor="scroll" aria-label="Scroll to content">
+        <span>Scroll</span><i></i>
+      </a>
+    </section>
+
+    <!-- ============================ MARQUEE ============================ -->
+    <div class="marquee" aria-hidden="true">
+      <div class="marquee__track" id="marquee">
+        <span>Microsoft Intune</span><span class="dot">✦</span>
+        <span>Entra ID</span><span class="dot">✦</span>
+        <span>Modern Device Management</span><span class="dot">✦</span>
+        <span>Azure</span><span class="dot">✦</span>
+        <span>Endpoint Security</span><span class="dot">✦</span>
+        <span>Microsoft 365</span><span class="dot">✦</span>
+        <span>Automation</span><span class="dot">✦</span>
+        <span>Microsoft Intune</span><span class="dot">✦</span>
+        <span>Entra ID</span><span class="dot">✦</span>
+        <span>Modern Device Management</span><span class="dot">✦</span>
+        <span>Azure</span><span class="dot">✦</span>
+        <span>Endpoint Security</span><span class="dot">✦</span>
+        <span>Microsoft 365</span><span class="dot">✦</span>
+        <span>Automation</span><span class="dot">✦</span>
+      </div>
+    </div>
+
+    <!-- ============================ INTRO ============================ -->
+    <section class="intro" id="intro">
+      <p class="intro__label" data-reveal><span>(About)</span></p>
+      <p class="intro__lead" data-words>
+        I am an IT professional specialised in the Microsoft ecosystem, with a
+        strong focus on modern device management and cloud administration. I have
+        moved beyond traditional support toward automation and security —
+        leveraging Microsoft Intune and Entra ID to keep operations seamless,
+        compliant, and quietly resilient.
+      </p>
+    </section>
+
+    <!-- ============================ STATS ============================ -->
+    <section class="stats" aria-label="By the numbers">
+      <div class="stat" data-reveal>
+        <span class="stat__num" data-count="6" data-suffix="+">6+</span>
+        <span class="stat__label">Years in tech &amp; IT</span>
+      </div>
+      <div class="stat" data-reveal>
+        <span class="stat__num" data-count="400" data-suffix="+">400+</span>
+        <span class="stat__label">Retail stores supported</span>
+      </div>
+      <div class="stat" data-reveal>
+        <span class="stat__num" data-count="50" data-suffix="/day">50/day</span>
+        <span class="stat__label">Tickets resolved at peak</span>
+      </div>
+      <div class="stat" data-reveal>
+        <span class="stat__num" data-count="4" data-suffix="">4</span>
+        <span class="stat__label">Professional certifications</span>
       </div>
     </section>
 
-    <div class="container">
-      <!-- About -->
-      <section class="section" id="about">
-        <h2 class="section__title">About</h2>
-        <p class="prose">
-          I am an IT professional specialised in the Microsoft ecosystem, with a
-          strong focus on Modern Device Management and Cloud Administration. In my
-          current role I have moved beyond traditional support to focus on
-          automation and security — leveraging Microsoft Intune (MD-102 certified)
-          and Entra ID to ensure seamless operations and compliance.
+    <!-- ============================ CAPABILITIES ============================ -->
+    <section class="caps" id="caps">
+      <div class="caps__head">
+        <h2 class="section-title" data-reveal data-scramble>Capabilities</h2>
+        <p class="caps__note" data-reveal>
+          The toolkit I reach for to keep a modern, secure workplace running.
         </p>
-      </section>
+      </div>
+      <ul class="caps__list">
+        <li class="cap" data-cap><span class="cap__i">01</span><span class="cap__t" data-scramble>Microsoft Intune &amp; Endpoint</span><span class="cap__d">MDM/MAM, compliance, SOE</span></li>
+        <li class="cap" data-cap><span class="cap__i">02</span><span class="cap__t" data-scramble>Entra ID &amp; Identity</span><span class="cap__d">Conditional access, provisioning</span></li>
+        <li class="cap" data-cap><span class="cap__i">03</span><span class="cap__t" data-scramble>Microsoft 365 Administration</span><span class="cap__d">Exchange, Teams, distribution</span></li>
+        <li class="cap" data-cap><span class="cap__i">04</span><span class="cap__t" data-scramble>Cloud &amp; Azure Fundamentals</span><span class="cap__d">Tenant maintenance, AD</span></li>
+        <li class="cap" data-cap><span class="cap__i">05</span><span class="cap__t" data-scramble>Service Desk &amp; ITSM</span><span class="cap__d">SLAs, escalation, knowledge base</span></li>
+        <li class="cap" data-cap><span class="cap__i">06</span><span class="cap__t" data-scramble>Security &amp; Compliance</span><span class="cap__d">Audits, risk, threat response</span></li>
+      </ul>
+    </section>
 
-      <!-- Skills -->
-      <section class="section" id="skills">
-        <h2 class="section__title">Top skills</h2>
-        <ul class="chips">
-          <li class="chip">Microsoft Intune</li>
-          <li class="chip">Microsoft Entra ID</li>
-          <li class="chip">Application Support</li>
-          <li class="chip">Modern Device Management</li>
-          <li class="chip">Active Directory</li>
-          <li class="chip">Microsoft 365 Administration</li>
-          <li class="chip">Exchange Admin Center</li>
-          <li class="chip">Endpoint Management</li>
-          <li class="chip">Cloud Administration</li>
-          <li class="chip">Service Desk &amp; ITSM</li>
-        </ul>
-      </section>
+    <!-- ============================ WORK ============================ -->
+    <section class="work" id="work">
+      <div class="work__intro">
+        <h2 class="section-title" data-reveal><span data-scramble>Selected</span> <span class="accent" data-scramble>work</span></h2>
+      </div>
 
-      <!-- Experience -->
-      <section class="section" id="experience">
-        <h2 class="section__title">Experience</h2>
-        <ol class="timeline">
-          <li class="timeline__item">
-            <div class="timeline__head">
-              <h3 class="timeline__role">Service Desk Analyst</h3>
-              <span class="timeline__org">IPH Limited</span>
-              <span class="timeline__date">May 2025 — Present</span>
+      <div class="work__grid">
+        <aside class="work__aside">
+          <div class="work__sticky">
+            <p class="work__range">2018 — Present</p>
+            <p class="work__hint">A path from the shop floor to modern endpoint management.</p>
+          </div>
+        </aside>
+
+        <ol class="work__list">
+          <li class="role" data-role>
+            <div class="role__top">
+              <span class="role__year">2025 — Now</span>
+              <span class="role__loc">Melbourne, AU</span>
             </div>
-            <p class="timeline__place">Melbourne, Victoria, Australia</p>
-            <ul class="timeline__points">
-              <li>Second-level escalation point for the Service Desk team, providing support and guidance to peers.</li>
-              <li>Manage issues and requests to agreed SLAs, owning them through to resolution.</li>
-              <li>Build laptops, mobile devices, and computers to the Standard Operating Environment (SOE).</li>
-              <li>Active Directory administration for Level 1 tasks; support AV meeting rooms and mobile devices.</li>
-              <li>Contribute to strategic IT projects and change management, attending Change Board meetings.</li>
-              <li>Participate in on-call rotation for after-hours critical incidents and support cybersecurity measures.</li>
+            <h3 class="role__title" data-cursor="IPH" data-scramble>Service Desk Analyst</h3>
+            <p class="role__org">IPH Limited</p>
+            <ul class="role__points">
+              <li>Second-level escalation point, guiding the service desk team.</li>
+              <li>Builds laptops and devices to the Standard Operating Environment.</li>
+              <li>Active Directory administration and modern endpoint support.</li>
+              <li>Drives IT projects, change management, and on-call response.</li>
             </ul>
           </li>
 
-          <li class="timeline__item">
-            <div class="timeline__head">
-              <h3 class="timeline__role">IT Support Analyst</h3>
-              <span class="timeline__org">The Reject Shop</span>
-              <span class="timeline__date">Feb 2023 — May 2025</span>
+          <li class="role" data-role>
+            <div class="role__top">
+              <span class="role__year">2023 — 2025</span>
+              <span class="role__loc">Melbourne, AU</span>
             </div>
-            <p class="timeline__place">Melbourne, Victoria, Australia</p>
-            <ul class="timeline__points">
-              <li>Provided Level 1–2 IT support to over 400 stores, handling 40–50 tickets per day.</li>
-              <li>Managed Active Directory, mailboxes (Exchange Admin Center), distribution lists, and Teams.</li>
-              <li>Reimaged and set up laptops and desk setups; resolved hardware and peripheral issues.</li>
-              <li>Carried out onboarding and offboarding procedures and approved app installations for EUC.</li>
-              <li>Achievement: replaced Lenovo docks with daisy-chaining hub monitors and documented service-desk instructions.</li>
+            <h3 class="role__title" data-cursor="Reject Shop" data-scramble>IT Support Analyst</h3>
+            <p class="role__org">The Reject Shop</p>
+            <ul class="role__points">
+              <li>Level 1–2 support for 400+ stores; 40–50 tickets a day.</li>
+              <li>AD, Exchange, Teams &amp; M365 administration end-to-end.</li>
+              <li>Imaging, onboarding/offboarding, hardware remediation.</li>
+              <li>Replaced docks with daisy-chained hubs; documented the playbook.</li>
             </ul>
           </li>
 
-          <li class="timeline__item">
-            <div class="timeline__head">
-              <h3 class="timeline__role">Support Engineer</h3>
-              <span class="timeline__org">Azured Consulting</span>
-              <span class="timeline__date">Jul 2022 — Nov 2022</span>
+          <li class="role" data-role>
+            <div class="role__top">
+              <span class="role__year">2022</span>
+              <span class="role__loc">Australia</span>
             </div>
-            <p class="timeline__place">Australia</p>
-            <ul class="timeline__points">
-              <li>IT Service Desk for a Telstra cloud partner and managed service provider.</li>
-              <li>Provided Level 3 support for client network and firewall configurations.</li>
-              <li>Maintained client cloud environments and managed Microsoft 365 account creation and deletion.</li>
+            <h3 class="role__title" data-cursor="Azured" data-scramble>Support Engineer</h3>
+            <p class="role__org">Azured Consulting</p>
+            <ul class="role__points">
+              <li>Service desk for a Telstra cloud partner &amp; MSP.</li>
+              <li>Level 3 network and firewall configuration support.</li>
+              <li>Maintained client cloud environments and M365 accounts.</li>
             </ul>
           </li>
 
-          <li class="timeline__item">
-            <div class="timeline__head">
-              <h3 class="timeline__role">Office Support Assistant</h3>
-              <span class="timeline__org">MYER</span>
-              <span class="timeline__date">Jun 2019 — Oct 2024</span>
+          <li class="role" data-role>
+            <div class="role__top">
+              <span class="role__year">2019 — 2024</span>
+              <span class="role__loc">Australia</span>
             </div>
-            <p class="timeline__place">Australia</p>
-            <ul class="timeline__points">
-              <li>Supported store management with day-to-day operations and end-of-day reporting in Excel.</li>
-              <li>Managed online returns and POS experience; trained new team members on systems and safety.</li>
-              <li>Coordinated across technical (QA) and non-technical (Sales) teams to reach fast resolutions.</li>
+            <h3 class="role__title" data-cursor="MYER" data-scramble>Office Support Assistant</h3>
+            <p class="role__org">MYER</p>
+            <ul class="role__points">
+              <li>Supported store operations and end-of-day reporting in Excel.</li>
+              <li>Managed online returns, POS, and team training.</li>
+              <li>Coordinated across technical and non-technical teams.</li>
             </ul>
           </li>
         </ol>
-      </section>
+      </div>
+    </section>
 
-      <!-- Certifications -->
-      <section class="section" id="certifications">
-        <h2 class="section__title">Certifications</h2>
-        <div class="cards">
-          <article class="card">
-            <h3 class="card__title">Microsoft Certified: MD-102</h3>
-            <p class="card__sub">Endpoint Administrator</p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Microsoft Certified: AZ-900</h3>
-            <p class="card__sub">Azure Fundamentals</p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Microsoft Certified: SC-900</h3>
-            <p class="card__sub">Security, Compliance &amp; Identity Fundamentals</p>
-          </article>
-          <article class="card">
-            <h3 class="card__title">Google IT Support</h3>
-            <p class="card__sub">Professional Certificate</p>
-          </article>
-        </div>
-      </section>
+    <!-- ============================ CLIENTS / LOGO WALL ============================ -->
+    <section class="clients" id="clients">
+      <p class="clients__label" data-reveal><span>Where I've worked &amp; studied</span></p>
+      <ul class="clients__grid">
+        <li class="client" data-reveal><span data-scramble>IPH Limited</span></li>
+        <li class="client" data-reveal><span data-scramble>The Reject Shop</span></li>
+        <li class="client" data-reveal><span data-scramble>MYER</span></li>
+        <li class="client" data-reveal><span data-scramble>Azured Consulting</span></li>
+        <li class="client" data-reveal><span data-scramble>RMIT University</span></li>
+        <li class="client" data-reveal><span data-scramble>Trinity College</span></li>
+      </ul>
+      <p class="clients__foot" data-reveal>Wordmarks shown — drop in brand logos to swap.</p>
+    </section>
 
-      <!-- Education -->
-      <section class="section" id="education">
-        <h2 class="section__title">Education</h2>
-        <ol class="timeline timeline--compact">
-          <li class="timeline__item">
-            <div class="timeline__head">
-              <h3 class="timeline__role">Bachelor of Business, Information Systems</h3>
-              <span class="timeline__org">RMIT University</span>
-              <span class="timeline__date">2019 — 2021</span>
-            </div>
-          </li>
-          <li class="timeline__item">
-            <div class="timeline__head">
-              <h3 class="timeline__role">Diploma, Information Technology</h3>
-              <span class="timeline__org">RMIT University</span>
-              <span class="timeline__date">2018</span>
-            </div>
-          </li>
-          <li class="timeline__item">
-            <div class="timeline__head">
-              <h3 class="timeline__role">Foundation Degree, Information Technology</h3>
-              <span class="timeline__org">Trinity College, University of Melbourne</span>
-              <span class="timeline__date">2016 — 2017</span>
-            </div>
-          </li>
-        </ol>
-      </section>
-    </div>
+    <!-- ============================ CERTIFICATIONS ============================ -->
+    <section class="certs" id="certs">
+      <div class="certs__head">
+        <h2 class="section-title" data-reveal data-scramble>Credentials</h2>
+        <p class="certs__note" data-reveal>Certified across the Microsoft and Google stacks.</p>
+      </div>
+      <div class="certs__grid">
+        <article class="cert" data-tilt data-reveal>
+          <span class="cert__code">MD-102</span>
+          <h3 class="cert__title">Endpoint Administrator</h3>
+          <p class="cert__by">Microsoft Certified</p>
+        </article>
+        <article class="cert" data-tilt data-reveal>
+          <span class="cert__code">AZ-900</span>
+          <h3 class="cert__title">Azure Fundamentals</h3>
+          <p class="cert__by">Microsoft Certified</p>
+        </article>
+        <article class="cert" data-tilt data-reveal>
+          <span class="cert__code">SC-900</span>
+          <h3 class="cert__title">Security, Compliance &amp; Identity</h3>
+          <p class="cert__by">Microsoft Certified</p>
+        </article>
+        <article class="cert" data-tilt data-reveal>
+          <span class="cert__code">Google</span>
+          <h3 class="cert__title">IT Support Professional</h3>
+          <p class="cert__by">Professional Certificate</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- ============================ EDUCATION ============================ -->
+    <section class="edu" id="edu">
+      <h2 class="section-title section-title--sm" data-reveal data-scramble>Education</h2>
+      <ol class="edu__list">
+        <li class="edu__item" data-reveal>
+          <span class="edu__year">2019 — 2021</span>
+          <span class="edu__deg">Bachelor of Business, Information Systems</span>
+          <span class="edu__org">RMIT University</span>
+        </li>
+        <li class="edu__item" data-reveal>
+          <span class="edu__year">2018</span>
+          <span class="edu__deg">Diploma, Information Technology</span>
+          <span class="edu__org">RMIT University</span>
+        </li>
+        <li class="edu__item" data-reveal>
+          <span class="edu__year">2016 — 2017</span>
+          <span class="edu__deg">Foundation, Information Technology</span>
+          <span class="edu__org">Trinity College, University of Melbourne</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- ============================ CONTACT ============================ -->
+    <section class="contact" id="contact">
+      <p class="contact__label" data-reveal><span>(Contact)</span></p>
+      <h2 class="contact__title" aria-label="Let's talk">
+        <span class="line"><span class="word" data-split>Let's</span></span>
+        <span class="line"><span class="word word--accent" data-split>talk.</span></span>
+      </h2>
+      <a class="contact__mail" href="mailto:myatgeorgethu@gmail.com" data-magnetic data-cursor="email" data-scramble>
+        myatgeorgethu@gmail.com
+      </a>
+      <div class="contact__meta" data-reveal>
+        <span>Based in Melbourne, Australia</span>
+        <span>Open to opportunities</span>
+      </div>
+    </section>
   </main>
 
-  <footer class="site-footer">
-    <div class="container site-footer__inner">
-      <p>Myat Thu · IT Professional · Melbourne, Australia</p>
-      <ul class="site-footer__links">
-        <li><a href="mailto:myatgeorgethu@gmail.com">myatgeorgethu@gmail.com</a></li>
-      </ul>
-    </div>
+  <footer class="foot">
+    <span>© 2026 Myat Thu</span>
+    <a href="#top" data-cursor="top" data-scramble>Back to top ↑</a>
+    <span>Melbourne, Australia</span>
   </footer>
 
+  <script src="vendor/gsap.min.js" defer></script>
+  <script src="vendor/ScrollTrigger.min.js" defer></script>
+  <script src="vendor/lenis.min.js" defer></script>
   <script src="main.js" defer></script>
 </body>
 </html>

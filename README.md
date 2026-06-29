@@ -1,26 +1,41 @@
-# Skills
+# Myat Thu — Portfolio
 
-A collection of Claude Code [skills](https://docs.claude.com/en/docs/claude-code/skills).
-Each lives in `.claude/skills/<name>/SKILL.md` and is invoked when its
-description matches the task at hand.
+An interactive, motion-rich personal portfolio for **Myat Thu**, an IT
+professional specialising in the Microsoft modern workplace (Intune, Entra ID,
+cloud administration). Built as a static site and deployed to GitHub Pages.
 
-## Available skills
+**Live:** https://myatgthu.github.io/hello-world.io/
 
-| Skill | Purpose |
-| --- | --- |
-| `impeccable` | Engineering craftsmanship standard for production-grade code. |
-| `taste` | Aesthetic and design-judgment standard for polished, restrained UI. |
-| `remotion-render` | Render Remotion compositions to video/image via CLI or SSR API. |
-| `remotion-best-practices` | Building deterministic, performant Remotion compositions. |
-| `frontend-design` | Designing and building accessible, responsive frontend UI. |
-| `vercel-react-best-practices` | React/Next.js App Router best practices on Vercel. |
-| `vercel-composition-patterns` | Component composition patterns for the App Router. |
-| `web-design-guidelines` | Reference guidelines for typography, color, spacing, a11y. |
-| `social-content` | Platform-native social media content creation. |
-| `content-strategy` | Planning content programs: pillars, calendars, funnels. |
+## Design
 
-## Usage
+- Minimal-elegant editorial direction with luxurious motion.
+- Typeface: **Outfit** (self-hosted, variable).
+- Warm "bone" palette with a single terracotta accent and dark feature sections.
 
-In a Claude Code session, these skills are picked up automatically from the
-`.claude/skills/` directory. You can invoke one explicitly by name (e.g.
-`/impeccable`) or let Claude select the relevant skill based on your request.
+## Interaction
+
+- Smooth inertia scrolling (Lenis) and scroll-triggered reveals (GSAP / ScrollTrigger).
+- Fullscreen animated menu, custom cursor with contextual labels, magnetic buttons.
+- Text-scramble hover effect, scroll-driven word reveal, animated counters,
+  velocity-reactive marquee, parallax, and 3D card tilt.
+- Rotating "open to work" badge.
+- Fully accessible: honours `prefers-reduced-motion` and degrades gracefully
+  without JavaScript; semantic HTML and keyboard support throughout.
+
+## Structure
+
+```
+index.html          # markup
+styles.css          # design system + sections
+main.js             # Lenis + GSAP motion, menu, scramble, cursor
+assets/fonts/       # self-hosted Outfit (woff2)
+vendor/             # GSAP, ScrollTrigger, Lenis (vendored, no CDN)
+.github/workflows/  # GitHub Pages deployment
+.claude/skills/     # Claude Code skills collection (from earlier task)
+```
+
+## Notes
+
+- The portrait is a placeholder and the employer entries use styled wordmarks —
+  drop in real images/logos to swap them.
+- Personal data is intentionally limited to name, location, and email.
