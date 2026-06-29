@@ -391,32 +391,12 @@ section { position: relative; }
 .icard__badge { align-self: flex-start; font-size: 11px; letter-spacing: .06em; text-transform: uppercase; color: var(--bone); background: var(--accent); border-radius: 999px; padding: 6px 12px; }
 .icard__code { font-size: clamp(30px, 3.6vw, 46px); font-weight: 600; letter-spacing: -0.03em; color: var(--accent); line-height: 1; }
 
-/* Off-the-clock — enlarged primary logo + smaller secondary brand mark */
-.icard__logo--xl { height: auto; min-height: 60px; gap: 16px; cursor: pointer; outline: none; }
-.icard__logo--xl img { height: 58px; max-width: 152px; }
-.icard__logo--xl .icard__logo-sec { height: 30px; max-width: 70px; opacity: 0.5; }
-.icard__logo--xl:focus-visible { box-shadow: 0 0 0 2px var(--accent); border-radius: 8px; }
-
-/* Hover/focus the logo to reveal a strip of screenshots */
-.icard--shots { position: relative; overflow: hidden; }
-.shotpop {
-  position: absolute; left: 0; right: 0; bottom: 0; z-index: 3;
-  display: grid; grid-template-columns: repeat(3, 1fr); gap: 7px;
-  padding: 16px; border-radius: 0 0 18px 18px;
-  background: linear-gradient(to top, #fff 62%, rgba(255,255,255,0));
-  transform: translateY(102%); opacity: 0;
-  transition: transform .55s var(--ease), opacity .4s var(--ease);
-  pointer-events: none;
-}
-.icard--shots:hover .shotpop,
-.icard--shots:focus-within .shotpop { transform: translateY(0); opacity: 1; }
-.shot {
-  position: relative; aspect-ratio: 4 / 3; border-radius: 9px; overflow: hidden;
-  background: linear-gradient(140deg, var(--b, var(--accent)), rgba(20,16,12,0.55));
-}
-.shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; display: block; }
-.shot--empty img { display: none; }
-.shot--empty::after { content: ""; position: absolute; inset: 0; background: radial-gradient(circle at 30% 22%, rgba(255,255,255,0.22), transparent 62%); }
+/* Off-the-clock — work-style blocks: small brand marks under each entry */
+.play .work__grid { position: relative; z-index: 2; }
+.role__brands { display: flex; align-items: center; gap: 20px; margin-top: 24px; }
+.role__brands img { height: 20px; width: auto; max-width: 76px; object-fit: contain; opacity: 0.45; transition: opacity .3s var(--ease); }
+.role:hover .role__brands img { opacity: 0.7; }
+.role__body .shows { margin-top: 24px; max-width: 560px; }
 
 /* Sit "Off the clock" flush against "Always leveling up" — no gap between */
 .play { padding-bottom: clamp(12px, 2vh, 26px); }

@@ -120,71 +120,104 @@
         <p class="play__note" data-reveal>How I switch off and recharge.</p>
       </div>
 
-      <div class="cardgrid">
-        <article class="icard icard--shots" data-cap data-parallax="0.05" style="--b:#c23527">
-          <div class="icard__logo icard__logo--xl" tabindex="0" aria-label="Dota 2 — hover for screenshots">
-            <img src="assets/icons/dota2.svg" alt="Dota 2" />
-            <img class="icard__logo-sec" src="assets/icons/steam.svg" alt="Steam" />
+      <div class="work__grid">
+        <aside class="work__aside">
+          <div class="work__sticky">
+            <p class="work__range">Pastimes</p>
+            <p class="work__hint">What I get up to when the laptop is shut.</p>
           </div>
-          <h3 class="icard__title" data-scramble>Dota 2</h3>
-          <p class="icard__desc">The ranked grind, team fights, and the occasional 60-minute nail-biter.</p>
-          <span class="icard__tag">Gaming · MOBA</span>
-          <div class="shotpop" aria-hidden="true">
-            <span class="shot"><img src="assets/shots/dota2-1.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('shot--empty')" /></span>
-            <span class="shot"><img src="assets/shots/dota2-2.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('shot--empty')" /></span>
-            <span class="shot"><img src="assets/shots/dota2-3.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('shot--empty')" /></span>
-          </div>
-        </article>
+        </aside>
 
-        <article class="icard icard--shots" data-cap data-parallax="-0.05" style="--b:#1e4fd6">
-          <div class="icard__logo icard__logo--xl" tabindex="0" aria-label="FIFA — hover for screenshots">
-            <img src="assets/icons/fifa.svg" alt="FIFA" />
-            <img class="icard__logo-sec" src="assets/icons/ea.svg" alt="EA Sports" />
-          </div>
-          <h3 class="icard__title" data-scramble>FIFA</h3>
-          <p class="icard__desc">Ultimate Team squads and career mode — football when I can't be on the pitch.</p>
-          <span class="icard__tag">Gaming · Football</span>
-          <div class="shotpop" aria-hidden="true">
-            <span class="shot"><img src="assets/shots/fifa-1.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('shot--empty')" /></span>
-            <span class="shot"><img src="assets/shots/fifa-2.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('shot--empty')" /></span>
-            <span class="shot"><img src="assets/shots/fifa-3.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('shot--empty')" /></span>
-          </div>
-        </article>
+        <ol class="work__list">
+          <li class="role" data-role>
+            <div class="logo-tile" data-cursor="Dota 2">
+              <img class="logo-tile__img" src="assets/icons/dota2.svg" alt="Dota 2" />
+            </div>
+            <div class="role__body">
+              <div class="role__top">
+                <span class="role__year">Gaming · MOBA</span>
+                <span class="role__loc">Valve · Steam</span>
+              </div>
+              <h3 class="role__title" data-scramble>Dota 2</h3>
+              <p class="role__org">The ranked grind</p>
+              <ul class="role__points">
+                <li>Ranked matchmaking, team fights, and the occasional 60-minute nail-biter.</li>
+                <li>It's all about the draft, the macro calls, and a good late-game comeback.</li>
+              </ul>
+              <div class="role__brands" aria-hidden="true">
+                <img src="assets/icons/steam.svg" alt="Steam" />
+              </div>
+            </div>
+          </li>
 
-        <article class="icard icard--shots" data-cap data-parallax="0.07" style="--b:#0a7be5">
-          <div class="icard__logo icard__logo--xl" tabindex="0" aria-label="Superhero films — hover for screenshots">
-            <img src="assets/icons/dcentertainment.svg" alt="DC" />
-            <img class="icard__logo-sec" src="assets/icons/imdb.svg" alt="IMDb" />
-          </div>
-          <h3 class="icard__title" data-scramble>Superhero films</h3>
-          <p class="icard__desc">Marvel and DC on the big screen — capes, team-ups, and a good origin story.</p>
-          <span class="icard__tag">Cinema</span>
-          <div class="shotpop" aria-hidden="true">
-            <span class="shot"><img src="assets/shots/heroes-1.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('shot--empty')" /></span>
-            <span class="shot"><img src="assets/shots/heroes-2.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('shot--empty')" /></span>
-            <span class="shot"><img src="assets/shots/heroes-3.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('shot--empty')" /></span>
-          </div>
-        </article>
+          <li class="role" data-role>
+            <div class="logo-tile" data-cursor="FIFA">
+              <img class="logo-tile__img" src="assets/icons/fifa.svg" alt="FIFA" />
+            </div>
+            <div class="role__body">
+              <div class="role__top">
+                <span class="role__year">Gaming · Football</span>
+                <span class="role__loc">EA Sports</span>
+              </div>
+              <h3 class="role__title" data-scramble>FIFA</h3>
+              <p class="role__org">Career &amp; Ultimate Team</p>
+              <ul class="role__points">
+                <li>Building Ultimate Team squads and grinding through career mode.</li>
+                <li>Football for the nights I can't be out on the pitch.</li>
+              </ul>
+              <div class="role__brands" aria-hidden="true">
+                <img src="assets/icons/ea.svg" alt="EA Sports" />
+              </div>
+            </div>
+          </li>
 
-        <article class="icard icard--shots icard--wide" data-cap data-parallax="-0.04" style="--b:#d81f26">
-          <div class="icard__logo icard__logo--xl" tabindex="0" aria-label="The binge list — hover for screenshots">
-            <img src="assets/icons/netflix.svg" alt="Netflix" />
-            <img class="icard__logo-sec" src="assets/icons/themoviedatabase.svg" alt="The Movie Database" />
-          </div>
-          <h3 class="icard__title" data-scramble>The binge list</h3>
-          <ul class="shows">
-            <li><span>Supernatural</span><em>The CW</em></li>
-            <li><span>The Big Bang Theory</span><em>CBS</em></li>
-            <li><span>How I Met Your Mother</span><em>CBS</em></li>
-            <li><span>Brooklyn Nine-Nine</span><em>FOX / NBC</em></li>
-          </ul>
-          <span class="icard__tag">Comfort TV</span>
-          <div class="shotpop" aria-hidden="true">
-            <span class="shot"><img src="assets/shots/shows-1.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('shot--empty')" /></span>
-            <span class="shot"><img src="assets/shots/shows-2.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('shot--empty')" /></span>
-            <span class="shot"><img src="assets/shots/shows-3.jpg" alt="" loading="lazy" onerror="this.parentNode.classList.add('shot--empty')" /></span>
-          </div>
-        </article>
+          <li class="role" data-role>
+            <div class="logo-tile" data-cursor="Superhero films">
+              <img class="logo-tile__img" src="assets/icons/dcentertainment.svg" alt="DC" />
+            </div>
+            <div class="role__body">
+              <div class="role__top">
+                <span class="role__year">Cinema · Marvel &amp; DC</span>
+                <span class="role__loc">Opening night</span>
+              </div>
+              <h3 class="role__title" data-scramble>Superhero films</h3>
+              <p class="role__org">Capes &amp; origin stories</p>
+              <ul class="role__points">
+                <li>Marvel and DC on the big screen — team-ups and a good origin story.</li>
+                <li>Always tracking what's next on an ever-growing watchlist.</li>
+              </ul>
+              <div class="role__brands" aria-hidden="true">
+                <img src="assets/icons/imdb.svg" alt="IMDb" />
+                <img src="assets/icons/themoviedatabase.svg" alt="The Movie Database" />
+              </div>
+            </div>
+          </li>
+
+          <li class="role" data-role>
+            <div class="logo-tile" data-cursor="Comfort TV">
+              <img class="logo-tile__img" src="assets/icons/netflix.svg" alt="Netflix" />
+            </div>
+            <div class="role__body">
+              <div class="role__top">
+                <span class="role__year">Comfort TV · Rewatchable</span>
+                <span class="role__loc">On in the background</span>
+              </div>
+              <h3 class="role__title" data-scramble>Comfort TV</h3>
+              <p class="role__org">The rewatch rotation</p>
+              <ul class="shows">
+                <li><span>Supernatural</span><em>The CW</em></li>
+                <li><span>The Big Bang Theory</span><em>CBS</em></li>
+                <li><span>How I Met Your Mother</span><em>CBS</em></li>
+                <li><span>Brooklyn Nine-Nine</span><em>FOX / NBC</em></li>
+              </ul>
+              <div class="role__brands" aria-hidden="true">
+                <img src="assets/icons/cbs.svg" alt="CBS" />
+                <img src="assets/icons/nbc.svg" alt="NBC" />
+                <img src="assets/icons/fox.svg" alt="FOX" />
+              </div>
+            </div>
+          </li>
+        </ol>
       </div>
     </section>
 
