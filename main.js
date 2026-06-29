@@ -227,6 +227,31 @@
     });
   }
 
+  /* ---------- Toolbox: scatter <-> gather on scroll ---------- */
+  function initToolbox() {
+    if (!hasGSAP || reduceMotion) return;
+    var section = document.querySelector(".toolbox");
+    var field = document.querySelector(".toolbox__field");
+    if (!section || !field) return;
+    if (window.matchMedia("(max-width: 820px)").matches) return; // static grid on mobile
+    var tiles = gsap.utils.toArray(".toolbox__field .tool");
+    if (!tiles.length) return;
+
+    var tl = gsap.timeline({
+      scrollTrigger: { trigger: section, start: "top top", end: "bottom bottom", scrub: 0.6, invalidateOnRefresh: true }
+    });
+    tiles.forEach(function (tile, i) {
+      var col = i % 4, row = Math.floor(i / 4);
+      tl.to(tile, {
+        // Pull every tile into a tidy 4-column cluster centred below the heading.
+        x: function () { return field.clientWidth / 2 - (tile.offsetLeft + tile.offsetWidth / 2) + (col - 1.5) * 122; },
+        y: function () { return field.clientHeight * 0.72 - (tile.offsetTop + tile.offsetHeight / 2) + (row - 1) * 88; },
+        rotation: (i % 2 ? 1 : -1) * 2,
+        ease: "none"
+      }, 0);
+    });
+  }
+
   /* ---------- Counters ---------- */
   function initCounters() {
     if (!hasGSAP) return;
@@ -308,6 +333,7 @@
     initReveals();
     initWordReveal();
     initParallax();
+    initToolbox();
     initCounters();
     initMarquee();
     initCursor();
