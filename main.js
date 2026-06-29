@@ -324,6 +324,34 @@
     });
   }
 
+  /* ---------- Encrypted name cipher ---------- */
+  function initCipher() {
+    var els = Array.prototype.slice.call(document.querySelectorAll("[data-cipher]"));
+    if (!els.length) return;
+    var GLYPHS = "ABCDEFGHJKLMNPRSTUVWXYZ0123456789#%&@$?/<>*+=§";
+    function scramble(el) {
+      var n = parseInt(el.getAttribute("data-cipher"), 10) || el.textContent.length;
+      var s = "";
+      for (var i = 0; i < n; i++) s += GLYPHS.charAt(Math.floor(Math.random() * GLYPHS.length));
+      el.textContent = s;
+    }
+    els.forEach(scramble);
+    if (reduceMotion) return; // leave a single static cipher, no churn
+
+    var timer = null;
+    function tick() { els.forEach(scramble); }
+    // Only churn while the hero is on screen.
+    var hero = document.querySelector(".hero");
+    if (hero && "IntersectionObserver" in window) {
+      new IntersectionObserver(function (entries) {
+        if (entries[0].isIntersecting) { if (!timer) timer = setInterval(tick, 90); }
+        else if (timer) { clearInterval(timer); timer = null; }
+      }).observe(hero);
+    } else {
+      timer = setInterval(tick, 90);
+    }
+  }
+
   /* ---------- Boot ---------- */
   function boot() {
     initLenis();
@@ -334,6 +362,7 @@
     initWordReveal();
     initParallax();
     initToolbox();
+    initCipher();
     initCounters();
     initMarquee();
     initCursor();
