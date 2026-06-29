@@ -190,7 +190,11 @@ section { position: relative; }
 }
 .badge:hover .badge__center { transform: scale(1.12); }
 @keyframes spin { to { transform: rotate(360deg); } }
-@media (max-width: 720px) { .badge { position: static; transform: none; margin-top: 28px; } }
+@media (max-width: 720px) {
+  /* Keep .badge positioned so .badge__svg (absolute inset:0) stays contained
+     instead of escaping to .hero__main and overlapping the title. */
+  .badge { position: relative; top: auto; right: auto; transform: none; margin: 32px auto 0; }
+}
 
 .hero__foot {
   margin-top: clamp(28px, 5vh, 64px); max-width: var(--maxw); margin-left: auto; margin-right: auto; width: 100%;
