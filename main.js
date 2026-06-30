@@ -379,6 +379,121 @@
     }
   }
 
+  /* ---------- Work list: a card preview that trails the cursor ---------- */
+  function initWorkPreview() {
+    if (reduceMotion || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    var roles = document.querySelectorAll(".work__list .role");
+    if (!roles.length) return;
+
+    var prev = document.createElement("div");
+    prev.className = "workprev";
+    prev.setAttribute("aria-hidden", "true");
+    prev.innerHTML = '<img class="workprev__img" alt="" /><span class="workprev__org"></span>';
+    document.body.appendChild(prev);
+    var img = prev.querySelector(".workprev__img");
+    var org = prev.querySelector(".workprev__org");
+
+    var tx = 0, ty = 0, x = 0, y = 0, running = false;
+    function raf() {
+      x += (tx - x) * 0.15; y += (ty - y) * 0.15;
+      prev.style.transform = "translate(" + Math.round(x) + "px," + Math.round(y) + "px)";
+      if (running) requestAnimationFrame(raf);
+    }
+    roles.forEach(function (role) {
+      role.addEventListener("mouseenter", function () {
+        var src = role.querySelector(".logo-tile__img");
+        var name = role.querySelector(".role__org");
+        if (src) img.src = src.getAttribute("src");
+        org.textContent = name ? name.textContent : "";
+        prev.classList.add("is-on");
+        if (!running) { running = true; requestAnimationFrame(raf); }
+      });
+      role.addEventListener("mousemove", function (e) { tx = e.clientX; ty = e.clientY; });
+      role.addEventListener("mouseleave", function () { prev.classList.remove("is-on"); running = false; });
+    });
+  }
+
+  /* ---------- Terminal easter egg (press ~ or the footer trigger) ---------- */
+  function initTerminal() {
+    var term = document.createElement("div");
+    term.className = "term";
+    term.setAttribute("role", "dialog");
+    term.setAttribute("aria-label", "Terminal");
+    term.setAttribute("aria-hidden", "true");
+    term.innerHTML =
+      '<div class="term__win">' +
+        '<div class="term__bar"><i></i><i></i><i></i><span class="term__title">myat@portfolio — zsh</span>' +
+          '<button class="term__x" type="button" aria-label="Close terminal">✕</button></div>' +
+        '<div class="term__body"><div class="term__out"></div>' +
+          '<div class="term__line"><span class="term__prompt">➜ ~</span>' +
+          '<input class="term__in" type="text" autocomplete="off" autocapitalize="off" spellcheck="false" aria-label="Terminal command" /></div></div>' +
+      '</div>';
+    document.body.appendChild(term);
+    var out = term.querySelector(".term__out");
+    var input = term.querySelector(".term__in");
+    var open = false;
+
+    var COMMANDS = {
+      help: "commands: whoami · skills · work · certs · contact · sudo hire-me · clear · exit",
+      whoami: "Myat Thu — IT Professional · Modern Workplace & Cloud · Melbourne, AU",
+      skills: "Intune · Entra ID · Microsoft 365 · Azure · Active Directory · Defender · PowerShell · Autopilot",
+      work: "IPH Limited (2025–now) · The Reject Shop (2023–25) · Azured Consulting (2022) · MYER (2019–24)",
+      certs: "MD-102 · AZ-900 · SC-900 · Google  [SC-300 in progress]",
+      contact: "myatgeorgethu@gmail.com — Melbourne, Australia"
+    };
+
+    function print(text, cls) {
+      var row = document.createElement("div");
+      row.className = "term__row" + (cls ? " " + cls : "");
+      row.textContent = text;
+      out.appendChild(row);
+      out.scrollTop = out.scrollHeight;
+    }
+    function run(raw) {
+      var cmd = raw.trim();
+      print("➜ ~ " + cmd, "term__echo");
+      if (!cmd) return;
+      var lc = cmd.toLowerCase();
+      if (lc === "clear") { out.innerHTML = ""; return; }
+      if (lc === "exit" || lc === "close" || lc === "q") { setOpen(false); return; }
+      if (lc === "sudo hire-me" || lc === "sudo hire me") {
+        print("[sudo] password for recruiter: ********", "term__muted");
+        print("✓ access granted — opening mail…", "term__ok");
+        setTimeout(function () { window.location.href = "mailto:myatgeorgethu@gmail.com?subject=Let%27s%20work%20together"; }, 650);
+        return;
+      }
+      if (COMMANDS.hasOwnProperty(lc)) { print(COMMANDS[lc]); return; }
+      print("zsh: command not found: " + cmd + " — try 'help'", "term__err");
+    }
+    function setOpen(state) {
+      open = state;
+      term.classList.toggle("is-open", open);
+      term.setAttribute("aria-hidden", String(!open));
+      if (lenis) { open ? lenis.stop() : lenis.start(); }
+      else { document.body.style.overflow = open ? "hidden" : ""; }
+      if (open) {
+        if (!out.childElementCount) print("Myat Thu // portfolio shell — type 'help'", "term__muted");
+        setTimeout(function () { input.focus(); }, 50);
+      }
+    }
+
+    input.addEventListener("keydown", function (e) { if (e.key === "Enter") { run(input.value); input.value = ""; } });
+    term.querySelector(".term__x").addEventListener("click", function () { setOpen(false); });
+    term.addEventListener("click", function (e) { if (e.target === term) setOpen(false); });
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && open) { setOpen(false); return; }
+      if ((e.key === "`" || e.key === "~") && e.target !== input) { e.preventDefault(); setOpen(!open); }
+    });
+    document.querySelectorAll(".foot").forEach(function (foot) {
+      var b = document.createElement("button");
+      b.className = "term-trigger";
+      b.type = "button";
+      b.textContent = "[~] console";
+      b.addEventListener("click", function () { setOpen(true); });
+      foot.appendChild(b);
+    });
+  }
+
   /* ---------- Boot ---------- */
   function boot() {
     initLenis();
@@ -395,6 +510,8 @@
     initCursor();
     initMagnetic();
     initTilt();
+    initWorkPreview();
+    initTerminal();
 
     runLoader(function () {
       revealSplitWords(document.querySelector(".hero"));
