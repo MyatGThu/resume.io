@@ -563,10 +563,12 @@ html:not(.js) .case__open { display: none; }
 .pcard__title { font-size: clamp(21px, 2.2vw, 27px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.08; }
 .pcard__summary { color: var(--muted); font-size: 14.5px; line-height: 1.5; }
 .pcard__meta { margin-top: auto; font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 11.5px; letter-spacing: .04em; color: var(--accent); }
-/* Soccer-pitch backdrop — tints with the theme accent, sits behind the content. */
-.pcard--pitch { position: relative; overflow: hidden; }
-.pcard__pitch { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--accent); opacity: 0.12; pointer-events: none; }
-.pcard--pitch > *:not(.pcard__pitch) { position: relative; z-index: 1; }
+/* Genre backdrop — tints with the theme accent, sits behind the content. */
+.pcard--bg { position: relative; overflow: hidden; }
+.pcard__bg { position: absolute; inset: 0; width: 100%; height: 100%; color: var(--accent); opacity: 0.12; pointer-events: none; }
+.pcard--bg > *:not(.pcard__bg) { position: relative; z-index: 1; }
+/* Soccer pitch carries its own grass green (opacities baked into the SVG). */
+.pcard__bg--pitch { opacity: 1; }
 
 /* ----- Home lab ----- */
 .lab { max-width: var(--maxw); margin: 0 auto; padding: clamp(60px, 10vh, 130px) var(--pad); }
