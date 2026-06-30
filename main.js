@@ -441,6 +441,98 @@
     });
   }
 
+  /* ---------- Case file modal (card floats up + expands) ---------- */
+  function initCaseModal() {
+    var cards = document.querySelectorAll("[data-case]");
+    if (!cards.length) return;
+
+    var modal = document.createElement("div");
+    modal.className = "cmodal";
+    modal.setAttribute("role", "dialog");
+    modal.setAttribute("aria-modal", "true");
+    modal.setAttribute("aria-hidden", "true");
+    modal.innerHTML =
+      '<div class="cmodal__bg"></div>' +
+      '<div class="cmodal__card">' +
+        '<button class="cmodal__x" type="button" aria-label="Close case file">✕</button>' +
+        '<div class="cmodal__head"><span class="cmodal__no"></span><span class="cmodal__tag"></span></div>' +
+        '<h3 class="cmodal__title"></h3><div class="cmodal__content"></div>' +
+      '</div>';
+    document.body.appendChild(modal);
+    var bg = modal.querySelector(".cmodal__bg");
+    var card = modal.querySelector(".cmodal__card");
+    var noEl = modal.querySelector(".cmodal__no");
+    var tagEl = modal.querySelector(".cmodal__tag");
+    var titleEl = modal.querySelector(".cmodal__title");
+    var contentEl = modal.querySelector(".cmodal__content");
+    var closeBtn = modal.querySelector(".cmodal__x");
+    var fadeBits = [noEl, tagEl, titleEl];
+
+    var source = null, first = null, busy = false;
+
+    function fill(el) {
+      noEl.textContent = el.querySelector(".case__no").textContent;
+      tagEl.textContent = el.querySelector(".case__tag").textContent;
+      titleEl.textContent = el.getAttribute("data-title") || el.querySelector(".case__title").textContent;
+      contentEl.innerHTML = el.querySelector(".case__data").innerHTML;
+    }
+    function lock(on) { if (lenis) { on ? lenis.stop() : lenis.start(); } else { document.body.style.overflow = on ? "hidden" : ""; } }
+
+    function open(el) {
+      if (busy) return;
+      source = el;
+      fill(el);
+      modal.classList.add("is-open");
+      modal.setAttribute("aria-hidden", "false");
+      lock(true);
+      card.scrollTop = 0;
+      if (!hasGSAP || reduceMotion) { bg.style.opacity = 1; closeBtn.focus(); return; }
+
+      first = el.getBoundingClientRect();
+      var last = card.getBoundingClientRect();
+      busy = true;
+      gsap.set(card, { transformOrigin: "0% 0%", x: first.left - last.left, y: first.top - last.top, scaleX: first.width / last.width, scaleY: first.height / last.height });
+      gsap.set(bg, { opacity: 0 });
+      gsap.set(contentEl, { opacity: 0 });
+      gsap.set(fadeBits, { opacity: 0 });
+      gsap.to(bg, { opacity: 1, duration: 0.35, ease: "power2.out" });
+      gsap.to(card, { x: 0, y: 0, scaleX: 1, scaleY: 1, duration: 0.6, ease: "expo.out", onComplete: function () { busy = false; } });
+      gsap.to(fadeBits, { opacity: 1, duration: 0.3, delay: 0.18 });
+      gsap.to(contentEl, { opacity: 1, duration: 0.4, delay: 0.26 });
+      closeBtn.focus();
+    }
+
+    function finish() {
+      modal.classList.remove("is-open");
+      modal.setAttribute("aria-hidden", "true");
+      lock(false);
+      var s = source; source = null;
+      if (s) s.focus();
+    }
+    function close() {
+      if (busy || !source) { if (!source) finish(); return; }
+      if (!hasGSAP || reduceMotion || !first) { finish(); return; }
+      var last = card.getBoundingClientRect();
+      busy = true;
+      gsap.to([contentEl].concat(fadeBits), { opacity: 0, duration: 0.2 });
+      gsap.to(bg, { opacity: 0, duration: 0.45, delay: 0.05 });
+      gsap.to(card, {
+        x: first.left - last.left, y: first.top - last.top,
+        scaleX: first.width / last.width, scaleY: first.height / last.height,
+        duration: 0.5, ease: "expo.inOut",
+        onComplete: function () { busy = false; gsap.set(card, { clearProps: "transform" }); finish(); }
+      });
+    }
+
+    cards.forEach(function (el) {
+      el.addEventListener("click", function () { open(el); });
+      el.addEventListener("keydown", function (e) { if (e.key === "Enter" || e.key === " ") { e.preventDefault(); open(el); } });
+    });
+    bg.addEventListener("click", close);
+    closeBtn.addEventListener("click", close);
+    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && modal.classList.contains("is-open")) close(); });
+  }
+
   /* ---------- Matrix rain (active only on dark themes) ---------- */
   function initMatrix() {
     if (reduceMotion) return;
@@ -541,6 +633,7 @@
     initWorkPreview();
     initThemes();
     initMatrix();
+    initCaseModal();
     initTransitions();
 
     runLoader(function () {
