@@ -45,6 +45,8 @@
     var countEl = document.getElementById("loaderCount");
     var barEl = document.getElementById("loaderBar");
     if (!loader) { unlockScroll(); done(); return; }
+    // Missing counter/bar would throw on the first frame and strand the scroll lock.
+    if (!countEl || !barEl) { loader.style.display = "none"; unlockScroll(); done(); return; }
     // Arrived via a page transition — the wipe handles the reveal, skip the intro.
     if (document.documentElement.classList.contains("is-entering")) { loader.style.display = "none"; unlockScroll(); done(); return; }
     if (reduceMotion || !hasGSAP) { loader.style.display = "none"; unlockScroll(); done(); return; }
@@ -282,8 +284,8 @@
     var cursor = document.querySelector(".cursor");
     if (!cursor || !fine) return;
     var label = cursor.querySelector(".cursor__label");
-    var x = innerWidth / 2, y = innerHeight / 2, cx = x, cy = y;
-    addEventListener("mousemove", function (e) { x = e.clientX; y = e.clientY; });
+    var x = window.innerWidth / 2, y = window.innerHeight / 2, cx = x, cy = y;
+    window.addEventListener("mousemove", function (e) { x = e.clientX; y = e.clientY; });
     (function render() {
       cx += (x - cx) * 0.18; cy += (y - cy) * 0.18;
       cursor.style.transform = "translate(" + cx + "px," + cy + "px) translate(-50%,-50%)";
@@ -292,12 +294,12 @@
     document.querySelectorAll("a, button, [data-cursor], [data-magnetic]").forEach(function (el) {
       el.addEventListener("mouseenter", function () {
         var text = el.getAttribute("data-cursor");
-        if (text) { cursor.classList.add("is-label"); label.textContent = text; }
+        if (text) { cursor.classList.add("is-label"); if (label) label.textContent = text; }
         else { cursor.classList.add("is-hover"); }
       });
       el.addEventListener("mouseleave", function () {
         cursor.classList.remove("is-hover", "is-label");
-        label.textContent = "";
+        if (label) label.textContent = "";
       });
     });
   }
@@ -352,7 +354,7 @@
     function revealPhoto(state) { if (portrait) portrait.classList.toggle("is-revealed", state); }
 
     // Desktop reveals on hover; touch toggles on tap.
-    if (window.matchMedia("(hover: hover) and (pointer: fine)").matches) {
+    if (fine) {
       title.addEventListener("mouseenter", function () { revealName(true); });
       title.addEventListener("mouseleave", function () { revealName(false); });
       if (portrait) {
@@ -383,7 +385,7 @@
 
   /* ---------- Work list: a card preview that trails the cursor ---------- */
   function initWorkPreview() {
-    if (reduceMotion || !window.matchMedia("(hover: hover) and (pointer: fine)").matches) return;
+    if (reduceMotion || !fine) return;
     var roles = document.querySelectorAll(".work__list .role");
     if (!roles.length) return;
 
