@@ -29,7 +29,7 @@ jobs:
       - name: Cache-bust assets
         # Stamp the asset query strings with the commit SHA so browsers always
         # fetch the latest styles.css / main.js after each deploy.
-        run: sed -i "s/__BUILD__/${GITHUB_SHA}/g" index.html
+        run: sed -i "s/__BUILD__/${GITHUB_SHA}/g" index.html about.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
