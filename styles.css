@@ -588,6 +588,11 @@ html:not(.js) .case__open { display: none; }
 .contact__title .word--accent { color: var(--accent); }
 .contact__mail { display: inline-block; margin-top: clamp(36px, 6vh, 64px); font-size: clamp(20px, 3vw, 40px); font-weight: 400; padding-bottom: 6px; border-bottom: 1px solid rgb(from var(--noir-fg) r g b / 0.4); transition: color .35s var(--ease), border-color .35s var(--ease); }
 .contact__mail:hover { color: var(--accent); border-color: var(--accent); }
+.contact__cv-row { margin-top: clamp(26px, 4vh, 44px); }
+.contact__cv { display: inline-flex; align-items: center; gap: 10px; padding: 13px 26px; border: 1px solid rgb(from var(--noir-fg) r g b / 0.45); border-radius: 999px; font-size: 13px; font-weight: 500; letter-spacing: .08em; text-transform: uppercase; color: var(--noir-fg); transition: border-color .3s var(--ease), background-color .3s var(--ease), color .3s var(--ease); }
+.contact__cv:hover { border-color: var(--accent); background-color: var(--accent); color: var(--bone); }
+.contact__cv span { transition: transform .3s var(--ease); }
+.contact__cv:hover span { transform: translateY(2px); }
 .contact__meta { margin-top: clamp(36px, 6vh, 60px); display: flex; flex-wrap: wrap; gap: 12px 32px; justify-content: center; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--faint); }
 
 /* ----- FOOTER ----- */
