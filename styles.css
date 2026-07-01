@@ -72,6 +72,16 @@ html[data-theme="acid"] {
   --glow-1: rgba(57, 255, 20, 0.10); --glow-2: rgba(57, 255, 20, 0.05);
 }
 
+/* ---- Theme: Colour-safe (high-contrast, colour-blind-safe blue + amber) ---- */
+html[data-theme="colorblind"] {
+  --bone: #f3f5f8; --bone-2: #e6ebf1; --ink: #11151b; --ink-2: #2a313b;
+  --muted: #586170; --faint: #8892a1; --line: rgba(17, 21, 27, 0.16);
+  --accent: #0067b0; --accent-2: #b26a00; --noir: #11151b; --noir-fg: #eef1f6;
+  --card: #ffffff; --grain-blend: multiply; --grain-op: 0.04;
+  --accent-glow: none;
+  --glow-1: rgba(0, 103, 176, 0.12); --glow-2: rgba(178, 106, 0, 0.08);
+}
+
 * { box-sizing: border-box; margin: 0; }
 html { -webkit-text-size-adjust: 100%; }
 

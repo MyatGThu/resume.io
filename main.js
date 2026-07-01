@@ -419,8 +419,8 @@
 
   /* ---------- Theme switcher (rotates Bone → Cyber → Acid) ---------- */
   function initThemes() {
-    var THEMES = ["bone", "cyber", "acid"];
-    var LABELS = { bone: "Bone", cyber: "Cyber", acid: "Acid" };
+    var THEMES = ["bone", "colorblind", "cyber", "acid"];
+    var LABELS = { bone: "Bone", colorblind: "Colour-safe", cyber: "Cyber", acid: "Acid" };
     var html = document.documentElement;
     var fab = document.createElement("button");
     fab.className = "theme-fab";
