@@ -3,7 +3,8 @@
    One particle system, morphed by scroll across the page:
      hero      → SPHERE  (a wireframe icosahedron + shell of particles)
      stats     → CLOUD   (the sphere disperses into a drifting field)
-     work      → SPINE   (particles form a vertical helical timeline)
+     work      → TUNNEL  (a one-point-perspective corridor of receding rings;
+                          scroll dollies you down it, rings recycle → infinite)
      certs     → SPHERE  (the object reforms)
      → contact → fades out before the opaque contact section covers it.
    Colours track the active theme. Degrades gracefully (no JS / no WebGL /
@@ -28,7 +29,7 @@
   lib.onload = function () { if (typeof window.THREE !== "undefined") init(); };
   document.head.appendChild(lib);
 
-  var SPHERE = 0, CLOUD = 1, SPINE = 2;
+  var SPHERE = 0, CLOUD = 1, TUNNEL = 2;
 
   function init() {
     var renderer;
@@ -59,7 +60,6 @@
     var N = small ? 460 : 1120;
     var sphere = new Float32Array(N * 3);   // Fibonacci sphere shell
     var cloudN = new Float32Array(N * 3);   // normalised random cloud (scaled by spread)
-    var spine = new Float32Array(N * 3);    // vertical helix timeline
     var wobble = new Float32Array(N * 2);   // per-particle idle-drift phase/speed
     var GOLD = Math.PI * (3 - Math.sqrt(5));
     for (var i = 0; i < N; i++) {
@@ -69,11 +69,19 @@
       sphere[i3] = Math.cos(th) * r * 7.2; sphere[i3 + 1] = y * 7.2; sphere[i3 + 2] = Math.sin(th) * r * 7.2;
       // cloud (normalised -1..1)
       cloudN[i3] = Math.random() * 2 - 1; cloudN[i3 + 1] = Math.random() * 2 - 1; cloudN[i3 + 2] = Math.random() * 2 - 1;
-      // spine — tall helix
-      var f = i / (N - 1), ang = f * Math.PI * 9, rad = 2.3 + Math.sin(f * Math.PI * 22) * 0.5;
-      spine[i3] = Math.cos(ang) * rad; spine[i3 + 1] = (0.5 - f) * 40; spine[i3 + 2] = Math.sin(ang) * rad;
       wobble[i * 2] = Math.random() * Math.PI * 2; wobble[i * 2 + 1] = 0.4 + Math.random() * 0.8;
     }
+
+    // TUNNEL — the career corridor. Particles form rings receding toward a
+    // vanishing point; positions are computed live (they depend on scroll
+    // travel and the group's rotation). Rings recycle modulo DEPTH, so the
+    // corridor is endless. The wrap plane sits behind the camera on desktop
+    // (rings whoosh past); on phones the axis is nearly centred in frame, so
+    // wrap earlier — no particle may cross the lens and flash.
+    var RING_N = small ? 18 : 26;             // particles per ring
+    var RINGS = Math.ceil(N / RING_N);
+    var DEPTH = 72, SPACING = DEPTH / RINGS;
+    var ZNEAR = small ? 18 : 30;              // camera sits at z = 26
 
     // "Click to break it" — per-particle burst offset + velocity, sprung back
     // toward the scroll-morph targets so scroll behaviour restores itself.
@@ -94,9 +102,12 @@
     var MILES = [
       { el: document.querySelector(".hero"), form: SPHERE, c: [9, 1, 0] },
       { el: document.querySelector(".stats"), form: CLOUD, c: [0, 0, 0] },
-      { el: document.querySelector(".work"), form: SPINE, c: [7.5, 0, -2] },
+      // TUNNEL carries its own world-space centre (tCX) inside target(),
+      // where it can be counter-rotated against the group — keep c at 0.
+      { el: document.querySelector(".work"), form: TUNNEL, c: [0, 0, 0] },
       { el: document.querySelector(".certs"), form: SPHERE, c: [-2, 0, 0] }
     ].filter(function (m) { return m.el; });
+    var TUNNEL_IDX = MILES.findIndex(function (m) { return m.form === TUNNEL; });
     var contactEl = document.querySelector("#contact") || document.querySelector(".contact");
 
     var spread = { x: 20, y: 13, z: 8 };
@@ -104,7 +115,9 @@
       var halfY = Math.tan((camera.fov * Math.PI) / 360) * camera.position.z;
       spread.y = halfY * 0.92; spread.x = halfY * camera.aspect * 1.15; spread.z = 8;
       MILES[0].c[0] = spread.x * 0.42; // keep the hero sphere to the right of the title
-      if (MILES[2]) MILES[2].c[0] = spread.x * 0.32;
+      // corridor axis right of centre on wide screens (text sits left),
+      // clamped away from the lens path so near rings never cross the camera
+      tCX = Math.max(small ? 0 : 8, spread.x * 0.3);
     }
 
     // Milestone / contact positions in document space, cached so the frame
@@ -159,11 +172,24 @@
     }
 
     function smooth(x) { return x * x * (3 - 2 * x); }
+    // TUNNEL per-frame state: scroll travel down the corridor plus the
+    // group-rotation counter-terms that keep the axis aimed at the camera.
+    var tCX = 8, tTravel = 0, tCos = 1, tSin = 0;
     // read a particle's target xyz for a formation into out[0..2]
     function target(form, i, out) {
       var i3 = i * 3;
       if (form === SPHERE) { out[0] = sphere[i3]; out[1] = sphere[i3 + 1]; out[2] = sphere[i3 + 2]; }
-      else if (form === SPINE) { out[0] = spine[i3]; out[1] = spine[i3 + 1]; out[2] = spine[i3 + 2]; }
+      else if (form === TUNNEL) {
+        var ring = (i / RING_N) | 0;
+        var ang = ((i % RING_N) / RING_N) * Math.PI * 2 + ring * 0.4; // slight spiral
+        var rad = 5.2 - (ring % 5 === 0 ? 0.8 : 0) + Math.sin(ring * 1.7) * 0.15; // gate ribs
+        var wz = ZNEAR - ((((ring * SPACING - tTravel) % DEPTH) + DEPTH) % DEPTH);
+        var wx = tCX + Math.cos(ang) * rad;
+        // world-space corridor → group-local (inverse of the group's Y spin)
+        out[0] = wx * tCos - wz * tSin;
+        out[1] = Math.sin(ang) * rad;
+        out[2] = wx * tSin + wz * tCos;
+      }
       else { out[0] = cloudN[i3] * spread.x; out[1] = cloudN[i3 + 1] * spread.y; out[2] = cloudN[i3 + 2] * spread.z; }
     }
 
@@ -238,8 +264,17 @@
       var cxw = A.c[0] + (B.c[0] - A.c[0]) * seg;
       var cyw = A.c[1] + (B.c[1] - A.c[1]) * seg;
       var czw = A.c[2] + (B.c[2] - A.c[2]) * seg;
-      var spineW = ((A.form === SPINE ? (1 - seg) : 0) + (B.form === SPINE ? seg : 0)); // helix-ness
+      var tunnelW = ((A.form === TUNNEL ? (1 - seg) : 0) + (B.form === TUNNEL ? seg : 0)); // corridor-ness
       var sphereness = ((A.form === SPHERE ? (1 - seg) : 0) + (B.form === SPHERE ? seg : 0));
+
+      // Set the spin before the particle loop: the corridor counter-rotates
+      // against it, and scroll + a slow drift dolly the rings past the camera.
+      group.rotation.y = t * 0.05 + sphereness * Math.sin(t * 0.2) * 0.15;
+      icosa.rotation.set(t * 0.12, t * 0.16, 0);
+      if (tunnelW > 0) {
+        tCos = Math.cos(group.rotation.y); tSin = Math.sin(group.rotation.y);
+        tTravel = (sc - centers[TUNNEL_IDX]) * 0.03 + t * 0.6;
+      }
 
       var doPulse = pulse > 0.001 && sphereness > 0.01;
       var wavePhase = (1 - pulse) * 9;
@@ -255,7 +290,7 @@
       for (var i = 0; i < N; i++) {
         target(A.form, i, ta); target(B.form, i, tb);
         var i3 = i * 3;
-        var wob = Math.sin(t * wobble[i * 2 + 1] + wobble[i * 2]) * (0.15 + spineW * 0.25);
+        var wob = Math.sin(t * wobble[i * 2 + 1] + wobble[i * 2]) * (0.15 + tunnelW * 0.1);
         pos[i3] = ta[0] + (tb[0] - ta[0]) * seg + cxw + wob;
         pos[i3 + 1] = ta[1] + (tb[1] - ta[1]) * seg + cyw;
         pos[i3 + 2] = ta[2] + (tb[2] - ta[2]) * seg + czw + wob;
@@ -281,11 +316,10 @@
       icosa.position.set(cxw, cyw, czw);
       icosa.scale.setScalar((0.6 + sphereness * 0.4 + Math.sin(t * 0.6) * 0.03) * Math.max(0.05, 1 - send * 0.95) * (1 + flash * 0.9));
       icosa.visible = icosa.material.opacity > 0.002;
-      pmat.opacity = Math.min(1, baseParticle * (1 + flash * 0.35)) * fadeEnv;
-      pmat.size = (0.13 - spineW * 0.03) * (1 + send * 0.8) * (1 + flash * 0.3);
-
-      group.rotation.y = t * 0.05 + sphereness * Math.sin(t * 0.2) * 0.15;
-      icosa.rotation.set(t * 0.12, t * 0.16, 0);
+      // dim a touch while the corridor owns the view — its far field converges
+      // right behind the work copy, and the text keeps priority
+      pmat.opacity = Math.min(1, baseParticle * (1 + flash * 0.35)) * fadeEnv * (1 - tunnelW * 0.28);
+      pmat.size = (0.13 + tunnelW * 0.02) * (1 + send * 0.8) * (1 + flash * 0.3);
 
       if (fine) { cmx += (mx - cmx) * 0.04; cmy += (my - cmy) * 0.04; }
       else { cmx = Math.sin(t * 0.08) * 0.4; cmy = 0; }
