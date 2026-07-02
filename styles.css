@@ -377,6 +377,8 @@ section { position: relative; }
 .toolbox__note { color: var(--muted); margin-top: 14px; max-width: 34ch; margin-left: auto; margin-right: auto; }
 .toolbox__scroll { display: inline-block; margin-top: 18px; font-size: 11px; letter-spacing: .16em; text-transform: uppercase; color: var(--faint); }
 .toolbox__field { position: absolute; inset: 0; z-index: 2; }
+/* Mobile card deal: hide undealt cards only once JS has committed to dealing. */
+html.js .toolbox.is-undealt .tool__card { opacity: 0; }
 .tool { position: absolute; width: clamp(142px, 13vw, 184px); cursor: default; will-change: transform; }
 .tool__card { display: flex; flex-direction: column; gap: 6px; padding: 16px 18px; background: var(--card); border: 1px solid var(--line); border-radius: 14px; transform: rotate(var(--r, 0deg)); box-shadow: 0 18px 40px -28px rgba(0,0,0,0.4); }
 .tool__name { font-weight: 500; font-size: 15px; letter-spacing: -0.01em; color: var(--ink); line-height: 1.15; }

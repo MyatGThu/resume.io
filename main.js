@@ -248,22 +248,85 @@
     var section = document.querySelector(".toolbox");
     var field = document.querySelector(".toolbox__field");
     if (!section || !field) return;
-    if (window.matchMedia("(max-width: 820px)").matches) return; // static grid on mobile
     var tiles = gsap.utils.toArray(".toolbox__field .tool");
     if (!tiles.length) return;
 
+    if (window.matchMedia("(max-width: 820px)").matches) {
+      // Phones/small tablets: the tiles sit in a static grid — deal them onto
+      // it from a deck above the section, one 3D flip each, in reading order.
+      // Animate the inner card: the .tool wrapper's mobile transform is
+      // !important-locked against desktop-scrub leftovers.
+      var cards = tiles.map(function (t) { return t.querySelector(".tool__card") || t; });
+      section.classList.add("is-undealt");
+      ScrollTrigger.create({
+        trigger: section, start: "top 78%", once: true,
+        onEnter: function () {
+          section.classList.remove("is-undealt");
+          var fr = field.getBoundingClientRect();
+          gsap.fromTo(cards, {
+            x: function (i, el) { var r = el.getBoundingClientRect(); return fr.left + fr.width / 2 - (r.left + r.width / 2); },
+            y: function (i, el) { return fr.top - 50 - el.getBoundingClientRect().top; },
+            rotationY: -95, rotation: -8, scale: 0.85, opacity: 0, transformPerspective: 700
+          }, {
+            x: 0, y: 0, rotationY: 0, rotation: 0, scale: 1, opacity: 1,
+            duration: 0.75, ease: "power3.out", stagger: 0.07,
+            onComplete: function () { gsap.set(cards, { clearProps: "transform,opacity" }); }
+          });
+        }
+      });
+      return;
+    }
+
+    // Desktop: cascade into two switchback flights that flank the sticky
+    // heading and descend into the page. Steps clear the card height, so
+    // every tile lands fully visible; targets are anchored to the frame the
+    // visitor sees at the end of the scrub.
+    var L = Math.ceil(tiles.length / 2); // left flight size; right takes the rest
+    function metrics() {
+      var ch = 0;
+      tiles.forEach(function (t) { ch = Math.max(ch, t.offsetHeight); });
+      var cw = tiles[0].offsetWidth;
+      var fw = field.clientWidth, vh = window.innerHeight;
+      var headW = Math.min(fw * 0.42, 560); // column kept clear for the sticky heading
+      var stepX = Math.max(8, Math.min(46, (fw / 2 - headW / 2 - cw - 8) / (L - 1)));
+      var stepY = Math.min(ch + 18, (vh * 0.84 - ch) / (L - 0.5));
+      var blockH = (L - 0.5) * stepY + ch;
+      var topY = field.clientHeight - vh + Math.max(60, (vh - blockH) / 2);
+      return { cw: cw, ch: ch, fw: fw, headW: headW, stepX: stepX, stepY: stepY, topY: topY };
+    }
     var tl = gsap.timeline({
       scrollTrigger: { trigger: section, start: "top top", end: "bottom bottom", scrub: 0.6, invalidateOnRefresh: true }
     });
     tiles.forEach(function (tile, i) {
-      var step = i - (tiles.length - 1) / 2; // centred staircase index
+      var flight = i < L ? 0 : 1, k = flight ? i - L : i;
+      var zk = -34 * k - (flight ? 17 : 0); // each step drops deeper into the page
+      // perspective(p) divides the whole translate by w = 1 - z/p, so a card
+      // at depth would land short of its slot — pre-scale the travel by w to
+      // make the projected position exact (that's what keeps steps overlap-free).
+      var wf = 1 - zk / 1200;
       tl.to(tile, {
-        // Cascade every tile into a diagonal staircase centred below the heading.
-        x: function () { return field.clientWidth / 2 - (tile.offsetLeft + tile.offsetWidth / 2) + step * 52; },
-        y: function () { return field.clientHeight * 0.72 - (tile.offsetTop + tile.offsetHeight / 2) + step * 46; },
-        rotation: -2,
+        x: function () {
+          var m = metrics();
+          var cx = flight
+            ? m.fw / 2 + m.headW / 2 + m.cw / 2 + k * m.stepX
+            : m.fw / 2 - m.headW / 2 - m.cw / 2 - k * m.stepX;
+          return (cx - (tile.offsetLeft + tile.offsetWidth / 2)) * wf;
+        },
+        y: function () {
+          var m = metrics();
+          var cy = m.topY + (k + flight * 0.5) * m.stepY + m.ch / 2;
+          return (cy - (tile.offsetTop + tile.offsetHeight / 2)) * wf;
+        },
+        z: zk,
+        rotationY: flight ? 7 : -7, // treads angle in toward the heading
+        rotationX: 4,
+        transformPerspective: 1200,
         ease: "none"
       }, 0);
+      // The mess tidies itself: each card's scattered tilt (--r) straightens
+      // as it lands, so the steps sit flush and never clip a neighbour.
+      var card = tile.querySelector(".tool__card");
+      if (card) tl.to(card, { rotation: 0, ease: "none" }, 0);
     });
   }
 
