@@ -75,6 +75,11 @@
       wobble[i * 2] = Math.random() * Math.PI * 2; wobble[i * 2 + 1] = 0.4 + Math.random() * 0.8;
     }
 
+    // "Click to break it" — per-particle burst offset + velocity, sprung back
+    // toward the scroll-morph targets so scroll behaviour restores itself.
+    var boff = new Float32Array(N * 3);
+    var bvel = new Float32Array(N * 3);
+
     var pos = new Float32Array(N * 3);
     var geom = new THREE.BufferGeometry();
     var posAttr = new THREE.BufferAttribute(pos, 3);
@@ -168,6 +173,38 @@
     window.addEventListener("mt:decrypt", function () { pulse = 1; });
     window.addEventListener("mt:hush", function (e) { hushT = (e.detail && e.detail.on) ? 0.18 : 1; });
 
+    // "Break things on purpose" — clicking the home-lab section detonates the
+    // field from the click point; the spring integrator reassembles it.
+    var burstT = 0, flash = 0, lastBreak = 0;
+    var labEl = document.querySelector(".lab");
+    var clickV = new THREE.Vector3();
+    if (labEl) {
+      labEl.addEventListener("click", function (e) {
+        var nowMs = performance.now();
+        if (nowMs - lastBreak < 400) return;
+        var sel = window.getSelection && window.getSelection();
+        if (sel && sel.toString()) return; // the visitor was selecting text
+        lastBreak = nowMs;
+        // Unproject the click onto the field's z=0 plane, then into the
+        // group's local space (its rotation accumulates, so world coords
+        // would aim the burst wrong after a while on the page).
+        clickV.set((e.clientX / window.innerWidth) * 2 - 1, -(e.clientY / window.innerHeight) * 2 + 1, 0.5)
+          .unproject(camera).sub(camera.position);
+        if (clickV.z > -0.001) return;
+        clickV.multiplyScalar(-camera.position.z / clickV.z).add(camera.position);
+        group.worldToLocal(clickV);
+        for (var i = 0; i < N; i++) {
+          var i3 = i * 3;
+          var dx = pos[i3] - clickV.x, dy = pos[i3 + 1] - clickV.y, dz = pos[i3 + 2] - clickV.z;
+          var d = Math.sqrt(dx * dx + dy * dy + dz * dz) || 1;
+          var k = (9 + Math.random() * 5) / (d + 1.5); // hardest near the blast, never zero
+          bvel[i3] += (dx / d) * k; bvel[i3 + 1] += (dy / d) * k; bvel[i3 + 2] += (dz / d) * k;
+        }
+        burstT = 3;
+        flash = 1;
+      });
+    }
+
     var raf = null, lastT = 0, t = 0, visible = false, fadedDrawn = false, ta = [0, 0, 0], tb = [0, 0, 0];
     function frame(now) {
       var dt = Math.min((now - lastT) / 1000, 0.05); lastT = now;
@@ -207,6 +244,14 @@
       var doPulse = pulse > 0.001 && sphereness > 0.01;
       var wavePhase = (1 - pulse) * 9;
       var keep = 1 - send;
+      var doBurst = burstT > 0;
+      var damp = 1;
+      if (doBurst) {
+        burstT -= dt;
+        damp = Math.max(0, 1 - dt * 2.4);
+        if (burstT <= 0) { boff.fill(0); bvel.fill(0); doBurst = false; }
+      }
+      if (flash > 0) flash = Math.max(0, flash - dt * 1.4);
       for (var i = 0; i < N; i++) {
         target(A.form, i, ta); target(B.form, i, tb);
         var i3 = i * 3;
@@ -220,16 +265,24 @@
           pos[i3 + 1] += (sphere[i3 + 1] / 7.2) * amp;
           pos[i3 + 2] += (sphere[i3 + 2] / 7.2) * amp;
         }
+        if (doBurst) { // integrate the blast, sprung back to the morph target
+          bvel[i3] = (bvel[i3] - boff[i3] * 7 * dt) * damp;
+          bvel[i3 + 1] = (bvel[i3 + 1] - boff[i3 + 1] * 7 * dt) * damp;
+          bvel[i3 + 2] = (bvel[i3 + 2] - boff[i3 + 2] * 7 * dt) * damp;
+          boff[i3] += bvel[i3] * dt; boff[i3 + 1] += bvel[i3 + 1] * dt; boff[i3 + 2] += bvel[i3 + 2] * dt;
+          pos[i3] += boff[i3]; pos[i3 + 1] += boff[i3 + 1]; pos[i3 + 2] += boff[i3 + 2];
+        }
         if (send > 0) { pos[i3] *= keep; pos[i3 + 1] *= keep; pos[i3 + 2] *= keep; }
       }
       posAttr.needsUpdate = true;
 
-      icosa.material.opacity = Math.min(1, baseIcosa * sphereness + pulse * 0.3 * sphereness) * fadeEnv * keep;
+      // flash composes as multipliers — milestone math owns these every frame
+      icosa.material.opacity = Math.min(1, baseIcosa * sphereness + pulse * 0.3 * sphereness) * fadeEnv * keep * (1 - flash);
       icosa.position.set(cxw, cyw, czw);
-      icosa.scale.setScalar((0.6 + sphereness * 0.4 + Math.sin(t * 0.6) * 0.03) * Math.max(0.05, 1 - send * 0.95));
+      icosa.scale.setScalar((0.6 + sphereness * 0.4 + Math.sin(t * 0.6) * 0.03) * Math.max(0.05, 1 - send * 0.95) * (1 + flash * 0.9));
       icosa.visible = icosa.material.opacity > 0.002;
-      pmat.opacity = baseParticle * fadeEnv;
-      pmat.size = (0.13 - spineW * 0.03) * (1 + send * 0.8);
+      pmat.opacity = Math.min(1, baseParticle * (1 + flash * 0.35)) * fadeEnv;
+      pmat.size = (0.13 - spineW * 0.03) * (1 + send * 0.8) * (1 + flash * 0.3);
 
       group.rotation.y = t * 0.05 + sphereness * Math.sin(t * 0.2) * 0.15;
       icosa.rotation.set(t * 0.12, t * 0.16, 0);
@@ -239,7 +292,7 @@
       camera.position.x = cmx * 2.6; camera.position.y = -cmy * 1.6; camera.lookAt(0, 0, 0);
 
       renderer.render(scene, camera);
-      if (!live) { live = true; canvas.classList.add("is-live"); }
+      if (!live) { live = true; canvas.classList.add("is-live"); document.documentElement.classList.add("has-scene"); }
       raf = requestAnimationFrame(frame);
     }
     var live = false;

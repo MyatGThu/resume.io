@@ -634,6 +634,9 @@ html:not(.js) .case__open { display: none; }
 .lab__k { font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; font-size: 13px; font-weight: 600; color: var(--accent); }
 .lab__t { margin-top: 14px; font-size: clamp(18px, 1.6vw, 22px); font-weight: 500; letter-spacing: -0.02em; line-height: 1.12; }
 .lab__d { margin-top: 11px; color: var(--muted); font-size: 14.5px; line-height: 1.55; }
+/* Invite to detonate the particle field — only once the scene is actually live. */
+.lab__hint { display: none; color: var(--accent); }
+html.has-scene .lab__hint { display: inline; }
 
 /* ----- Matrix rain (dark themes only; toggled in JS) ----- */
 .matrix { position: fixed; inset: 0; z-index: -1; pointer-events: none; display: none; opacity: 0.4; }
