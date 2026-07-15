@@ -7,7 +7,7 @@
   <meta name="description" content="Myat Thu — an IT professional specialising in the Microsoft ecosystem: Modern Device Management, Intune, Entra ID, and cloud administration. Based in Melbourne, Australia." />
   <meta name="author" content="Myat Thu" />
   <link rel="canonical" href="https://myatgthu.github.io/hello-world.io/" />
-  <meta name="theme-color" content="#f1ede4" />
+  <meta name="theme-color" content="#0a0d12" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Myat Thu" />
   <meta property="og:url" content="https://myatgthu.github.io/hello-world.io/" />
@@ -24,10 +24,10 @@
 
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='28' fill='%23181511'/><text x='50' y='70' font-size='56' font-family='Arial,sans-serif' font-weight='700' fill='%23f1ede5' text-anchor='middle'>M</text></svg>" />
 
-  <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('wipe'))document.documentElement.classList.add('is-entering');var t=localStorage.getItem('theme');if(t)document.documentElement.dataset.theme=t;}catch(e){}</script>
+  <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('wipe'))document.documentElement.classList.add('is-entering');}catch(e){}</script>
 
   <link rel="preload" href="assets/fonts/outfit.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/fonts/bodoni-moda.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/share-tech-mono.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="styles.css?v=__BUILD__" />
 </head>
 <body>
@@ -36,10 +36,10 @@
   <div class="grain" aria-hidden="true"></div>
   <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
   <div class="wipe" aria-hidden="true"><span class="wipe__label">Decrypting…</span></div>
-  <canvas class="matrix" aria-hidden="true"></canvas>
 
   <!-- Preloader -->
   <div class="loader" id="loader" aria-hidden="true">
+    <div class="loader__log" id="loaderLog" aria-hidden="true"></div>
     <div class="loader__inner">
       <span class="loader__name">Myat&nbsp;Thu</span>
       <span class="loader__count"><i id="loaderCount">0</i><em>%</em></span>
@@ -89,7 +89,7 @@
 
   <main>
     <!-- ============================ HERO ============================ -->
-    <section class="hero" id="top" data-hud="Home">
+    <section class="hero" id="top" data-hud="Boot">
       <div class="hero__bg" data-parallax="0.22" aria-hidden="true"></div>
 
       <p class="hero__eyebrow" data-reveal>
@@ -158,8 +158,8 @@
     </div>
 
     <!-- ============================ INTRO ============================ -->
-    <section class="intro" id="intro" data-hud="About">
-      <p class="intro__label" data-reveal><span>(About)</span></p>
+    <section class="intro" id="intro" data-hud="Enroll">
+      <p class="intro__label scn" data-reveal><span class="scn__id">SCN.02</span>Enroll — identity verified</p>
       <p class="intro__lead" data-words>
         I am an IT professional specialised in the Microsoft ecosystem, with a
         strong focus on modern device management and cloud administration. I have
@@ -200,7 +200,8 @@
     </section>
 
     <!-- ============================ CAPABILITIES ============================ -->
-    <section class="caps" id="caps" data-hud="Skills">
+    <section class="caps" id="caps" data-hud="Configure">
+      <p class="scn" data-reveal><span class="scn__id">SCN.03</span>Configure — policies applied</p>
       <div class="caps__head">
         <h2 class="section-title" data-reveal data-scramble>Capabilities</h2>
         <p class="caps__note" data-reveal>
@@ -218,7 +219,7 @@
     </section>
 
     <!-- ============================ TOOLBOX ============================ -->
-    <section class="toolbox" id="toolbox" aria-label="Tech stack and toolbox" data-hud="Toolbox">
+    <section class="toolbox" id="toolbox" aria-label="Tech stack and toolbox">
       <div class="toolbox__head">
         <h2 class="section-title" data-reveal data-scramble>Toolbox</h2>
         <p class="toolbox__note" data-reveal>The day-to-day stack I build, secure and support on.</p>
@@ -262,7 +263,7 @@
     </section>
 
     <!-- ============================ APPROACH ============================ -->
-    <section class="approach" id="approach" data-hud="Method">
+    <section class="approach" id="approach">
       <div class="caps__head">
         <h2 class="section-title" data-reveal data-scramble>How I work</h2>
         <p class="caps__note" data-reveal>My default playbook for turning a ticket into a clean resolution.</p>
@@ -292,8 +293,9 @@
     </section>
 
     <!-- ============================ WORK ============================ -->
-    <section class="work" id="work" data-hud="Work">
+    <section class="work" id="work" data-hud="Deploy">
       <div class="work__intro">
+        <p class="scn" data-reveal><span class="scn__id">SCN.04</span>Deploy — rollout history</p>
         <h2 class="section-title" data-reveal><span data-scramble>Selected</span> <span class="accent" data-scramble>work</span></h2>
       </div>
 
@@ -394,7 +396,8 @@
     </section>
 
     <!-- ============================ CASE FILES ============================ -->
-    <section class="cases" id="projects" data-hud="Cases">
+    <section class="cases" id="projects" data-hud="Secure">
+      <p class="scn" data-reveal><span class="scn__id">SCN.05</span>Secure — incident casework</p>
       <div class="caps__head">
         <h2 class="section-title" data-reveal data-scramble>Case files</h2>
         <p class="caps__note" data-reveal>A few problems I've owned from ticket to resolution.</p>
@@ -449,7 +452,7 @@
     </section>
 
     <!-- ============================ HOME LAB ============================ -->
-    <section class="lab" id="lab" data-cursor="break it" data-hud="Lab">
+    <section class="lab" id="lab" data-cursor="break it">
       <div class="caps__head">
         <h2 class="section-title" data-reveal data-scramble>Home lab</h2>
         <p class="caps__note" data-reveal>Where I break things on purpose — my sandbox for SC-300 and the Microsoft cloud. <span class="lab__hint">Go on — give this section a tap.</span></p>
@@ -463,7 +466,8 @@
     </section>
 
     <!-- ============================ CERTIFICATIONS ============================ -->
-    <section class="certs" id="certs" data-hud="Credentials">
+    <section class="certs" id="certs" data-hud="Comply">
+      <p class="scn" data-reveal><span class="scn__id">SCN.06</span>Comply — checks passed</p>
       <div class="certs__head">
         <h2 class="section-title" data-reveal data-scramble>Credentials</h2>
         <p class="certs__note" data-reveal>Certified across the Microsoft and Google stacks.</p>
@@ -533,7 +537,7 @@
     </section>
 
     <!-- ============================ EDUCATION ============================ -->
-    <section class="edu" id="edu" data-hud="Study">
+    <section class="edu" id="edu">
       <h2 class="section-title section-title--sm" data-reveal data-scramble>Study</h2>
       <ol class="edu__list">
         <li class="edu__item" data-reveal>
@@ -564,15 +568,15 @@
     </section>
 
     <!-- ============================ CONTACT ============================ -->
-    <section class="contact" id="contact" data-hud="Contact">
+    <section class="contact" id="contact" data-hud="Connect">
+      <p class="scn" data-reveal><span class="scn__id">SCN.07</span>Connect — session open</p>
       <p class="contact__avail" data-reveal><span class="contact__dot" aria-hidden="true"></span> Available for new opportunities — 2026</p>
-      <h2 class="contact__title contact__title--ransom" aria-label="Let's work together" data-reveal>
+      <h2 class="contact__title" aria-label="Let's work together" data-reveal>
         <span class="line" aria-hidden="true">
-          <span class="word"><span class="rl">L</span><span class="rl">e</span><span class="rl">t</span><span class="rl">'</span><span class="rl">s</span></span>
-          <span class="word"><span class="rl">w</span><span class="rl">o</span><span class="rl">r</span><span class="rl">k</span></span>
+          <span class="word" data-split>Let's</span> <span class="word" data-split>work</span>
         </span>
         <span class="line" aria-hidden="true">
-          <span class="word"><span class="rl">t</span><span class="rl">o</span><span class="rl">g</span><span class="rl">e</span><span class="rl">t</span><span class="rl">h</span><span class="rl">e</span><span class="rl">r</span><span class="rl">.</span></span>
+          <span class="word word--accent" data-split>together.</span>
         </span>
       </h2>
       <a class="contact__mail" href="mailto:myatgeorgethu@gmail.com" data-magnetic data-cursor="email">

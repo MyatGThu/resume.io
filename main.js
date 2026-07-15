@@ -52,13 +52,30 @@
     if (reduceMotion || !hasGSAP) { loader.style.display = "none"; unlockScroll(); done(); return; }
 
     lockScroll();
+    // Boot log: mission-control lines that print as the counter climbs.
+    var logEl = document.getElementById("loaderLog");
+    var LINES = [
+      [6,  'POST ............ <b>OK</b>'],
+      [30, 'MOUNT /ASSETS ... <b>OK</b>'],
+      [58, 'VERIFY IDENTITY . <b>MYAT THU</b>'],
+      [86, 'LINK ............ <b>ESTABLISHED</b>']
+    ];
+    var li = 0;
     var obj = { v: 0 };
     var tl = gsap.timeline({ onComplete: function () { unlockScroll(); done(); } });
     tl.to(obj, {
       v: 100, duration: 1.2, ease: "power2.inOut",
-      onUpdate: function () { var n = Math.round(obj.v); countEl.textContent = n; barEl.style.width = n + "%"; }
+      onUpdate: function () {
+        var n = Math.round(obj.v); countEl.textContent = n; barEl.style.width = n + "%";
+        while (logEl && li < LINES.length && n >= LINES[li][0]) {
+          var row = document.createElement("div");
+          row.innerHTML = LINES[li][1];
+          logEl.appendChild(row);
+          li++;
+        }
+      }
     });
-    tl.to(".loader__inner, .loader__bar", { y: -16, opacity: 0, duration: 0.5, ease: "power2.in" }, "+=0.12");
+    tl.to(".loader__inner, .loader__bar, .loader__log", { y: -16, opacity: 0, duration: 0.5, ease: "power2.in" }, "+=0.12");
     tl.to(loader, { yPercent: -100, duration: 0.8, ease: "expo.inOut" }, "-=0.1");
     tl.set(loader, { display: "none" });
   }
@@ -236,6 +253,22 @@
     });
   }
 
+  /* ---------- Kinetic hero type: the name splits apart as the boot scene flies past ---------- */
+  function initKineticType() {
+    if (!hasGSAP || reduceMotion) return;
+    var hero = document.querySelector(".hero");
+    var title = document.querySelector(".hero__title");
+    if (!hero || !title) return;
+    var lines = title.querySelectorAll(".line");
+    if (lines.length < 2) return;
+    var tl = gsap.timeline({
+      scrollTrigger: { trigger: hero, start: "top top", end: "bottom 25%", scrub: 0.4 }
+    });
+    tl.to(lines[0], { xPercent: -16, ease: "none" }, 0)
+      .to(lines[1], { xPercent: 12, ease: "none" }, 0)
+      .to(title, { opacity: 0, fontWeight: 200, y: -40, ease: "none" }, 0);
+  }
+
   /* ---------- Headings decode on arrival (both scroll directions) ---------- */
   function initScrollDecode() {
     if (!hasGSAP || reduceMotion) return;
@@ -274,9 +307,11 @@
     if (!hasGSAP || reduceMotion) return;
     [".stats .stat", ".edu__item", ".contact__meta span", ".hero__meta span"].forEach(function (sel) {
       gsap.utils.toArray(sel).forEach(function (el, i) {
+        // End well above the fold: elements near the page bottom can never
+        // cross deeper lines, and a stuck drift leaves rows overlapping.
         gsap.fromTo(el, { x: i % 2 ? 44 : -44 }, {
           x: 0, ease: "none",
-          scrollTrigger: { trigger: el, start: "top bottom", end: "top 70%", scrub: 0.4 }
+          scrollTrigger: { trigger: el, start: "top bottom", end: "top 92%", scrub: 0.4 }
         });
       });
     });
@@ -664,85 +699,6 @@
     });
   }
 
-  /* ---------- Theme switcher (rotates Bone → Cyber → Acid) ---------- */
-  function initThemes() {
-    var THEMES = ["bone", "colorblind", "cyber", "acid"];
-    var META = {
-      bone:       { label: "Bone",         desc: "Warm editorial",           sw: "#b8492c" },
-      colorblind: { label: "Colour-blind", desc: "High-contrast, safe palette", sw: "linear-gradient(90deg, #0067b0 0 50%, #b26a00 50% 100%)" },
-      cyber:      { label: "Cyber",        desc: "Neon on matte black",       sw: "#16e0ff" },
-      acid:       { label: "Acid",         desc: "Acid green",                sw: "#39ff14" }
-    };
-    var html = document.documentElement;
-
-    var picker = document.createElement("div");
-    picker.className = "theme-picker";
-
-    var panel = document.createElement("div");
-    panel.className = "theme-picker__panel";
-    panel.setAttribute("role", "menu");
-    panel.setAttribute("aria-label", "Select colour theme");
-
-    var opts = {};
-    THEMES.forEach(function (t) {
-      var m = META[t];
-      var b = document.createElement("button");
-      b.className = "theme-opt";
-      b.type = "button";
-      b.setAttribute("role", "menuitemradio");
-      b.setAttribute("data-theme", t);
-      b.title = m.label + " — " + m.desc;
-      b.innerHTML =
-        '<span class="theme-opt__sw" aria-hidden="true"></span>' +
-        '<span class="theme-opt__text"><span class="theme-opt__name"></span>' +
-        '<span class="theme-opt__desc"></span></span>';
-      b.querySelector(".theme-opt__sw").style.background = m.sw;
-      b.querySelector(".theme-opt__name").textContent = m.label;
-      b.querySelector(".theme-opt__desc").textContent = m.desc;
-      b.addEventListener("click", function () { apply(t); close(); toggle.focus(); });
-      panel.appendChild(b);
-      opts[t] = b;
-    });
-
-    var toggle = document.createElement("button");
-    toggle.className = "theme-picker__toggle";
-    toggle.type = "button";
-    toggle.setAttribute("aria-haspopup", "true");
-    toggle.setAttribute("aria-expanded", "false");
-    toggle.setAttribute("aria-label", "Colour theme");
-    toggle.innerHTML =
-      '<span class="theme-fab__dot" aria-hidden="true"></span>' +
-      '<span class="theme-picker__current"></span>' +
-      '<span class="theme-picker__chev" aria-hidden="true">▴</span>';
-    var currentEl = toggle.querySelector(".theme-picker__current");
-
-    picker.appendChild(panel);
-    picker.appendChild(toggle);
-    document.body.appendChild(picker);
-
-    function apply(theme) {
-      if (THEMES.indexOf(theme) < 0) theme = "bone";
-      html.dataset.theme = theme;
-      currentEl.textContent = META[theme].label;
-      THEMES.forEach(function (t) {
-        var on = t === theme;
-        opts[t].setAttribute("aria-checked", on ? "true" : "false");
-        opts[t].classList.toggle("is-active", on);
-      });
-      try { localStorage.setItem("theme", theme); } catch (e) {}
-    }
-    function open() { picker.classList.add("is-open"); toggle.setAttribute("aria-expanded", "true"); }
-    function close() { picker.classList.remove("is-open"); toggle.setAttribute("aria-expanded", "false"); }
-
-    toggle.addEventListener("click", function () {
-      picker.classList.contains("is-open") ? close() : open();
-    });
-    document.addEventListener("click", function (e) { if (!picker.contains(e.target)) close(); });
-    document.addEventListener("keydown", function (e) { if (e.key === "Escape" && picker.classList.contains("is-open")) { close(); toggle.focus(); } });
-
-    apply(html.dataset.theme || "bone");
-  }
-
   /* ---------- Case files: dossier tilt + glare toward the pointer ---------- */
   function initCaseTilt() {
     if (!hasGSAP || reduceMotion || !fine) return;
@@ -887,51 +843,6 @@
     update();
   }
 
-  /* ---------- Matrix rain (active only on dark themes) ---------- */
-  function initMatrix() {
-    if (reduceMotion) return;
-    var canvas = document.querySelector(".matrix");
-    if (!canvas || !canvas.getContext) return;
-    var ctx = canvas.getContext("2d");
-    var html = document.documentElement;
-    var GLYPHS = "0123456789ABCDEFｱｶｻﾀﾅﾊﾏﾝ".split("");
-    var fontSize = 16, cols = 0, drops = [], w = 0, h = 0, raf = null, col = { glyph: "#16e0ff", bg: "#0b0b0d" };
-
-    function readColors() {
-      var cs = getComputedStyle(html);
-      col.glyph = cs.getPropertyValue("--accent").trim() || "#16e0ff";
-      col.bg = cs.getPropertyValue("--bone").trim() || "#0b0b0d";
-    }
-    function resize() {
-      w = canvas.width = window.innerWidth;
-      h = canvas.height = window.innerHeight;
-      cols = Math.floor(w / fontSize);
-      drops = [];
-      for (var i = 0; i < cols; i++) drops[i] = Math.random() * -50;
-    }
-    function draw() {
-      ctx.globalAlpha = 0.09; ctx.fillStyle = col.bg; ctx.fillRect(0, 0, w, h);
-      ctx.globalAlpha = 1; ctx.fillStyle = col.glyph; ctx.font = fontSize + "px ui-monospace, monospace";
-      for (var i = 0; i < drops.length; i++) {
-        ctx.fillText(GLYPHS[Math.floor(Math.random() * GLYPHS.length)], i * fontSize, drops[i] * fontSize);
-        if (drops[i] * fontSize > h && Math.random() > 0.975) drops[i] = 0;
-        drops[i]++;
-      }
-      raf = requestAnimationFrame(draw);
-    }
-    function update() {
-      var t = html.dataset.theme;
-      var on = (t === "cyber" || t === "acid") && !document.hidden;
-      if (on && !raf) { readColors(); resize(); canvas.style.display = "block"; draw(); }
-      else if (!on && raf) { cancelAnimationFrame(raf); raf = null; canvas.style.display = "none"; }
-      else if (on) { readColors(); }
-    }
-    new MutationObserver(update).observe(html, { attributes: true, attributeFilter: ["data-theme"] });
-    window.addEventListener("resize", function () { if (raf) resize(); });
-    document.addEventListener("visibilitychange", update);
-    update();
-  }
-
   /* ---------- Page transition wipe ---------- */
   function initTransitions() {
     var wipe = document.querySelector(".wipe");
@@ -975,6 +886,7 @@
     initAnchors();
     initScramble();
     initReveals();
+    initKineticType();
     initScrollDecode();
     initWordReveal();
     initGhosts();
@@ -989,10 +901,8 @@
     initMagnetic();
     initTilt();
     initWorkPreview();
-    initThemes();
     initProgress();
     initHud();
-    initMatrix();
     initCaseModal();
     initCaseTilt();
     initTransitions();
