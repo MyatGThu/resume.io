@@ -700,6 +700,24 @@
     document.addEventListener("keydown", function (e) { if (e.key === "Escape" && modal.classList.contains("is-open")) close(); });
   }
 
+  /* ---------- Scroll progress (the native scrollbar is hidden) ---------- */
+  function initProgress() {
+    var bar = document.createElement("div");
+    bar.className = "progress";
+    bar.setAttribute("aria-hidden", "true");
+    document.body.appendChild(bar);
+    var raf = null;
+    function update() {
+      raf = null;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      bar.style.transform = "scaleX(" + (max > 0 ? Math.min(1, window.scrollY / max) : 0) + ")";
+    }
+    function queue() { if (!raf) raf = requestAnimationFrame(update); }
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", queue);
+    update();
+  }
+
   /* ---------- Matrix rain (active only on dark themes) ---------- */
   function initMatrix() {
     if (reduceMotion) return;
@@ -799,6 +817,7 @@
     initTilt();
     initWorkPreview();
     initThemes();
+    initProgress();
     initMatrix();
     initCaseModal();
     initCaseTilt();

@@ -1,14 +1,20 @@
 /* ===========================================================================
-   Myat Thu — Page-wide 3D scroll scene
-   One particle system, morphed by scroll across the page:
-     hero      → SPHERE  (a wireframe icosahedron + shell of particles)
-     stats     → CLOUD   (the sphere disperses into a drifting field)
-     work      → TUNNEL  (a one-point-perspective corridor of receding rings;
-                          scroll dollies you down it, rings recycle → infinite)
-     certs     → SPHERE  (the object reforms)
-     → contact → fades out before the opaque contact section covers it.
-   Colours track the active theme. Degrades gracefully (no JS / no WebGL /
-   reduced-motion / Data Saver all get the plain gradient site).
+   Myat Thu — Page-wide 3D flight scene
+   One endless particle field, flown through by scroll: the camera holds
+   still while the field streams past. Each ring of particles is shaped by
+   the section of the document it currently represents —
+     hero   → loose drift        (a wide, open field of signals)
+     stats  → cloud              (the field thickens around the numbers)
+     work   → one-point corridor (tight rings; scroll dollies you down it)
+     certs  → ordered drift      (the corridor relaxes, still structured)
+     → contact: the field converges to a point, flares, and blinks out.
+   Rings recycle modulo the window depth, so the flight never ends, and a
+   recycled ring is re-profiled for the document position it now represents
+   — upcoming sections literally take shape in the distance ahead.
+   Fast scrolling widens the lens (a touch of warp); decrypting the hero
+   name surges the flight forward. Colours track the active theme.
+   Degrades gracefully (no JS / no WebGL / reduced-motion / Data Saver all
+   get the plain gradient site).
    =========================================================================== */
 (function () {
   "use strict";
@@ -16,7 +22,7 @@
   var reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   if (reduceMotion) return;
 
-  // Only meaningful on the home page (the scene's milestones live there).
+  // Only meaningful on the home page (the flight's zones live there).
   if (!document.querySelector(".hero") || !document.querySelector(".work")) return;
 
   var conn = navigator.connection;
@@ -28,8 +34,6 @@
   lib.async = true;
   lib.onload = function () { if (typeof window.THREE !== "undefined") init(); };
   document.head.appendChild(lib);
-
-  var SPHERE = 0, CLOUD = 1, TUNNEL = 2;
 
   function init() {
     var renderer;
@@ -48,43 +52,27 @@
     var camera = new THREE.PerspectiveCamera(60, 1, 0.1, 200);
     camera.position.set(0, 0, 26);
 
-    var group = new THREE.Group();
+    var group = new THREE.Group(); // kept for the break-burst click mapping
     scene.add(group);
 
-    var icosa = new THREE.LineSegments(
-      new THREE.EdgesGeometry(new THREE.IcosahedronGeometry(7.2, 1)),
-      new THREE.LineBasicMaterial({ transparent: true, opacity: 0 })
-    );
-    group.add(icosa);
-
     var N = small ? 460 : 1120;
-    var sphere = new Float32Array(N * 3);   // Fibonacci sphere shell
-    var cloudN = new Float32Array(N * 3);   // normalised random cloud (scaled by spread)
-    var wobble = new Float32Array(N * 2);   // per-particle idle-drift phase/speed
-    var GOLD = Math.PI * (3 - Math.sqrt(5));
+    var RING_N = small ? 18 : 26;             // particles per ring
+    var RINGS = Math.ceil(N / RING_N);
+    var DEPTH = 80, SPACING = DEPTH / RINGS;  // window depth; rings recycle through it
+    var ZNEAR = small ? 18 : 19;              // wrap plane — in front of the lens (z=26)
+    var ZSAFE = 20;                           // jitter may never push a particle past this
+    var K = 0.03;                             // world units of travel per scrolled px
+
+    var jit = new Float32Array(N * 3);        // per-particle scatter seed (-1..1)
+    var wobble = new Float32Array(N * 2);     // per-particle idle-drift phase/speed
     for (var i = 0; i < N; i++) {
       var i3 = i * 3;
-      // sphere
-      var y = 1 - (i / (N - 1)) * 2, r = Math.sqrt(Math.max(0, 1 - y * y)), th = i * GOLD;
-      sphere[i3] = Math.cos(th) * r * 7.2; sphere[i3 + 1] = y * 7.2; sphere[i3 + 2] = Math.sin(th) * r * 7.2;
-      // cloud (normalised -1..1)
-      cloudN[i3] = Math.random() * 2 - 1; cloudN[i3 + 1] = Math.random() * 2 - 1; cloudN[i3 + 2] = Math.random() * 2 - 1;
+      jit[i3] = Math.random() * 2 - 1; jit[i3 + 1] = Math.random() * 2 - 1; jit[i3 + 2] = Math.random() * 2 - 1;
       wobble[i * 2] = Math.random() * Math.PI * 2; wobble[i * 2 + 1] = 0.4 + Math.random() * 0.8;
     }
 
-    // TUNNEL — the career corridor. Particles form rings receding toward a
-    // vanishing point; positions are computed live (they depend on scroll
-    // travel and the group's rotation). Rings recycle modulo DEPTH, so the
-    // corridor is endless. The wrap plane sits behind the camera on desktop
-    // (rings whoosh past); on phones the axis is nearly centred in frame, so
-    // wrap earlier — no particle may cross the lens and flash.
-    var RING_N = small ? 18 : 26;             // particles per ring
-    var RINGS = Math.ceil(N / RING_N);
-    var DEPTH = 72, SPACING = DEPTH / RINGS;
-    var ZNEAR = small ? 18 : 30;              // camera sits at z = 26
-
     // "Click to break it" — per-particle burst offset + velocity, sprung back
-    // toward the scroll-morph targets so scroll behaviour restores itself.
+    // toward the flight positions so scroll behaviour restores itself.
     var boff = new Float32Array(N * 3);
     var bvel = new Float32Array(N * 3);
 
@@ -93,39 +81,33 @@
     var posAttr = new THREE.BufferAttribute(pos, 3);
     posAttr.setUsage(THREE.DynamicDrawUsage);
     geom.setAttribute("position", posAttr);
-    var pmat = new THREE.PointsMaterial({ size: 0.13, sizeAttenuation: true, transparent: true, opacity: 0.6, depthWrite: false });
+    var pmat = new THREE.PointsMaterial({ size: 0.14, sizeAttenuation: true, transparent: true, opacity: 0.6, depthWrite: false });
     var points = new THREE.Points(geom, pmat);
     group.add(points);
 
-    // Scroll milestones (DOM order). Each has a target formation and a world
-    // centre; the field lerps between consecutive milestones as you scroll.
-    var MILES = [
-      { el: document.querySelector(".hero"), form: SPHERE, c: [9, 1, 0] },
-      { el: document.querySelector(".stats"), form: CLOUD, c: [0, 0, 0] },
-      // TUNNEL carries its own world-space centre (tCX) inside target(),
-      // where it can be counter-rotated against the group — keep c at 0.
-      { el: document.querySelector(".work"), form: TUNNEL, c: [0, 0, 0] },
-      { el: document.querySelector(".certs"), form: SPHERE, c: [-2, 0, 0] }
-    ].filter(function (m) { return m.el; });
-    var TUNNEL_IDX = MILES.findIndex(function (m) { return m.form === TUNNEL; });
+    // Flight zones (DOM order). Each shapes the rings that pass through the
+    // stretch of document it owns: ring radius, scatter, and axis offset
+    // (a fraction of the visible half-width; the path curves between zones).
+    var ZONES = [
+      { el: document.querySelector(".hero"), rad: 10, jitter: 5, ax: 0.42 },
+      { el: document.querySelector(".stats"), rad: 8.5, jitter: 9, ax: 0 },
+      { el: document.querySelector(".work"), rad: 5.2, jitter: 0.25, ax: 0.3 },
+      { el: document.querySelector(".certs"), rad: 7, jitter: 3, ax: -0.08 }
+    ].filter(function (z) { return z.el; });
     var contactEl = document.querySelector("#contact") || document.querySelector(".contact");
 
-    var spread = { x: 20, y: 13, z: 8 };
+    var spread = { x: 20, y: 13 };
     function computeBounds() {
       var halfY = Math.tan((camera.fov * Math.PI) / 360) * camera.position.z;
-      spread.y = halfY * 0.92; spread.x = halfY * camera.aspect * 1.15; spread.z = 8;
-      MILES[0].c[0] = spread.x * 0.42; // keep the hero sphere to the right of the title
-      // corridor axis right of centre on wide screens (text sits left),
-      // clamped away from the lens path so near rings never cross the camera
-      tCX = Math.max(small ? 0 : 8, spread.x * 0.3);
+      spread.y = halfY * 0.92; spread.x = halfY * camera.aspect * 1.15;
     }
 
-    // Milestone / contact positions in document space, cached so the frame
-    // loop never calls getBoundingClientRect (avoids per-frame layout thrash).
+    // Zone / contact positions in document space, cached so the frame loop
+    // never calls getBoundingClientRect (avoids per-frame layout thrash).
     var centers = [], contactTop = Infinity;
     function computeCenters() {
-      for (var m = 0; m < MILES.length; m++) {
-        var r = MILES[m].el.getBoundingClientRect();
+      for (var m = 0; m < ZONES.length; m++) {
+        var r = ZONES[m].el.getBoundingClientRect();
         centers[m] = r.top + window.scrollY + r.height / 2;
       }
       contactTop = contactEl ? contactEl.getBoundingClientRect().top + window.scrollY : Infinity;
@@ -157,10 +139,8 @@
       pmat.blending = dark ? THREE.AdditiveBlending : THREE.NormalBlending;
       pmat.needsUpdate = true;
       baseParticle = dark ? 0.7 : 0.62;
-      icosa.material.color.set(cs.getPropertyValue("--ink").trim() || "#181511");
-      baseIcosa = dark ? 0.34 : 0.16;
     }
-    var baseParticle = 0.62, baseIcosa = 0.16;
+    var baseParticle = 0.62;
     new MutationObserver(applyTheme).observe(document.documentElement, { attributes: true, attributeFilter: ["data-theme"] });
 
     var mx = 0, my = 0, cmx = 0, cmy = 0;
@@ -172,31 +152,25 @@
     }
 
     function smooth(x) { return x * x * (3 - 2 * x); }
-    // TUNNEL per-frame state: scroll travel down the corridor plus the
-    // group-rotation counter-terms that keep the axis aimed at the camera.
-    var tCX = 8, tTravel = 0, tCos = 1, tSin = 0;
-    // read a particle's target xyz for a formation into out[0..2]
-    function target(form, i, out) {
-      var i3 = i * 3;
-      if (form === SPHERE) { out[0] = sphere[i3]; out[1] = sphere[i3 + 1]; out[2] = sphere[i3 + 2]; }
-      else if (form === TUNNEL) {
-        var ring = (i / RING_N) | 0;
-        var ang = ((i % RING_N) / RING_N) * Math.PI * 2 + ring * 0.4; // slight spiral
-        var rad = 5.2 - (ring % 5 === 0 ? 0.8 : 0) + Math.sin(ring * 1.7) * 0.15; // gate ribs
-        var wz = ZNEAR - ((((ring * SPACING - tTravel) % DEPTH) + DEPTH) % DEPTH);
-        var wx = tCX + Math.cos(ang) * rad;
-        // world-space corridor → group-local (inverse of the group's Y spin)
-        out[0] = wx * tCos - wz * tSin;
-        out[1] = Math.sin(ang) * rad;
-        out[2] = wx * tSin + wz * tCos;
-      }
-      else { out[0] = cloudN[i3] * spread.x; out[1] = cloudN[i3 + 1] * spread.y; out[2] = cloudN[i3 + 2] * spread.z; }
+    // interpolate the zone profile for a document position into pr
+    var pr = { rad: 0, jitter: 0, ax: 0 };
+    function profileAt(d) {
+      var idx = 0;
+      for (var m = 0; m < ZONES.length - 1; m++) { if (d >= centers[m]) idx = m; }
+      var iB = Math.min(idx + 1, ZONES.length - 1);
+      var A = ZONES[idx], B = ZONES[iB];
+      var ca = centers[idx], cb = centers[iB];
+      var seg = cb > ca ? (d - ca) / (cb - ca) : 0;
+      seg = smooth(Math.max(0, Math.min(1, seg)));
+      pr.rad = A.rad + (B.rad - A.rad) * seg;
+      pr.jitter = A.jitter + (B.jitter - A.jitter) * seg;
+      pr.ax = (A.ax + (B.ax - A.ax) * seg) * spread.x;
     }
 
     // Bridges from main.js (separate IIFE, so custom events are the channel):
-    // a decrypt of the hero name pulses the sphere; an open modal hushes time.
-    var pulse = 0, hush = 1, hushT = 1;
-    window.addEventListener("mt:decrypt", function () { pulse = 1; });
+    // decrypting the hero name surges the flight; an open modal hushes time.
+    var warp = 0, warpT = 0, hush = 1, hushT = 1;
+    window.addEventListener("mt:decrypt", function () { warp = 1; });
     window.addEventListener("mt:hush", function (e) { hushT = (e.detail && e.detail.on) ? 0.18 : 1; });
 
     // "Break things on purpose" — clicking the home-lab section detonates the
@@ -211,14 +185,12 @@
         var sel = window.getSelection && window.getSelection();
         if (sel && sel.toString()) return; // the visitor was selecting text
         lastBreak = nowMs;
-        // Unproject the click onto the field's z=0 plane, then into the
-        // group's local space (its rotation accumulates, so world coords
-        // would aim the burst wrong after a while on the page).
+        // Unproject the click onto the field's z=0 plane (group is identity,
+        // so world coordinates are field coordinates).
         clickV.set((e.clientX / window.innerWidth) * 2 - 1, -(e.clientY / window.innerHeight) * 2 + 1, 0.5)
           .unproject(camera).sub(camera.position);
         if (clickV.z > -0.001) return;
         clickV.multiplyScalar(-camera.position.z / clickV.z).add(camera.position);
-        group.worldToLocal(clickV);
         for (var i = 0; i < N; i++) {
           var i3 = i * 3;
           var dx = pos[i3] - clickV.x, dy = pos[i3 + 1] - clickV.y, dz = pos[i3 + 2] - clickV.z;
@@ -231,22 +203,27 @@
       });
     }
 
-    var raf = null, lastT = 0, t = 0, visible = false, fadedDrawn = false, ta = [0, 0, 0], tb = [0, 0, 0];
+    // per-ring scratch, re-profiled every frame as rings travel and recycle
+    var ringZ = new Float32Array(RINGS), ringRad = new Float32Array(RINGS);
+    var ringJit = new Float32Array(RINGS), ringAx = new Float32Array(RINGS), ringAy = new Float32Array(RINGS);
+
+    var raf = null, lastT = 0, lastSc = -1, t = 0, visible = false, fadedDrawn = false;
     function frame(now) {
       var dt = Math.min((now - lastT) / 1000, 0.05); lastT = now;
       hush += (hushT - hush) * Math.min(1, dt * 3);
       t += dt * hush; // the modal "holds the scene's breath"
-      if (pulse > 0) pulse = Math.max(0, pulse - dt * 0.9);
+      if (warp > 0) { warpT += dt * warp * 26; warp = Math.max(0, warp - dt * 0.8); }
+      if (flash > 0) flash = Math.max(0, flash - dt * 1.4);
       var sc = window.scrollY + window.innerHeight / 2;
 
-      // find the active milestone segment (cached document-space centres)
-      var idx = 0;
-      for (var m = 0; m < MILES.length - 1; m++) { if (sc >= centers[m]) idx = m; }
-      var iB = Math.min(idx + 1, MILES.length - 1);
-      var A = MILES[idx], B = MILES[iB];
-      var ca = centers[idx], cb = centers[iB];
-      var seg = cb > ca ? (sc - ca) / (cb - ca) : 0;
-      seg = smooth(Math.max(0, Math.min(1, seg)));
+      // a touch of warp: fast scrolling widens the lens, easing back at rest
+      var sv = lastSc < 0 ? 0 : Math.abs(sc - lastSc) / Math.max(dt, 0.001);
+      lastSc = sc;
+      var fovT = 60 + Math.min(9, sv * 0.004);
+      if (Math.abs(camera.fov - fovT) > 0.03) {
+        camera.fov += (fovT - camera.fov) * Math.min(1, dt * 5);
+        camera.updateProjectionMatrix();
+      }
 
       // "Transmission sent" — approaching the opaque contact panel the field
       // converges to a single bright point, flares, and blinks out.
@@ -256,29 +233,25 @@
       var fadeEnv = send < 0.8 ? 1 : Math.max(0, 1 - (send - 0.8) / 0.2);
 
       if (fadeEnv <= 0.001) { // fully sent — draw one clear frame, then idle cheaply
-        if (!fadedDrawn) { pmat.opacity = 0; icosa.material.opacity = 0; renderer.render(scene, camera); fadedDrawn = true; }
+        if (!fadedDrawn) { pmat.opacity = 0; renderer.render(scene, camera); fadedDrawn = true; }
         raf = requestAnimationFrame(frame); return;
       }
       fadedDrawn = false;
 
-      var cxw = A.c[0] + (B.c[0] - A.c[0]) * seg;
-      var cyw = A.c[1] + (B.c[1] - A.c[1]) * seg;
-      var czw = A.c[2] + (B.c[2] - A.c[2]) * seg;
-      var tunnelW = ((A.form === TUNNEL ? (1 - seg) : 0) + (B.form === TUNNEL ? seg : 0)); // corridor-ness
-      var sphereness = ((A.form === SPHERE ? (1 - seg) : 0) + (B.form === SPHERE ? seg : 0));
-
-      // Set the spin before the particle loop: the corridor counter-rotates
-      // against it, and scroll + a slow drift dolly the rings past the camera.
-      group.rotation.y = t * 0.05 + sphereness * Math.sin(t * 0.2) * 0.15;
-      icosa.rotation.set(t * 0.12, t * 0.16, 0);
-      if (tunnelW > 0) {
-        tCos = Math.cos(group.rotation.y); tSin = Math.sin(group.rotation.y);
-        tTravel = (sc - centers[TUNNEL_IDX]) * 0.03 + t * 0.6;
+      // re-profile every ring for the document position it now represents
+      var T = sc * K + t * 0.55 + warpT;
+      for (var r = 0; r < RINGS; r++) {
+        var zw = ZNEAR - ((((r * SPACING - T) % DEPTH) + DEPTH) % DEPTH);
+        var doc = sc + (ZNEAR - zw) / K;
+        profileAt(doc);
+        var tight = 1 - Math.min(1, pr.jitter / 2); // corridor-ness
+        ringZ[r] = zw;
+        ringRad[r] = pr.rad - (r % 5 === 0 ? 0.8 * tight : 0) + Math.sin(r * 1.7) * 0.15; // gate ribs
+        ringJit[r] = pr.jitter;
+        ringAx[r] = pr.ax;
+        ringAy[r] = Math.sin(doc * 0.0011) * 1.5; // the path weaves gently
       }
 
-      var doPulse = pulse > 0.001 && sphereness > 0.01;
-      var wavePhase = (1 - pulse) * 9;
-      var keep = 1 - send;
       var doBurst = burstT > 0;
       var damp = 1;
       if (doBurst) {
@@ -286,40 +259,33 @@
         damp = Math.max(0, 1 - dt * 2.4);
         if (burstT <= 0) { boff.fill(0); bvel.fill(0); doBurst = false; }
       }
-      if (flash > 0) flash = Math.max(0, flash - dt * 1.4);
-      for (var i = 0; i < N; i++) {
-        target(A.form, i, ta); target(B.form, i, tb);
-        var i3 = i * 3;
-        var wob = Math.sin(t * wobble[i * 2 + 1] + wobble[i * 2]) * (0.15 + tunnelW * 0.1);
-        pos[i3] = ta[0] + (tb[0] - ta[0]) * seg + cxw + wob;
-        pos[i3 + 1] = ta[1] + (tb[1] - ta[1]) * seg + cyw;
-        pos[i3 + 2] = ta[2] + (tb[2] - ta[2]) * seg + czw + wob;
-        if (doPulse) { // radial shockwave along the sphere normal
-          var amp = Math.sin(wavePhase - sphere[i3 + 1] * 0.35) * pulse * 0.9 * sphereness;
-          pos[i3] += (sphere[i3] / 7.2) * amp;
-          pos[i3 + 1] += (sphere[i3 + 1] / 7.2) * amp;
-          pos[i3 + 2] += (sphere[i3 + 2] / 7.2) * amp;
+      var keep = 1 - send;
+      for (var p = 0; p < N; p++) {
+        var r2 = (p / RING_N) | 0, p3 = p * 3;
+        var ang = ((p % RING_N) / RING_N) * Math.PI * 2 + r2 * 0.4; // slight spiral
+        var wob = Math.sin(t * wobble[p * 2 + 1] + wobble[p * 2]) * 0.18;
+        var jz = jit[p3 + 2] * ringJit[r2] * 0.6;
+        if (ringZ[r2] + jz > ZSAFE) jz = ZSAFE - ringZ[r2]; // never drift into the lens
+        pos[p3] = ringAx[r2] + Math.cos(ang) * ringRad[r2] + jit[p3] * ringJit[r2] + wob;
+        pos[p3 + 1] = ringAy[r2] + Math.sin(ang) * ringRad[r2] * 0.85 + jit[p3 + 1] * ringJit[r2];
+        pos[p3 + 2] = ringZ[r2] + jz + wob * 0.5;
+        if (doBurst) { // integrate the blast, sprung back to the flight position
+          bvel[p3] = (bvel[p3] - boff[p3] * 7 * dt) * damp;
+          bvel[p3 + 1] = (bvel[p3 + 1] - boff[p3 + 1] * 7 * dt) * damp;
+          bvel[p3 + 2] = (bvel[p3 + 2] - boff[p3 + 2] * 7 * dt) * damp;
+          boff[p3] += bvel[p3] * dt; boff[p3 + 1] += bvel[p3 + 1] * dt; boff[p3 + 2] += bvel[p3 + 2] * dt;
+          pos[p3] += boff[p3]; pos[p3 + 1] += boff[p3 + 1]; pos[p3 + 2] += boff[p3 + 2];
         }
-        if (doBurst) { // integrate the blast, sprung back to the morph target
-          bvel[i3] = (bvel[i3] - boff[i3] * 7 * dt) * damp;
-          bvel[i3 + 1] = (bvel[i3 + 1] - boff[i3 + 1] * 7 * dt) * damp;
-          bvel[i3 + 2] = (bvel[i3 + 2] - boff[i3 + 2] * 7 * dt) * damp;
-          boff[i3] += bvel[i3] * dt; boff[i3 + 1] += bvel[i3 + 1] * dt; boff[i3 + 2] += bvel[i3 + 2] * dt;
-          pos[i3] += boff[i3]; pos[i3 + 1] += boff[i3 + 1]; pos[i3 + 2] += boff[i3 + 2];
-        }
-        if (send > 0) { pos[i3] *= keep; pos[i3 + 1] *= keep; pos[i3 + 2] *= keep; }
+        if (send > 0) { pos[p3] *= keep; pos[p3 + 1] *= keep; pos[p3 + 2] *= keep; }
       }
       posAttr.needsUpdate = true;
 
-      // flash composes as multipliers — milestone math owns these every frame
-      icosa.material.opacity = Math.min(1, baseIcosa * sphereness + pulse * 0.3 * sphereness) * fadeEnv * keep * (1 - flash);
-      icosa.position.set(cxw, cyw, czw);
-      icosa.scale.setScalar((0.6 + sphereness * 0.4 + Math.sin(t * 0.6) * 0.03) * Math.max(0.05, 1 - send * 0.95) * (1 + flash * 0.9));
-      icosa.visible = icosa.material.opacity > 0.002;
-      // dim a touch while the corridor owns the view — its far field converges
-      // right behind the work copy, and the text keeps priority
-      pmat.opacity = Math.min(1, baseParticle * (1 + flash * 0.35)) * fadeEnv * (1 - tunnelW * 0.28);
-      pmat.size = (0.13 + tunnelW * 0.02) * (1 + send * 0.8) * (1 + flash * 0.3);
+      // dim while the corridor owns the view — its far field converges right
+      // behind the work copy, and the text keeps priority
+      profileAt(sc);
+      var tightHere = 1 - Math.min(1, pr.jitter / 2);
+      pmat.opacity = Math.min(1, baseParticle * (1 + flash * 0.35)) * fadeEnv * (1 - tightHere * 0.28);
+      pmat.size = 0.14 * (1 + send * 0.8) * (1 + flash * 0.3);
 
       if (fine) { cmx += (mx - cmx) * 0.04; cmy += (my - cmy) * 0.04; }
       else { cmx = Math.sin(t * 0.08) * 0.4; cmy = 0; }
@@ -333,7 +299,7 @@
 
     function update() {
       var on = visible && !document.hidden;
-      if (on && !raf) { lastT = performance.now(); raf = requestAnimationFrame(frame); }
+      if (on && !raf) { lastT = performance.now(); lastSc = -1; raf = requestAnimationFrame(frame); }
       else if (!on && raf) { cancelAnimationFrame(raf); raf = null; }
     }
     // Render only while the main content (not just one section) is on screen.
