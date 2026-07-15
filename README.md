@@ -4,7 +4,7 @@ An interactive, motion-rich personal portfolio for **Myat Thu**, an IT
 professional specialising in the Microsoft modern workplace (Intune, Entra ID,
 cloud administration). Built as a static site and deployed to GitHub Pages.
 
-**Live:** https://myatgthu.github.io/hello-world.io/
+**Live:** https://myatgthu.github.io/resume.io/
 
 ## Design
 
