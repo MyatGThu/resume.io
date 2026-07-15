@@ -225,13 +225,16 @@
         return;
       }
       var d = el.hasAttribute("data-cap") ? 30 : 42;
+      // Kill only the reveal's own properties: a bare killTweensOf(el) would
+      // also destroy the x-drift scrub on the same element, freezing rows at
+      // their side offsets (stats columns collide into each other).
       function show(from, tip) {
-        gsap.killTweensOf(el);
+        gsap.killTweensOf(el, "opacity,y,rotationX");
         gsap.fromTo(el,
           { opacity: 0, y: from, rotationX: tip, transformPerspective: 900 },
           { opacity: 1, y: 0, rotationX: 0, duration: 0.85, ease: "power3.out", overwrite: "auto" });
       }
-      function hide() { gsap.killTweensOf(el); gsap.set(el, { opacity: 0 }); }
+      function hide() { gsap.killTweensOf(el, "opacity,y,rotationX"); gsap.set(el, { opacity: 0 }); }
       ScrollTrigger.create({
         trigger: el, start: "top 96%", end: "bottom top",
         onEnter: function () { show(d, 7); },
