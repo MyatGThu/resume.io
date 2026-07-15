@@ -262,6 +262,9 @@ section { position: relative; }
    visitors keep the system bar); a thin progress line keeps orientation. */
 html.js { scrollbar-width: none; }
 html.js::-webkit-scrollbar { display: none; }
+/* Directional drifts start elements off to the side; never let that widen
+   the page. clip (with hidden fallback) adds no scroll container. */
+html { overflow-x: hidden; overflow-x: clip; }
 .progress {
   position: fixed; top: 0; left: 0; right: 0; height: 2px; z-index: 845; /* under the menu overlay */
   background: var(--accent); transform: scaleX(0); transform-origin: 0 50%; pointer-events: none;
@@ -734,6 +737,53 @@ html.is-entering .wipe { transform: translateY(0); transition: none; }
 @media (max-width: 560px) { .blok--dot, .blok--plus, .blok--sq2 { display: none; } }
 
 /* ===========================================================================
+   Flight instruments — ghost depth indices, HUD telemetry, section rail
+   =========================================================================== */
+/* isolation keeps the numeral's z-index:-1 inside its own section, so it sits
+   behind that section's content but never falls under the page background. */
+.has-ghost { position: relative; isolation: isolate; }
+.sec-ghost {
+  position: absolute; top: clamp(20px, 6vh, 64px); right: 2vw; z-index: -1;
+  font-family: "Bodoni Moda", Georgia, serif; font-weight: 800;
+  font-size: clamp(9rem, 19vw, 17rem); line-height: 0.8; letter-spacing: -0.02em;
+  color: transparent; -webkit-text-stroke: 1.5px var(--line);
+  pointer-events: none; user-select: none;
+}
+@media (max-width: 720px) { .sec-ghost { display: none; } }
+
+.hud {
+  position: fixed; right: 18px; bottom: 14px; z-index: 830; /* under the menu overlay */
+  display: flex; flex-direction: column; align-items: flex-end; gap: 4px;
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10.5px; letter-spacing: 0.12em; text-transform: uppercase;
+  color: var(--muted); text-align: right; pointer-events: none;
+}
+.hud__sec { color: var(--accent); }
+.hud__row { display: inline-flex; align-items: center; gap: 8px; }
+.hud__blink { display: inline-block; width: 7px; height: 11px; background: var(--accent); animation: hudblink 1.1s steps(2, start) infinite; }
+@keyframes hudblink { to { visibility: hidden; } }
+
+.rail {
+  position: fixed; right: 10px; top: 50%; transform: translateY(-50%); z-index: 830;
+  display: flex; flex-direction: column; gap: 4px;
+}
+.rail__dot { display: flex; align-items: center; justify-content: flex-end; gap: 9px; padding: 4px 0; text-decoration: none; }
+.rail__tick {
+  width: 14px; height: 2px; background: var(--faint); opacity: 0.55;
+  transition: width 0.3s var(--ease), background-color 0.3s var(--ease), opacity 0.3s var(--ease);
+}
+.rail__dot:hover .rail__tick, .rail__dot:focus-visible .rail__tick, .rail__dot.is-active .rail__tick { width: 28px; background: var(--accent); opacity: 1; }
+.rail__label {
+  font-family: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace;
+  font-size: 10px; letter-spacing: 0.14em; text-transform: uppercase; color: var(--muted);
+  opacity: 0; transform: translateX(6px);
+  transition: opacity 0.25s var(--ease), transform 0.25s var(--ease);
+}
+.rail__dot:hover .rail__label, .rail__dot:focus-visible .rail__label, .rail__dot.is-active .rail__label { opacity: 1; transform: none; }
+.rail__dot.is-active .rail__label { color: var(--accent); }
+@media (max-width: 1099px), (max-height: 560px) { .hud, .rail { display: none; } }
+
+/* ===========================================================================
    Reveal states (JS-only)
    =========================================================================== */
 html.js [data-reveal] { opacity: 0; transform: translateY(28px); }
@@ -746,7 +796,7 @@ html.js [data-rise]:not(.is-risen) { opacity: 0; }
 
 @media (prefers-reduced-motion: reduce) {
   html.js [data-reveal], html.js [data-cap], html.js [data-role], html.js [data-rise] { opacity: 1 !important; transform: none !important; }
-  .hero__scroll i, .head__dot, .badge__svg { animation: none; }
+  .hero__scroll i, .head__dot, .badge__svg, .hud__blink { animation: none; }
   .intro__lead .w { color: var(--ink); }
   * { scroll-behavior: auto !important; }
 }

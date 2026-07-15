@@ -192,14 +192,37 @@
     gsap.fromTo(words, { yPercent: 110 }, { yPercent: 0, duration: 1.1, ease: "expo.out", stagger: 0.08, delay: 0.05 });
   }
 
-  /* ---------- Generic reveals ---------- */
+  /* ---------- Generic reveals (direction-aware) ---------- */
   function initReveals() {
     if (!hasGSAP) return;
     if (reduceMotion) { gsap.set("[data-reveal],[data-cap],[data-role],[data-rise]", { clearProps: "all" }); return; }
-    gsap.utils.toArray("[data-reveal]").forEach(function (el) {
-      gsap.to(el, { opacity: 1, y: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 88%" } });
+    // Every block answers the scroll in both directions: it rises in when
+    // scrolled down to, drops in when scrolled back up to (with a slight 3D
+    // tip toward the direction of travel), and resets once fully off-screen
+    // so each pass through the page re-performs the entrance.
+    gsap.utils.toArray("[data-reveal],[data-cap],[data-role]").forEach(function (el) {
+      if (el.closest(".toolbox__head")) {
+        // Sticky heading: its static trigger box scrolls away while the
+        // element itself stays pinned on screen — hiding it would pop.
+        gsap.to(el, { opacity: 1, y: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 88%" } });
+        return;
+      }
+      var d = el.hasAttribute("data-cap") ? 30 : 42;
+      function show(from, tip) {
+        gsap.killTweensOf(el);
+        gsap.fromTo(el,
+          { opacity: 0, y: from, rotationX: tip, transformPerspective: 900 },
+          { opacity: 1, y: 0, rotationX: 0, duration: 0.85, ease: "power3.out", overwrite: "auto" });
+      }
+      function hide() { gsap.killTweensOf(el); gsap.set(el, { opacity: 0 }); }
+      ScrollTrigger.create({
+        trigger: el, start: "top 96%", end: "bottom top",
+        onEnter: function () { show(d, 7); },
+        onEnterBack: function () { show(-d * 0.8, -7); },
+        onLeave: hide,
+        onLeaveBack: hide
+      });
     });
-    ScrollTrigger.batch("[data-cap]", { start: "top 90%", onEnter: function (b) { gsap.to(b, { opacity: 1, y: 0, duration: 0.9, ease: "power3.out", stagger: 0.08 }); } });
     // Cards lie flat like a dossier on a table, then rise upright as they enter.
     ScrollTrigger.batch("[data-rise]", {
       start: "top 92%",
@@ -211,9 +234,144 @@
         );
       }
     });
-    gsap.utils.toArray("[data-role]").forEach(function (el) {
-      gsap.to(el, { opacity: 1, y: 0, duration: 1, ease: "power3.out", scrollTrigger: { trigger: el, start: "top 85%" } });
+  }
+
+  /* ---------- Headings decode on arrival (both scroll directions) ---------- */
+  function initScrollDecode() {
+    if (!hasGSAP || reduceMotion) return;
+    var els = gsap.utils.toArray(
+      "main .section-title[data-scramble], main .section-title [data-scramble], " +
+      "main .step__t[data-scramble], main .role__title[data-scramble], " +
+      "main .case__title[data-scramble], main .lab__t[data-scramble], main .cap__t[data-scramble]"
+    );
+    if (!els.length) return;
+    ScrollTrigger.batch(els, {
+      start: "top 92%",
+      onEnter: function (b) { b.forEach(scramble); },
+      onEnterBack: function (b) { b.forEach(scramble); }
     });
+  }
+
+  /* ---------- Ghost depth indices (huge outlined numerals behind sections) ---------- */
+  function pad(n, w) { n = String(n); while (n.length < w) n = "0" + n; return n; }
+  function initGhosts() {
+    var secs = document.querySelectorAll("main section[data-hud]");
+    Array.prototype.forEach.call(secs, function (s, i) {
+      if (i === 0) return; // the hero stays clean
+      var g = document.createElement("span");
+      g.className = "sec-ghost";
+      g.setAttribute("aria-hidden", "true");
+      g.textContent = pad(i + 1, 2);
+      // Drifts slower than the content in front of it — a true depth layer.
+      if (!reduceMotion) g.setAttribute("data-parallax", "-0.35");
+      s.classList.add("has-ghost");
+      s.insertBefore(g, s.firstChild);
+    });
+  }
+
+  /* ---------- Alternating drift: rows converge from opposite sides ---------- */
+  function initDrift() {
+    if (!hasGSAP || reduceMotion) return;
+    [".stats .stat", ".edu__item", ".contact__meta span", ".hero__meta span"].forEach(function (sel) {
+      gsap.utils.toArray(sel).forEach(function (el, i) {
+        gsap.fromTo(el, { x: i % 2 ? 44 : -44 }, {
+          x: 0, ease: "none",
+          scrollTrigger: { trigger: el, start: "top bottom", end: "top 70%", scrub: 0.4 }
+        });
+      });
+    });
+  }
+
+  /* ---------- Velocity skew: the page shears with scroll speed ---------- */
+  function initSkew() {
+    if (!hasGSAP || reduceMotion || !fine || !lenis) return;
+    var target = document.querySelector("main");
+    if (!target) return;
+    // Everything position:fixed lives outside <main>, so the shear is safe.
+    gsap.set(target, { transformOrigin: "50% 50%" });
+    var skewTo = gsap.quickTo(target, "skewY", { duration: 0.5, ease: "power3.out" });
+    lenis.on("scroll", function (e) {
+      skewTo(Math.max(-1.3, Math.min(1.3, (e.velocity || 0) * 0.04)));
+    });
+  }
+
+  /* ---------- HUD telemetry + section rail (flight instruments) ---------- */
+  function initHud() {
+    var secs = Array.prototype.slice.call(document.querySelectorAll("main [data-hud]"));
+    if (secs.length < 3) return;
+
+    var hud = document.createElement("div");
+    hud.className = "hud";
+    hud.setAttribute("aria-hidden", "true");
+    hud.innerHTML =
+      '<span class="hud__sec"></span>' +
+      '<span class="hud__row"><span class="hud__pct">000%</span><span>·</span>' +
+      '<span class="hud__alt">+000000</span><i class="hud__blink"></i></span>';
+    document.body.appendChild(hud);
+    var secEl = hud.querySelector(".hud__sec");
+    var pctEl = hud.querySelector(".hud__pct");
+    var altEl = hud.querySelector(".hud__alt");
+
+    var rail = document.createElement("nav");
+    rail.className = "rail";
+    rail.setAttribute("aria-label", "Sections");
+    var dots = secs.map(function (s) {
+      var a = document.createElement("a");
+      a.className = "rail__dot";
+      a.href = "#" + s.id;
+      a.innerHTML = '<span class="rail__label">' + s.getAttribute("data-hud") + '</span><span class="rail__tick" aria-hidden="true"></span>';
+      a.addEventListener("click", function (e) { e.preventDefault(); scrollTo(s); });
+      rail.appendChild(a);
+      return a;
+    });
+    document.body.appendChild(rail);
+
+    // Decode the section readout like an instrument locking on; a newer call
+    // supersedes any decode still running, so fast scrolls never show stale text.
+    var tok = 0;
+    function decode(el, str) {
+      if (reduceMotion) { el.textContent = str; return; }
+      var mine = ++tok, frame = 0;
+      (function tick() {
+        if (mine !== tok) return;
+        var out = "";
+        for (var i = 0; i < str.length; i++) {
+          var c = str.charAt(i);
+          out += (c === " " || c === "/" || frame >= 4 + i) ? c : CHARS.charAt(Math.floor(Math.random() * CHARS.length));
+        }
+        el.textContent = out;
+        frame++;
+        if (frame <= 4 + str.length) requestAnimationFrame(tick);
+      })();
+    }
+
+    var cur = -1, lastPct = "", lastAlt = "", raf = null;
+    function update() {
+      raf = null;
+      var half = window.innerHeight * 0.5, idx = 0, i;
+      for (i = 0; i < secs.length; i++) {
+        if (secs[i].getBoundingClientRect().top <= half) idx = i;
+      }
+      if (idx !== cur) {
+        cur = idx;
+        decode(secEl, pad(idx + 1, 2) + " / " + secs[idx].getAttribute("data-hud").toUpperCase());
+        dots.forEach(function (d, k) {
+          d.classList.toggle("is-active", k === idx);
+          if (k === idx) d.setAttribute("aria-current", "true");
+          else d.removeAttribute("aria-current");
+        });
+      }
+      var y = window.scrollY;
+      var max = document.documentElement.scrollHeight - window.innerHeight;
+      var pct = pad(Math.round((max > 0 ? Math.min(1, y / max) : 0) * 100), 3) + "%";
+      if (pct !== lastPct) { lastPct = pct; pctEl.textContent = pct; }
+      var alt = "+" + pad(Math.min(999999, Math.round(y)), 6);
+      if (alt !== lastAlt) { lastAlt = alt; altEl.textContent = alt; }
+    }
+    function queue() { if (!raf) raf = requestAnimationFrame(update); }
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", queue);
+    update();
   }
 
   /* ---------- Scroll-driven word reveal ---------- */
@@ -350,7 +508,18 @@
     var track = document.getElementById("marquee");
     if (!track || !hasGSAP || reduceMotion) return;
     var loop = gsap.to(track, { xPercent: -50, repeat: -1, duration: 24, ease: "none" });
-    if (lenis) lenis.on("scroll", function (e) { var v = Math.min(Math.abs(e.velocity || 0), 40); loop.timeScale(1 + v * 0.12); });
+    // Park the playhead deep into the infinite repeats so a negative
+    // timeScale (scrolling up runs the belt backwards) never hits time 0.
+    loop.totalTime(24 * 1000);
+    if (lenis) {
+      var ts = gsap.quickTo(loop, "timeScale", { duration: 0.35, ease: "power2.out" });
+      var dir = 1;
+      lenis.on("scroll", function (e) {
+        var v = e.velocity || 0;
+        if (v > 0.5) dir = 1; else if (v < -0.5) dir = -1;
+        ts(dir * (1 + Math.min(Math.abs(v), 40) * 0.12));
+      });
+    }
   }
 
   /* ---------- Custom cursor ---------- */
@@ -806,9 +975,13 @@
     initAnchors();
     initScramble();
     initReveals();
+    initScrollDecode();
     initWordReveal();
+    initGhosts();
     initParallax();
     initToolbox();
+    initDrift();
+    initSkew();
     initCipher();
     initCounters();
     initMarquee();
@@ -818,6 +991,7 @@
     initWorkPreview();
     initThemes();
     initProgress();
+    initHud();
     initMatrix();
     initCaseModal();
     initCaseTilt();
