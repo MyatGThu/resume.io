@@ -7,7 +7,7 @@
   <meta name="description" content="Myat Thu — an IT professional specialising in the Microsoft ecosystem: Modern Device Management, Intune, Entra ID, and cloud administration. Based in Melbourne, Australia." />
   <meta name="author" content="Myat Thu" />
   <link rel="canonical" href="https://myatgthu.github.io/hello-world.io/" />
-  <meta name="theme-color" content="#0a0d12" />
+  <meta name="theme-color" content="#f3f1ec" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Myat Thu" />
   <meta property="og:url" content="https://myatgthu.github.io/hello-world.io/" />
@@ -27,7 +27,7 @@
   <script>document.documentElement.classList.add('js');try{if(sessionStorage.getItem('wipe'))document.documentElement.classList.add('is-entering');}catch(e){}</script>
 
   <link rel="preload" href="assets/fonts/outfit.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/fonts/share-tech-mono.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/bodoni-moda.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="styles.css?v=__BUILD__" />
 </head>
 <body>
@@ -35,11 +35,11 @@
 
   <div class="grain" aria-hidden="true"></div>
   <div class="cursor" aria-hidden="true"><span class="cursor__label"></span></div>
-  <div class="wipe" aria-hidden="true"><span class="wipe__label">Decrypting…</span></div>
+  <div class="wipe" aria-hidden="true"><span class="wipe__label">One moment —</span></div>
 
-  <!-- Preloader -->
+  <!-- Preloader (mercury drop) -->
   <div class="loader" id="loader" aria-hidden="true">
-    <div class="loader__log" id="loaderLog" aria-hidden="true"></div>
+    <div class="loader__drop" aria-hidden="true"></div>
     <div class="loader__inner">
       <span class="loader__name">Myat&nbsp;Thu</span>
       <span class="loader__count"><i id="loaderCount">0</i><em>%</em></span>
@@ -89,7 +89,7 @@
 
   <main>
     <!-- ============================ HERO ============================ -->
-    <section class="hero" id="top" data-hud="Boot">
+    <section class="hero" id="top" data-chapter="Arrival">
       <div class="hero__bg" data-parallax="0.22" aria-hidden="true"></div>
 
       <p class="hero__eyebrow" data-reveal>
@@ -97,12 +97,12 @@
       </p>
 
       <div class="hero__main">
-        <h1 class="hero__title hero__title--cipher" aria-label="Myat Thu">
-          <span class="line" aria-hidden="true"><span class="word" data-split data-cipher="4" data-real="Myat">M#9k</span></span>
-          <span class="line" aria-hidden="true"><span class="word word--accent" data-split data-cipher="4" data-real="Thu.">7%zq</span></span>
+        <h1 class="hero__title" aria-label="Myat Thu">
+          <span class="line" aria-hidden="true"><span class="word" data-split>Myat</span></span>
+          <span class="line" aria-hidden="true"><span class="word word--accent" data-split>Thu.</span></span>
         </h1>
 
-        <a class="badge" href="#contact" data-cursor="let's talk" aria-label="Open to work, available 2026">
+        <a class="badge" href="#contact" data-cursor="let's talk" string="magnetic" aria-label="Open to work, available 2026">
           <svg class="badge__svg" viewBox="0 0 140 140" aria-hidden="true">
             <defs>
               <path id="badgePath" d="M70,70 m-52,0 a52,52 0 1,1 104,0 a52,52 0 1,1 -104,0" />
@@ -158,8 +158,8 @@
     </div>
 
     <!-- ============================ INTRO ============================ -->
-    <section class="intro" id="intro" data-hud="Enroll">
-      <p class="intro__label scn" data-reveal><span class="scn__id">SCN.02</span>Enroll — identity verified</p>
+    <section class="intro" id="intro" data-chapter="The Person">
+      <p class="chap" data-reveal><em>Ch.02</em> The Person</p>
       <p class="intro__lead" data-words>
         I am an IT professional specialised in the Microsoft ecosystem, with a
         strong focus on modern device management and cloud administration. I have
@@ -200,8 +200,8 @@
     </section>
 
     <!-- ============================ CAPABILITIES ============================ -->
-    <section class="caps" id="caps" data-hud="Configure">
-      <p class="scn" data-reveal><span class="scn__id">SCN.03</span>Configure — policies applied</p>
+    <section class="caps" id="caps" data-chapter="The Craft">
+      <p class="chap" data-reveal><em>Ch.03</em> The Craft</p>
       <div class="caps__head">
         <h2 class="section-title" data-reveal data-scramble>Capabilities</h2>
         <p class="caps__note" data-reveal>
@@ -293,9 +293,9 @@
     </section>
 
     <!-- ============================ WORK ============================ -->
-    <section class="work" id="work" data-hud="Deploy">
+    <section class="work" id="work" data-chapter="The Orbit">
       <div class="work__intro">
-        <p class="scn" data-reveal><span class="scn__id">SCN.04</span>Deploy — rollout history</p>
+        <p class="chap" data-reveal><em>Ch.04</em> The Orbit</p>
         <h2 class="section-title" data-reveal><span data-scramble>Selected</span> <span class="accent" data-scramble>work</span></h2>
       </div>
 
@@ -396,8 +396,8 @@
     </section>
 
     <!-- ============================ CASE FILES ============================ -->
-    <section class="cases" id="projects" data-hud="Secure">
-      <p class="scn" data-reveal><span class="scn__id">SCN.05</span>Secure — incident casework</p>
+    <section class="cases" id="projects" data-chapter="The Proof">
+      <p class="chap" data-reveal><em>Ch.05</em> The Proof</p>
       <div class="caps__head">
         <h2 class="section-title" data-reveal data-scramble>Case files</h2>
         <p class="caps__note" data-reveal>A few problems I've owned from ticket to resolution.</p>
@@ -455,7 +455,7 @@
     <section class="lab" id="lab" data-cursor="break it">
       <div class="caps__head">
         <h2 class="section-title" data-reveal data-scramble>Home lab</h2>
-        <p class="caps__note" data-reveal>Where I break things on purpose — my sandbox for SC-300 and the Microsoft cloud. <span class="lab__hint">Go on — give this section a tap.</span></p>
+        <p class="caps__note" data-reveal>Where I break things on purpose — my sandbox for SC-300 and the Microsoft cloud. <span class="lab__hint">Go on — dent the metal.</span></p>
       </div>
       <ul class="lab__grid">
         <li class="lab__item" data-cap><span class="lab__k">01</span><h3 class="lab__t" data-scramble>Microsoft 365 dev tenant</h3><p class="lab__d">A throwaway tenant for testing conditional access, policies and admin without touching production.</p></li>
@@ -466,8 +466,8 @@
     </section>
 
     <!-- ============================ CERTIFICATIONS ============================ -->
-    <section class="certs" id="certs" data-hud="Comply">
-      <p class="scn" data-reveal><span class="scn__id">SCN.06</span>Comply — checks passed</p>
+    <section class="certs" id="certs" data-chapter="The Seals">
+      <p class="chap" data-reveal><em>Ch.06</em> The Seals</p>
       <div class="certs__head">
         <h2 class="section-title" data-reveal data-scramble>Credentials</h2>
         <p class="certs__note" data-reveal>Certified across the Microsoft and Google stacks.</p>
@@ -568,8 +568,8 @@
     </section>
 
     <!-- ============================ CONTACT ============================ -->
-    <section class="contact" id="contact" data-hud="Connect">
-      <p class="scn" data-reveal><span class="scn__id">SCN.07</span>Connect — session open</p>
+    <section class="contact" id="contact" data-chapter="Connect">
+      <p class="chap" data-reveal><em>Ch.07</em> Connect</p>
       <p class="contact__avail" data-reveal><span class="contact__dot" aria-hidden="true"></span> Available for new opportunities — 2026</p>
       <h2 class="contact__title" aria-label="Let's work together" data-reveal>
         <span class="line" aria-hidden="true">
@@ -579,7 +579,7 @@
           <span class="word word--accent" data-split>together.</span>
         </span>
       </h2>
-      <a class="contact__mail" href="mailto:myatgeorgethu@gmail.com" data-magnetic data-cursor="email">
+      <a class="contact__mail" href="mailto:myatgeorgethu@gmail.com" data-magnetic data-cursor="email" string="magnetic">
         <span data-scramble>myatgeorgethu@gmail.com</span> <i class="contact__arrow" aria-hidden="true">→</i>
       </a>
       <p class="contact__cv-row" data-reveal>
@@ -602,8 +602,10 @@
   <script src="vendor/gsap.min.js" defer></script>
   <script src="vendor/ScrollTrigger.min.js" defer></script>
   <script src="vendor/lenis.min.js" defer></script>
+  <script src="vendor/anime.umd.min.js" defer></script>
+  <script src="vendor/string-tune.min.js" defer></script>
   <script src="main.js?v=__BUILD__" defer></script>
-  <!-- scene3d lazy-loads vendor/three.slim.min.js itself, off the critical path -->
-  <script src="scene3d.js?v=__BUILD__" defer></script>
+  <!-- mercury lazy-loads vendor/three.mercury.min.js itself, off the critical path -->
+  <script src="mercury.js?v=__BUILD__" defer></script>
 </body>
 </html>

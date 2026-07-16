@@ -52,30 +52,13 @@
     if (reduceMotion || !hasGSAP) { loader.style.display = "none"; unlockScroll(); done(); return; }
 
     lockScroll();
-    // Boot log: mission-control lines that print as the counter climbs.
-    var logEl = document.getElementById("loaderLog");
-    var LINES = [
-      [6,  'POST ............ <b>OK</b>'],
-      [30, 'MOUNT /ASSETS ... <b>OK</b>'],
-      [58, 'VERIFY IDENTITY . <b>MYAT THU</b>'],
-      [86, 'LINK ............ <b>ESTABLISHED</b>']
-    ];
-    var li = 0;
     var obj = { v: 0 };
     var tl = gsap.timeline({ onComplete: function () { unlockScroll(); done(); } });
     tl.to(obj, {
       v: 100, duration: 1.2, ease: "power2.inOut",
-      onUpdate: function () {
-        var n = Math.round(obj.v); countEl.textContent = n; barEl.style.width = n + "%";
-        while (logEl && li < LINES.length && n >= LINES[li][0]) {
-          var row = document.createElement("div");
-          row.innerHTML = LINES[li][1];
-          logEl.appendChild(row);
-          li++;
-        }
-      }
+      onUpdate: function () { var n = Math.round(obj.v); countEl.textContent = n; barEl.style.width = n + "%"; }
     });
-    tl.to(".loader__inner, .loader__bar, .loader__log", { y: -16, opacity: 0, duration: 0.5, ease: "power2.in" }, "+=0.12");
+    tl.to(".loader__inner, .loader__bar, .loader__drop", { y: -16, opacity: 0, duration: 0.5, ease: "power2.in" }, "+=0.12");
     tl.to(loader, { yPercent: -100, duration: 0.8, ease: "expo.inOut" }, "-=0.1");
     tl.set(loader, { display: "none" });
   }
@@ -96,41 +79,6 @@
   function scrollTo(target) {
     if (lenis) lenis.scrollTo(target, { offset: 0 });
     else target.scrollIntoView({ behavior: reduceMotion ? "auto" : "smooth" });
-  }
-
-  /* ---------- Text scramble ---------- */
-  var CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789#%&";
-  function scramble(el) {
-    if (reduceMotion) return;
-    if (el.dataset.scrambling === "1") return;
-    var original = el.dataset.text || el.textContent;
-    el.dataset.text = original;
-    var len = original.length;
-    el.dataset.scrambling = "1";
-    var frame = 0;
-    var total = 16 + len;          // frames
-    var settleAt = function (i) { return 6 + i; }; // per-char reveal frame
-    function tick() {
-      var out = "";
-      for (var i = 0; i < len; i++) {
-        var c = original[i];
-        if (c === " ") { out += " "; continue; }
-        if (frame >= settleAt(i)) out += c;
-        else out += CHARS[Math.floor(Math.random() * CHARS.length)];
-      }
-      el.textContent = out;
-      frame++;
-      if (frame <= total) { requestAnimationFrame(tick); }
-      else { el.textContent = original; el.dataset.scrambling = "0"; }
-    }
-    tick();
-  }
-  function initScramble() {
-    document.querySelectorAll("[data-scramble]").forEach(function (el) {
-      el.dataset.text = el.textContent.trim();
-      el.addEventListener("mouseenter", function () { scramble(el); });
-      el.addEventListener("focus", function () { scramble(el); });
-    });
   }
 
   /* ---------- Fullscreen menu ---------- */
@@ -272,26 +220,132 @@
       .to(title, { opacity: 0, fontWeight: 200, y: -40, ease: "none" }, 0);
   }
 
-  /* ---------- Headings decode on arrival (both scroll directions) ---------- */
-  function initScrollDecode() {
+  /* ---------- Parallax ---------- */
+  function initParallax() {
     if (!hasGSAP || reduceMotion) return;
-    var els = gsap.utils.toArray(
-      "main .section-title[data-scramble], main .section-title [data-scramble], " +
-      "main .step__t[data-scramble], main .role__title[data-scramble], " +
-      "main .case__title[data-scramble], main .lab__t[data-scramble], main .cap__t[data-scramble]"
-    );
-    if (!els.length) return;
-    ScrollTrigger.batch(els, {
-      start: "top 92%",
-      onEnter: function (b) { b.forEach(scramble); },
-      onEnterBack: function (b) { b.forEach(scramble); }
+    gsap.utils.toArray("[data-parallax]").forEach(function (el) {
+      var y = parseFloat(el.getAttribute("data-parallax")) || 0;
+      var x = parseFloat(el.getAttribute("data-parallax-x")) || 0;
+      var rot = parseFloat(el.getAttribute("data-parallax-rot")) || 0;
+      gsap.to(el, {
+        yPercent: y * 100, xPercent: x * 100, rotation: rot, ease: "none",
+        scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true }
+      });
     });
+  }
+
+  /* ---------- Scroll-driven word reveal ---------- */
+  function initWordReveal() {
+    var lead = document.querySelector("[data-words]");
+    if (!lead) return;
+    var words = splitWords(lead);
+    if (!hasGSAP || reduceMotion) { words.forEach(function (w) { w.classList.add("on"); }); return; }
+    ScrollTrigger.create({
+      trigger: lead, start: "top 75%", end: "bottom 60%", scrub: true,
+      onUpdate: function (self) { var n = Math.floor(self.progress * words.length); words.forEach(function (w, i) { w.classList.toggle("on", i < n); }); }
+    });
+  }
+
+  /* ---------- Anime.js letter cascades: serif headings assemble on arrival ---------- */
+  function splitChars(el) {
+    // Wrap every character in .ltr spans in place, preserving child elements
+    // (the work title keeps its accent span) and screen-reader text.
+    if (el.dataset.ltr) return el.querySelectorAll(".ltr");
+    el.dataset.ltr = "1";
+    if (!el.getAttribute("aria-label")) el.setAttribute("aria-label", el.textContent.trim());
+    var walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT, null);
+    var texts = [];
+    while (walker.nextNode()) if (walker.currentNode.nodeValue.trim()) texts.push(walker.currentNode);
+    texts.forEach(function (node) {
+      var frag = document.createDocumentFragment();
+      // Split on words first so wrapping still happens at word boundaries.
+      node.nodeValue.split(/(\s+)/).forEach(function (part) {
+        if (!part) return;
+        if (/^\s+$/.test(part)) { frag.appendChild(document.createTextNode(" ")); return; }
+        var w = document.createElement("span");
+        w.className = "lw";
+        w.setAttribute("aria-hidden", "true");
+        for (var i = 0; i < part.length; i++) {
+          var s = document.createElement("span");
+          s.className = "ltr";
+          s.textContent = part[i];
+          w.appendChild(s);
+        }
+        frag.appendChild(w);
+      });
+      node.parentNode.replaceChild(frag, node);
+    });
+    return el.querySelectorAll(".ltr");
+  }
+  function initLetters() {
+    if (!hasGSAP || reduceMotion || typeof window.anime === "undefined") return;
+    var titles = gsap.utils.toArray("main .section-title");
+    if (!titles.length) return;
+    function play(el) {
+      var chars = splitChars(el);
+      if (!chars.length) return;
+      anime.animate(chars, {
+        y: ["0.55em", "0em"],
+        opacity: [0, 1],
+        rotate: [6, 0],
+        delay: anime.stagger(26),
+        duration: 850,
+        ease: "outElastic(1, .72)"
+      });
+    }
+    ScrollTrigger.batch(titles, {
+      start: "top 88%",
+      onEnter: function (b) { b.forEach(play); },
+      onEnterBack: function (b) { b.forEach(play); }
+    });
+  }
+
+  /* ---------- StringTune: attribute-driven magnetic pulls ---------- */
+  function initStrings() {
+    if (reduceMotion || typeof window.StringTune === "undefined") return;
+    try {
+      var st = StringTune.StringTune.getInstance();
+      st.use(StringTune.StringMagnetic);
+      // Native scroll mode: Lenis owns scrolling. StringTune's own smooth
+      // scroller would desync GSAP's ScrollTrigger (it did — reveals froze).
+      st.scrollDesktopMode = "default";
+      st.scrollMobileMode = "default";
+      st.start(60);
+    } catch (e) { /* the page works without strings */ }
+  }
+
+  /* ---------- Chapter caption (fixed, serif — replaces the old HUD) ---------- */
+  function initChapterCaption() {
+    var secs = Array.prototype.slice.call(document.querySelectorAll("main [data-chapter]"));
+    if (secs.length < 3) return;
+    var cap = document.createElement("p");
+    cap.className = "chapcap";
+    cap.setAttribute("aria-hidden", "true");
+    document.body.appendChild(cap);
+    var cur = -1, raf = null;
+    function update() {
+      raf = null;
+      var half = window.innerHeight * 0.5, idx = 0, i;
+      for (i = 0; i < secs.length; i++) {
+        if (secs[i].getBoundingClientRect().top <= half) idx = i;
+      }
+      if (idx === cur) return;
+      cur = idx;
+      cap.innerHTML = "<em>Ch.0" + (idx + 1) + "</em> " + secs[idx].getAttribute("data-chapter");
+      if (typeof window.anime !== "undefined" && !reduceMotion) {
+        anime.animate(cap, { opacity: [0, 1], y: [8, 0], duration: 600, ease: "out(3)" });
+      }
+    }
+    function queue() { if (!raf) raf = requestAnimationFrame(update); }
+    window.addEventListener("scroll", queue, { passive: true });
+    window.addEventListener("resize", queue);
+    update();
   }
 
   /* ---------- Ghost depth indices (huge outlined numerals behind sections) ---------- */
   function pad(n, w) { n = String(n); while (n.length < w) n = "0" + n; return n; }
   function initGhosts() {
-    var secs = document.querySelectorAll("main section[data-hud]");
+    var secs = document.querySelectorAll("main section[data-chapter]");
     Array.prototype.forEach.call(secs, function (s, i) {
       if (i === 0) return; // the hero stays clean
       var g = document.createElement("span");
@@ -330,111 +384,6 @@
     var skewTo = gsap.quickTo(target, "skewY", { duration: 0.5, ease: "power3.out" });
     lenis.on("scroll", function (e) {
       skewTo(Math.max(-1.3, Math.min(1.3, (e.velocity || 0) * 0.04)));
-    });
-  }
-
-  /* ---------- HUD telemetry + section rail (flight instruments) ---------- */
-  function initHud() {
-    var secs = Array.prototype.slice.call(document.querySelectorAll("main [data-hud]"));
-    if (secs.length < 3) return;
-
-    var hud = document.createElement("div");
-    hud.className = "hud";
-    hud.setAttribute("aria-hidden", "true");
-    hud.innerHTML =
-      '<span class="hud__sec"></span>' +
-      '<span class="hud__row"><span class="hud__pct">000%</span><span>·</span>' +
-      '<span class="hud__alt">+000000</span><i class="hud__blink"></i></span>';
-    document.body.appendChild(hud);
-    var secEl = hud.querySelector(".hud__sec");
-    var pctEl = hud.querySelector(".hud__pct");
-    var altEl = hud.querySelector(".hud__alt");
-
-    var rail = document.createElement("nav");
-    rail.className = "rail";
-    rail.setAttribute("aria-label", "Sections");
-    var dots = secs.map(function (s) {
-      var a = document.createElement("a");
-      a.className = "rail__dot";
-      a.href = "#" + s.id;
-      a.innerHTML = '<span class="rail__label">' + s.getAttribute("data-hud") + '</span><span class="rail__tick" aria-hidden="true"></span>';
-      a.addEventListener("click", function (e) { e.preventDefault(); scrollTo(s); });
-      rail.appendChild(a);
-      return a;
-    });
-    document.body.appendChild(rail);
-
-    // Decode the section readout like an instrument locking on; a newer call
-    // supersedes any decode still running, so fast scrolls never show stale text.
-    var tok = 0;
-    function decode(el, str) {
-      if (reduceMotion) { el.textContent = str; return; }
-      var mine = ++tok, frame = 0;
-      (function tick() {
-        if (mine !== tok) return;
-        var out = "";
-        for (var i = 0; i < str.length; i++) {
-          var c = str.charAt(i);
-          out += (c === " " || c === "/" || frame >= 4 + i) ? c : CHARS.charAt(Math.floor(Math.random() * CHARS.length));
-        }
-        el.textContent = out;
-        frame++;
-        if (frame <= 4 + str.length) requestAnimationFrame(tick);
-      })();
-    }
-
-    var cur = -1, lastPct = "", lastAlt = "", raf = null;
-    function update() {
-      raf = null;
-      var half = window.innerHeight * 0.5, idx = 0, i;
-      for (i = 0; i < secs.length; i++) {
-        if (secs[i].getBoundingClientRect().top <= half) idx = i;
-      }
-      if (idx !== cur) {
-        cur = idx;
-        decode(secEl, pad(idx + 1, 2) + " / " + secs[idx].getAttribute("data-hud").toUpperCase());
-        dots.forEach(function (d, k) {
-          d.classList.toggle("is-active", k === idx);
-          if (k === idx) d.setAttribute("aria-current", "true");
-          else d.removeAttribute("aria-current");
-        });
-      }
-      var y = window.scrollY;
-      var max = document.documentElement.scrollHeight - window.innerHeight;
-      var pct = pad(Math.round((max > 0 ? Math.min(1, y / max) : 0) * 100), 3) + "%";
-      if (pct !== lastPct) { lastPct = pct; pctEl.textContent = pct; }
-      var alt = "+" + pad(Math.min(999999, Math.round(y)), 6);
-      if (alt !== lastAlt) { lastAlt = alt; altEl.textContent = alt; }
-    }
-    function queue() { if (!raf) raf = requestAnimationFrame(update); }
-    window.addEventListener("scroll", queue, { passive: true });
-    window.addEventListener("resize", queue);
-    update();
-  }
-
-  /* ---------- Scroll-driven word reveal ---------- */
-  function initWordReveal() {
-    var lead = document.querySelector("[data-words]");
-    if (!lead) return;
-    var words = splitWords(lead);
-    if (!hasGSAP || reduceMotion) { words.forEach(function (w) { w.classList.add("on"); }); return; }
-    ScrollTrigger.create({
-      trigger: lead, start: "top 75%", end: "bottom 60%", scrub: true,
-      onUpdate: function (self) { var n = Math.floor(self.progress * words.length); words.forEach(function (w, i) { w.classList.toggle("on", i < n); }); }
-    });
-  }
-
-  /* ---------- Parallax ---------- */
-  function initParallax() {
-    if (!hasGSAP || reduceMotion) return;
-    gsap.utils.toArray("[data-parallax]").forEach(function (el) {
-      var y = parseFloat(el.getAttribute("data-parallax")) || 0;
-      var x = parseFloat(el.getAttribute("data-parallax-x")) || 0;
-      var rot = parseFloat(el.getAttribute("data-parallax-rot")) || 0;
-      gsap.to(el, {
-        yPercent: y * 100, xPercent: x * 100, rotation: rot, ease: "none",
-        scrollTrigger: { trigger: el, start: "top bottom", end: "bottom top", scrub: true }
-      });
     });
   }
 
@@ -585,18 +534,6 @@
     });
   }
 
-  /* ---------- Magnetic ---------- */
-  function initMagnetic() {
-    if (reduceMotion || !hasGSAP || !fine) return;
-    document.querySelectorAll("[data-magnetic]").forEach(function (el) {
-      el.addEventListener("mousemove", function (e) {
-        var r = el.getBoundingClientRect();
-        gsap.to(el, { x: (e.clientX - (r.left + r.width / 2)) * 0.3, y: (e.clientY - (r.top + r.height / 2)) * 0.4, duration: 0.6, ease: "power3.out" });
-      });
-      el.addEventListener("mouseleave", function () { gsap.to(el, { x: 0, y: 0, duration: 0.6, ease: "elastic.out(1,0.4)" }); });
-    });
-  }
-
   /* ---------- Tilt ---------- */
   function initTilt() {
     if (reduceMotion || !hasGSAP || !fine) return;
@@ -607,65 +544,6 @@
       });
       el.addEventListener("mouseleave", function () { gsap.to(el, { rotateY: 0, rotateX: 0, duration: 0.8, ease: "elastic.out(1,0.5)" }); });
     });
-  }
-
-  /* ---------- Encrypted name cipher (hover/tap to reveal) ---------- */
-  function initCipher() {
-    var words = Array.prototype.slice.call(document.querySelectorAll(".hero__title [data-cipher]"));
-    var title = document.querySelector(".hero__title--cipher");
-    if (!words.length || !title) return;
-    var portrait = document.querySelector(".hero__portrait");
-
-    // Mostly hex, a sprinkle of half-width katakana for a Matrix feel.
-    var GLYPHS = "0123456789ABCDEF0123456789ABCDEF" + "ｱｶｻﾀﾅﾊﾏﾔﾗﾝｷｼﾆ";
-    function scramble(el) {
-      var n = parseInt(el.getAttribute("data-cipher"), 10) || el.textContent.length;
-      var s = "";
-      for (var i = 0; i < n; i++) s += GLYPHS.charAt(Math.floor(Math.random() * GLYPHS.length));
-      el.textContent = s;
-    }
-    function showReal() { words.forEach(function (el) { el.textContent = el.getAttribute("data-real") || ""; }); }
-
-    var nameShown = false;
-    function revealName(state) {
-      nameShown = state;
-      title.classList.toggle("is-revealed", state);
-      if (state) {
-        showReal();
-        // Let the 3D scene answer the decrypt (scene3d.js listens).
-        window.dispatchEvent(new CustomEvent("mt:decrypt"));
-      }
-    }
-    function revealPhoto(state) { if (portrait) portrait.classList.toggle("is-revealed", state); }
-
-    // Desktop reveals on hover; touch toggles on tap.
-    if (fine) {
-      title.addEventListener("mouseenter", function () { revealName(true); });
-      title.addEventListener("mouseleave", function () { revealName(false); });
-      if (portrait) {
-        portrait.addEventListener("mouseenter", function () { revealPhoto(true); });
-        portrait.addEventListener("mouseleave", function () { revealPhoto(false); });
-      }
-    } else {
-      title.addEventListener("click", function () { revealName(!nameShown); });
-      if (portrait) portrait.addEventListener("click", function () { revealPhoto(!portrait.classList.contains("is-revealed")); });
-    }
-
-    words.forEach(scramble);
-    if (reduceMotion) return; // static cipher; hover/tap still reveals
-
-    var timer = null;
-    function tick() { if (!nameShown) words.forEach(scramble); }
-    // Only churn while the hero is on screen.
-    var hero = document.querySelector(".hero");
-    if (hero && "IntersectionObserver" in window) {
-      new IntersectionObserver(function (entries) {
-        if (entries[0].isIntersecting) { if (!timer) timer = setInterval(tick, 90); }
-        else if (timer) { clearInterval(timer); timer = null; }
-      }).observe(hero);
-    } else {
-      timer = setInterval(tick, 90);
-    }
   }
 
   /* ---------- Work list: a card preview that trails the cursor ---------- */
@@ -887,38 +765,29 @@
     initLenis();
     initMenu();
     initAnchors();
-    initScramble();
     initReveals();
     initKineticType();
-    initScrollDecode();
+    initLetters();
+    initStrings();
     initWordReveal();
     initGhosts();
     initParallax();
     initToolbox();
     initDrift();
     initSkew();
-    initCipher();
     initCounters();
     initMarquee();
     initCursor();
-    initMagnetic();
     initTilt();
     initWorkPreview();
     initProgress();
-    initHud();
+    initChapterCaption();
     initCaseModal();
     initCaseTilt();
     initTransitions();
 
     runLoader(function () {
       revealSplitWords(document.querySelector(".hero"));
-      var heroTitle = document.querySelector(".hero__title");
-      if (heroTitle && !reduceMotion) {
-        setTimeout(function () {
-          heroTitle.classList.add("is-glitch");
-          setTimeout(function () { heroTitle.classList.remove("is-glitch"); }, 650);
-        }, 800);
-      }
       var contact = document.querySelector(".contact");
       if (contact && hasGSAP && !reduceMotion) {
         ScrollTrigger.create({ trigger: contact, start: "top 70%", once: true, onEnter: function () { revealSplitWords(contact); } });
