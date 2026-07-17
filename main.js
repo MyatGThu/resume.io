@@ -546,6 +546,27 @@
     });
   }
 
+  /* ---------- Portrait: blurred until hovered / tapped / focused ---------- */
+  function initPortrait() {
+    var portrait = document.querySelector(".hero__portrait");
+    if (!portrait) return;
+    portrait.setAttribute("tabindex", "0");
+    portrait.setAttribute("role", "button");
+    portrait.setAttribute("aria-label", "Reveal photo");
+    function set(state) { portrait.classList.toggle("is-revealed", state); }
+    if (fine) {
+      portrait.addEventListener("mouseenter", function () { set(true); });
+      portrait.addEventListener("mouseleave", function () { set(false); });
+      portrait.addEventListener("focus", function () { set(true); });
+      portrait.addEventListener("blur", function () { set(false); });
+    } else {
+      portrait.addEventListener("click", function () { set(!portrait.classList.contains("is-revealed")); });
+    }
+    portrait.addEventListener("keydown", function (e) {
+      if (e.key === "Enter" || e.key === " ") { e.preventDefault(); set(!portrait.classList.contains("is-revealed")); }
+    });
+  }
+
   /* ---------- Work list: a card preview that trails the cursor ---------- */
   function initWorkPreview() {
     if (reduceMotion || !fine) return;
@@ -779,6 +800,7 @@
     initMarquee();
     initCursor();
     initTilt();
+    initPortrait();
     initWorkPreview();
     initProgress();
     initChapterCaption();
