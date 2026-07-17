@@ -29,6 +29,7 @@
   document.head.appendChild(script);
 
   var MAXB = 10;
+  var MAXI = 3; // concurrent click impacts
 
   /* Per-chapter choreography: liquid bodies [x, y, z, r], space params, and
      the artifact the metal solidifies into when the chapter settles.
@@ -82,7 +83,7 @@
       uRipple: { value: 0 },
       uHue: { value: 0 },
       uStretch: { value: new T.Vector2(1, 1) },
-      uDent: { value: [0, 0, 0, 0] },
+      uImpacts: { value: new Float32Array(MAXI * 4) }, // [x, y, strength, age] per slot
       uMouse: { value: new T.Vector2(0, 0) },
       uForm: { value: 0 },
       uShape: { value: -1 },
@@ -96,7 +97,7 @@
       "uniform float uTime, uK, uPuddle, uRipple, uHue, uAlpha, uN, uForm, uShape, uScale;",
       "uniform vec2 uRes, uOff, uStretch, uMouse, uObj;",
       "uniform vec4 uBlobs[" + MAXB + "];",
-      "uniform vec4 uDent;",
+      "uniform vec4 uImpacts[" + MAXI + "];",
       "float smin(float a, float b, float k){ float h = clamp(0.5 + 0.5*(b-a)/k, 0.0, 1.0); return mix(b, a, h) - k*h*(1.0-h); }",
       "mat2 rot(float a){ float c = cos(a), s = sin(a); return mat2(c, -s, s, c); }",
       "float sdBox(vec3 p, vec3 b){ vec3 q = abs(p) - b; return length(max(q, 0.0)) + min(max(q.x, max(q.y, q.z)), 0.0); }",
@@ -177,7 +178,22 @@
       "    d = mix(d, pd, uPuddle);",
       "  }",
       "  if (uRipple > 0.001) d += sin(p.x*7.0 + uTime*1.1)*sin(p.y*6.0 - uTime*0.8)*uRipple*(1.0 - uForm*0.7);",
-      "  if (uDent.w > 0.001) d += uDent.w * exp(-3.0*dot(p - uDent.xyz, p - uDent.xyz));",
+      /* Click impacts. Measured in SCREEN-FACING xy distance (not full 3D) so
+         the deformation lands on the visible front face instead of the hidden
+         core. Each impact is a deep crater that heals, wrapped in an expanding
+         shockwave ring that races outward across the metal. */
+      "  for (int i = 0; i < " + MAXI + "; i++) {",
+      "    vec4 im = uImpacts[i];",
+      "    if (im.z <= 0.001) continue;",
+      "    float age = im.w;",
+      "    float r = length(p.xy - im.xy);",
+      "    float fade = exp(-age*1.5);",
+      "    float cw = 0.42 + age*0.7;",                          // crater widens as it relaxes
+      "    d += im.z * 0.95 * fade * exp(-(r*r)/(cw*cw));",       // central punch (inward)
+      "    float ringR = age * 4.2;",                            // shock ring travels outward
+      "    float env = exp(-pow((r - ringR)*1.15, 2.0));",
+      "    d += im.z * 0.22 * fade * sin((r - ringR)*8.0) * env;", // wavefront ripple (in + out)
+      "  }",
       "  return d;",
       "}",
       "vec3 normalAt(vec3 p){",
@@ -309,19 +325,36 @@
       uniforms.uMouse.value.set(mx * 0.35, 0);
     }, { passive: true });
 
-    var dent = [0, 0, 0, 0];
+    // Click impacts. Each slot is {x, y, str, age}; the shader reads them as a
+    // flat vec4 array. The front face of the metal sits closer to the camera
+    // than the z=0 plane, so map the click with a shorter throw (VIEWI) than
+    // the plane's VIEW — that lands the crater under the cursor, on the metal.
+    var VIEWI = 2.4;
+    function impX(cx) { return ((cx / window.innerWidth) * 2 - 1) * VIEWI * (window.innerWidth / window.innerHeight); }
+    function impY(cy) { return -(((cy / window.innerHeight) * 2 - 1) * VIEWI); }
+    var impacts = [];
+    for (var ii = 0; ii < MAXI; ii++) impacts.push({ x: 0, y: 0, str: 0, age: 0 });
     var lab = document.querySelector(".lab");
     var lastBreak = 0;
-    if (lab) lab.addEventListener("click", function (e) {
+    function fireImpact(cx, cy) {
       var now = performance.now();
-      if (now - lastBreak < 350) return;
-      var s = window.getSelection && window.getSelection();
-      if (s && s.type === "Range") return;
+      if (now - lastBreak < 130) return;
       lastBreak = now;
-      dent[0] = worldX(e.clientX) - uniforms.uOff.value.x;
-      dent[1] = worldY(e.clientY) - uniforms.uOff.value.y;
-      dent[2] = 0.9;
-      dent[3] = 0.62;
+      // Reuse a free slot, else recycle the oldest.
+      var slot = 0, oldest = -1;
+      for (var i = 0; i < MAXI; i++) {
+        if (impacts[i].str <= 0.001) { slot = i; oldest = -1; break; }
+        if (impacts[i].age > oldest) { oldest = impacts[i].age; slot = i; }
+      }
+      impacts[slot].x = impX(cx) - uniforms.uOff.value.x;
+      impacts[slot].y = impY(cy) - uniforms.uOff.value.y;
+      impacts[slot].str = 1;
+      impacts[slot].age = 0;
+    }
+    if (lab) lab.addEventListener("click", function (e) {
+      var s = window.getSelection && window.getSelection();
+      if (s && s.type === "Range") return; // don't fire while selecting text
+      fireImpact(e.clientX, e.clientY);
     });
 
     var hushed = false;
@@ -387,9 +420,20 @@
         bArr[i * 4 + 3] += (r - bArr[i * 4 + 3]) * Math.min(1, dt * 5);
       }
 
-      // Dent heals itself.
-      dent[3] *= Math.exp(-2.2 * dt);
-      uniforms.uDent.value = dent;
+      // Age each impact; the shader's fade envelope does the visual healing,
+      // and a slot is freed once its wave has run its course.
+      var impArr = uniforms.uImpacts.value;
+      for (var im = 0; im < MAXI; im++) {
+        var it = impacts[im];
+        if (it.str > 0.001) {
+          it.age += dt;
+          if (it.age > 2.8) it.str = 0;
+        }
+        impArr[im * 4] = it.x;
+        impArr[im * 4 + 1] = it.y;
+        impArr[im * 4 + 2] = it.str;
+        impArr[im * 4 + 3] = it.age;
+      }
 
       if (released && uniforms.uAlpha.value < 1) uniforms.uAlpha.value = Math.min(1, uniforms.uAlpha.value + dt * 1.4);
 
