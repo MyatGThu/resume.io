@@ -228,7 +228,26 @@ section { position: relative; }
 /* The mercury — fixed raymarch canvas injected by mercury.js, painted above
    the body background but behind all content. Fades in on its first frame. */
 .mercury { position: fixed; inset: 0; z-index: -1; display: block; pointer-events: none; opacity: 0; transition: opacity 1.1s var(--ease); }
-.mercury.is-live { opacity: 1; }
+/* Held back so the chrome reads as a quiet backdrop and the type stays crisp. */
+.mercury.is-live { opacity: 0.62; }
+
+/* Reading scrim — a soft porcelain wash behind body copy. Same colour as the
+   page, so it is invisible over porcelain and only softens the roaming metal
+   where it would otherwise sit behind text; feathered (blur) so the block edge
+   never reads as a card. Applied to small copy only — big display headings win
+   on their own. Reuses the isolate + z-index:-1 pattern (sits above the canvas,
+   behind the block's own text). */
+.intro__lead, .now__text, .hero__role, .caps__note, .toolbox__note,
+.certs__note, .step__d, .role__points, .lab__d {
+  position: relative; isolation: isolate;
+}
+.intro__lead::before, .now__text::before, .hero__role::before, .caps__note::before,
+.toolbox__note::before, .certs__note::before, .step__d::before, .role__points::before,
+.lab__d::before {
+  content: ""; position: absolute; inset: -0.5em -0.9em; z-index: -1;
+  background: var(--bone); border-radius: 16px;
+  filter: blur(15px); opacity: 0.72; pointer-events: none;
+}
 /* Immersive scroll: hide the native scrollbar once JS is running (no-JS
    visitors keep the system bar); a thin progress line keeps orientation. */
 html.js { scrollbar-width: none; }
