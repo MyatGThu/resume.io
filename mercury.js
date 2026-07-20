@@ -107,7 +107,7 @@
       /* ---- The artifacts. Local space, roughly 4 units wide, facing +z. ---- */
       "float sdObject(vec3 p){",
       "  p /= uScale;",
-      "  p.xz *= rot(sin(uTime*0.4)*0.32);", // gentle turntable sway
+      "  p.xz *= rot(sin(uTime*0.30)*mix(0.30, 0.18, uForm));", // turntable sway, calmest when fully cast
       "  float d = 1e9;",
       "  if (uShape < 0.5) {", // 0 — headset
       "    float band = length(vec2(length(p.xy) - 1.15, p.z)) - 0.18;",
@@ -202,10 +202,10 @@
       "}",
       "vec3 env(vec3 d){",
       "  float h = d.y*0.5 + 0.5;",
-      "  vec3 base = mix(vec3(0.60, 0.595, 0.585), vec3(1.02, 1.01, 1.0), h);",
+      "  vec3 base = mix(vec3(0.66, 0.655, 0.645), vec3(1.02, 1.01, 1.0), h);", // lighter floor so it recedes
       "  float band = sin(d.x*2.6 + d.y*5.5 + d.z*1.7 + uTime*0.12);",
       "  vec3 iri = 0.5 + 0.5*cos(6.2831*(band*0.22 + vec3(0.0, 0.33, 0.67)) + uHue);",
-      "  base += iri * 0.20 * smoothstep(0.15, 1.0, abs(band));",
+      "  base += iri * 0.14 * smoothstep(0.15, 1.0, abs(band));", // quieter iridescence, less visual noise behind text
       "  base += vec3(1.0, 0.98, 0.95) * pow(max(dot(d, normalize(vec3(0.55, 0.75, 0.35))), 0.0), 30.0) * 1.4;",
       "  base += vec3(0.9, 0.95, 1.0) * pow(max(dot(d, normalize(vec3(-0.6, 0.2, 0.45))), 0.0), 40.0) * 0.7;",
       "  return base;",
@@ -233,7 +233,8 @@
       "  float fre = pow(1.0 - max(dot(-rd, n), 0.0), 3.0);",
       "  vec3 col = env(r) * (0.62 + fre*0.55);",
       "  float ao = clamp(map(p + n*0.22) / 0.22, 0.0, 1.0);",
-      "  col *= 0.62 + ao*0.38;",
+      "  col *= 0.70 + ao*0.30;", // lift the crevice-shadow floor — those dark patches are what park behind copy
+
       "  col = pow(col, vec3(0.92));",
       "  gl_FragColor = vec4(col, uAlpha);",
       "}"
@@ -278,6 +279,7 @@
     // solidifies into the chapter's artifact as you settle (form -> 1).
     var target = { b: [], k: 0.9, ripple: 0, off: [0, 0], puddle: 0, hue: 0, form: 0, shape: -1, op: [0, 0] };
     function lerp(a, b, t) { return a + (b - a) * t; }
+    function smoothstep(e0, e1, x) { var t = Math.min(1, Math.max(0, (x - e0) / (e1 - e0))); return t * t * (3 - 2 * t); }
     function blendConfigs(sc) {
       var mid = sc + window.innerHeight * 0.5;
       var i = 0;
@@ -302,15 +304,20 @@
       target.off[1] = lerp(A.off[1], B.off[1], f);
       target.puddle = lerp(A.puddle, B.puddle, f);
       target.hue = lerp(A.hue, B.hue, f);
-      // Solid near a chapter's centre, liquid at the halfway point.
+      // Each artifact HOLDS a defined plateau around its chapter centre and the
+      // metal only goes liquid for a brief handoff at the midpoint: leaving a
+      // chapter (near A) the shape clings to full form across [0, 0.36] then
+      // melts decisively over [0.36, 0.46]; approaching the next (near B) it is
+      // liquid across [0.46, 0.54], solidifies over [0.54, 0.64], then holds
+      // across [0.64, 1.0]. Both branches read 0 at f=0.5, so the seam is clean.
       if (f < 0.5) {
         target.shape = A.shape;
         target.op = A.op;
-        target.form = A.shape < 0 ? 0 : Math.max(0, 1 - f * 2.4);
+        target.form = A.shape < 0 ? 0 : (1 - smoothstep(0.36, 0.46, f));
       } else {
         target.shape = B.shape;
         target.op = B.op;
-        target.form = B.shape < 0 ? 0 : Math.max(0, f * 2.4 - 1.4);
+        target.form = B.shape < 0 ? 0 : smoothstep(0.54, 0.64, f);
       }
       return n;
     }
@@ -385,16 +392,23 @@
       uniforms.uHue.value += (target.hue - uniforms.uHue.value) * Math.min(1, dt * 3);
       uniforms.uOff.value.x += (target.off[0] - uniforms.uOff.value.x) * Math.min(1, dt * 4);
       uniforms.uOff.value.y += (target.off[1] - uniforms.uOff.value.y) * Math.min(1, dt * 4);
-      // Solidify slowly, melt fast — the artifact "sets" as the page settles.
-      var fRate = target.form > uniforms.uForm.value ? 2.2 : 6;
+      // Solidify promptly, melt fast — the artifact "sets" as the page settles.
+      // The melt-fast/set-firm character comes from the rate asymmetry now that
+      // the form curve holds a plateau.
+      var fRate = target.form > uniforms.uForm.value ? 2.8 : 6;
       if (!released) target.form = 0;
       uniforms.uForm.value += (target.form - uniforms.uForm.value) * Math.min(1, dt * fRate);
       uniforms.uShape.value = target.shape;
-      uniforms.uObj.value.x += (target.op[0] - uniforms.uObj.value.x) * Math.min(1, dt * 4);
-      uniforms.uObj.value.y += (target.op[1] - uniforms.uObj.value.y) * Math.min(1, dt * 4);
+      // Lock the object into place a touch faster than it becomes visible, so a
+      // freshly cast shape reads as planted rather than drifting into position.
+      uniforms.uObj.value.x += (target.op[0] - uniforms.uObj.value.x) * Math.min(1, dt * 5);
+      uniforms.uObj.value.y += (target.op[1] - uniforms.uObj.value.y) * Math.min(1, dt * 5);
 
-      // Scroll velocity stretches the metal; volume is roughly conserved.
-      var sy = 1 + Math.min(0.5, Math.abs(v) * 0.00035);
+      // Scroll velocity stretches the metal — but a HELD solid should stay crisp,
+      // not smear vertically. Gate the stretch by form: full smear while liquid
+      // (form 0), near-rigid when cast (form 1). Volume is still conserved.
+      var stretchGain = 1 - 0.9 * uniforms.uForm.value;
+      var sy = 1 + Math.min(0.5, Math.abs(v) * 0.00035) * stretchGain;
       uniforms.uStretch.value.y += (sy - uniforms.uStretch.value.y) * Math.min(1, dt * 7);
       uniforms.uStretch.value.x = 1 / Math.sqrt(uniforms.uStretch.value.y);
 
