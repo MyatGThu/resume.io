@@ -16,7 +16,6 @@
   --black: #0b0906;
   --pitch: #050403;
   --umber: #1a130d;
-  --smoke: #2a211a;
   --bronze: #b07a3c;
   --gold: #f2c572;
   --ember: #ff8a3d;
@@ -28,7 +27,6 @@
   --text: "Barlow", "Helvetica Neue", Arial, sans-serif;
 
   --out: cubic-bezier(0.16, 1, 0.3, 1);
-  --in: cubic-bezier(0.7, 0, 0.84, 0);
 
   --mt: 52px;            /* matte heights, driven by the film */
   --mb: 52px;
@@ -218,7 +216,7 @@ main { position: relative; z-index: 2; overflow-x: hidden; overflow-x: clip; }
   display: inline-flex; align-items: baseline;
   font-family: var(--display); font-weight: 700; font-size: clamp(56px, 14.2vw, 250px); line-height: 0.9;
   letter-spacing: 0.035em; color: var(--gold);
-  text-shadow: 0 2px 0 rgba(5, 4, 3, 0.65), 0 22px 70px rgba(255, 138, 61, 0.3);
+  text-shadow: 0 4px 14px rgba(5, 4, 3, 0.7), 0 22px 70px rgba(255, 138, 61, 0.3);
 }
 .title__word b { display: inline-block; font-weight: inherit; will-change: transform; }
 .title__word i { display: inline-block; width: 0.32em; }
@@ -279,7 +277,7 @@ main { position: relative; z-index: 2; overflow-x: hidden; overflow-x: clip; }
 .card__n {
   display: block; font-family: var(--display); font-weight: 700; font-size: clamp(64px, 13vw, 220px); line-height: 0.88;
   letter-spacing: 0.05em; color: var(--gold);
-  text-shadow: 0 2px 0 rgba(5, 4, 3, 0.65), 0 22px 70px rgba(255, 138, 61, 0.26);
+  text-shadow: 0 4px 14px rgba(5, 4, 3, 0.7), 0 22px 70px rgba(255, 138, 61, 0.26);
 }
 .card__t {
   display: flex; align-items: center; gap: 22px;
@@ -480,7 +478,7 @@ main { position: relative; z-index: 2; overflow-x: hidden; overflow-x: clip; }
   display: flex; flex-direction: column; align-items: center; justify-content: center;
   padding: calc(var(--mt) + 40px) var(--gut) calc(var(--mb) + 40px); text-align: center;
 }
-.post__line { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(40px, 7.6vw, 128px); line-height: 0.98; letter-spacing: 0.03em; color: var(--gold); text-wrap: balance; text-shadow: 0 2px 0 rgba(5, 4, 3, 0.65), 0 22px 70px rgba(255, 138, 61, 0.28); }
+.post__line { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(40px, 7.6vw, 128px); line-height: 0.98; letter-spacing: 0.03em; color: var(--gold); text-wrap: balance; text-shadow: 0 4px 14px rgba(5, 4, 3, 0.7), 0 22px 70px rgba(255, 138, 61, 0.28); }
 .post__sub { text-wrap: pretty; max-width: 46ch; margin: 22px auto 34px; font-size: clamp(18px, 1.5vw, 21px); color: var(--bone); }
 .post__acts { display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
 .post__top { margin-top: 38px; font-family: var(--credit); font-weight: 600; font-size: 15px; line-height: 1; letter-spacing: 0.2em; text-transform: uppercase; color: var(--ash); text-decoration: none; }
