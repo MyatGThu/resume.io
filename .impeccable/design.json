@@ -1,0 +1,404 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-09-29T06:23:33+00:00",
+  "title": "Design System: Myat Thu, The Director's Cut",
+  "extensions": {
+    "colorMeta": {
+      "black": {
+        "role": "neutral",
+        "displayName": "Crushed Black",
+        "canonical": "oklch(14.1% 0.008 82)",
+        "tonalRamp": [
+          "#0c0b08",
+          "#272521",
+          "#44423d",
+          "#64615c",
+          "#85827d",
+          "#a8a59f",
+          "#cbc9c4",
+          "#efeeed"
+        ]
+      },
+      "pitch": {
+        "role": "neutral",
+        "displayName": "Pitch",
+        "canonical": "oklch(10.8% 0.005 71)",
+        "tonalRamp": [
+          "#0c0b09",
+          "#272522",
+          "#44423f",
+          "#63615e",
+          "#84827f",
+          "#a7a4a2",
+          "#cbc9c6",
+          "#efeeed"
+        ]
+      },
+      "umber": {
+        "role": "neutral",
+        "displayName": "Umber",
+        "canonical": "oklch(19.4% 0.016 62)",
+        "tonalRamp": [
+          "#0f0a06",
+          "#2b231d",
+          "#494039",
+          "#685f58",
+          "#8a8079",
+          "#ada39b",
+          "#d0c7c1",
+          "#f0eeec"
+        ]
+      },
+      "bronze": {
+        "role": "secondary",
+        "displayName": "Cast Bronze",
+        "canonical": "oklch(62.2% 0.103 68)",
+        "tonalRamp": [
+          "#1e0200",
+          "#441500",
+          "#653400",
+          "#87540d",
+          "#ab7537",
+          "#d0985b",
+          "#edc090",
+          "#fbecdd"
+        ]
+      },
+      "gold": {
+        "role": "primary",
+        "displayName": "Molten Gold",
+        "canonical": "oklch(84.6% 0.114 82)",
+        "tonalRamp": [
+          "#1b0400",
+          "#3f1a00",
+          "#603900",
+          "#815900",
+          "#a47a21",
+          "#c99d4a",
+          "#e7c485",
+          "#f8edda"
+        ]
+      },
+      "ember": {
+        "role": "tertiary",
+        "displayName": "Ember",
+        "canonical": "oklch(75.0% 0.167 51)",
+        "tonalRamp": [
+          "#2b0000",
+          "#5b0000",
+          "#800c00",
+          "#a63800",
+          "#cd5d00",
+          "#f58132",
+          "#ffaf78",
+          "#ffe7d6"
+        ]
+      },
+      "bone": {
+        "role": "neutral",
+        "displayName": "Bone",
+        "canonical": "oklch(92.8% 0.023 82)",
+        "tonalRamp": [
+          "#0f0a04",
+          "#2b2418",
+          "#484134",
+          "#686052",
+          "#898173",
+          "#aca495",
+          "#cfc8bc",
+          "#f0eeea"
+        ]
+      },
+      "bone-dim": {
+        "role": "neutral",
+        "displayName": "Dimmed Bone",
+        "canonical": "oklch(87.1% 0.024 80)",
+        "tonalRamp": [
+          "#0f0a04",
+          "#2b2417",
+          "#494134",
+          "#696052",
+          "#8a8172",
+          "#ada494",
+          "#d0c8bc",
+          "#f1eeea"
+        ]
+      },
+      "ash": {
+        "role": "neutral",
+        "displayName": "Ash",
+        "canonical": "oklch(69.2% 0.028 67)",
+        "tonalRamp": [
+          "#110903",
+          "#2e2216",
+          "#4c3f32",
+          "#6c5e51",
+          "#8e8071",
+          "#b1a293",
+          "#d3c7ba",
+          "#f2eeea"
+        ]
+      }
+    },
+    "typographyMeta": {
+      "display": {
+        "displayName": "Display",
+        "purpose": "The name on the opening title. One per page."
+      },
+      "display-act": {
+        "displayName": "Display Act",
+        "purpose": "Act numerals on full-viewport title cards."
+      },
+      "headline": {
+        "displayName": "Headline",
+        "purpose": "Trailer beats and the post-credits line."
+      },
+      "title": {
+        "displayName": "Title",
+        "purpose": "Role titles, scene headings, notice title."
+      },
+      "title-sm": {
+        "displayName": "Title Small",
+        "purpose": "Certification names under coins."
+      },
+      "body-lede": {
+        "displayName": "Body Lede",
+        "purpose": "Loglines and act ledes, centered, 44 to 52ch."
+      },
+      "body": {
+        "displayName": "Body",
+        "purpose": "Default reading text, 60ch max."
+      },
+      "body-sm": {
+        "displayName": "Body Small",
+        "purpose": "List points and note definitions in dimmed bone."
+      },
+      "label": {
+        "displayName": "Label",
+        "purpose": "Matte, slates, meta rows, credit terms. 15px floor, uppercase."
+      },
+      "label-button": {
+        "displayName": "Button Label",
+        "purpose": "Buttons and the skip link."
+      },
+      "label-title-card": {
+        "displayName": "Title Card Label",
+        "purpose": "Act name under the numeral, flanked by bronze rules."
+      }
+    },
+    "shadows": [
+      {
+        "name": "gold-halo",
+        "value": "0 22px 70px rgba(255, 138, 61, 0.3)",
+        "purpose": "text-shadow glow under gold display type only (alpha 0.26 to 0.3)."
+      },
+      {
+        "name": "print-drop",
+        "value": "0 30px 80px -20px rgba(0, 0, 0, 0.8)",
+        "purpose": "Under framed photographs."
+      },
+      {
+        "name": "metal-drop",
+        "value": "drop-shadow(0 22px 26px rgba(0, 0, 0, 0.85))",
+        "purpose": "filter shadow under shields and coins; 0 30px 34px on shield hover."
+      },
+      {
+        "name": "plaque-drop",
+        "value": "0 40px 100px -20px rgba(0, 0, 0, 0.9)",
+        "purpose": "The certification notice plaque."
+      },
+      {
+        "name": "matte-seam",
+        "value": "0 1px 0 rgba(176, 122, 60, 0.18)",
+        "purpose": "Bronze seam where a matte bar meets the picture (negative y on the bottom bar)."
+      },
+      {
+        "name": "forge-glow",
+        "value": "0 0 0 3px #3a2410, 0 0 28px rgba(255, 138, 61, 0.55)",
+        "purpose": "Molten forge blank; pulses to 46px at 0.85 over 3.2s."
+      }
+    ],
+    "motion": [
+      {
+        "name": "out",
+        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
+        "purpose": "All CSS state transitions (0.25s controls, 0.4s to 0.5s metal, 0.55s iris, 0.7s matte content)."
+      },
+      {
+        "name": "in",
+        "value": "cubic-bezier(0.7, 0, 0.84, 0)",
+        "purpose": "Declared exit curve; currently unused in CSS."
+      },
+      {
+        "name": "speed-ramp",
+        "value": "p => 0.5 + 0.5 * (0.14u + 0.86u^3), u = 2p - 1",
+        "purpose": "The signature: slam, slow-motion hang, whip. Drives title cards, beats, the name reveal, coins and the post line; the ember field clock slows with it."
+      },
+      {
+        "name": "expo-out",
+        "value": "expo.out (GSAP)",
+        "purpose": "Matte height changes, role reveals, shield impact ring."
+      },
+      {
+        "name": "smooth-scroll",
+        "value": "Lenis duration 1.1",
+        "purpose": "Wheel smoothing; disabled under reduced motion."
+      },
+      {
+        "name": "grain-step",
+        "value": "0.9s steps(6) infinite",
+        "purpose": "Film grain jitter on fine pointers with motion allowed."
+      }
+    ],
+    "breakpoints": [
+      {
+        "name": "narrow",
+        "value": "420px"
+      },
+      {
+        "name": "phone",
+        "value": "760px"
+      },
+      {
+        "name": "tablet",
+        "value": "980px"
+      }
+    ]
+  },
+  "components": [
+    {
+      "name": "Gold Button",
+      "kind": "button",
+      "refersTo": "button-gold",
+      "description": "Primary action, one per row, always the email action.",
+      "html": "<a class=\"ds-btn ds-btn--gold\" href=\"#\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 6.5h16v11H4z\"/><path d=\"m4.5 7 7.5 6 7.5-6\"/></svg>Email Myat</a>",
+      "css": ":host{--black:#0b0906;--pitch:#050403;--umber:#1a130d;--bronze:#b07a3c;--gold:#f2c572;--ember:#ff8a3d;--bone:#efe6d6;--ash:#a8998a;--display:\"Cinzel\",\"Trajan Pro\",\"Times New Roman\",serif;--credit:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border:1px solid rgba(176,122,60,0.7);color:var(--bone);background:rgba(5,4,3,0.55);font-family:var(--credit);font-weight:600;font-size:15px;line-height:1;text-transform:uppercase;letter-spacing:0.16em;text-decoration:none;border-radius:0;cursor:pointer;transition:background-color .25s var(--out),color .25s var(--out),border-color .25s var(--out),transform .25s var(--out);} .ds-btn:hover{background:var(--bronze);border-color:var(--bronze);color:var(--black);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:2px solid var(--gold);outline-offset:4px;} .ds-btn--gold{background:var(--gold);border-color:var(--gold);color:var(--black);} .ds-btn--gold:hover{background:var(--bone);border-color:var(--bone);color:var(--black);}"
+    },
+    {
+      "name": "Bronze Outline Button",
+      "kind": "button",
+      "refersTo": "button-bronze",
+      "description": "Secondary actions such as LinkedIn and Download CV.",
+      "html": "<a class=\"ds-btn\" href=\"#\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 5v12M6.5 11.5 12 17l5.5-5.5M6 20h12\"/></svg>Download CV</a>",
+      "css": ":host{--black:#0b0906;--pitch:#050403;--umber:#1a130d;--bronze:#b07a3c;--gold:#f2c572;--ember:#ff8a3d;--bone:#efe6d6;--ash:#a8998a;--display:\"Cinzel\",\"Trajan Pro\",\"Times New Roman\",serif;--credit:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border:1px solid rgba(176,122,60,0.7);color:var(--bone);background:rgba(5,4,3,0.55);font-family:var(--credit);font-weight:600;font-size:15px;line-height:1;text-transform:uppercase;letter-spacing:0.16em;text-decoration:none;border-radius:0;cursor:pointer;transition:background-color .25s var(--out),color .25s var(--out),border-color .25s var(--out),transform .25s var(--out);} .ds-btn:hover{background:var(--bronze);border-color:var(--bronze);color:var(--black);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:2px solid var(--gold);outline-offset:4px;} "
+    },
+    {
+      "name": "Kit Tag",
+      "kind": "chip",
+      "refersTo": "kit-tag",
+      "description": "Static skill tag with a bronze hairline.",
+      "html": "<ul class=\"ds-kit\"><li>Intune</li><li>Entra ID</li><li>Microsoft 365</li></ul>",
+      "css": ":host{--black:#0b0906;--pitch:#050403;--umber:#1a130d;--bronze:#b07a3c;--gold:#f2c572;--ember:#ff8a3d;--bone:#efe6d6;--ash:#a8998a;--display:\"Cinzel\",\"Trajan Pro\",\"Times New Roman\",serif;--credit:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-kit{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px;} .ds-kit li{padding:9px 14px;border:1px solid rgba(176,122,60,0.45);font-family:var(--credit);font-weight:600;font-size:15px;line-height:1;text-transform:uppercase;letter-spacing:0.12em;color:var(--bone);}"
+    },
+    {
+      "name": "Matte Bar",
+      "kind": "nav",
+      "refersTo": "matte-bar",
+      "description": "Fixed letterbox bar carrying wordmark, running act and menu.",
+      "html": "<header class=\"ds-matte\"><a class=\"ds-matte__mark\" href=\"#\">Myat Thu</a><span class=\"ds-matte__act\">Act II &#183; The Record</span><button class=\"ds-matte__btn\" type=\"button\">Scenes</button></header>",
+      "css": ":host{--black:#0b0906;--pitch:#050403;--umber:#1a130d;--bronze:#b07a3c;--gold:#f2c572;--ember:#ff8a3d;--bone:#efe6d6;--ash:#a8998a;--display:\"Cinzel\",\"Trajan Pro\",\"Times New Roman\",serif;--credit:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-matte{display:flex;align-items:flex-end;gap:24px;height:52px;padding:0 32px 14px;background:var(--pitch);box-shadow:0 1px 0 rgba(176,122,60,0.18);font-family:var(--credit);font-weight:600;font-size:15px;line-height:1;text-transform:uppercase;letter-spacing:0.2em;color:var(--ash);} .ds-matte__mark{color:var(--bone);text-decoration:none;font-family:var(--display);font-weight:700;letter-spacing:0.16em;font-size:16px;} .ds-matte__act{color:var(--gold);flex:1;} .ds-matte__btn{background:none;border:0;padding:4px 0;cursor:pointer;color:var(--bone);font:inherit;letter-spacing:inherit;text-transform:inherit;} .ds-matte__btn:hover,.ds-matte__mark:hover{color:var(--gold);} .ds-matte a:focus-visible,.ds-matte__btn:focus-visible{outline:2px solid var(--gold);outline-offset:4px;}"
+    },
+    {
+      "name": "Title Card",
+      "kind": "custom",
+      "refersTo": "display-act",
+      "description": "Act opener: gold Cinzel numeral over a flanked credit-caps act name.",
+      "html": "<h2 class=\"ds-card\"><span class=\"ds-card__n\">Act II</span><span class=\"ds-card__t\">The Record</span></h2>",
+      "css": ":host{--black:#0b0906;--pitch:#050403;--umber:#1a130d;--bronze:#b07a3c;--gold:#f2c572;--ember:#ff8a3d;--bone:#efe6d6;--ash:#a8998a;--display:\"Cinzel\",\"Trajan Pro\",\"Times New Roman\",serif;--credit:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-card{margin:0;padding:48px 16px;display:grid;justify-items:center;gap:20px;text-align:center;background:var(--black);} .ds-card__n{font-family:var(--display);font-weight:700;font-size:96px;line-height:0.88;letter-spacing:0.05em;color:var(--gold);text-shadow:0 22px 70px rgba(255,138,61,0.26);} .ds-card__t{display:flex;align-items:center;gap:22px;font-family:var(--credit);font-weight:600;font-size:20px;line-height:1;letter-spacing:0.52em;padding-left:0.52em;text-transform:uppercase;color:var(--bone);} .ds-card__t::before,.ds-card__t::after{content:\"\";width:60px;height:1px;background:var(--bronze);}"
+    },
+    {
+      "name": "Role Meta Row",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "Company in gold, then ash meta separated by bronze dots, closed by a bronze rule.",
+      "html": "<div class=\"ds-role\"><h3 class=\"ds-role__t\">Service Desk Analyst</h3><p class=\"ds-role__meta\"><b>IPH Limited</b><span>Melbourne</span><span>Since May 2025</span></p></div>",
+      "css": ":host{--black:#0b0906;--pitch:#050403;--umber:#1a130d;--bronze:#b07a3c;--gold:#f2c572;--ember:#ff8a3d;--bone:#efe6d6;--ash:#a8998a;--display:\"Cinzel\",\"Trajan Pro\",\"Times New Roman\",serif;--credit:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-role{background:var(--black);padding:24px;} .ds-role__t{margin:0;font-family:var(--display);font-weight:700;font-size:40px;line-height:1.05;letter-spacing:0.02em;color:var(--bone);} .ds-role__meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin:12px 0 0;padding-bottom:18px;border-bottom:1px solid rgba(176,122,60,0.35);font-family:var(--credit);font-weight:600;font-size:15px;line-height:1.3;letter-spacing:0.2em;text-transform:uppercase;color:var(--ash);} .ds-role__meta b{color:var(--gold);font-weight:600;} .ds-role__meta span::before{content:\"\";display:inline-block;width:4px;height:4px;margin:0 18px 3px 0;border-radius:50%;background:var(--bronze);}"
+    },
+    {
+      "name": "Notice Plaque",
+      "kind": "card",
+      "refersTo": "notice-plaque",
+      "description": "Double-ruled umber plaque for certification details.",
+      "html": "<div class=\"ds-plaque\"><div class=\"ds-plaque__in\"><h3 class=\"ds-plaque__t\">Endpoint Administrator</h3><p class=\"ds-plaque__p\">Deploying, configuring and protecting Windows endpoints at scale with Intune.</p><a class=\"ds-plaque__link\" href=\"#\">Official certification page</a></div></div>",
+      "css": ":host{--black:#0b0906;--pitch:#050403;--umber:#1a130d;--bronze:#b07a3c;--gold:#f2c572;--ember:#ff8a3d;--bone:#efe6d6;--ash:#a8998a;--display:\"Cinzel\",\"Trajan Pro\",\"Times New Roman\",serif;--credit:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-plaque{width:min(560px,100%);background:var(--umber);border:1px solid var(--bronze);padding:8px;box-shadow:0 40px 100px -20px rgba(0,0,0,0.9);} .ds-plaque__in{border:1px solid rgba(176,122,60,0.35);padding:32px;} .ds-plaque__t{margin:0 0 20px;padding-bottom:18px;border-bottom:1px solid rgba(176,122,60,0.45);font-family:var(--display);font-weight:700;font-size:32px;line-height:1.05;letter-spacing:0.02em;color:var(--bone);} .ds-plaque__p{margin:0 0 24px;font-family:var(--text);font-size:18.5px;line-height:1.6;color:#ddd3c3;} .ds-plaque__link{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border:1px solid var(--bronze);color:var(--gold);text-decoration:none;font-family:var(--credit);font-weight:600;font-size:15px;line-height:1;text-transform:uppercase;letter-spacing:0.18em;} .ds-plaque__link:hover{background:var(--gold);color:var(--black);border-color:var(--gold);} .ds-plaque__link:focus-visible{outline:2px solid var(--gold);outline-offset:4px;}"
+    },
+    {
+      "name": "Credit Roll",
+      "kind": "custom",
+      "refersTo": "label",
+      "description": "End-credit pairs: ash terms right, bone values left.",
+      "html": "<dl class=\"ds-roll\"><div><dt>Currently</dt><dd>IPH Limited</dd></div><div><dt>Based in</dt><dd>Melbourne</dd></div></dl>",
+      "css": ":host{--black:#0b0906;--pitch:#050403;--umber:#1a130d;--bronze:#b07a3c;--gold:#f2c572;--ember:#ff8a3d;--bone:#efe6d6;--ash:#a8998a;--display:\"Cinzel\",\"Trajan Pro\",\"Times New Roman\",serif;--credit:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-roll{margin:0;padding:32px;display:grid;gap:28px;background:var(--black);} .ds-roll>div{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:baseline;} .ds-roll dt{text-align:right;font-family:var(--credit);font-weight:600;font-size:15px;line-height:1.4;letter-spacing:0.28em;text-transform:uppercase;color:var(--ash);} .ds-roll dd{margin:0;font-family:var(--credit);font-weight:600;font-size:22px;line-height:1.4;letter-spacing:0.1em;text-transform:uppercase;color:var(--bone);}"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Director's Cut",
+    "overview": "The page is a film print, not a page. Everything plays inside a 2.39:1 letterbox: two pitch-black matte bars pinned top and bottom carry the navigation, the running act, a timecode and the first actions, and the picture between them is graded crushed black with molten gold as the single light source. Sections are acts. Each act opens on a full-viewport title card in carved Roman capitals, and every sequence rides one easing curve, the speed ramp: time slams in, hangs in slow motion, then whips out. A WebGL light field of god rays, smoke and embers runs behind the picture, and its clock follows the ramp, so the embers freeze whenever a title hangs.\n\nDensity is cinematic: one idea per frame, huge display type, long dark pauses, and reading text set large (19px body, 15px floor for every label) because the owner has flagged small type before. Materials are physical and warm: hammered bronze shields carry company marks, struck bronze coins carry certifications, photographs are pushed into a sepia, high-contrast bronze grade with a soft-light bronze wash and a vignette. Film grain sits over everything at 7.5% opacity. Nothing is rounded except metal, which is round.\n\nEvery module degrades. Without JavaScript, WebGL or motion the acts print as a plain readable document: beats become one quiet list, cards drop their full-viewport height, and the cold open and flare never appear.",
+    "keyCharacteristics": [
+      "A fixed letterbox matte (52px, 46px under 760px) that thickens to true 2.39:1 during title cards and relaxes to reading height between them.",
+      "One light: gold and ember glow from above and below; there is no cool color anywhere.",
+      "Carved Roman display capitals, condensed tracked credit labels, a plain humanist sans for reading.",
+      "Square corners on every rectangle; circles only for struck or hammered metal.",
+      "The speed ramp as the single motion grammar, with a reduced-motion path that removes it entirely."
+    ],
+    "rules": [
+      {
+        "name": "The One Light Rule",
+        "body": "Gold is the only light. Anything that glows, is selected, is focused or is hovered turns gold; ember may only appear as the glow around gold, never as its own fill or text.",
+        "section": "colors"
+      },
+      {
+        "name": "The Warm Grade Rule",
+        "body": "Every neutral is a warm umber. Pure grey, pure white text and any cool hue are outside the grade; the brightest text is bone.",
+        "section": "colors"
+      },
+      {
+        "name": "The Alpha Bronze Rule",
+        "body": "Bronze dividers are drawn as bronze at reduced alpha on black (about 0.18 for quiet row rules, 0.35 for section rules, 0.45 to 0.7 for control borders), not as separate grey tokens.",
+        "section": "colors"
+      },
+      {
+        "name": "The Three Voices Rule",
+        "body": "Cinzel titles, Barlow Condensed credits, Barlow reads. A face never borrows another's job: no condensed body copy, no Cinzel labels, no tracked caps in paragraphs.",
+        "section": "typography"
+      },
+      {
+        "name": "The Fifteen Floor Rule",
+        "body": "No HTML label, caption or chrome text is set below 15px, and no reading text below 17px.",
+        "section": "typography"
+      },
+      {
+        "name": "The Wide-Track Balance Rule",
+        "body": "Any label tracked at 0.3em or more is padded on the left by its own tracking value so the block centers optically.",
+        "section": "typography"
+      },
+      {
+        "name": "The Lit From Above Rule",
+        "body": "Every shadow falls downward and is soft and long. Light comes from the top of the frame (god rays, the gold radial, the highlight on the portrait), so no shadow is cast sideways or upward.",
+        "section": "elevation"
+      },
+      {
+        "name": "The Grain On Top Rule",
+        "body": "Film grain (7.5% opacity, warm fractal noise, stepping at 0.9s only on fine pointers with motion allowed) sits above the picture and below the cold open. It is never louder than the image.",
+        "section": "elevation"
+      }
+    ],
+    "dos": [
+      "Do keep gold (#f2c572) as the only lit color: hover, focus, selection, active and progress all resolve to gold.",
+      "Do set every title in Cinzel 700 and every label in Barlow Condensed 600 uppercase at 15px or larger with 0.12em to 0.3em tracking.",
+      "Do keep reading text in Barlow at 17px or larger, bone for lead lines and dimmed bone for supporting lines.",
+      "Do keep rectangles square and reserve circles for metal, light and slate dots.",
+      "Do grade every photograph (sepia and contrast filter, 42% bronze soft-light, vignette) and frame scene shots at 2.39:1.",
+      "Do route every timed sequence through the speed ramp and give each a reduced-motion path that shows the final state with no movement.",
+      "Do pad every full-height section by the matte height so nothing plays under the bars."
+    ],
+    "donts": [
+      "Don't introduce a cool hue, a pure grey or pure white text; the grade is warm umber to bone.",
+      "Don't use ember (#ff8a3d) as a fill or text color; it exists only as glow.",
+      "Don't round buttons, tags, frames or plaques.",
+      "Don't add mid-level card elevation or sideways shadows; objects are either on the ground or heavy and lit from above.",
+      "Don't stack a small tracked label above a heading as a prefix; slates label frames from a corner or from below.",
+      "Don't use em dashes in any copy."
+    ]
+  }
+}
