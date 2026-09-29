@@ -365,6 +365,7 @@
       gsap.set(body, { clipPath: "inset(0% 100% 0% 0%)" });
       function lock() {
         if (locked) return; locked = true;
+        gsap.set(sh, { x: 0, y: 0, rotation: 0, scale: 1 });   /* once locked, it holds the line */
         gsap.to(body, { clipPath: "inset(0% 0% 0% 0%)", duration: 1.1, ease: "expo.out" });
         film.strike(sh);
         shake(sh, 6);
@@ -379,6 +380,7 @@
       ScrollTrigger.create({
         trigger: role, start: "top 95%", end: "top 45%",
         onUpdate: function (self) {
+          if (locked) return;
           var r = ramp(self.progress), k = 1 - r;
           gsap.set(sh, { x: from * k * window.innerWidth * 0.55, y: -k * 140, rotation: from * k * -540, scale: 0.55 + 0.45 * r });
           if (self.progress > 0.985) lock();
@@ -527,10 +529,10 @@
       '<div class="cmodal__bg" data-close></div>' +
       '<div class="cmodal__card"><div class="cmodal__in">' +
       '<button class="cmodal__x" type="button" data-close aria-label="Close"><svg class="ic" aria-hidden="true"><use href="#i-close" /></svg></button>' +
-      '<p class="cmodal__code"></p><h2 class="cmodal__t" id="cmodalT"></h2><div class="cmodal__body"></div>' +
+      '<h2 class="cmodal__t" id="cmodalT"><span class="cmodal__name"></span> <span class="cmodal__code"></span></h2><div class="cmodal__body"></div>' +
       "</div></div>";
     document.body.appendChild(modal);
-    var code = modal.querySelector(".cmodal__code"), title = modal.querySelector(".cmodal__t"),
+    var code = modal.querySelector(".cmodal__code"), title = modal.querySelector(".cmodal__name"),
         body = modal.querySelector(".cmodal__body"), x = modal.querySelector(".cmodal__x"), source = null;
 
     function show(cert, trigger) {

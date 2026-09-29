@@ -69,6 +69,10 @@ static site from GitHub Pages at https://myatgthu.github.io/resume.io/.
   builds.
 - Field-report photographs are Unsplash stock (Jannis Brandt, Viktor
   Talashuk, Samsung Memory), credited on the page.
+- Carried from earlier live versions of the site the owner has reviewed,
+  pending his explicit confirmation: open to full-time and contract roles in
+  Melbourne; open to work in 2026; replies within a day; SC-300 studied in a
+  live lab tenant.
 - Absent, never to be fabricated: testimonials, employer quotes, metrics
   beyond the CV, personal certificate verification links, a correct Trinity
   College mark, photographs of his actual workplace.
