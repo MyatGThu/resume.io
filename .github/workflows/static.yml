@@ -26,10 +26,14 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Cache-bust assets
-        # Stamp the asset query strings with the commit SHA so browsers always
-        # fetch the latest styles.css / main.js after each deploy.
-        run: sed -i "s/__BUILD__/${GITHUB_SHA}/g" index.html
+      - name: Assemble the site
+        # Publish only what the page loads. Development files (PRODUCT.md,
+        # .impeccable/, .claude/, README) stay in the repository, off the web.
+        # The commit SHA stamps the asset query strings as a cache-bust.
+        run: |
+          mkdir _site
+          cp -r index.html styles.css main.js assets vendor _site/
+          sed -i "s/__BUILD__/${GITHUB_SHA}/g" _site/index.html
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
@@ -37,8 +41,7 @@ jobs:
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          # Publish the repository root (index.html, styles.css, main.js).
-          path: "."
+          path: "_site"
 
       - name: Deploy to GitHub Pages
         id: deployment

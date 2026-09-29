@@ -1,1 +1,3 @@
 node_modules/
+# Impeccable review captures: regenerated each build, never shipped
+.impeccable/review/

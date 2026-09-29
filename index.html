@@ -3,457 +3,414 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Myat Thu · The Melbourne Endpoint</title>
-  <meta name="description" content="Myat Thu, IT professional in the Microsoft modern workplace: Intune, Entra ID, endpoint and cloud administration. Melbourne, Australia." />
+  <title>Myat Thu · The Director's Cut</title>
+  <meta name="description" content="Myat Thu, Service Desk Analyst in Melbourne. Seven years of endpoint, identity and service desk work, told as a film in five acts." />
   <meta name="author" content="Myat Thu" />
-  <link rel="canonical" href="https://myatgthu.github.io/hello-world.io/" />
-  <meta name="theme-color" content="#d9d7d0" />
+  <link rel="canonical" href="https://myatgthu.github.io/resume.io/" />
+  <meta name="theme-color" content="#0b0906" />
+  <meta name="color-scheme" content="dark" />
   <meta property="og:type" content="website" />
   <meta property="og:site_name" content="Myat Thu" />
-  <meta property="og:url" content="https://myatgthu.github.io/hello-world.io/" />
-  <meta property="og:title" content="Myat Thu · The Melbourne Endpoint" />
-  <meta property="og:description" content="One front page: the record, the field reports, the notices. Microsoft modern workplace, Melbourne." />
-  <meta property="og:image" content="https://myatgthu.github.io/hello-world.io/assets/og.png" />
+  <meta property="og:url" content="https://myatgthu.github.io/resume.io/" />
+  <meta property="og:title" content="Myat Thu · The Director's Cut" />
+  <meta property="og:description" content="A resume in five acts: the record, the field reports, the certifications, and the end credits." />
+  <meta property="og:image" content="https://myatgthu.github.io/resume.io/assets/og.png" />
   <meta property="og:image:width" content="2400" />
   <meta property="og:image:height" content="1260" />
-  <meta property="og:image:alt" content="Myat Thu, IT professional. Intune, Entra ID, cloud. Melbourne." />
+  <meta property="og:image:alt" content="Myat Thu in gold Roman capitals over rising embers. The Director's Cut." />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Myat Thu · The Melbourne Endpoint" />
-  <meta name="twitter:description" content="One front page: the record, the field reports, the notices. Microsoft modern workplace, Melbourne." />
-  <meta name="twitter:image" content="https://myatgthu.github.io/hello-world.io/assets/og.png" />
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%23fbfaf7'/><text x='50' y='76' font-size='74' font-family='Times New Roman,serif' font-weight='700' fill='%23121212' text-anchor='middle'>M</text></svg>" />
-  <script>document.documentElement.classList.add('js','is-press');setTimeout(function(){document.documentElement.classList.remove('is-press');var s=document.getElementById('spin');if(s)s.classList.add('is-done');},6000);</script>
-  <link rel="preload" href="assets/fonts/pirata-one.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/fonts/playfair-display.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/fonts/pt-serif.woff2" as="font" type="font/woff2" crossorigin />
-  <link rel="preload" href="assets/fonts/libre-franklin.woff2" as="font" type="font/woff2" crossorigin />
+  <meta name="twitter:title" content="Myat Thu · The Director's Cut" />
+  <meta name="twitter:description" content="A resume in five acts: the record, the field reports, the certifications, and the end credits." />
+  <meta name="twitter:image" content="https://myatgthu.github.io/resume.io/assets/og.png" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' fill='%230b0906'/><path d='M22 76V26l28 30 28-30v50' fill='none' stroke='%23f2c572' stroke-width='9' stroke-linejoin='round'/></svg>" />
+  <script>
+    (function (d) {
+      var r = d.documentElement, s;
+      r.classList.add('js');
+      try { s = sessionStorage.getItem('seen'); } catch (e) {}
+      var calm = window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (!s && !calm) {
+        r.classList.add('is-opening');
+        setTimeout(function () { r.classList.remove('is-opening'); }, 9000);
+      }
+    })(document);
+  </script>
+  <link rel="preload" href="assets/fonts/cinzel.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/barlow-400.woff2" as="font" type="font/woff2" crossorigin />
+  <link rel="preload" href="assets/fonts/barlow-condensed-600.woff2" as="font" type="font/woff2" crossorigin />
   <link rel="stylesheet" href="styles.css?v=__BUILD__" />
 </head>
 <body>
 
-  <!-- ============ THE PRESS: spinning front page, then the paper itself ============ -->
-  <div class="spin" id="spin" aria-hidden="true">
-    <div class="spin__stage">
-      <div class="spin__paper">
-        <span class="spin__ear">VOL. VII</span>
-        <b class="spin__name">The Melbourne Endpoint</b>
-        <span class="spin__rule"></span>
-        <b class="spin__head">MYAT THU</b>
-        <span class="spin__deck">SERVICE DESK ANALYST · MODERN WORKPLACE &amp; CLOUD</span>
-        <span class="spin__cols"><i class="spin__cut"></i><i></i><i></i><i></i></span>
-      </div>
-    </div>
-    <button class="spin__skip" id="spinSkip" type="button">Skip intro</button>
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true" focusable="false">
+    <defs>
+      <radialGradient id="g-field" cx="38%" cy="30%" r="78%"><stop offset="0" stop-color="#f8d898" /><stop offset=".55" stop-color="#d9a45c" /><stop offset="1" stop-color="#9c632c" /></radialGradient>
+      <linearGradient id="g-ring" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#e3ad62" /><stop offset=".5" stop-color="#94602d" /><stop offset="1" stop-color="#d49a52" /></linearGradient>
+      <radialGradient id="g-rim" cx="50%" cy="42%" r="58%"><stop offset=".82" stop-color="#8a5a2a" /><stop offset="1" stop-color="#3f2711" /></radialGradient>
+    </defs>
+    <symbol id="i-out" viewBox="0 0 24 24"><path d="M8 16 16 8M9.5 8H16v6.5" /></symbol>
+    <symbol id="i-down" viewBox="0 0 24 24"><path d="M12 5v12M6.5 11.5 12 17l5.5-5.5M6 20h12" /></symbol>
+    <symbol id="i-mail" viewBox="0 0 24 24"><path d="M4 6.5h16v11H4z" /><path d="m4.5 7 7.5 6 7.5-6" /></symbol>
+    <symbol id="i-in" viewBox="0 0 24 24"><path d="M5 4.5h14a.5.5 0 0 1 .5.5v14a.5.5 0 0 1-.5.5H5a.5.5 0 0 1-.5-.5V5a.5.5 0 0 1 .5-.5Z" /><path d="M8.5 10.5v6M8.5 7.6v.2M12 16.5v-6M12 13.2c0-1.6 1-2.7 2.3-2.7s2.2.9 2.2 2.6v3.4" /></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18" /></symbol>
+  </svg>
+
+  <canvas class="atmos" id="atmos" aria-hidden="true"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <div class="flare" id="flare" aria-hidden="true"><i></i></div>
+
+  <div class="open" id="open" aria-hidden="true">
+    <p class="open__ident"><span>A Myat Thu film</span></p>
+    <button class="open__skip" id="openSkip" type="button" tabindex="-1">Skip opening</button>
   </div>
 
-  <a class="skip" href="#front">Skip to content</a>
-  <div class="dot" aria-hidden="true"><span class="dot__label"></span></div>
+  <a class="skip" href="#main">Skip to content</a>
 
-  <!-- ============ RUNNING HEAD ============ -->
-  <header class="rail" id="rail">
-    <span class="rail__prog" id="prog" aria-hidden="true"></span>
-    <a class="rail__name" href="#front">The Melbourne Endpoint</a>
-    <span class="rail__sec" id="railSec" aria-live="polite">Front page</span>
-    <button class="burger" id="burger" type="button" aria-expanded="false" aria-controls="ov" aria-label="Sections"><i></i><i></i></button>
+  <header class="matte matte--top">
+    <a class="matte__mark" href="#top">Myat Thu</a>
+    <span class="matte__act" id="actLabel" aria-live="polite">Opening titles</span>
+    <button class="menu-btn" id="menuBtn" type="button" aria-expanded="false" aria-controls="scenes">
+      <span>Scene selection</span><i aria-hidden="true"></i>
+    </button>
   </header>
+  <div class="matte matte--bottom">
+    <span class="tc" id="timecode" aria-hidden="true">00:00:00:00</span>
+    <span class="scrub" aria-hidden="true"><i id="scrub"></i></span>
+    <a class="matte__cta" href="mailto:myatgeorgethu@gmail.com"><svg class="ic"><use href="#i-mail" /></svg><span>myatgeorgethu@gmail.com</span></a>
+  </div>
 
-  <nav class="ov" id="ov" aria-label="Sections" aria-hidden="true">
-    <ul class="ov__list">
-      <li><a href="#front"><em>P.1</em><span>Front page</span></a></li>
-      <li><a href="#record"><em>P.2</em><span>The record</span></a></li>
-      <li><a href="#reports"><em>P.3</em><span>Field reports</span></a></li>
-      <li><a href="#notices"><em>P.4</em><span>Public notices</span></a></li>
-      <li><a href="#desk"><em>P.5</em><span>At the desk</span></a></li>
-      <li><a href="#wanted"><em>P.6</em><span>Situations wanted</span></a></li>
-    </ul>
-    <div class="ov__meta">
-      <a href="mailto:myatgeorgethu@gmail.com" data-cur="write in">myatgeorgethu@gmail.com</a>
-      <a href="assets/Myat-Thu-CV.pdf" download data-cur="download">Download CV ↓</a>
-      <a href="https://www.linkedin.com/in/myat-george-thu/" target="_blank" rel="noopener noreferrer" data-cur="profile">LinkedIn ↗</a>
-      <span>Melbourne, Australia</span>
+  <nav class="scenes" id="scenes" aria-label="Scene selection" hidden>
+    <ol class="scenes__list">
+      <li><a href="#top"><b>Opening titles</b><span>The name, the logline</span></a></li>
+      <li><a href="#lead"><b>Act I</b><span>The Lead</span></a></li>
+      <li><a href="#record"><b>Act II</b><span>The Record</span></a></li>
+      <li><a href="#reports"><b>Act III</b><span>Field Reports</span></a></li>
+      <li><a href="#immortals"><b>Act IV</b><span>The Immortals</span></a></li>
+      <li><a href="#training"><b>Act V</b><span>The Training</span></a></li>
+      <li><a href="#credits"><b>End credits</b><span>Contact, CV, LinkedIn</span></a></li>
+    </ol>
+    <div class="scenes__meta">
+      <a href="mailto:myatgeorgethu@gmail.com"><svg class="ic"><use href="#i-mail" /></svg>myatgeorgethu@gmail.com</a>
+      <a href="https://www.linkedin.com/in/myat-george-thu/" target="_blank" rel="noopener noreferrer"><svg class="ic"><use href="#i-in" /></svg>LinkedIn</a>
+      <a href="assets/Myat-Thu-CV.pdf" download><svg class="ic"><use href="#i-down" /></svg>Download CV</a>
     </div>
   </nav>
 
-  <!-- ============ THE MARGINS: where you are in the paper ============ -->
-  <aside class="gut gut--l" aria-hidden="true">
-    <span class="gut__mark">The Melbourne Endpoint</span>
-    <ol class="gut__ticks" id="gutTicks">
-      <li></li><li></li><li></li><li></li><li></li><li></li>
-    </ol>
-  </aside>
-  <aside class="gut gut--r" aria-hidden="true">
-    <span class="gut__page" id="gutPage">P.1</span>
-    <span class="gut__sec" id="gutSec">Front page</span>
-    <span class="gut__pct"><i id="gutBar"></i><em id="gutPct">0%</em></span>
-  </aside>
+  <main id="main">
 
-  <!-- ============ THE SHEET ============ -->
-  <div class="plate">
-    <main id="main">
-
-      <!-- ---------- NAMEPLATE ---------- -->
-      <header class="np">
-        <h1 class="np__name" data-a="np">The Melbourne Endpoint</h1>
-      </header>
-      <div class="np__line" aria-hidden="true"></div>
-      <div class="np__date">
-        <p class="np__ear"><b>Vol. VII · No. 1</b><span>Melbourne, Australia</span></p>
-        <p class="np__mid"><b>Late edition</b><span id="dateline">Monday, 31 August 2026</span></p>
-        <p class="np__ear np__ear--r"><b>Price: one conversation</b><span>Intune · Entra ID · Cloud</span></p>
+    <!-- ================================ OPENING TITLES ================================ -->
+    <section class="title" id="top" data-act="Opening titles">
+      <p class="title__slate">Director's cut <b></b> Melbourne <b></b> 2026</p>
+      <h1 class="title__name">
+        <span class="sr">Myat Thu</span>
+        <span class="title__word" aria-hidden="true"><b>M</b><b>Y</b><b>A</b><b>T</b><i></i><b>T</b><b>H</b><b>U</b></span>
+      </h1>
+      <p class="title__log">Service Desk Analyst. Seven years keeping desks, stores and fleets running, from one service desk to four hundred shops.</p>
+      <div class="title__acts">
+        <a class="btn btn--gold" href="mailto:myatgeorgethu@gmail.com"><svg class="ic"><use href="#i-mail" /></svg>Email Myat</a>
+        <a class="btn" href="https://www.linkedin.com/in/myat-george-thu/" target="_blank" rel="noopener noreferrer"><svg class="ic"><use href="#i-in" /></svg>LinkedIn<svg class="ic ic--sm"><use href="#i-out" /></svg></a>
+        <a class="btn" href="assets/Myat-Thu-CV.pdf" download><svg class="ic"><use href="#i-down" /></svg>Download CV</a>
       </div>
+      <p class="title__cue" aria-hidden="true">Scroll to roll film</p>
+    </section>
 
-      <!-- ---------- P.1 FRONT PAGE ---------- -->
-      <section class="front" id="front" aria-label="Front page">
-        <p class="front__kick" data-a="up">The lead story · filed from the service desk</p>
-        <h2 class="front__head"><span class="ln"><b data-a="mask">MYAT&nbsp;THU</b></span></h2>
-        <p class="front__deck" data-a="up">The Melbourne analyst who keeps four hundred stores trading, standardises the fleet, and writes down what the desk used to keep in its head.</p>
-        <div class="front__by" data-a="up">
-          <span>Staff report</span><b>·</b><span>Modern workplace desk</span><b>·</b><span>Melbourne bureau</span>
+    <!-- ================================ TRAILER BEATS ================================ -->
+    <section class="beats" id="beats" aria-label="The short version" data-act="The short version">
+      <div class="beats__stage">
+        <p class="beat">Four hundred stores.</p>
+        <p class="beat">Forty to fifty tickets a day.</p>
+        <p class="beat">One escalation point.</p>
+        <p class="beat">Every repeat problem, written down.</p>
+      </div>
+    </section>
+
+    <!-- ================================ ACT I ================================ -->
+    <section class="act" id="lead" data-act="Act I · The Lead">
+      <header class="card"><h2 class="card__h"><span class="card__n">Act I</span><span class="card__t">The Lead</span></h2></header>
+      <div class="lead">
+        <figure class="cast">
+          <div class="cast__frame"><img src="assets/portrait.jpg" alt="Portrait of Myat Thu" width="470" height="470" loading="lazy" /></div>
+          <figcaption class="cast__credit"><span>Starring</span><b>Myat Thu</b><span>as the escalation point</span></figcaption>
+        </figure>
+        <div class="lead__story">
+          <p class="lead__first">For seven years Myat Thu has worked the part of IT that people only notice when it stops: the laptop that will not enrol, the store that cannot take payment, the account that should have closed on Friday.</p>
+          <p>He is a Service Desk Analyst at IPH Limited, the second-level escalation point for the desk, building machines to the standard operating environment and working across Active Directory and modern endpoint management.</p>
+          <p>Before that came retail at national scale. At The Reject Shop he covered more than four hundred stores, cleared forty to fifty tickets on a heavy day, and ran the imaging, onboarding and repairs that kept the estate trading.</p>
+          <p>The through-line is not the ticket count. It is the habit of turning a repeat problem into a written process that anyone on the desk can run.</p>
         </div>
+      </div>
+    </section>
 
-        <div class="front__body">
-          <div class="col col--a">
-            <figure class="port" data-a="up">
-              <img src="assets/portrait.jpg" alt="Portrait of Myat Thu" width="440" height="440" loading="eager" />
-              <span class="port__ring" aria-hidden="true"></span>
-            </figure>
-            <p class="lede"><b class="cap">M</b><span class="place">MELBOURNE ·</span> For seven years Myat Thu has worked the part of IT that people only notice when it stops: the laptop that will not enrol, the store that cannot take payment, the account that should have been closed on Friday.</p>
-            <p>He is a Service Desk Analyst at IPH Limited, where he sits as the second-level escalation point for the desk, builds machines to the standard operating environment, and works across Active Directory and modern endpoint management.</p>
-          </div>
-          <div class="col col--b">
-            <p>Before the law firm came retail at national scale. At The Reject Shop he covered more than four hundred stores, clearing forty to fifty tickets on a heavy day and running the estate's imaging, onboarding and hardware repair.</p>
-            <p>The through-line is not the ticket count. It is the habit of turning a repeat problem into a written process: a dock rollout that ended a stream of failures, a playbook that moved a team off memory, a build standard that gives a new starter access on day one.</p>
-            <p>Four certifications sit behind that work: MD-102, AZ-900, SC-900 and Google's IT Support Professional Certificate, with SC-300 in progress in a live lab tenant rather than on flashcards.</p>
-            <p class="cont">Continued below <i aria-hidden="true">↓</i></p>
-          </div>
-          <aside class="col col--c">
-            <div class="inside" data-a="up">
-              <h3>Inside today's edition</h3>
-              <ul>
-                <li><a href="#record"><em>P.2</em><span>The record</span><i>Four roles, seven years</i></a></li>
-                <li><a href="#reports"><em>P.3</em><span>Field reports</span><i>Three case files, drawn</i></a></li>
-                <li><a href="#notices"><em>P.4</em><span>Public notices</span><i>Four seals, one pending</i></a></li>
-                <li><a href="#desk"><em>P.5</em><span>At the desk</span><i>Study &amp; the lab</i></a></li>
-                <li><a href="#wanted"><em>P.6</em><span>Situations wanted</span><i>Open to work, 2026</i></a></li>
-              </ul>
-            </div>
-            <div class="stamp" data-a="up">
-              <svg viewBox="0 0 200 200" role="img" aria-label="Open to work, 2026">
-                <defs><path id="stampPath" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0" /></defs>
-                <circle class="sk-r" cx="100" cy="100" r="92" />
-                <circle class="sk-r" cx="100" cy="100" r="84" />
-                <g class="stamp__ring"><text class="sk-t"><textPath href="#stampPath">OPEN TO WORK ★ MELBOURNE AU ★ FULL-TIME &amp; CONTRACT ★ </textPath></text></g>
-                <text class="sk-c" x="100" y="93">2026</text>
-                <text class="sk-s" x="100" y="120">AVAILABLE</text>
-              </svg>
-            </div>
-          </aside>
-        </div>
-      </section>
-
-      <!-- ---------- BY THE NUMBERS ---------- -->
-      <section class="nums" aria-label="By the numbers">
-        <p class="nums__k">By the numbers</p>
-        <div class="nums__g">
-          <div class="num" data-a="up"><b data-count="400" data-suffix="+">400+</b><span>Retail stores kept trading</span></div>
-          <div class="num" data-a="up"><b data-count="50" data-suffix="/day">50/day</b><span>Tickets cleared at peak</span></div>
-          <div class="num" data-a="up"><b data-count="2" data-suffix="nd">2nd</b><span>Level escalation for the desk</span></div>
-          <div class="num" data-a="up"><b data-count="4" data-suffix="">4</b><span>Microsoft &amp; Google certificates</span></div>
-        </div>
-      </section>
-
-      <!-- ---------- P.2 THE RECORD ---------- -->
-      <section class="sec" id="record">
-        <header class="flag" data-a="up"><i></i><b>The record</b><em>Page two</em><i></i></header>
-        <p class="sec__lead" data-a="up">Seven years across retail, consulting and professional services, each posting filed in the order it happened.</p>
-        <div class="record">
-          <article class="job" data-a="up">
-            <div class="job__mark">
-              <a class="medal" href="https://www.iphltd.com.au/" target="_blank" rel="noopener noreferrer" data-cur="visit site" aria-label="IPH Limited website (opens in a new tab)">
-                <img src="assets/logos/iph.png" alt="IPH Limited logo" loading="lazy" />
-              </a>
-              <span class="job__yr">Since May 2025</span>
-            </div>
-            <div class="job__body">
-              <h3>Service Desk Analyst</h3>
-              <p class="job__org">IPH Limited <b>·</b> Melbourne</p>
-              <ul>
-                <li>Second-level escalation point, guiding the desk</li>
-                <li>Laptop and device builds to the standard operating environment</li>
-                <li>Active Directory and modern endpoint support</li>
-                <li>IT projects, change management and on-call</li>
-              </ul>
-            </div>
-          </article>
-          <article class="job" data-a="up">
-            <div class="job__mark">
-              <a class="medal" href="https://www.rejectshop.com.au/" target="_blank" rel="noopener noreferrer" data-cur="visit site" aria-label="The Reject Shop website (opens in a new tab)">
-                <img src="assets/logos/reject-shop.png" alt="The Reject Shop logo" loading="lazy" />
-              </a>
-              <span class="job__yr">2023 &#8211; 2025</span>
-            </div>
-            <div class="job__body">
-              <h3>IT Support Analyst</h3>
-              <p class="job__org">The Reject Shop <b>·</b> Melbourne</p>
-              <ul>
-                <li>L1–2 for 400+ stores; 40–50 tickets a day</li>
-                <li>Active Directory, Exchange, Teams and M365 end to end</li>
-                <li>Imaging, onboarding and hardware remediation</li>
-                <li>Dock replacement rollout, wrote the playbook</li>
-              </ul>
-            </div>
-          </article>
-          <article class="job" data-a="up">
-            <div class="job__mark">
-              <a class="medal" href="https://azured.com.au/" target="_blank" rel="noopener noreferrer" data-cur="visit site" aria-label="Azured Consulting website (opens in a new tab)">
-                <img src="assets/logos/azured.png" alt="Azured Consulting logo" loading="lazy" />
-              </a>
-              <span class="job__yr">2022</span>
-            </div>
-            <div class="job__body">
-              <h3>Support Engineer</h3>
-              <p class="job__org">Azured Consulting <b>·</b> Australia</p>
-              <ul>
-                <li>Service desk for a Telstra cloud partner MSP</li>
-                <li>L3 network and firewall configuration</li>
-                <li>Client cloud environments and M365 accounts</li>
-              </ul>
-            </div>
-          </article>
-          <article class="job" data-a="up">
-            <div class="job__mark">
-              <a class="medal" href="https://www.myer.com.au/" target="_blank" rel="noopener noreferrer" data-cur="visit site" aria-label="MYER website (opens in a new tab)">
-                <img src="assets/logos/myer.png" alt="MYER logo" loading="lazy" />
-              </a>
-              <span class="job__yr">2019 &#8211; 2024</span>
-            </div>
-            <div class="job__body">
-              <h3>Office Support Assistant</h3>
-              <p class="job__org">MYER <b>·</b> Australia</p>
-              <ul>
-                <li>Store operations and end-of-day reporting</li>
-                <li>Online returns, POS and team training</li>
-              </ul>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- ---------- P.3 FIELD REPORTS ---------- -->
-      <section class="sec" id="reports">
-        <header class="flag" data-a="up"><i></i><b>Field reports</b><em>Page three</em><i></i></header>
-        <p class="sec__lead" data-a="up">Three problems that kept coming back, and what replaced them.</p>
-        <div class="reports">
-          <article class="case" data-a="up">
-            <figure class="case__fig">
-              <div class="case__photo" data-px-z="-30">
-                <img src="assets/photos/dock.jpg" alt="A desk running two screens and a laptop from a single hub, the arrangement that replaced the failing docks" width="1200" height="760" loading="lazy" />
-              </div>
-              <figcaption><b>Fig. 1</b> One hub monitor carries the desk: a single cable to the laptop, the second screen chained behind it.<span class="credit">Photograph: Jannis Brandt / Unsplash</span></figcaption>
-            </figure>
-            <div class="case__txt">
-              <p class="case__tag">Endpoint · Rollout</p>
-              <h3>Docks out, hubs in</h3>
-              <p class="case__ctx">Retail docks were failing constantly across the estate, and every failure cost a replacement and a callout.</p>
-              <dl class="case__d">
-                <div><dt>Objective</dt><dd>Stop the stream of failing, costly docks across 400+ stores.</dd></div>
-                <div><dt>Role</dt><dd>Replaced docks with daisy-chained hub monitors; wrote the rollout playbook.</dd></div>
-                <div><dt>Outcome</dt><dd>Simpler desks, far fewer failures, a process anyone could run.</dd></div>
-              </dl>
-            </div>
-          </article>
-          <article class="case case--flip" data-a="up">
-            <figure class="case__fig">
-              <div class="case__photo" data-px-z="-30">
-                <img src="assets/photos/playbook.jpg" alt="Shelves of labelled ring binders holding written procedures" width="1200" height="760" loading="lazy" />
-              </div>
-              <figcaption><b>Fig. 2</b> What the desk used to hold in its head, filed where anyone rostered on can lift it.<span class="credit">Photograph: Viktor Talashuk / Unsplash</span></figcaption>
-            </figure>
-            <div class="case__txt">
-              <p class="case__tag">ITSM · Knowledge</p>
-              <h3>Memory, written down</h3>
-              <p class="case__ctx">The desk leaned on who happened to be rostered; the same issues kept returning to the same people.</p>
-              <dl class="case__d">
-                <div><dt>Objective</dt><dd>Turn tribal knowledge into a consistent, documented process.</dd></div>
-                <div><dt>Role</dt><dd>Documented SOPs, knowledge articles and escalation paths; became the L2 point.</dd></div>
-                <div><dt>Outcome</dt><dd>Faster resolutions and a knowledge base new starters pick up quickly.</dd></div>
-              </dl>
-            </div>
-          </article>
-          <article class="case" data-a="up">
-            <figure class="case__fig">
-              <div class="case__photo" data-px-z="-30">
-                <img src="assets/photos/builds.jpg" alt="A technician working inside an opened laptop with a screwdriver at a bench" width="1200" height="760" loading="lazy" />
-              </div>
-              <figcaption><b>Fig. 3</b> The bench where a machine becomes a standard build, before it ever reaches the person using it.<span class="credit">Photograph: Samsung Memory / Unsplash</span></figcaption>
-            </figure>
-            <div class="case__txt">
-              <p class="case__tag">Identity · Devices</p>
-              <h3>Day-one access</h3>
-              <p class="case__ctx">Builds and access were manual and inconsistent, so no two machines left the bench the same way.</p>
-              <dl class="case__d">
-                <div><dt>Objective</dt><dd>Secure, standardised devices with access ready on day one.</dd></div>
-                <div><dt>Role</dt><dd>SOE builds, Active Directory and M365 administration, joiner/leaver end to end.</dd></div>
-                <div><dt>Outcome</dt><dd>Compliant endpoints and a tidy account lifecycle.</dd></div>
-              </dl>
-            </div>
-          </article>
-        </div>
-      </section>
-
-      <!-- ---------- P.4 PUBLIC NOTICES ---------- -->
-      <section class="sec" id="notices">
-        <header class="flag" data-a="up"><i></i><b>Public notices</b><em>Page four</em><i></i></header>
-        <p class="sec__lead" data-a="up">Certifications on the record. Press a seal for what it covers and where it earns its keep.</p>
-        <div class="seals">
-
-          <article class="seal" data-a="up" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Open details: Endpoint Administrator (MD-102)">
-            <svg class="seal__svg" viewBox="0 0 200 200" aria-hidden="true">
-              <defs><path id="sp1" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0" /></defs>
-              <circle class="s-r" cx="100" cy="100" r="94" /><circle class="s-r" cx="100" cy="100" r="86" /><circle class="s-r s-r--in" cx="100" cy="100" r="58" />
-              <g class="seal__ring"><text class="s-t"><textPath href="#sp1">MICROSOFT CERTIFIED ★ ENDPOINT ADMINISTRATOR ★ </textPath></text></g>
-              <text class="s-c" x="100" y="96">MD-102</text><text class="s-s" x="100" y="120">CERTIFIED</text>
-            </svg>
-            <h3>Endpoint Administrator</h3>
-            <p>Intune, Autopilot, compliance, app delivery.</p>
-            <span class="seal__cta">Microsoft · press for detail</span>
-            <div class="seal__info" hidden>
-              <p class="info__about">Microsoft's certification for deploying, configuring and protecting Windows endpoints at scale with Intune: Autopilot provisioning, configuration and compliance policy, conditional access, app delivery and update rings.</p>
-              <h4 class="info__h">Where it works in my roles</h4>
-              <div class="info__uses">
-                <div class="use"><b>IPH Limited, current</b><span>SOE laptop and device builds; modern endpoint support for the firm's fleet.</span></div>
-                <div class="use"><b>The Reject Shop</b><span>Imaging, onboarding/offboarding and hardware remediation across 400+ stores, the device lifecycle this certificate formalises.</span></div>
-              </div>
-              <a class="info__link" href="https://learn.microsoft.com/credentials/certifications/modern-desktop/" target="_blank" rel="noopener noreferrer">Official certification page ↗</a>
-            </div>
-          </article>
-
-          <article class="seal" data-a="up" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Open details: Azure Fundamentals (AZ-900)">
-            <svg class="seal__svg" viewBox="0 0 200 200" aria-hidden="true">
-              <defs><path id="sp2" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0" /></defs>
-              <circle class="s-r" cx="100" cy="100" r="94" /><circle class="s-r" cx="100" cy="100" r="86" /><circle class="s-r s-r--in" cx="100" cy="100" r="58" />
-              <g class="seal__ring"><text class="s-t"><textPath href="#sp2">MICROSOFT CERTIFIED ★ AZURE FUNDAMENTALS ★ CLOUD ★ </textPath></text></g>
-              <text class="s-c" x="100" y="96">AZ-900</text><text class="s-s" x="100" y="120">CERTIFIED</text>
-            </svg>
-            <h3>Azure Fundamentals</h3>
-            <p>Core cloud concepts, services, governance.</p>
-            <span class="seal__cta">Microsoft · press for detail</span>
-            <div class="seal__info" hidden>
-              <p class="info__about">The foundational Azure certification: cloud service models, core compute, storage and networking services, the security baseline, pricing and governance.</p>
-              <h4 class="info__h">Where it works in my roles</h4>
-              <div class="info__uses">
-                <div class="use"><b>IPH Limited, current</b><span>Tenant maintenance and Active Directory administration against the Microsoft cloud.</span></div>
-                <div class="use"><b>Azured Consulting</b><span>Maintaining client cloud environments and M365 accounts for a Telstra-partner MSP.</span></div>
-              </div>
-              <a class="info__link" href="https://learn.microsoft.com/credentials/certifications/azure-fundamentals/" target="_blank" rel="noopener noreferrer">Official certification page ↗</a>
-            </div>
-          </article>
-
-          <article class="seal" data-a="up" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Open details: Security, Compliance and Identity Fundamentals (SC-900)">
-            <svg class="seal__svg" viewBox="0 0 200 200" aria-hidden="true">
-              <defs><path id="sp3" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0" /></defs>
-              <circle class="s-r" cx="100" cy="100" r="94" /><circle class="s-r" cx="100" cy="100" r="86" /><circle class="s-r s-r--in" cx="100" cy="100" r="58" />
-              <g class="seal__ring"><text class="s-t"><textPath href="#sp3">MICROSOFT CERTIFIED ★ SECURITY &amp; IDENTITY ★ ZERO TRUST ★ </textPath></text></g>
-              <text class="s-c" x="100" y="96">SC-900</text><text class="s-s" x="100" y="120">CERTIFIED</text>
-            </svg>
-            <h3>Security &amp; Identity</h3>
-            <p>Zero Trust, Entra ID, Defender, Purview.</p>
-            <span class="seal__cta">Microsoft · press for detail</span>
-            <div class="seal__info" hidden>
-              <p class="info__about">Fundamentals of Microsoft security, compliance and identity: Zero Trust principles, Entra ID identity and access, threat protection with Defender, governance with Purview.</p>
-              <h4 class="info__h">Where it works in my roles</h4>
-              <div class="info__uses">
-                <div class="use"><b>IPH Limited, current</b><span>Annual IT audit participation, change management and on-call response with a security posture behind them.</span></div>
-                <div class="use"><b>Home lab</b><span>Conditional access and identity governance rehearsed live in the SC-300 study tenant.</span></div>
-              </div>
-              <a class="info__link" href="https://learn.microsoft.com/credentials/certifications/security-compliance-and-identity-fundamentals/" target="_blank" rel="noopener noreferrer">Official certification page ↗</a>
-            </div>
-          </article>
-
-          <article class="seal" data-a="up" tabindex="0" role="button" aria-haspopup="dialog" aria-label="Open details: Google IT Support Professional Certificate">
-            <svg class="seal__svg" viewBox="0 0 200 200" aria-hidden="true">
-              <defs><path id="sp4" d="M100,100 m-72,0 a72,72 0 1,1 144,0 a72,72 0 1,1 -144,0" /></defs>
-              <circle class="s-r" cx="100" cy="100" r="94" /><circle class="s-r" cx="100" cy="100" r="86" /><circle class="s-r s-r--in" cx="100" cy="100" r="58" />
-              <g class="seal__ring"><text class="s-t"><textPath href="#sp4">GOOGLE CAREER CERTIFICATE ★ IT SUPPORT PROFESSIONAL ★ </textPath></text></g>
-              <text class="s-c s-c--sm" x="100" y="96">IT&nbsp;SUPPORT</text><text class="s-s" x="100" y="120">CERTIFIED</text>
-            </svg>
-            <h3>IT Support Professional</h3>
-            <p>Networking, operating systems, sysadmin, security.</p>
-            <span class="seal__cta">Google · press for detail</span>
-            <div class="seal__info" hidden>
-              <p class="info__about">Google's professional certificate covering support from the ground up: troubleshooting method, networking, operating systems, system administration and security basics.</p>
-              <h4 class="info__h">Where it works in my roles</h4>
-              <div class="info__uses">
-                <div class="use"><b>The Reject Shop</b><span>L1–2 troubleshooting discipline and store networking across a national fleet.</span></div>
-                <div class="use"><b>MYER</b><span>Frontline support fundamentals: POS, reporting and coordinating with non-technical teams.</span></div>
-              </div>
-              <a class="info__link" href="https://www.coursera.org/professional-certificates/google-it-support" target="_blank" rel="noopener noreferrer">Official certification page ↗</a>
-            </div>
-          </article>
-
-        </div>
-        <p class="notice" data-a="up"><b>Notice of intent</b> SC-300 · Identity &amp; Access Administrator, in progress and sat against a live tenant.</p>
-      </section>
-
-      <!-- ---------- P.5 AT THE DESK ---------- -->
-      <section class="sec" id="desk">
-        <header class="flag" data-a="up"><i></i><b>At the desk</b><em>Page five</em><i></i></header>
-        <div class="desk">
-          <article class="brief brief--now" data-a="up">
-            <p class="brief__k">Currently</p>
-            <h3>Studying SC-300: identity and access</h3>
-            <p>Deepening Entra ID, conditional access and identity governance in a live lab tenant, so the exam and the estate stay the same subject.</p>
-          </article>
-          <article class="brief" data-a="up">
-            <p class="brief__k">Study</p>
-            <div class="rows">
-              <div class="row"><img class="row__mark" src="assets/logos/rmit.png" alt="RMIT University crest" loading="lazy" /><div><strong>BBus, Information Systems</strong><span>RMIT University · 2019&#8211;2021</span></div></div>
-              <div class="row"><img class="row__mark" src="assets/logos/rmit.png" alt="RMIT University crest" loading="lazy" /><div><strong>Diploma, Information Technology</strong><span>RMIT University · 2018</span></div></div>
-              <div class="row row--plain"><div><strong>Foundation, Information Technology</strong><span>Trinity College, University of Melbourne · 2016&#8211;2017</span></div></div>
-            </div>
-          </article>
-          <article class="brief" data-a="up">
-            <p class="brief__k">On the bench</p>
-            <p class="tools">Microsoft Intune · Entra ID · Windows Autopilot · Azure · Microsoft 365 · Active Directory · PowerShell · Exchange · Teams · Endpoint security · ITSM &amp; change · SOE builds</p>
-          </article>
-        </div>
-      </section>
-
-      <!-- ---------- P.6 SITUATIONS WANTED ---------- -->
-      <section class="sec sec--last" id="wanted">
-        <header class="flag" data-a="up"><i></i><b>Situations wanted</b><em>Page six</em><i></i></header>
-        <div class="want">
-          <div class="want__ad" data-a="up">
-            <h3>IT professional, Melbourne</h3>
-            <p>Modern workplace, endpoint and identity. Full-time or contract. Comfortable as escalation point, happier when the escalation stops arriving. Replies within a day.</p>
-            <a class="want__mail" href="mailto:myatgeorgethu@gmail.com" data-mag="0.18" data-cur="write in">myatgeorgethu@gmail.com <i aria-hidden="true">→</i></a>
-            <p class="want__cv">
-              <a href="assets/Myat-Thu-CV.pdf" download data-cur="download">Download the full CV ↓</a>
-              <a href="https://www.linkedin.com/in/myat-george-thu/" target="_blank" rel="noopener noreferrer" data-cur="profile">Profile on LinkedIn ↗</a>
-            </p>
-          </div>
-          <div class="want__side" data-a="up">
-            <p class="want__k">Terms</p>
-            <ul>
-              <li><b>Based</b> Melbourne, Australia</li>
-              <li><b>Seeking</b> Full-time &amp; contract</li>
-              <li><b>Notice</b> Available 2026</li>
-              <li><b>Reply</b> Usually within a day</li>
-              <li><b>Profile</b> <a href="https://www.linkedin.com/in/myat-george-thu/" target="_blank" rel="noopener noreferrer">linkedin.com/in/myat-george-thu</a></li>
+    <!-- ================================ ACT II ================================ -->
+    <section class="act" id="record" data-act="Act II · The Record">
+      <header class="card"><h2 class="card__h"><span class="card__n">Act II</span><span class="card__t">The Record</span></h2></header>
+      <div class="phalanx">
+        <article class="role">
+          <a class="shield" href="https://www.iphltd.com.au/" target="_blank" rel="noopener noreferrer" aria-label="IPH Limited website, opens in a new tab">
+            <span class="shield__boss"><img src="assets/logos/iph.png" alt="" loading="lazy" /></span>
+          </a>
+          <div class="role__body">
+            <h3 class="role__title">Service Desk Analyst</h3>
+            <p class="role__meta"><b>IPH Limited</b><span>Melbourne</span><span>Since May 2025</span></p>
+            <ul class="role__pts">
+              <li>Second-level escalation point, guiding the desk</li>
+              <li>Laptop and device builds to the standard operating environment</li>
+              <li>Active Directory and modern endpoint support</li>
+              <li>IT projects, change management and on-call</li>
             </ul>
           </div>
+        </article>
+        <article class="role">
+          <a class="shield" href="https://www.rejectshop.com.au/" target="_blank" rel="noopener noreferrer" aria-label="The Reject Shop website, opens in a new tab">
+            <span class="shield__boss"><img src="assets/logos/reject-shop.png" alt="" loading="lazy" /></span>
+          </a>
+          <div class="role__body">
+            <h3 class="role__title">IT Support Analyst</h3>
+            <p class="role__meta"><b>The Reject Shop</b><span>Melbourne</span><span>2023 to 2025</span></p>
+            <ul class="role__pts">
+              <li>L1 and L2 support for 400+ stores, 40 to 50 tickets a day</li>
+              <li>Active Directory, Exchange, Teams and Microsoft 365 end to end</li>
+              <li>Imaging, onboarding and hardware remediation</li>
+              <li>Dock replacement rollout, and the playbook behind it</li>
+            </ul>
+          </div>
+        </article>
+        <article class="role">
+          <a class="shield" href="https://azured.com.au/" target="_blank" rel="noopener noreferrer" aria-label="Azured Consulting website, opens in a new tab">
+            <span class="shield__boss"><img src="assets/logos/azured.png" alt="" loading="lazy" /></span>
+          </a>
+          <div class="role__body">
+            <h3 class="role__title">Support Engineer</h3>
+            <p class="role__meta"><b>Azured Consulting</b><span>Australia</span><span>2022</span></p>
+            <ul class="role__pts">
+              <li>Service desk for a Telstra cloud partner MSP</li>
+              <li>L3 network and firewall configuration</li>
+              <li>Client cloud environments and Microsoft 365 accounts</li>
+            </ul>
+          </div>
+        </article>
+        <article class="role">
+          <a class="shield" href="https://www.myer.com.au/" target="_blank" rel="noopener noreferrer" aria-label="MYER website, opens in a new tab">
+            <span class="shield__boss"><img src="assets/logos/myer.png" alt="" loading="lazy" /></span>
+          </a>
+          <div class="role__body">
+            <h3 class="role__title">Office Support Assistant</h3>
+            <p class="role__meta"><b>MYER</b><span>Australia</span><span>2019 to 2024</span></p>
+            <ul class="role__pts">
+              <li>Store operations and end-of-day reporting</li>
+              <li>Online returns, POS and team training</li>
+            </ul>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================================ ACT III ================================ -->
+    <section class="act" id="reports" data-act="Act III · Field Reports">
+      <header class="card"><h2 class="card__h"><span class="card__n">Act III</span><span class="card__t">Field Reports</span></h2></header>
+      <div class="reel">
+        <article class="scene">
+          <figure class="shot">
+            <div class="shot__frame"><img src="assets/photos/dock.jpg" alt="A desk running two screens and a laptop from a single hub" width="1200" height="760" loading="lazy" /></div>
+            <figcaption class="shot__slate"><span>Scene 1</span><span>Endpoint, rollout</span></figcaption>
+          </figure>
+          <div class="script">
+            <h3>Docks out, hubs in</h3>
+            <p class="script__ctx">Retail docks were failing constantly across the estate, and every failure cost a replacement and a callout.</p>
+            <dl class="notes">
+              <div><dt>Objective</dt><dd>Stop the stream of failing, costly docks across 400+ stores.</dd></div>
+              <div><dt>Role</dt><dd>Replaced docks with daisy-chained hub monitors and wrote the rollout playbook.</dd></div>
+              <div><dt>Outcome</dt><dd>Simpler desks, far fewer failures, and a process anyone could run.</dd></div>
+            </dl>
+            <p class="photo-credit">Photograph: Jannis Brandt, Unsplash</p>
+          </div>
+        </article>
+        <article class="scene scene--flip">
+          <figure class="shot">
+            <div class="shot__frame"><img src="assets/photos/playbook.jpg" alt="Shelves of labelled ring binders holding written procedures" width="1200" height="760" loading="lazy" /></div>
+            <figcaption class="shot__slate"><span>Scene 2</span><span>Service desk, knowledge</span></figcaption>
+          </figure>
+          <div class="script">
+            <h3>Memory, written down</h3>
+            <p class="script__ctx">The desk leaned on whoever happened to be rostered, and the same issues kept coming back to the same people.</p>
+            <dl class="notes">
+              <div><dt>Objective</dt><dd>Turn tribal knowledge into a consistent, documented process.</dd></div>
+              <div><dt>Role</dt><dd>Documented SOPs, knowledge articles and escalation paths, and became the L2 point.</dd></div>
+              <div><dt>Outcome</dt><dd>Faster resolutions and a knowledge base new starters pick up quickly.</dd></div>
+            </dl>
+            <p class="photo-credit">Photograph: Viktor Talashuk, Unsplash</p>
+          </div>
+        </article>
+        <article class="scene">
+          <figure class="shot">
+            <div class="shot__frame"><img src="assets/photos/builds.jpg" alt="A technician working inside an opened laptop at a bench" width="1200" height="760" loading="lazy" /></div>
+            <figcaption class="shot__slate"><span>Scene 3</span><span>Identity, devices</span></figcaption>
+          </figure>
+          <div class="script">
+            <h3>Day-one access</h3>
+            <p class="script__ctx">Builds and access were manual and inconsistent, so no two machines left the bench the same way.</p>
+            <dl class="notes">
+              <div><dt>Objective</dt><dd>Secure, standard devices with access ready on day one.</dd></div>
+              <div><dt>Role</dt><dd>SOE builds, Active Directory and Microsoft 365 administration, joiners and leavers end to end.</dd></div>
+              <div><dt>Outcome</dt><dd>Compliant endpoints and a tidy account lifecycle.</dd></div>
+            </dl>
+            <p class="photo-credit">Photograph: Samsung Memory, Unsplash</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ================================ ACT IV ================================ -->
+    <section class="act" id="immortals" data-act="Act IV · The Immortals">
+      <header class="card"><h2 class="card__h"><span class="card__n">Act IV</span><span class="card__t">The Immortals</span></h2></header>
+      <p class="act__lede">Four certifications struck in bronze. Press a coin to read what it covers and where it earns its keep.</p>
+      <div class="vault">
+
+        <article class="cert">
+          <button class="coin" type="button" aria-haspopup="dialog">
+            <span class="sr">Details for Endpoint Administrator, MD-102</span>
+            <span class="coin__body" aria-hidden="true">
+              <svg class="coin__face" viewBox="0 0 200 200"><defs><path id="cp1" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0" /></defs><circle class="c-rim" cx="100" cy="100" r="96" /><circle class="c-ring" cx="100" cy="100" r="86" /><circle class="c-field" cx="100" cy="100" r="62" /><text class="c-text"><textPath href="#cp1">MICROSOFT CERTIFIED · ENDPOINT ADMINISTRATOR · </textPath></text><text class="c-code" x="100" y="108">MD-102</text></svg>
+            </span>
+          </button>
+          <h3 class="cert__name">Endpoint Administrator</h3>
+          <p class="cert__sum">Intune, Autopilot, compliance, app delivery.</p>
+          <div class="cert__info" hidden>
+            <p class="info__about">Microsoft's certification for deploying, configuring and protecting Windows endpoints at scale with Intune: Autopilot provisioning, configuration and compliance policy, conditional access, app delivery and update rings.</p>
+            <h4 class="info__h">Where it works in the record</h4>
+            <div class="info__uses">
+              <div class="use"><b>IPH Limited, current</b><span>SOE laptop and device builds, and modern endpoint support for the firm's fleet.</span></div>
+              <div class="use"><b>The Reject Shop</b><span>Imaging, onboarding, offboarding and hardware remediation across 400+ stores: the device lifecycle this certificate formalises.</span></div>
+            </div>
+            <a class="info__link" href="https://learn.microsoft.com/credentials/certifications/modern-desktop/" target="_blank" rel="noopener noreferrer">Official certification page<svg class="ic ic--sm"><use href="#i-out" /></svg></a>
+          </div>
+        </article>
+
+        <article class="cert">
+          <button class="coin" type="button" aria-haspopup="dialog">
+            <span class="sr">Details for Azure Fundamentals, AZ-900</span>
+            <span class="coin__body" aria-hidden="true">
+              <svg class="coin__face" viewBox="0 0 200 200"><defs><path id="cp2" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0" /></defs><circle class="c-rim" cx="100" cy="100" r="96" /><circle class="c-ring" cx="100" cy="100" r="86" /><circle class="c-field" cx="100" cy="100" r="62" /><text class="c-text"><textPath href="#cp2">MICROSOFT CERTIFIED · AZURE FUNDAMENTALS · CLOUD · </textPath></text><text class="c-code" x="100" y="108">AZ-900</text></svg>
+            </span>
+          </button>
+          <h3 class="cert__name">Azure Fundamentals</h3>
+          <p class="cert__sum">Core cloud concepts, services, governance.</p>
+          <div class="cert__info" hidden>
+            <p class="info__about">The foundational Azure certification: cloud service models, core compute, storage and networking services, the security baseline, pricing and governance.</p>
+            <h4 class="info__h">Where it works in the record</h4>
+            <div class="info__uses">
+              <div class="use"><b>IPH Limited, current</b><span>Tenant maintenance and Active Directory administration against the Microsoft cloud.</span></div>
+              <div class="use"><b>Azured Consulting</b><span>Maintaining client cloud environments and Microsoft 365 accounts for a Telstra-partner MSP.</span></div>
+            </div>
+            <a class="info__link" href="https://learn.microsoft.com/credentials/certifications/azure-fundamentals/" target="_blank" rel="noopener noreferrer">Official certification page<svg class="ic ic--sm"><use href="#i-out" /></svg></a>
+          </div>
+        </article>
+
+        <article class="cert">
+          <button class="coin" type="button" aria-haspopup="dialog">
+            <span class="sr">Details for Security, Compliance and Identity Fundamentals, SC-900</span>
+            <span class="coin__body" aria-hidden="true">
+              <svg class="coin__face" viewBox="0 0 200 200"><defs><path id="cp3" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0" /></defs><circle class="c-rim" cx="100" cy="100" r="96" /><circle class="c-ring" cx="100" cy="100" r="86" /><circle class="c-field" cx="100" cy="100" r="62" /><text class="c-text"><textPath href="#cp3">MICROSOFT CERTIFIED · SECURITY AND IDENTITY · ZERO TRUST · </textPath></text><text class="c-code" x="100" y="108">SC-900</text></svg>
+            </span>
+          </button>
+          <h3 class="cert__name">Security and Identity</h3>
+          <p class="cert__sum">Zero Trust, Entra ID, Defender, Purview.</p>
+          <div class="cert__info" hidden>
+            <p class="info__about">Fundamentals of Microsoft security, compliance and identity: Zero Trust principles, Entra ID identity and access, threat protection with Defender, and governance with Purview.</p>
+            <h4 class="info__h">Where it works in the record</h4>
+            <div class="info__uses">
+              <div class="use"><b>IPH Limited, current</b><span>Annual IT audit participation, change management and on-call response with a security posture behind them.</span></div>
+              <div class="use"><b>Home lab</b><span>Conditional access and identity governance rehearsed live in the SC-300 study tenant.</span></div>
+            </div>
+            <a class="info__link" href="https://learn.microsoft.com/credentials/certifications/security-compliance-and-identity-fundamentals/" target="_blank" rel="noopener noreferrer">Official certification page<svg class="ic ic--sm"><use href="#i-out" /></svg></a>
+          </div>
+        </article>
+
+        <article class="cert">
+          <button class="coin" type="button" aria-haspopup="dialog">
+            <span class="sr">Details for the Google IT Support Professional Certificate</span>
+            <span class="coin__body" aria-hidden="true">
+              <svg class="coin__face" viewBox="0 0 200 200"><defs><path id="cp4" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0" /></defs><circle class="c-rim" cx="100" cy="100" r="96" /><circle class="c-ring" cx="100" cy="100" r="86" /><circle class="c-field" cx="100" cy="100" r="62" /><text class="c-text"><textPath href="#cp4">GOOGLE CAREER CERTIFICATE · IT SUPPORT PROFESSIONAL · </textPath></text><text class="c-code c-code--sm" x="100" y="106">IT SUPPORT</text></svg>
+            </span>
+          </button>
+          <h3 class="cert__name">IT Support Professional</h3>
+          <p class="cert__sum">Networking, operating systems, sysadmin, security.</p>
+          <div class="cert__info" hidden>
+            <p class="info__about">Google's professional certificate covering support from the ground up: troubleshooting method, networking, operating systems, system administration and security basics.</p>
+            <h4 class="info__h">Where it works in the record</h4>
+            <div class="info__uses">
+              <div class="use"><b>The Reject Shop</b><span>L1 and L2 troubleshooting discipline and store networking across a national fleet.</span></div>
+              <div class="use"><b>MYER</b><span>Frontline support fundamentals: POS, reporting and working alongside non-technical teams.</span></div>
+            </div>
+            <a class="info__link" href="https://www.coursera.org/professional-certificates/google-it-support" target="_blank" rel="noopener noreferrer">Official certification page<svg class="ic ic--sm"><use href="#i-out" /></svg></a>
+          </div>
+        </article>
+
+      </div>
+      <div class="forge">
+        <span class="forge__blank" aria-hidden="true"></span>
+        <p><b>In the forge: SC-300.</b> Identity and Access Administrator, in progress and sat against a live lab tenant.</p>
+      </div>
+    </section>
+
+    <!-- ================================ ACT V ================================ -->
+    <section class="act" id="training" data-act="Act V · The Training">
+      <header class="card"><h2 class="card__h"><span class="card__n">Act V</span><span class="card__t">The Training</span></h2></header>
+      <div class="training">
+        <div class="training__col">
+          <h3 class="training__h">Study</h3>
+          <ul class="schools">
+            <li><img src="assets/logos/rmit.png" alt="" loading="lazy" /><div><strong>BBus, Information Systems</strong><span>RMIT University, 2019 to 2021</span></div></li>
+            <li><img src="assets/logos/rmit.png" alt="" loading="lazy" /><div><strong>Diploma of Information Technology</strong><span>RMIT University, 2018</span></div></li>
+            <li class="schools--plain"><div><strong>Foundation, Information Technology</strong><span>Trinity College, University of Melbourne, 2016 to 2017</span></div></li>
+          </ul>
         </div>
-      </section>
+        <div class="training__col">
+          <h3 class="training__h">Armoury</h3>
+          <ul class="kit">
+            <li>Microsoft Intune</li><li>Entra ID</li><li>Windows Autopilot</li><li>Azure</li>
+            <li>Microsoft 365</li><li>Active Directory</li><li>PowerShell</li><li>Exchange</li>
+            <li>Teams</li><li>Endpoint security</li><li>ITSM and change</li><li>SOE builds</li>
+          </ul>
+          <p class="training__now"><b>Now studying</b> SC-300, identity and access, in a live lab tenant so the exam and the estate stay the same subject.</p>
+        </div>
+      </div>
+    </section>
 
-    </main>
+    <!-- ================================ END CREDITS ================================ -->
+    <section class="credits" id="credits" data-act="End credits" aria-labelledby="creditsH">
+      <div class="credits__window">
+        <div class="credits__roll">
+          <h2 class="credits__h" id="creditsH"><span>Myat Thu</span><span>The Director's Cut</span></h2>
+          <dl class="roll">
+            <div><dt>Starring</dt><dd>Myat Thu</dd></div>
+            <div><dt>Service Desk Analyst</dt><dd>IPH Limited</dd></div>
+            <div><dt>IT Support Analyst</dt><dd>The Reject Shop</dd></div>
+            <div><dt>Support Engineer</dt><dd>Azured Consulting</dd></div>
+            <div><dt>Office Support Assistant</dt><dd>MYER</dd></div>
+            <div><dt>Certified</dt><dd>MD-102, AZ-900, SC-900, Google IT Support</dd></div>
+            <div><dt>In production</dt><dd>SC-300</dd></div>
+            <div><dt>Educated at</dt><dd>RMIT University, Trinity College</dd></div>
+            <div><dt>Photography</dt><dd>Jannis Brandt, Viktor Talashuk, Samsung Memory, via Unsplash</dd></div>
+            <div><dt>Set in</dt><dd>Cinzel and Barlow</dd></div>
+            <div><dt>Filmed on location</dt><dd>Melbourne, Australia</dd></div>
+            <div><dt>Trackers used</dt><dd>None</dd></div>
+          </dl>
+        </div>
+      </div>
+      <div class="post">
+        <p class="post__line">Myat Thu will return</p>
+        <p class="post__sub">Open to full-time and contract roles in Melbourne. Replies within a day.</p>
+        <div class="post__acts">
+          <a class="btn btn--gold" href="mailto:myatgeorgethu@gmail.com"><svg class="ic"><use href="#i-mail" /></svg>myatgeorgethu@gmail.com</a>
+          <a class="btn" href="https://www.linkedin.com/in/myat-george-thu/" target="_blank" rel="noopener noreferrer"><svg class="ic"><use href="#i-in" /></svg>LinkedIn profile<svg class="ic ic--sm"><use href="#i-out" /></svg></a>
+          <a class="btn" href="assets/Myat-Thu-CV.pdf" download><svg class="ic"><use href="#i-down" /></svg>Download CV</a>
+        </div>
+        <a class="post__top" href="#top">Watch it again</a>
+      </div>
+    </section>
 
-    <footer class="colophon">
-      <span>© 2026 Myat Thu</span>
-      <span>Nameplate in Pirata One · set in Playfair Display, PT Serif and Libre Franklin</span>
-      <span>Printed as one page, no trackers, no cookies</span>
-      <a href="#front" data-cur="front page">Back to the front page ↑</a>
-    </footer>
-  </div>
+  </main>
 
   <script src="vendor/gsap.min.js" defer></script>
   <script src="vendor/ScrollTrigger.min.js" defer></script>
