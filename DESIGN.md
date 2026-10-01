@@ -185,7 +185,7 @@ A monochrome warm grade: near-black umbers lit by a single bronze-to-gold light,
 
 **Display Font:** Cinzel (with Trajan Pro, Times New Roman, serif), self-hosted, weight 700 throughout.
 **Body Font:** Barlow (with Helvetica Neue, Arial, sans-serif), 400, 400 italic, 600.
-**Label/Mono Font:** Barlow Condensed (with Arial Narrow, sans-serif), 500 and 600, always uppercase and widely tracked.
+**Label/Mono Font:** Barlow Condensed (with Arial Narrow, sans-serif), 600, always uppercase and widely tracked.
 
 **Character:** Carved Roman capitals for everything that is a title, credit-block condensed caps for everything that is a slate or credit, and a plain, open sans for anything the visitor actually reads. The display face announces; the body face never performs.
 
@@ -268,6 +268,9 @@ A rendered hammered-bronze plate (assets/material/shield.webp) with a cream enam
 
 ### Coin (signature)
 A struck bronze coin (assets/material/coin.webp) as an SVG with the certification name set around the rim on a text path and the code struck in Cinzel at the center. It is a button that opens the notice. Hover and focus tilt it in 3D (rotateX 10deg, rotateY -14deg); a specular glint sweeps across it once on entry.
+
+### Dailies (signature)
+Act IV lays three real app screens on a strip of 35mm dailies: a pitch strip tilted -3deg, backlit gold sprocket holes along both edges, edge print in ash credit caps, and portrait frames held in a 40% bronze hairline with a light warm grade (UI captures are lightly graded, never pushed to the photograph grade, so the product stays legible). The reel and the sprocket rows run with the scroll on the speed ramp, hanging while the strip is centered. Without the script the frames scroll sideways with snap; under reduced motion the strip lies flat. A one-sheet follows: the title in gold Cinzel that slams in once, a tracked tagline, a logline and outline buttons, beside a notes list.
 
 ### Framed Shot
 Photographs are graded, never raw: sepia and contrast filter, a bronze soft-light wash at 42%, a gold top light and a pitch vignette. Every stock image carries an italic ash photo credit beneath its script.

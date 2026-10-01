@@ -38,9 +38,10 @@ static site from GitHub Pages at https://myatgthu.github.io/resume.io/.
 - No "About me" section. The owner removed it.
 - Company logos stay on the record, and each opens that company's website in
   a new tab.
-- Each certification opens an overlay: what it covers, a link to the
-  official certification page, and where it is used in current and previous
-  roles.
+- Each certification opens an overlay: what it covers, where it is used in
+  current and previous roles, the date it was earned, and the owner's own
+  verification link. Show the earned date only; the owner chose to leave
+  expiry to the verification page.
 - LinkedIn profile linked: https://www.linkedin.com/in/myat-george-thu/
 - No em dashes anywhere in the copy.
 - Type must be comfortably large; the owner flagged small text before.
@@ -54,7 +55,8 @@ static site from GitHub Pages at https://myatgthu.github.io/resume.io/.
 - Name: Myat Thu. Email: myatgeorgethu@gmail.com. Location: Melbourne,
   Australia.
 - Portrait at assets/portrait.jpg; company logos in assets/logos/; the CV at
-  assets/Myat-Thu-CV.pdf is the authoritative source for role history.
+  assets/Myat-Thu-CV.pdf (printed from cv/cv.html) is the authoritative source
+  for role history.
 
 ## Evidence on Hand
 
@@ -69,12 +71,23 @@ static site from GitHub Pages at https://myatgthu.github.io/resume.io/.
   builds.
 - Field-report photographs are Unsplash stock (Jannis Brandt, Viktor
   Talashuk, Samsung Memory), credited on the page.
+- Verification links, supplied by the owner: MD-102 (earned 23 Nov 2024),
+  AZ-900 (2 Nov 2022), SC-900 (26 Oct 2023) on Microsoft Learn; Google IT
+  Support (4 Jun 2023) on Coursera.
+- Side project: Poker Money (pokermoney.org), a free app that settles private
+  home poker games. Facts come from the MyatGThu/poker-tracker README: built
+  by four people with the owner as lead contributor, vanilla JS on a
+  Cloudflare Worker and D1, installable and offline, Android TWA, verified
+  sign-up, server-enforced roles, tenant isolation, 380 tests in 16 suites,
+  no ads or tracking. Co-builders stay unnamed on the site.
+- Trinity College crest: the College shield cropped from the owner-supplied
+  lockup.
 - Confirmed by the owner: open to full-time and contract roles in
   Melbourne, and replies within a day. Open to work in 2026.
 - Withdrawn by the owner: any claim of studying in a live lab tenant.
 - Absent, never to be fabricated: testimonials, employer quotes, metrics
-  beyond the CV, personal certificate verification links, a correct Trinity
-  College mark, photographs of his actual workplace.
+  beyond the CV and the Poker Money README, photographs of his actual
+  workplace.
 
 ## Product Principles
 

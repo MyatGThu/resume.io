@@ -8,7 +8,7 @@ and deployed to GitHub Pages.
 
 ## The film
 
-One page, read as a movie: a cold open, five acts, and end credits.
+One page, read as a movie: a cold open, six acts, and end credits.
 
 - **Cold open.** A studio-style ident, an anamorphic flare across the lens,
   the letterbox bars slamming open, then the name forged out of embers. It
@@ -21,10 +21,12 @@ One page, read as a movie: a cold open, five acts, and end credits.
   that company's website.
 - **Act III, Field Reports.** Three case files as graded 2.39:1 shots with
   scene slates and script notes. Stock photographs, credited.
-- **Act IV, The Immortals.** Four certifications struck as bronze coins. Press
-  one for what it covers, where it is used in the record, and the official
-  certification page. SC-300 glows in the forge.
-- **Act V, The Training.** Study and the armoury.
+- **Act IV, The Side Project.** Poker Money, run as a strip of dailies with
+  three real app screens, then its one-sheet and links to pokermoney.org.
+- **Act V, The Immortals.** Four certifications struck as bronze coins. Press
+  one for what it covers, where it is used in the record, when it was earned,
+  and Myat's own verification link. SC-300 glows in the forge.
+- **Act VI, The Training.** Study, with each school's crest, and the armoury.
 - **End credits and the post-credits scene.** The whole record as rolling
   credits, then email, LinkedIn and the CV.
 
@@ -53,7 +55,8 @@ are vendored; the light field is a single raw WebGL fragment shader.
 index.html            # the film
 styles.css            # the grade and every act's material
 main.js               # speed-ramp clock, light field, cold open, acts, credits
-assets/               # portrait, logos, photographs, CV, self-hosted fonts
+assets/               # portrait, logos, photographs, app screens, CV, fonts
+cv/                   # CV source: cv.html, printed to the PDF by render.cjs
 vendor/               # GSAP, ScrollTrigger, Lenis
 .github/workflows/    # GitHub Pages: publishes only the files above
 PRODUCT.md            # product truth for design work
@@ -76,8 +79,9 @@ least 5.7:1 on its ground.
 - Field report photographs are Unsplash stock (Jannis Brandt, Viktor
   Talashuk, Samsung Memory), credited on the page and in the end credits.
   Each image file carries its origin in its metadata.
-- Certification links point at the official certification pages; swap in
-  personal verification links to make the coins prove the badge.
+- Every coin links to Myat's own credential on Microsoft Learn or Coursera.
+- The CV is designed in `cv/cv.html` and printed to `assets/Myat-Thu-CV.pdf`
+  with `NODE_PATH=$(npm root -g) node cv/render.cjs` (needs Playwright).
 - Design work used the [Impeccable](https://github.com/pbakaus/impeccable)
   skill. Its automatic design-detector hooks are not enabled; turn them on
   with `/impeccable hooks on` if wanted.

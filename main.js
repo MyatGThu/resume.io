@@ -219,15 +219,16 @@
     },
     set: function (mode, dur) {
       var h = mode === "cinema" ? matte.cinema() : matte.reading();
-      if (!hasGSAP || calm) { root.style.setProperty("--mt", h + "px"); root.style.setProperty("--mb", h + "px"); return; }
       gsap.to(root, { "--mt": h + "px", "--mb": h + "px", duration: dur == null ? 0.7 : dur, ease: "expo.out", overwrite: "auto" });
-    }
+    },
+    // ScrollTrigger onToggle: widen to cinema while a pinned sequence plays, release any hang after.
+    follow: function (self) { matte.set(self.isActive ? "cinema" : "reading"); if (!self.isActive) film.hold = 0; }
   };
 
   /* the flare that crosses the lens */
   function flare(y, dur) {
     var f = document.getElementById("flare");
-    if (!f || !hasGSAP || calm) return;
+    if (!f) return;
     gsap.killTweensOf(f);
     gsap.set(f, { top: y, xPercent: -35, opacity: 0 });
     gsap.timeline()
@@ -237,7 +238,7 @@
   }
 
   function shake(el, amp) {
-    if (!hasGSAP || calm || !el) return;
+    if (!el) return;
     var a = amp || 8;
     gsap.timeline()
       .to(el, { x: a, y: -a * 0.6, duration: 0.04 })
@@ -319,7 +320,7 @@
       var struck = false;
       ScrollTrigger.create({
         trigger: card, start: "top top", end: "+=150%", pin: true, pinSpacing: true,
-        onToggle: function (self) { matte.set(self.isActive ? "cinema" : "reading"); if (!self.isActive) film.hold = 0; },
+        onToggle: matte.follow,
         onUpdate: function (self) {
           var p = self.progress, r = ramp(p);
           tl.progress(r);
@@ -346,7 +347,7 @@
     var struck = -1;
     ScrollTrigger.create({
       trigger: sec, start: "top top", end: "+=" + (n * 85) + "%", pin: sec.querySelector(".beats__stage"), pinSpacing: true,
-      onToggle: function (self) { matte.set(self.isActive ? "cinema" : "reading"); if (!self.isActive) film.hold = 0; },
+      onToggle: matte.follow,
       onUpdate: function (self) {
         var x = Math.min(self.progress * n, n - 0.0001), seg = Math.floor(x), local = x - seg, r = ramp(local);
         tl.progress((seg + r) / n);
@@ -405,7 +406,25 @@
     if (cast) gsap.fromTo(cast, { scale: 1.22 }, { scale: 1, ease: "none", scrollTrigger: { trigger: ".cast", start: "top bottom", end: "bottom top", scrub: true } });
   }
 
-  /* -------------------------------------- act IV: coins struck in bronze */
+  /* ------------------------- act IV: the dailies run through the gate */
+  function initDailies() {
+    var strip = document.querySelector(".dailies__strip"), reel = document.querySelector(".dailies__frames");
+    var title = document.querySelector(".sheet__t");
+    if (!strip || !reel) return;
+    reel.style.overflow = "visible";
+    // Wide screens drift the reel through the gate; narrow ones run every frame past it.
+    var travel = function () { return Math.max(reel.scrollWidth - strip.clientWidth, window.innerWidth * 0.24); };
+    gsap.timeline({ scrollTrigger: { trigger: strip, start: "top bottom", end: "bottom top", scrub: true, invalidateOnRefresh: true } })
+      .fromTo([reel].concat(gsap.utils.toArray(".dailies__edge")), { x: function () { return travel() / 2; } }, { x: function () { return -travel() / 2; }, ease: ramp }, 0)
+      .fromTo(strip, { "--run": "0px" }, { "--run": function () { return -travel() + "px"; }, ease: ramp }, 0);
+    if (title) gsap.from(title, {
+      scale: 1.5, opacity: 0, filter: "blur(14px)", duration: 0.55, ease: "expo.in",
+      scrollTrigger: { trigger: ".sheet", start: "top 80%", once: true },
+      onComplete: function () { gsap.set(title, { clearProps: "filter,transform" }); slam(title, document.querySelector(".sheet")); }
+    });
+  }
+
+  /* --------------------------------------- act V: coins struck in bronze */
   function initCoins() {
     var bodies = gsap.utils.toArray(".coin__body");
     if (!bodies.length) return;
@@ -432,7 +451,7 @@
     gsap.fromTo(roll, { y: function () { return window.innerHeight * 0.55; } }, {
       y: function () { return -dist() + window.innerHeight * 0.55; }, ease: "none",
       scrollTrigger: { trigger: win, start: "top top", end: function () { return "+=" + dist(); }, pin: true, scrub: true, invalidateOnRefresh: true,
-        onToggle: function (self) { matte.set(self.isActive ? "cinema" : "reading"); } }
+        onToggle: matte.follow }
     });
     var line = document.querySelector(".post__line");
     if (line) {
@@ -587,6 +606,7 @@
       initCards();
       initRecord();
       initReports();
+      initDailies();
       initCoins();
       initCredits();
       ScrollTrigger.refresh();
