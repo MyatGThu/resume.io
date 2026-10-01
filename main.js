@@ -13,6 +13,7 @@
   var calm = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
   var hasGSAP = typeof window.gsap !== "undefined" && typeof window.ScrollTrigger !== "undefined";
   var lenis = null;
+  var BUILD = ((document.currentScript || {}).src || "").split("v=")[1] || "";
 
   if (hasGSAP) gsap.registerPlugin(ScrollTrigger);
 
@@ -26,6 +27,7 @@
   var film = {
     scale: 1,          // how fast time runs in the light field
     hold: 0,           // 1 while a title hangs in the air
+    dawn: 1,           // 0 to 1 as the cold open raises the aspis out of the dark
     vel: 0,            // scroll velocity, normalised
     shock: { x: 0, y: 0, age: 99 },
     strike: function (el) {
@@ -284,6 +286,7 @@
       rotation: function () { return (Math.random() - 0.5) * 70; }
     });
     gsap.set(after, { opacity: 0, y: 18 });
+    film.dawn = 0;
     root.style.setProperty("--mt", matte.cinema() + "px");
     root.style.setProperty("--mb", matte.cinema() + "px");
 
@@ -294,6 +297,7 @@
       .fromTo(open, { "--open-top": "0%", "--open-bot": "0%" }, { "--open-top": "-100%", "--open-bot": "100%", duration: 0.7, ease: "expo.inOut" }, 1.8)
       /* the forge: letters rush in, hang in the air, then lock */
       .add(function () { film.hold = 1; }, 2.35)
+      .to(film, { dawn: 1, duration: 2.6, ease: ramp }, 1.85)
       .to(letters, { opacity: 1, filter: "blur(0px)", scale: 1, x: 0, y: 0, rotation: 0, duration: 2.4, ease: ramp, stagger: { each: 0.03, from: "center" } }, 2.0)
       .add(function () { film.hold = 0; slam(document.querySelector(".title__word"), title); flare(document.querySelector(".title__word").getBoundingClientRect().top + 40, 0.8); }, 4.5)
       .to(after, { opacity: 1, y: 0, duration: 0.8, ease: "expo.out", stagger: 0.08 }, 4.6)
@@ -346,7 +350,7 @@
     });
     var struck = -1;
     ScrollTrigger.create({
-      trigger: sec, start: "top top", end: "+=" + (n * 85) + "%", pin: sec.querySelector(".beats__stage"), pinSpacing: true,
+      id: "beats", trigger: sec, start: "top top", end: "+=" + (n * 85) + "%", pin: sec.querySelector(".beats__stage"), pinSpacing: true,
       onToggle: matte.follow,
       onUpdate: function (self) {
         var x = Math.min(self.progress * n, n - 0.0001), seg = Math.floor(x), local = x - seg, r = ramp(local);
@@ -590,6 +594,12 @@
     });
   }
 
+  /* ------------------------------- the aspis: real 3D, loaded after first paint */
+  function initAspis() {
+    if ((navigator.connection || {}).saveData || !window.WebGL2RenderingContext) return;
+    import("./aspis.js?v=" + BUILD).then(function (m) { m.mount(film); }).catch(function () {});
+  }
+
   /* ---------------------------------------------------------------- boot */
   function boot() {
     initAtmos();
@@ -601,6 +611,7 @@
       root.classList.remove("is-opening");
       return;
     }
+    initAspis();
     coldOpen(function () {
       initBeats();
       initCards();

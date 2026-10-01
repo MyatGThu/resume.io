@@ -47,8 +47,8 @@ static site from GitHub Pages at https://myatgthu.github.io/resume.io/.
 - Type must be comfortably large; the owner flagged small text before.
 - Scrollbars hidden on both axes.
 - Personal data limited to name, location and email on purpose.
-- Static HTML, CSS and JS with GSAP, ScrollTrigger and Lenis vendored; no
-  build step. Deployed by the GitHub Pages workflow on push to main.
+- Static HTML, CSS and JS with GSAP, ScrollTrigger, Lenis and a tree-shaken
+  three.js (for the Aspis only) vendored; no build step. Deployed by the GitHub Pages workflow on push to main.
 
 ## Brand Commitments
 

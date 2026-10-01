@@ -91,6 +91,18 @@ a { color: inherit; text-underline-offset: 0.22em; text-decoration-thickness: 1p
 }
 .atmos.is-live { opacity: 1; }
 
+/* the aspis: a live bronze shield between the light and the page; its poster frame stands in without WebGL or motion */
+.aspis { position: fixed; inset: 0; z-index: 1; width: 100%; height: 100%; pointer-events: none; opacity: 0; }
+.aspis-still {
+  position: absolute; inset: 0; z-index: -1; width: 100%; height: 100%; object-fit: cover; pointer-events: none;
+  transition: opacity 0.8s var(--out);
+}
+.has-aspis .aspis-still, .is-opening .aspis-still { opacity: 0; }
+@media (max-aspect-ratio: 1/1) {
+  /* portrait: hold the shield behind the name instead of cropping into it */
+  .aspis-still { inset: 15% auto auto -30%; width: 160%; max-width: none; height: auto; -webkit-mask-image: linear-gradient(transparent, #000 25%, #000 75%, transparent); mask-image: linear-gradient(transparent, #000 25%, #000 75%, transparent); }
+}
+
 /* film grain: fine, warm, and never louder than the picture */
 .grain {
   position: fixed; inset: -60px; z-index: 70; pointer-events: none;
@@ -639,7 +651,7 @@ main { position: relative; z-index: 2; overflow-x: hidden; overflow-x: clip; }
 }
 
 @media print {
-  .atmos, .grain, .flare, .open, .matte, .scenes, .cmodal, .skip, .title__cue { display: none !important; }
+  .atmos, .aspis, .aspis-still, .grain, .flare, .open, .matte, .scenes, .cmodal, .skip, .title__cue { display: none !important; }
   body { background: #fff; color: #000; }
   .card { min-height: 0; padding: 20px 0; }
 }
