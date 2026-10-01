@@ -6,7 +6,6 @@
    ========================================================================== */
 
 @font-face { font-family: "Cinzel"; src: url("assets/fonts/cinzel.woff2") format("woff2"); font-weight: 500 900; font-display: swap; }
-@font-face { font-family: "Barlow Condensed"; src: url("assets/fonts/barlow-condensed-500.woff2") format("woff2"); font-weight: 500; font-display: swap; }
 @font-face { font-family: "Barlow Condensed"; src: url("assets/fonts/barlow-condensed-600.woff2") format("woff2"); font-weight: 600; font-display: swap; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-400.woff2") format("woff2"); font-weight: 400; font-style: normal; font-display: swap; }
 @font-face { font-family: "Barlow"; src: url("assets/fonts/barlow-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; font-display: swap; }
@@ -18,7 +17,6 @@
   --umber: #1a130d;
   --bronze: #b07a3c;
   --gold: #f2c572;
-  --ember: #ff8a3d;
   --bone: #efe6d6;
   --ash: #a8998a;
 
@@ -184,7 +182,7 @@ a { color: inherit; text-underline-offset: 0.22em; text-decoration-thickness: 1p
 .open::after { bottom: 0; transform: translateY(var(--open-bot, 0)); }
 .open__ident {
   position: relative; z-index: 1; margin: 0;
-  font-family: var(--credit); font-weight: 500; font-size: clamp(13px, 1.3vw, 17px); line-height: 1; letter-spacing: 0.6em; text-transform: uppercase;
+  font-family: var(--credit); font-weight: 600; font-size: clamp(13px, 1.3vw, 17px); line-height: 1; letter-spacing: 0.6em; text-transform: uppercase;
   color: var(--bone); opacity: 0;
 }
 .open__skip {
@@ -397,7 +395,44 @@ main { position: relative; z-index: 2; overflow-x: hidden; overflow-x: clip; }
 .notes dd { margin: 0; font-size: 18px; line-height: 1.5; color: #ddd3c3; }
 .photo-credit { margin: 16px 0 0; font-size: 15px; line-height: 1.4; font-style: italic; color: var(--ash); }
 
-/* ============================ ACT IV · THE IMMORTALS ===================== */
+/* ============================ ACT IV · THE SIDE PROJECT ================== */
+
+/* A strip of dailies laid on a light table: backlit sprocket holes, edge print, three frames. */
+.dailies { margin: 0 0 clamp(56px, 8vw, 110px); }
+.dailies__strip {
+  position: relative; width: 112%; margin-left: -6%; padding: 34px 0; overflow: hidden;
+  background: var(--pitch); transform: rotate(-3deg);
+  box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(176, 122, 60, 0.22);
+}
+.dailies__strip::before, .dailies__strip::after {
+  content: ""; position: absolute; left: 0; right: 0; height: 14px; pointer-events: none;
+  background: repeating-linear-gradient(90deg, rgba(242, 197, 114, 0.6) 0 18px, transparent 18px 34px);
+  background-position: var(--run, 0px) 0;
+  box-shadow: 0 0 22px rgba(255, 138, 61, 0.18);
+}
+.dailies__strip::before { top: 10px; }
+.dailies__strip::after { bottom: 10px; }
+.dailies__edge {
+  display: flex; justify-content: center; gap: clamp(40px, 9vw, 160px); margin: 0; padding: 10px 0;
+  font-family: var(--credit); font-weight: 600; font-size: 15px; line-height: 1; letter-spacing: 0.3em; text-transform: uppercase; color: var(--ash);
+}
+.dailies__edge span { flex: none; white-space: nowrap; }
+/* Swipeable without the script; main.js takes the reel over and runs it with the scroll. */
+.dailies__frames { list-style: none; margin: 0; padding: 1px 0; display: flex; justify-content: center; gap: clamp(16px, 2vw, 26px); overflow-x: auto; scroll-snap-type: x mandatory; }
+.dailies__frames li { flex: none; scroll-snap-align: center; width: clamp(196px, 21vw, 300px); aspect-ratio: 412 / 915; overflow: hidden; background: var(--umber); outline: 1px solid rgba(176, 122, 60, 0.4); }
+.dailies__frames img { display: block; width: 100%; height: 100%; object-fit: cover; filter: sepia(0.2) saturate(1.05) contrast(1.05); }
+.dailies .shot__slate { justify-content: center; margin-top: 34px; }
+
+.sheet {
+  max-width: 1180px; margin: 0 auto; padding: 0 var(--gut);
+  display: grid; grid-template-columns: minmax(0, 0.95fr) minmax(0, 1fr); gap: clamp(28px, 5vw, 72px); align-items: start;
+}
+.sheet__t { margin: 0; font-family: var(--display); font-weight: 700; font-size: clamp(48px, 6.4vw, 96px); line-height: 0.95; letter-spacing: 0.02em; color: var(--gold); text-shadow: 0 4px 14px rgba(5, 4, 3, 0.7), 0 22px 70px rgba(255, 138, 61, 0.28); }
+.sheet__tag { margin: 18px 0 22px; font-family: var(--credit); font-weight: 600; font-size: clamp(17px, 1.6vw, 22px); line-height: 1.2; letter-spacing: 0.3em; text-transform: uppercase; color: var(--bone); }
+.sheet__log { margin: 0; max-width: 46ch; font-size: clamp(19px, 1.5vw, 21px); line-height: 1.55; color: #e2d8c8; }
+.sheet__acts { display: flex; flex-wrap: wrap; gap: 14px; margin-top: 30px; }
+
+/* ============================ ACT V · THE IMMORTALS ====================== */
 
 .vault {
   max-width: 1180px; margin: 0 auto; padding: 0 var(--gut);
@@ -454,7 +489,6 @@ main { position: relative; z-index: 2; overflow-x: hidden; overflow-x: clip; }
 .schools { list-style: none; margin: 0; padding: 0; display: grid; }
 .schools li { display: grid; grid-template-columns: 52px minmax(0, 1fr); align-items: center; gap: 18px; padding: 16px 0; border-bottom: 1px solid rgba(176, 122, 60, 0.18); }
 .schools img { width: 52px; height: auto; background: #f4ecdd; padding: 6px; border-radius: 2px; }
-.schools li.schools--plain { grid-template-columns: minmax(0, 1fr); }
 .schools strong { display: block; font-weight: 600; font-size: 19px; color: var(--bone); }
 .schools span { font-size: 16.5px; line-height: 1.45; color: var(--ash); }
 .kit { list-style: none; margin: 0 0 28px; padding: 0; display: flex; flex-wrap: wrap; gap: 10px; }
@@ -535,6 +569,8 @@ main { position: relative; z-index: 2; overflow-x: hidden; overflow-x: clip; }
 .use { display: grid; gap: 4px; padding: 14px 16px; border: 1px solid rgba(176, 122, 60, 0.3); background: rgba(5, 4, 3, 0.35); }
 .use b { font-family: var(--credit); font-weight: 600; font-size: 15px; line-height: 1.3; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone); }
 .use span { font-size: 17px; line-height: 1.5; color: #d9cfbf; }
+.info__earned { display: flex; flex-wrap: wrap; gap: 6px 18px; margin: 0 0 18px; font-family: var(--credit); font-weight: 600; font-size: 15px; line-height: 1.3; letter-spacing: 0.18em; text-transform: uppercase; color: var(--bone); }
+.info__earned span { color: var(--ash); letter-spacing: 0.12em; }
 .info__link {
   display: inline-flex; align-items: center; gap: 10px; min-height: 48px; padding: 0 20px;
   border: 1px solid var(--bronze); color: var(--gold); text-decoration: none;
@@ -550,6 +586,7 @@ main { position: relative; z-index: 2; overflow-x: hidden; overflow-x: clip; }
   .scene, .scene--flip { grid-template-columns: 1fr; }
   .scene--flip .shot { order: 0; }
   .vault { grid-template-columns: repeat(2, minmax(0, 1fr)); row-gap: 56px; }
+  .sheet { grid-template-columns: 1fr; }
 }
 
 @media (max-width: 760px) {
@@ -578,6 +615,9 @@ main { position: relative; z-index: 2; overflow-x: hidden; overflow-x: clip; }
   .roll dt, .roll dd { text-align: center; }
   .scenes__list a { grid-template-columns: 1fr; gap: 6px; }
   .forge { flex-direction: column; text-align: center; }
+  .dailies__strip { transform: rotate(-2deg); }
+  .dailies__frames { justify-content: flex-start; padding: 1px var(--gut); }
+  .dailies__edge { justify-content: flex-start; gap: 64px; padding-left: var(--gut); }
 }
 
 @media (max-width: 420px) {
@@ -595,6 +635,7 @@ main { position: relative; z-index: 2; overflow-x: hidden; overflow-x: clip; }
   .open, .flare { display: none !important; }
   .coin__body, .shield, .btn, .scenes, .matte__act { transition: none; }
   .cmodal__card { animation: none; }
+  .dailies__strip { transform: none; width: 100%; margin-left: 0; }
 }
 
 @media print {
