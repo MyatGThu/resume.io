@@ -13,6 +13,13 @@ One page, read as a movie: a cold open, six acts, and end credits.
 - **Cold open.** A studio-style ident, an anamorphic flare across the lens,
   the letterbox bars slamming open, then the name forged out of embers. It
   runs about five seconds, can be skipped, and plays once per tab.
+- **The Aspis.** A bronze hoplite shield bearing the MT monogram, rendered
+  live in Three.js. The cold open raises it out of the dark behind the name,
+  then the trailer shoots it in five tableaux: the title, a looming low angle,
+  raking light across the hammer marks, an eclipse with god rays breaking
+  past the rim, and a hero shot from above. The camera holds on each and
+  whips between them. With reduced motion, no WebGL or Save-Data on, a
+  rendered poster frame stands in.
 - **The short version.** Trailer intertitles, one fact at a time: four
   hundred stores, forty to fifty tickets a day, one escalation point.
 - **Act I, The Lead.** The casting frame and the story.
@@ -49,15 +56,19 @@ live in the top bar, a running timecode and progress scrub in the bottom.
 ## Stack
 
 Vanilla HTML, CSS and JS with no build step. GSAP, ScrollTrigger and Lenis
-are vendored; the light field is a single raw WebGL fragment shader.
+are vendored; the light field is a single raw WebGL fragment shader. The
+Aspis is the only Three.js on the page: `vendor/three.min.js` is three r186
+tree-shaken to the names `aspis.js` imports (rebuild it with esbuild if that
+list changes), loaded with a dynamic `import()` after first paint.
 
 ```
 index.html            # the film
 styles.css            # the grade and every act's material
 main.js               # speed-ramp clock, light field, cold open, acts, credits
+aspis.js              # the 3D shield: geometry, studio light, god rays, tableaux
 assets/               # portrait, logos, photographs, app screens, CV, fonts
 cv/                   # CV source: cv.html, printed to the PDF by render.cjs
-vendor/               # GSAP, ScrollTrigger, Lenis
+vendor/               # GSAP, ScrollTrigger, Lenis, three.js (tree-shaken)
 .github/workflows/    # GitHub Pages: publishes only the files above
 PRODUCT.md            # product truth for design work
 .impeccable/          # design brief and review evidence (not published)
