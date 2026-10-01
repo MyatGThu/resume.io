@@ -245,7 +245,7 @@ main { position: relative; z-index: 2; overflow-x: hidden; overflow-x: clip; }
   letter-spacing: 0.16em; margin-right: -0.16em; text-transform: uppercase; color: var(--bone); text-wrap: balance;
 }
 .card__d { font-stretch: 75%; font-weight: 600; font-size: clamp(15px, 1.3vw, 18px); line-height: 1.3; letter-spacing: 0.3em; padding-left: 0.3em; text-transform: uppercase; color: var(--stone); }
-.level--inverted .card__d { color: #ef5a43; }
+.level--inverted .card__d { color: var(--forward); }
 
 .room { max-width: 1240px; margin: 0 auto; padding: 0 var(--gut); }
 .room + .room { margin-top: clamp(110px, 14vw, 200px); }

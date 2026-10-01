@@ -1,301 +1,293 @@
 ---
-name: Myat Thu, The Director's Cut
-description: A resume shot as a feature film. Letterbox matte, bronze and ember grade, molten gold as the only light.
+name: Myat Thu, Going Under
+description: A resume as a Nolan descent. Graphite with no blue, bone white type in one variable face, warmth only from practical sodium light, Tenet red only inside the inversion.
 colors:
-  black: "#0b0906"
-  pitch: "#050403"
-  umber: "#1a130d"
-  bronze: "#b07a3c"
-  gold: "#f2c572"
-  ember: "#ff8a3d"
-  bone: "#efe6d6"
-  bone-dim: "#ddd3c3"
-  ash: "#a8998a"
+  void: "#0b0b0c"
+  pitch: "#050505"
+  graphite: "#171717"
+  ash: "#9b9993"
+  stone: "#cfccc6"
+  bone: "#ecebe7"
+  sodium: "#f0a43a"
+  forward: "#e5533d"
+  plate: "#e4e2dc"
+  paper: "#f5f4f0"
+  ink: "#161616"
+  rule: "#c9c7c1"
+  print-ash: "#5f5d58"
+  print-label: "#3a3936"
 typography:
   display:
-    fontFamily: "Cinzel, Trajan Pro, Times New Roman, serif"
-    fontSize: "clamp(56px, 14.2vw, 250px)"
-    fontWeight: 700
-    lineHeight: 0.9
-    letterSpacing: "0.035em"
-  display-act:
-    fontFamily: "Cinzel, Trajan Pro, Times New Roman, serif"
-    fontSize: "clamp(64px, 13vw, 220px)"
-    fontWeight: 700
-    lineHeight: 0.88
-    letterSpacing: "0.05em"
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(42px, 8.4vw, 148px)"
+    fontWeight: 300
+    lineHeight: 1
+    letterSpacing: "0.2em"
+    fontVariation: "'wdth' 125"
+  display-card:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(38px, 7.6vw, 136px)"
+    fontWeight: 200
+    lineHeight: 1
+    letterSpacing: "0.16em"
+    fontVariation: "'wdth' 125"
+  beat:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(36px, 6.2vw, 104px)"
+    fontWeight: 300
+    lineHeight: 1.06
+    letterSpacing: "0.02em"
+    fontVariation: "'wdth' 112"
   headline:
-    fontFamily: "Cinzel, Trajan Pro, Times New Roman, serif"
-    fontSize: "clamp(40px, 7.4vw, 124px)"
-    fontWeight: 700
-    lineHeight: 1.02
-    letterSpacing: "0.01em"
-  title:
-    fontFamily: "Cinzel, Trajan Pro, Times New Roman, serif"
-    fontSize: "clamp(30px, 3.6vw, 52px)"
-    fontWeight: 700
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(28px, 3.4vw, 50px)"
+    fontWeight: 300
     lineHeight: 1.05
-    letterSpacing: "0.02em"
-  title-sm:
-    fontFamily: "Cinzel, Trajan Pro, Times New Roman, serif"
-    fontSize: "clamp(21px, 1.7vw, 25px)"
-    fontWeight: 700
-    lineHeight: 1.25
-    letterSpacing: "0.02em"
-  body-lede:
-    fontFamily: "Barlow, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(18px, 1.55vw, 22px)"
+    letterSpacing: "0.12em"
+    fontVariation: "'wdth' 125"
+  title:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(30px, 3.2vw, 46px)"
     fontWeight: 400
-    lineHeight: 1.5
+    lineHeight: 1.08
+    letterSpacing: "0.01em"
+    fontVariation: "'wdth' 112"
+  title-plain:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(24px, 2.3vw, 32px)"
+    fontWeight: 600
+    lineHeight: 1.15
+    fontVariation: "'wdth' 100"
+  body-lead:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(21px, 1.9vw, 26px)"
+    fontWeight: 400
+    lineHeight: 1.45
   body:
-    fontFamily: "Barlow, Helvetica Neue, Arial, sans-serif"
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
     fontSize: "19px"
     fontWeight: 400
     lineHeight: 1.65
-  body-sm:
-    fontFamily: "Barlow, Helvetica Neue, Arial, sans-serif"
-    fontSize: "18px"
-    fontWeight: 400
-    lineHeight: 1.5
+    fontFeature: "'tnum' 1"
+    fontVariation: "'wdth' 100"
   label:
-    fontFamily: "Barlow Condensed, Arial Narrow, sans-serif"
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
     fontSize: "15px"
     fontWeight: 600
     lineHeight: 1
-    letterSpacing: "0.2em"
-  label-button:
-    fontFamily: "Barlow Condensed, Arial Narrow, sans-serif"
-    fontSize: "15px"
+    letterSpacing: "0.18em"
+    fontVariation: "'wdth' 75"
+  label-card:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(15px, 1.3vw, 18px)"
     fontWeight: 600
-    lineHeight: 1
-    letterSpacing: "0.16em"
-  label-title-card:
-    fontFamily: "Barlow Condensed, Arial Narrow, sans-serif"
-    fontSize: "clamp(17px, 1.9vw, 26px)"
-    fontWeight: 600
-    lineHeight: 1
-    letterSpacing: "0.52em"
+    lineHeight: 1.3
+    letterSpacing: "0.3em"
+    fontVariation: "'wdth' 75"
 rounded:
-  none: "0"
-  hairline: "2px"
-  round: "50%"
+  none: "0px"
 spacing:
+  matte: "48px"
   gutter: "clamp(20px, 5vw, 72px)"
-  matte: "52px"
-  matte-mobile: "46px"
+  room-max: "1240px"
+  room-gap: "clamp(110px, 14vw, 200px)"
+  level-tail: "clamp(90px, 12vw, 180px)"
   control-height: "48px"
-  act-tail: "clamp(80px, 12vw, 180px)"
 components:
-  button-gold:
-    backgroundColor: "{colors.gold}"
-    textColor: "{colors.black}"
-    typography: "{typography.label-button}"
-    rounded: "{rounded.none}"
-    padding: "0 22px"
-    height: "48px"
-  button-gold-hover:
+  button-key:
     backgroundColor: "{colors.bone}"
-    textColor: "{colors.black}"
-  button-bronze:
-    backgroundColor: "rgba(5, 4, 3, 0.55)"
-    textColor: "{colors.bone}"
-    typography: "{typography.label-button}"
+    textColor: "{colors.void}"
+    typography: "{typography.label}"
     rounded: "{rounded.none}"
     padding: "0 22px"
     height: "48px"
-  button-bronze-hover:
-    backgroundColor: "{colors.bronze}"
-    textColor: "{colors.black}"
-  kit-tag:
+  button-key-hover:
+    backgroundColor: "{colors.sodium}"
+    textColor: "{colors.void}"
+  button-ghost:
+    backgroundColor: "rgba(5, 5, 5, 0.5)"
     textColor: "{colors.bone}"
     typography: "{typography.label}"
     rounded: "{rounded.none}"
-    padding: "9px 14px"
+    padding: "0 22px"
+    height: "48px"
+  button-ghost-hover:
+    backgroundColor: "{colors.bone}"
+    textColor: "{colors.void}"
   matte-bar:
     backgroundColor: "{colors.pitch}"
     textColor: "{colors.ash}"
     typography: "{typography.label}"
-    height: "{spacing.matte}"
+    height: "48px"
     padding: "0 clamp(20px, 5vw, 72px)"
-  notice-plaque:
-    backgroundColor: "{colors.umber}"
+  kit-tag:
+    backgroundColor: "transparent"
     textColor: "{colors.bone}"
-    rounded: "{rounded.none}"
-    padding: "8px"
-    width: "min(680px, 100%)"
-  notice-link:
-    textColor: "{colors.gold}"
     typography: "{typography.label}"
     rounded: "{rounded.none}"
-    padding: "0 20px"
-    height: "48px"
-  notice-link-hover:
-    backgroundColor: "{colors.gold}"
-    textColor: "{colors.black}"
+    padding: "9px 14px"
+  logo-plate:
+    backgroundColor: "{colors.plate}"
+    rounded: "{rounded.none}"
+    padding: "14%"
+  notice-card:
+    backgroundColor: "{colors.graphite}"
+    textColor: "{colors.bone}"
+    rounded: "{rounded.none}"
+    padding: "clamp(26px, 4vw, 46px)"
+    width: "min(680px, 100%)"
 ---
 
-# Design System: Myat Thu, The Director's Cut
+# Design System: Myat Thu, Going Under
 
 ## Overview
 
-**Creative North Star: "The Director's Cut"**
+**Creative North Star: "Going Under"**
 
-The page is a film print, not a page. Everything plays inside a 2.39:1 letterbox: two pitch-black matte bars pinned top and bottom carry the navigation, the running act, a timecode and the first actions, and the picture between them is graded crushed black with molten gold as the single light source. Sections are acts. Each act opens on a full-viewport title card in carved Roman capitals, and every sequence rides one easing curve, the speed ramp: time slams in, hangs in slow motion, then whips out. A WebGL light field of god rays, smoke and embers runs behind the picture, and its clock follows the ramp, so the embers freeze whenever a title hangs.
+Scrolling is a descent. The page starts in reality at a table under one lamp, goes under through a short trailer of beats, and walks four dream levels (The City, The Hotel, The Inversion, Limbo) before the kick returns it to reality with the top still spinning. Every level shares one graphite world and one variable face; what changes per level is the light field behind the page, the speed of time on the matte clock, and the way content enters. The visual system is the camera and the grade, not the set dressing.
 
-Density is cinematic: one idea per frame, huge display type, long dark pauses, and reading text set large (19px body, 15px floor for every label) because the owner has flagged small type before. Materials are physical and warm: hammered bronze shields carry company marks, struck bronze coins carry certifications, photographs are pushed into a sepia, high-contrast bronze grade with a soft-light bronze wash and a vignette. Film grain sits over everything at 7.5% opacity. Nothing is rounded except metal, which is round.
+The world is graphite with no blue. Near-black ground, concrete greys, bone white type. The only warmth is practical light, a sodium amber lamp, used for focus, hover and the lamp itself. Tenet red marks forward time and lives only inside the inversion. Typography is Archivo alone, stretched wide and thin for title cards, condensed for the chrome that frames the film, and set at normal width for reading. Density is low and type is large: body copy is 19px and no reading text drops below 15px.
 
-Every module degrades. Without JavaScript, WebGL or motion the acts print as a plain readable document: beats become one quiet list, cards drop their full-viewport height, and the cold open and flare never appear.
+Framing is the signature. A 35mm matte sits at the top and bottom of the viewport, carrying the name, the current level, the dream clock and contact. On every level card the bars retract and the card fills the frame like an IMAX shot, then the bars return. A live, machined steel spinning top (Three.js) opens and closes the film.
 
 **Key Characteristics:**
-- A fixed letterbox matte (52px, 46px under 760px) that thickens to true 2.39:1 during title cards and relaxes to reading height between them.
-- One light: gold and ember glow from above and below; there is no cool color anywhere.
-- Carved Roman display capitals, condensed tracked credit labels, a plain humanist sans for reading.
-- Square corners on every rectangle; circles only for struck or hammered metal.
-- The speed ramp as the single motion grammar, with a reduced-motion path that removes it entirely.
+- Graphite and bone, no blue anywhere, warmth only from practical light.
+- One variable face (Archivo) at three widths: 125% for title cards, 75% for chrome, 100% for reading.
+- Square corners throughout; hairline bone rules at low alpha do the dividing.
+- A fixed 35mm matte that retracts to full frame on level cards.
+- A WebGL light field behind the page, one world per level, stilled under reduced motion.
+- Evidence imagery graded to monochrome; colour returns only on interaction.
 
 ## Colors
 
-A monochrome warm grade: near-black umbers lit by a single bronze-to-gold light, with ember as the heat in the glow and no cool hue at all.
+A near-neutral graphite ramp with a faint warm cast, one practical-light amber, and one time-coded red.
 
 ### Primary
-- **Molten Gold** (gold): the only light source. Display names, act numerals, credit headings, the primary button, focus rings, text selection, the scrub progress line, active states and hover color for every text link. The most used token in the build by a wide margin.
+- **Bone White** (bone): All primary type, the key button fill, the depth bar, matte highlights and selection background. It is the light the page reads by.
 
 ### Secondary
-- **Cast Bronze** (bronze): the metal. Hairline rules and borders (at 18% to 70% alpha on dark), slate dots, list tick marks, the title-card flanking rules, the soft-light wash over photographs, and the hover fill of the outline button.
+- **Sodium Lamp** (sodium): Practical light only. Focus outlines (2px, 4px offset), hover on the key button, matte links, menu button and level list entries, the caret, and the radial lamp glow on the body without WebGL. Also the amber in the shader (lamp cone, city street light, hotel sconces, limbo fire).
 
 ### Tertiary
-- **Ember** (ember): heat, never fill. Appears only as glow: the low sun at the foot of the page background (12%), the halo under gold display type (26% to 30%), the lens flare, the shield impact ring, and the molten forge blank. Never a text or surface color.
+- **Forward Red** (forward): Tenet red. The matte clock when time runs backwards, the Poker Money tagline, and the inversion's card descriptor. Never outside the inversion.
 
 ### Neutral
-- **Crushed Black** (black): the page ground and the ink on gold and bronze fills.
-- **Pitch** (pitch): the matte bars, the cold-open shutters, and at 55% to 97% alpha every dark scrim (button rest fill, scene-selection overlay, notice backdrop, photo vignettes).
-- **Umber** (umber): the only raised surface: the notice plaque, and the placeholder behind photographs while they load.
-- **Bone** (bone): primary text, headings that are not gold, and the matte's active links.
-- **Dimmed Bone** (bone-dim): secondary reading text in lists, notes and the forge line, one step down from bone so the lead line of a block leads.
-- **Ash** (ash): metadata and chrome: matte labels, slates, role meta, photo credits, certification summaries, inactive credit roll labels.
+- **Void** (void): The ground. Page background, theme colour, button text on bone.
+- **Pitch** (pitch): Matte bars, the cold open, the dailies strip, scrims (levels menu at 0.97, notice backdrop at 0.86) and the end cut to black.
+- **Graphite** (graphite): The only raised surface. Notice card, portrait and shot frames before the image loads.
+- **Ash** (ash): Metadata and chrome: slates, credits labels, dates, the clock rate, photo credits. 6.9:1 on void.
+- **Stone** (stone): Supporting reading text: loglines, story paragraphs, notes, role points.
+- **Logo Plate** (plate): The pale card behind company and school logos so their marks read on the dark; lightens to #f3f2ee on hover.
+- **Paper, Ink, Rule, Print Ash, Print Label** (paper, ink, rule, print-ash, print-label): The printed CV only. Pale paper in graphite ink under a pitch title band; rules at rule, dates at print-ash, organisations at print-label.
 
 ### Named Rules
-**The One Light Rule.** Gold is the only light. Anything that glows, is selected, is focused or is hovered turns gold; ember may only appear as the glow around gold, never as its own fill or text.
+**The No Blue Rule.** Nothing in the world carries a blue hue: not the greys, not the shader, not the photographs. Greys sit at a faint warm cast (hue near 90 in OKLCH, chroma under 0.01).
 
-**The Warm Grade Rule.** Every neutral is a warm umber. Pure grey, pure white text and any cool hue are outside the grade; the brightest text is bone.
+**The Practical Light Rule.** Sodium is light, not paint. It appears where something is lit or answered (focus, hover, the lamp), and never as a section fill, border colour or text colour at rest.
 
-**The Alpha Bronze Rule.** Bronze dividers are drawn as bronze at reduced alpha on black (about 0.18 for quiet row rules, 0.35 for section rules, 0.45 to 0.7 for control borders), not as separate grey tokens.
+**The Forward Time Rule.** Forward red appears only inside the inversion. Outside it, emphasis is bone against stone or ash.
 
 ## Typography
 
-**Display Font:** Cinzel (with Trajan Pro, Times New Roman, serif), self-hosted, weight 700 throughout.
-**Body Font:** Barlow (with Helvetica Neue, Arial, sans-serif), 400, 400 italic, 600.
-**Label/Mono Font:** Barlow Condensed (with Arial Narrow, sans-serif), 600, always uppercase and widely tracked.
+**Display Font:** Archivo variable (weight 100 to 900, width 62% to 125%), with Helvetica Neue and Arial
+**Body Font:** Archivo at 100% width
+**Label/Mono Font:** Archivo at 75% width, uppercase
 
-**Character:** Carved Roman capitals for everything that is a title, credit-block condensed caps for everything that is a slate or credit, and a plain, open sans for anything the visitor actually reads. The display face announces; the body face never performs.
+**Character:** One family plays every role by changing width. Wide thin capitals read as title cards; condensed tracked capitals read as edge code and slates; plain width reads as the record.
 
 ### Hierarchy
-- **Display** (Cinzel 700, clamp(56px, 14.2vw, 250px), 0.9, 0.035em): the name on the opening title, set near full width in gold. One per page.
-- **Display Act** (Cinzel 700, clamp(64px, 13vw, 220px), 0.88, 0.05em): act numerals on title cards, gold with ember halo. 18vw on phones.
-- **Headline** (Cinzel 700, clamp(40px, 7.4vw, 124px), 1.02): trailer beats and the post-credits line, balanced, max 16ch.
-- **Title** (Cinzel 700, clamp(30px, 3.6vw, 52px), 1.05, 0.02em): role titles, scene headings, the notice title. Credits heading and section heads in the training act use the same face at their own clamps.
-- **Title Small** (Cinzel 700, clamp(21px, 1.7vw, 25px), 1.25): certification names under coins.
-- **Body Lede** (Barlow 400, clamp(18px, 1.55vw, 22px), 1.5): loglines and act ledes, centered, 44 to 52ch.
-- **Body** (Barlow 400, 19px, 1.65; 18px under 760px): default reading text, 60ch max. Italic is reserved for scene context lines and photo credits.
-- **Body Small** (Barlow 400, 18px, 1.5): list points and note definitions in dimmed bone. 17px is the lowest reading size in the build.
-- **Label** (Barlow Condensed 600, 15px, 1, 0.2em, uppercase): matte, slates, meta rows, note terms, credit roll terms. Tracking flexes from 0.12em (tags) to 0.3em (cast credit) by role; size never drops below 15px.
-- **Label Title Card** (Barlow Condensed 600, clamp(17px, 1.9vw, 26px), 0.52em, uppercase): the act name under the numeral, flanked by bronze rules; 0.32em on phones.
+- **Display** (300, clamp(42px, 8.4vw, 148px), 1, width 125%, tracking 0.2em): The name in reality, uppercase.
+- **Display Card** (200, clamp(38px, 7.6vw, 136px), 1, width 125%, tracking 0.16em): Level card titles. The end line uses the same voice at clamp(36px, 6.4vw, 112px).
+- **Beat** (300, clamp(36px, 6.2vw, 104px), 1.06, width 112%): The trailer beats, one fact held at a time, max 18ch.
+- **Headline** (300, clamp(28px, 3.4vw, 50px), 1.05, width 125%, tracking 0.12em, uppercase): Room headings, followed by a hairline that runs to the edge.
+- **Title** (400, clamp(30px, 3.2vw, 46px), 1.08, width 112%): Field report headings, notice titles, training headings.
+- **Title Plain** (600, clamp(24px, 2.3vw, 32px), 1.15, width 100%): Role titles and certificate names.
+- **Body Lead** (400, clamp(21px, 1.9vw, 26px), 1.45): The first paragraph of the lead story and the logline band (18px to 22px).
+- **Body** (400, 19px, 1.65; 18px under 760px): Reading text, 44ch to 60ch measure, tabular figures throughout.
+- **Label** (600, 15px, width 75%, tracking 0.18em, uppercase): All chrome: matte, buttons, slates, notes terms, credits labels, kit tags, certificate codes.
+- **Label Card** (600, clamp(15px, 1.3vw, 18px), width 75%, tracking 0.3em, uppercase): The single descriptor line beneath a level card title.
 
 ### Named Rules
-**The Three Voices Rule.** Cinzel titles, Barlow Condensed credits, Barlow reads. A face never borrows another's job: no condensed body copy, no Cinzel labels, no tracked caps in paragraphs.
+**The One Face Rule.** Archivo is the only family, on the site and in the printed CV. Hierarchy comes from width and weight, never from a second face.
 
-**The Fifteen Floor Rule.** No HTML label, caption or chrome text is set below 15px, and no reading text below 17px.
+**The Optical Centre Rule.** Centred, widely tracked capitals carry a negative right margin (or matching left padding) equal to their letter-spacing so the trailing track does not push them off centre.
 
-**The Wide-Track Balance Rule.** Any label tracked at 0.3em or more is padded on the left by its own tracking value so the block centers optically.
+**The Fifteen Pixel Floor.** No text on screen is smaller than 15px. The owner flagged small type; labels gain tracking, not shrinkage.
 
 ## Layout
 
-The viewport is the frame. Two fixed matte bars (`--mt` / `--mb`, 52px, 46px under 760px) sit at z-index 60 and every full-height section pads itself by the matte height plus its own air, so content never slides under the bars. During title cards the script widens the mattes toward a true 2.39:1 frame (capped at 16% of viewport height each) and eases them back with expo.out.
+The page is a vertical film. Full-viewport frames (100svh) carry the title, the trailer, each level card, the credits and the kick; between cards, rooms hold the record at a max width of 1240px with a fluid side gutter of clamp(20px, 5vw, 72px). The fixed matte reserves 48px top and bottom (46px under 760px), and full-frame sections pad by the matte height so nothing sits under the bars.
 
-Horizontal rhythm comes from one gutter, clamp(20px, 5vw, 72px), used for every section's side padding and for the matte. Acts are a stack of full-viewport (100svh) moments: opening title, trailer beats, five act title cards each followed by content, end credits, post-credits. Each act closes with clamp(80px, 12vw, 180px) of dark air.
+Rooms follow each other at clamp(110px, 14vw, 200px); a level ends with clamp(90px, 12vw, 180px) of dark before the next card. Within rooms, content sits on two-column grids (lead 0.8fr / 1fr, scene 1.25fr / 0.9fr alternating sides, sheet 0.95fr / 1fr, training 1fr / 1fr, roles 150px to 200px plate column) with gaps scaled by clamp. Certificates sit four across, two under 980px. Definition lists (notes, credits roll) pair a narrow condensed term column with a reading column and stack under 760px.
 
-Content widths are capped per act rather than globally: 1240px for the lead, 1180px for the record and the vault, 1280px for field reports, 1120px for training, 760px for the credit roll, 680px for the notice. Two-column compositions use fractional minmax grids (0.85fr / 1fr lead, 1.25fr / 0.9fr scenes, a clamp(150px, 16vw, 210px) shield column for roles) and alternate sides scene by scene.
-
-Breakpoints: 980px collapses the lead and scenes to one column and the vault to two; 760px shrinks the matte, hides the running act label and scrubber, stacks roles, notes and credits, and centers everything; 420px tightens the vault and buttons.
+Breakpoints: 980px collapses the two-column rooms; 760px shrinks the matte, hides the level label, depth bar and scroll cue, and tightens title tracking; 420px tightens buttons and certificates; portrait aspect (at most 1/1) moves the spinning top's still frame below the name.
 
 ## Elevation & Depth
 
-Depth is light, not layers. The page has one flat ground lit by radial gradients (gold from above, ember from below) and a WebGL light field; elements separate from it by glow and by deep, soft, downward drop shadows as if lit from above. There is no mid-level card elevation system: things are either on the ground, or they are heavy objects (photographs, shields, coins, the notice plaque) casting long soft shadows.
+Depth is light, not lift. The page is flat bone type on void, with depth supplied by the WebGL light field behind it, a fine animated grain (6% opacity) above it, and scrims of pitch. Shadows are long, soft and dark, used only on photographic frames and the one raised notice, as if objects hang in a dark room under an overhead lamp.
 
 ### Shadow Vocabulary
-- **Gold halo** (`text-shadow: 0 22px 70px rgba(255, 138, 61, 0.3)`): under gold display type only (name, act numerals, post-credits line), 0.26 to 0.3 alpha.
-- **Print drop** (`box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.8)`): under framed photographs (portrait and scene shots).
-- **Metal drop** (`filter: drop-shadow(0 22px 26px rgba(0, 0, 0, 0.85))`): under shields and coins, following the alpha of the rendered metal; deepens to 0 30px 34px on hover.
-- **Plaque drop** (`box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.9)`): the certification notice, the highest object.
-- **Matte seam** (`box-shadow: 0 1px 0 rgba(176, 122, 60, 0.18)`): a one-pixel bronze seam where each matte bar meets the picture.
+- **Frame hang** (`box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.85)`): Portrait and field report frames (the shot uses -24px spread).
+- **Strip hang** (`box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(236, 235, 231, 0.08)`): The tilted dailies strip.
+- **Notice lift** (`box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.9)`): The certificate notice over its pitch scrim.
+- **Totem cast** (`filter: drop-shadow(0 26px 24px rgba(0, 0, 0, 0.8))`): Totem objects, which are cut-out rasters.
 
 ### Named Rules
-**The Lit From Above Rule.** Every shadow falls downward and is soft and long. Light comes from the top of the frame (god rays, the gold radial, the highlight on the portrait), so no shadow is cast sideways or upward.
+**The Graphite Only Rule.** Graphite is the only raised surface colour. Anything that floats above the page is graphite with a bone hairline at 0.16 alpha; nothing is lighter than graphite except a logo plate.
 
-**The Grain On Top Rule.** Film grain (7.5% opacity, warm fractal noise, stepping at 0.9s only on fine pointers with motion allowed) sits above the picture and below the cold open. It is never louder than the image.
+**The Field Behind Rule.** The light field is ambience, never content. It sits at z-index 0 behind everything, is pointer-transparent, and freezes to a single frame under reduced motion.
 
 ## Shapes
 
-Rectangles are square: buttons, tags, frames, the notice plaque and every border have zero radius. The only small radius is a 2px softening on focus outlines and school logo tiles. Circles are reserved for metal and light: shield bosses, coins, the forge blank, slate dots and meta bullets (4px to 5px bronze dots). Lines are hairlines: 1px bronze rules, 1.5px list ticks and hamburger strokes, and a 1px gold-to-transparent cue line. Frames take film proportions: 2.39:1 for scene shots, 4:5 for the portrait. The scene-selection overlay opens as a horizontal iris (clip-path from a center slit to full frame), matching the letterbox.
+Every corner is square (0px): buttons, tags, frames, plates, notices, matte. Dividers are 1px bone hairlines at low alpha (0.08 on the matte, 0.1 to 0.14 between rows, 0.18 under headings, 0.26 on tags, 0.42 on ghost buttons). Images are cropped to film formats: 2.39:1 for field reports, 4:5 for the portrait, 3:2 for logo plates, phone-height frames on the dailies strip. Icons are 18px line drawings with square caps and mitred joins at 1.5px stroke, drawn in currentColor. The printed CV's round bullet dots are its one curve.
 
 ## Components
 
 ### Buttons
-Tactile, squared, credit-block caps.
-- **Shape:** square corners (0), 48px minimum height, 0 22px padding (0 16px under 420px), 18px stroked SVG icon leading with a 10px gap.
-- **Gold (primary):** gold fill, black ink. One per action row, always the email action. Hover lifts to bone fill.
-- **Bronze outline:** 70% bronze hairline on a 55% pitch scrim, bone text. Hover fills solid bronze with black ink. LinkedIn and Download CV.
-- **Hover / Focus:** 0.25s color and border transition on the out curve; active nudges down 1px; focus is the global 2px gold outline at 4px offset.
-- **Notice link:** a bronze-bordered gold-text variant inside the notice, filling gold with black ink on hover.
+Blunt and lit from inside.
+- **Shape:** Square (0px), 48px tall, 22px side padding, 10px icon gap, condensed label voice.
+- **Key:** Bone fill with void text; one per frame, always the email action. Hover turns it sodium.
+- **Ghost:** Half-pitch fill with a bone hairline at 0.42; hover floods it bone with void text. Active nudges 1px down.
+- **Verify link:** Inside the notice, a full bone outline ghost that floods bone on hover.
+- **Focus:** Sodium outline, 2px, 4px offset, on every control.
 
 ### Chips
-- **Kit tags:** 45% bronze hairline border, no fill, 9px 14px padding, label type at 0.12em in bone. Static, not interactive.
+- **Kit tags:** Transparent with a bone hairline at 0.26, 9px by 14px, label voice at 0.12em tracking. Static, not interactive.
 
 ### Cards / Containers
-- **Notice plaque:** umber surface, 1px solid bronze outer border, 8px mat, then an inner 35% bronze border with clamp(24px, 4vw, 44px) padding: a framed double-rule plaque. Rises 18px and scales from 0.97 on open (0.45s out curve). Close is a 44px square bronze-outline button that fills gold on hover.
-- **Use rows:** inside the notice, 30% bronze hairline boxes on a 35% pitch scrim, 14px 16px padding.
-- There are no generic content cards; content sits on the ground separated by bronze rules.
+- **Level card:** A full-viewport frame with a raster plate at 0.9 opacity under a void gradient scrim, the title in Display Card and one Label Card descriptor below. City, Hotel and Inversion carry plates; Limbo is currently drawn by the shader alone, its plate (assets/levels/limbo.webp) pending.
+- **Notice (certificate):** Graphite, bone hairline at 0.16, Notice lift shadow, max 680px, rises 16px in 0.4s. Close control is a 44px square outline. Usage entries inside are half-pitch panels with a 0.14 hairline.
+- **Logo plate:** Pale plate behind a grayscale logo; hover lightens the plate and returns the logo to colour. Each opens the company site.
 
 ### Navigation
-- **Matte bars:** top bar carries the Cinzel wordmark (16px, 0.16em), the running act name in gold (swapping with a 0.25s fade), and the Scenes menu button; bottom bar carries a tabular timecode, a 1px scrubber filling gold with scroll, and the email and LinkedIn actions. Links are bone, hovering gold. Under 760px the act label, scrubber and link text hide, leaving icons.
-- **Scene selection:** a 97% pitch full-screen overlay that irises open from the horizon. Rows pair a gold Cinzel act numeral with a bone credit-caps title, separated by 30% bronze rules; the title turns gold on hover or focus.
+- **Matte:** Fixed pitch bars at top and bottom, condensed label voice in ash. Top carries the wordmark (125% width, 0.32em tracking), the live level name and the Levels menu button (two lines that cross on open). Bottom carries the dream clock, a 1px depth bar and contact. Bars retract on level cards unless focus is inside them.
+- **Levels menu:** A pitch scrim at 0.97 that opens from a horizontal slit (clip-path inset 50% to 0 in 0.55s). Entries are wide thin titles over condensed descriptions, divided by hairlines; hover and focus light the title sodium.
 
-### Title Card (signature)
-A full-viewport act opener: gold Cinzel numeral over a bone credit-caps act name flanked by bronze rules. With motion it slams in from blur and scale, hangs while scaling 7% in slow motion, then whips out sideways with a stretch and blur. With reduced motion it is a static heading with generous top padding.
+### Dream Clock
+The bottom matte's clock reads hours, minutes and seconds in tabular figures beside a rate: ×1 in reality, ×20 in the City, ×400 in the Hotel, Reverse in the Inversion (counting down and turning forward red), and ∞ with dashes in Limbo.
 
-### Shield (signature)
-A rendered hammered-bronze plate (assets/material/shield.webp) with a cream enamel boss inside a double bronze ring carrying the company logo. It links to the company site. It locks into its column with a small shake and an expanding gold impact ring; hover tilts it -4deg and lifts 4px.
+### Spinning Top
+A Three.js machined steel top (metalness 1, roughness 0.24, warm grey #d6d2ca) on a pool of lamplight, lit by a warm key light (#ffc98a) and a bone rim. A WebP poster frame stands in without WebGL or under reduced motion.
 
-### Coin (signature)
-A struck bronze coin (assets/material/coin.webp) as an SVG with the certification name set around the rim on a text path and the code struck in Cinzel at the center. It is a button that opens the notice. Hover and focus tilt it in 3D (rotateX 10deg, rotateY -14deg); a specular glint sweeps across it once on entry.
-
-### Aspis (signature)
-A real-time 3D bronze hoplite shield (aspis.js, Three.js r186) on a fixed canvas between the light field and the page. Procedural geometry only: a lathe-turned dome and rolled rim, a polished groove ring, forty rivets, and an MT monogram extruded in molten gold and bent onto the curve of the dome. The bronze is hammered (a tiled dent bump map) and lit like the grade: a warm studio environment with one gold softbox overhead and a dim front bounce, a warm key from the upper left, an ember rim light from behind. A billboarded sun sits behind the shield, and god rays are its quarter-resolution occlusion smeared toward the light and added back, never painted. The cold open raises the shield out of the dark on the speed ramp; the scroll then holds on five tableaux (the title, high behind the name; a looming low angle; raking light on the hammer marks; the eclipse, face crushed to silhouette with a corona; the hero from above) with a cubic ease that hangs on each frame and whips between them, then fades out after the last beat. Portrait screens shrink the shield and its sun together so every composition holds. Beat slams jolt the camera. Reduced motion, no WebGL2 and Save-Data get assets/aspis.webp, the rendered poster frame, held behind the name.
-
-### Dailies (signature)
-Act IV lays three real app screens on a strip of 35mm dailies: a pitch strip tilted -3deg, backlit gold sprocket holes along both edges, edge print in ash credit caps, and portrait frames held in a 40% bronze hairline with a light warm grade (UI captures are lightly graded, never pushed to the photograph grade, so the product stays legible). The reel and the sprocket rows run with the scroll on the speed ramp, hanging while the strip is centered. Without the script the frames scroll sideways with snap; under reduced motion the strip lies flat. A one-sheet follows: the title in gold Cinzel that slams in once, a tracked tagline, a logline and outline buttons, beside a notes list.
-
-### Framed Shot
-Photographs are graded, never raw: sepia and contrast filter, a bronze soft-light wash at 42%, a gold top light and a pitch vignette. Every stock image carries an italic ash photo credit beneath its script.
-
-### Slates and Credits
-Small ash credit-caps lines that name a frame: the opening slate in the top-left corner of the title frame, shot slates under photographs (scene number in gold, subject in ash), the cast credit under the portrait, and the end-credit roll (ash terms right-aligned against bone values). They label frames from the corner or from below; none is stacked as a heading prefix.
+### Dailies Strip
+The side project shown as a pitch film strip, tilted -3deg (-2deg on phones, flat under reduced motion), with sprocket rows of bone dashes and condensed edge code. App frames are desaturated to 0.55 and travel with the scroll.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep gold (#f2c572) as the only lit color: hover, focus, selection, active and progress all resolve to gold.
-- **Do** set every title in Cinzel 700 and every label in Barlow Condensed 600 uppercase at 15px or larger with 0.12em to 0.3em tracking.
-- **Do** keep reading text in Barlow at 17px or larger, bone for lead lines and dimmed bone for supporting lines.
-- **Do** keep rectangles square and reserve circles for metal, light and slate dots.
-- **Do** grade every photograph (sepia and contrast filter, 42% bronze soft-light, vignette) and frame scene shots at 2.39:1.
-- **Do** route every timed sequence through the speed ramp and give each a reduced-motion path that shows the final state with no movement.
-- **Do** pad every full-height section by the matte height so nothing plays under the bars.
+- **Do** keep every surface in the graphite ramp (void, pitch, graphite) with bone, stone and ash for type.
+- **Do** reserve sodium for focus, hover and lamplight, and forward red for the inversion.
+- **Do** set every word in Archivo, choosing width by role: 125% titles, 75% chrome, 100% reading.
+- **Do** keep corners square and divide with 1px bone hairlines at 0.08 to 0.26 alpha.
+- **Do** grade evidence photographs and logos to grayscale (contrast 1.22 to 1.32, brightness 0.8 to 0.82) and let colour return only on interaction.
+- **Do** frame each level with a full-viewport card that retracts the matte, and keep the matte reachable by focus.
+- **Do** give every motion a calm path: the field freezes, the cold open is skipped, cards and notices appear without travel.
 
 ### Don't:
-- **Don't** introduce a cool hue, a pure grey or pure white text; the grade is warm umber to bone.
-- **Don't** use ember (#ff8a3d) as a fill or text color; it exists only as glow.
-- **Don't** round buttons, tags, frames or plaques.
-- **Don't** add mid-level card elevation or sideways shadows; objects are either on the ground or heavy and lit from above.
-- **Don't** stack a small tracked label above a heading as a prefix; slates label frames from a corner or from below.
-- **Don't** use em dashes in any copy.
+- **Don't** introduce any blue, including cool greys, link blue or blue-tinted shader light.
+- **Don't** use forward red outside the inversion, or sodium as a resting fill or text colour.
+- **Don't** add a second typeface or a serif display; hierarchy is width and weight within Archivo.
+- **Don't** round corners on controls, frames or containers.
+- **Don't** set screen text below 15px.
+- **Don't** put a small tracked label above a heading; the level card's single descriptor sits below its title.
+- **Don't** use hard offset shadows; depth is soft hang or light.

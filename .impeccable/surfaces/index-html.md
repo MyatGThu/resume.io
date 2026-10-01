@@ -23,8 +23,9 @@ Unresolved: real workplace photographs (stock stands in, credited).
 ## Direction contract
 
 THESIS: Scrolling is going under. The resume descends four dream levels,
-each in one Nolan world, and time dilates as it falls: the matte clock slows
-per level and runs backwards in the inversion. Refuses the dark hero plus
+each in one Nolan world, and time dilates as it falls: the field slows per level while
+the matte clock runs dream time faster, backwards in the inversion, and
+stops in limbo. Refuses the dark hero plus
 numbered sections every film-themed portfolio ships.
 
 OWN-WORLD: Graphite, no blue: near-black #0b0b0c, concrete greys, bone white

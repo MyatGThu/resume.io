@@ -1,404 +1,496 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-09-29T06:23:33+00:00",
-  "title": "Design System: Myat Thu, The Director's Cut",
+  "generatedAt": "2026-10-01T00:00:00+00:00",
+  "title": "Design System: Myat Thu, Going Under",
   "extensions": {
     "colorMeta": {
-      "black": {
+      "void": {
         "role": "neutral",
-        "displayName": "Crushed Black",
-        "canonical": "oklch(14.1% 0.008 82)",
+        "displayName": "Void",
+        "canonical": "oklch(15.0% 0.002 286)",
         "tonalRamp": [
-          "#0c0b08",
-          "#272521",
-          "#44423d",
-          "#64615c",
-          "#85827d",
-          "#a8a59f",
-          "#cbc9c4",
-          "#efeeed"
+          "#0b0b0c",
+          "#242425",
+          "#3f3f41",
+          "#5d5d5f",
+          "#7d7d7e",
+          "#9e9ea0",
+          "#c4c4c5",
+          "#eeeef0"
         ]
       },
       "pitch": {
         "role": "neutral",
         "displayName": "Pitch",
-        "canonical": "oklch(10.8% 0.005 71)",
+        "canonical": "oklch(11.5% 0.000 90)",
         "tonalRamp": [
-          "#0c0b09",
-          "#272522",
-          "#44423f",
-          "#63615e",
-          "#84827f",
-          "#a7a4a2",
-          "#cbc9c6",
-          "#efeeed"
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
         ]
       },
-      "umber": {
+      "graphite": {
         "role": "neutral",
-        "displayName": "Umber",
-        "canonical": "oklch(19.4% 0.016 62)",
+        "displayName": "Graphite",
+        "canonical": "oklch(20.5% 0.000 90)",
         "tonalRamp": [
-          "#0f0a06",
-          "#2b231d",
-          "#494039",
-          "#685f58",
-          "#8a8079",
-          "#ada39b",
-          "#d0c7c1",
-          "#f0eeec"
-        ]
-      },
-      "bronze": {
-        "role": "secondary",
-        "displayName": "Cast Bronze",
-        "canonical": "oklch(62.2% 0.103 68)",
-        "tonalRamp": [
-          "#1e0200",
-          "#441500",
-          "#653400",
-          "#87540d",
-          "#ab7537",
-          "#d0985b",
-          "#edc090",
-          "#fbecdd"
-        ]
-      },
-      "gold": {
-        "role": "primary",
-        "displayName": "Molten Gold",
-        "canonical": "oklch(84.6% 0.114 82)",
-        "tonalRamp": [
-          "#1b0400",
-          "#3f1a00",
-          "#603900",
-          "#815900",
-          "#a47a21",
-          "#c99d4a",
-          "#e7c485",
-          "#f8edda"
-        ]
-      },
-      "ember": {
-        "role": "tertiary",
-        "displayName": "Ember",
-        "canonical": "oklch(75.0% 0.167 51)",
-        "tonalRamp": [
-          "#2b0000",
-          "#5b0000",
-          "#800c00",
-          "#a63800",
-          "#cd5d00",
-          "#f58132",
-          "#ffaf78",
-          "#ffe7d6"
-        ]
-      },
-      "bone": {
-        "role": "neutral",
-        "displayName": "Bone",
-        "canonical": "oklch(92.8% 0.023 82)",
-        "tonalRamp": [
-          "#0f0a04",
-          "#2b2418",
-          "#484134",
-          "#686052",
-          "#898173",
-          "#aca495",
-          "#cfc8bc",
-          "#f0eeea"
-        ]
-      },
-      "bone-dim": {
-        "role": "neutral",
-        "displayName": "Dimmed Bone",
-        "canonical": "oklch(87.1% 0.024 80)",
-        "tonalRamp": [
-          "#0f0a04",
-          "#2b2417",
-          "#494134",
-          "#696052",
-          "#8a8172",
-          "#ada494",
-          "#d0c8bc",
-          "#f1eeea"
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
         ]
       },
       "ash": {
         "role": "neutral",
         "displayName": "Ash",
-        "canonical": "oklch(69.2% 0.028 67)",
+        "canonical": "oklch(68.3% 0.009 92)",
         "tonalRamp": [
-          "#110903",
-          "#2e2216",
-          "#4c3f32",
-          "#6c5e51",
-          "#8e8071",
-          "#b1a293",
-          "#d3c7ba",
-          "#f2eeea"
+          "#0c0b07",
+          "#26241f",
+          "#41403a",
+          "#5f5d58",
+          "#7f7d77",
+          "#a09e98",
+          "#c6c4be",
+          "#f1eee8"
+        ]
+      },
+      "stone": {
+        "role": "neutral",
+        "displayName": "Stone",
+        "canonical": "oklch(84.6% 0.009 85)",
+        "tonalRamp": [
+          "#0d0b07",
+          "#26241f",
+          "#423f3b",
+          "#605d58",
+          "#807d77",
+          "#a19e98",
+          "#c7c4be",
+          "#f1eee8"
+        ]
+      },
+      "bone": {
+        "role": "primary",
+        "displayName": "Bone White",
+        "canonical": "oklch(94.0% 0.005 95)",
+        "tonalRamp": [
+          "#0c0b09",
+          "#252421",
+          "#40403d",
+          "#5e5e5a",
+          "#7e7d7a",
+          "#9f9e9b",
+          "#c5c4c0",
+          "#efeeea"
+        ]
+      },
+      "sodium": {
+        "role": "secondary",
+        "displayName": "Sodium Lamp",
+        "canonical": "oklch(77.6% 0.146 71)",
+        "tonalRamp": [
+          "#170700",
+          "#351e00",
+          "#593703",
+          "#7f5311",
+          "#a96f19",
+          "#d78c14",
+          "#fab55c",
+          "#ffebd4"
+        ]
+      },
+      "forward": {
+        "role": "tertiary",
+        "displayName": "Forward Red",
+        "canonical": "oklch(63.5% 0.185 31)",
+        "tonalRamp": [
+          "#220000",
+          "#4c0000",
+          "#771406",
+          "#ae1701",
+          "#d5432e",
+          "#fc6851",
+          "#fdac9d",
+          "#ffe9e4"
+        ]
+      },
+      "plate": {
+        "role": "neutral",
+        "displayName": "Logo Plate",
+        "canonical": "oklch(91.3% 0.008 91)",
+        "tonalRamp": [
+          "#0c0b07",
+          "#252420",
+          "#41403b",
+          "#5f5d58",
+          "#7f7d78",
+          "#a09e99",
+          "#c6c4be",
+          "#f0eee8"
+        ]
+      },
+      "paper": {
+        "role": "neutral",
+        "displayName": "Print Paper",
+        "canonical": "oklch(96.7% 0.005 95)",
+        "tonalRamp": [
+          "#0c0b09",
+          "#252421",
+          "#40403d",
+          "#5e5e5a",
+          "#7e7d7a",
+          "#9f9e9b",
+          "#c5c4c0",
+          "#efeeea"
+        ]
+      },
+      "ink": {
+        "role": "neutral",
+        "displayName": "Print Ink",
+        "canonical": "oklch(20.0% 0.000 90)",
+        "tonalRamp": [
+          "#0b0b0b",
+          "#242424",
+          "#404040",
+          "#5d5d5d",
+          "#7d7d7d",
+          "#9e9e9e",
+          "#c4c4c4",
+          "#eeeeee"
+        ]
+      },
+      "rule": {
+        "role": "neutral",
+        "displayName": "Print Rule",
+        "canonical": "oklch(83.0% 0.009 91)",
+        "tonalRamp": [
+          "#0c0b07",
+          "#25241f",
+          "#41403b",
+          "#5f5d58",
+          "#7f7d78",
+          "#a09e99",
+          "#c6c4be",
+          "#f0eee8"
+        ]
+      },
+      "print-ash": {
+        "role": "neutral",
+        "displayName": "Print Ash",
+        "canonical": "oklch(47.9% 0.008 89)",
+        "tonalRamp": [
+          "#0d0b07",
+          "#262420",
+          "#41403b",
+          "#5f5d58",
+          "#7f7d78",
+          "#a09e99",
+          "#c6c4be",
+          "#f1eee8"
+        ]
+      },
+      "print-label": {
+        "role": "neutral",
+        "displayName": "Print Label",
+        "canonical": "oklch(34.5% 0.005 92)",
+        "tonalRamp": [
+          "#0c0b09",
+          "#252421",
+          "#41403d",
+          "#5f5d5a",
+          "#7e7d7a",
+          "#9f9e9b",
+          "#c5c4c0",
+          "#f0eeea"
         ]
       }
     },
     "typographyMeta": {
       "display": {
         "displayName": "Display",
-        "purpose": "The name on the opening title. One per page."
+        "purpose": "The name in reality."
       },
-      "display-act": {
-        "displayName": "Display Act",
-        "purpose": "Act numerals on full-viewport title cards."
+      "display-card": {
+        "displayName": "Display Card",
+        "purpose": "Level card titles and the end line."
+      },
+      "beat": {
+        "displayName": "Beat",
+        "purpose": "Trailer beats, one fact at a time."
       },
       "headline": {
         "displayName": "Headline",
-        "purpose": "Trailer beats and the post-credits line."
+        "purpose": "Room headings with a trailing hairline."
       },
       "title": {
         "displayName": "Title",
-        "purpose": "Role titles, scene headings, notice title."
+        "purpose": "Field report, notice and training headings."
       },
-      "title-sm": {
-        "displayName": "Title Small",
-        "purpose": "Certification names under coins."
+      "title-plain": {
+        "displayName": "Title Plain",
+        "purpose": "Role titles and certificate names."
       },
-      "body-lede": {
-        "displayName": "Body Lede",
-        "purpose": "Loglines and act ledes, centered, 44 to 52ch."
+      "body-lead": {
+        "displayName": "Body Lead",
+        "purpose": "Lead paragraph and logline."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Default reading text, 60ch max."
-      },
-      "body-sm": {
-        "displayName": "Body Small",
-        "purpose": "List points and note definitions in dimmed bone."
+        "purpose": "Reading text, tabular figures."
       },
       "label": {
         "displayName": "Label",
-        "purpose": "Matte, slates, meta rows, credit terms. 15px floor, uppercase."
+        "purpose": "All chrome: matte, buttons, slates, terms, tags."
       },
-      "label-button": {
-        "displayName": "Button Label",
-        "purpose": "Buttons and the skip link."
-      },
-      "label-title-card": {
-        "displayName": "Title Card Label",
-        "purpose": "Act name under the numeral, flanked by bronze rules."
+      "label-card": {
+        "displayName": "Label Card",
+        "purpose": "The one descriptor beneath a level card title."
       }
     },
     "shadows": [
       {
-        "name": "gold-halo",
-        "value": "0 22px 70px rgba(255, 138, 61, 0.3)",
-        "purpose": "text-shadow glow under gold display type only (alpha 0.26 to 0.3)."
+        "name": "frame-hang",
+        "value": "0 30px 80px -20px rgba(0, 0, 0, 0.85)",
+        "purpose": "Portrait frame; field report frames use a -24px spread."
       },
       {
-        "name": "print-drop",
-        "value": "0 30px 80px -20px rgba(0, 0, 0, 0.8)",
-        "purpose": "Under framed photographs."
+        "name": "strip-hang",
+        "value": "0 40px 90px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(236, 235, 231, 0.08)",
+        "purpose": "The tilted dailies film strip."
       },
       {
-        "name": "metal-drop",
-        "value": "drop-shadow(0 22px 26px rgba(0, 0, 0, 0.85))",
-        "purpose": "filter shadow under shields and coins; 0 30px 34px on shield hover."
-      },
-      {
-        "name": "plaque-drop",
+        "name": "notice-lift",
         "value": "0 40px 100px -20px rgba(0, 0, 0, 0.9)",
-        "purpose": "The certification notice plaque."
+        "purpose": "The certificate notice over its pitch scrim."
       },
       {
-        "name": "matte-seam",
-        "value": "0 1px 0 rgba(176, 122, 60, 0.18)",
-        "purpose": "Bronze seam where a matte bar meets the picture (negative y on the bottom bar)."
-      },
-      {
-        "name": "forge-glow",
-        "value": "0 0 0 3px #3a2410, 0 0 28px rgba(255, 138, 61, 0.55)",
-        "purpose": "Molten forge blank; pulses to 46px at 0.85 over 3.2s."
+        "name": "totem-cast",
+        "value": "drop-shadow(0 26px 24px rgba(0, 0, 0, 0.8))",
+        "purpose": "filter on cut-out totem rasters."
       }
     ],
     "motion": [
       {
         "name": "out",
         "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "All CSS state transitions (0.25s controls, 0.4s to 0.5s metal, 0.55s iris, 0.7s matte content)."
+        "purpose": "Default CSS easing for state, matte retraction and menu reveal."
       },
       {
-        "name": "in",
-        "value": "cubic-bezier(0.7, 0, 0.84, 0)",
-        "purpose": "Declared exit curve; currently unused in CSS."
+        "name": "hold",
+        "value": "cubic in-out (4t^3 / 1 - (-2t+2)^3/2)",
+        "purpose": "Scroll-scrubbed travel: hold on the frame, travel between (hotel roll, dailies run)."
       },
       {
-        "name": "speed-ramp",
-        "value": "p => 0.5 + 0.5 * (0.14u + 0.86u^3), u = 2p - 1",
-        "purpose": "The signature: slam, slow-motion hang, whip. Drives title cards, beats, the name reveal, coins and the post line; the ember field clock slows with it."
+        "name": "state",
+        "value": "0.2s",
+        "purpose": "Button and link colour changes."
       },
       {
-        "name": "expo-out",
-        "value": "expo.out (GSAP)",
-        "purpose": "Matte height changes, role reveals, shield impact ring."
+        "name": "matte-retract",
+        "value": "0.6s",
+        "purpose": "Bars leave and return around level cards (IMAX)."
+      },
+      {
+        "name": "menu-slit",
+        "value": "clip-path inset(50% 0 50% 0) to inset(0) over 0.55s",
+        "purpose": "Levels menu opens from a horizontal slit."
+      },
+      {
+        "name": "notice-rise",
+        "value": "translateY(16px) to none, 0.4s",
+        "purpose": "Certificate notice entrance."
+      },
+      {
+        "name": "card-title",
+        "value": "letter-spacing 0.5em to 0.16em, opacity 0 to 1, power2.out",
+        "purpose": "Level card title lands as the bars retract; plate scales 1.16 to 1."
       },
       {
         "name": "smooth-scroll",
         "value": "Lenis duration 1.1",
-        "purpose": "Wheel smoothing; disabled under reduced motion."
+        "purpose": "Page scroll; jumps use 1.6s."
       },
       {
-        "name": "grain-step",
-        "value": "0.9s steps(6) infinite",
-        "purpose": "Film grain jitter on fine pointers with motion allowed."
+        "name": "field-pace",
+        "value": "[1, 0.5, 0.25, 1, 0.08]",
+        "purpose": "Shader time scale per level: reality, city, hotel, inversion, limbo."
+      },
+      {
+        "name": "reduced-motion",
+        "value": "prefers-reduced-motion: reduce",
+        "purpose": "Field renders one still frame, cold open skipped, transitions and notice animation removed, dailies strip flattened, top shown as poster."
       }
     ],
     "breakpoints": [
       {
-        "name": "narrow",
-        "value": "420px"
+        "name": "collapse",
+        "value": "980px"
       },
       {
         "name": "phone",
         "value": "760px"
       },
       {
-        "name": "tablet",
-        "value": "980px"
+        "name": "narrow",
+        "value": "420px"
+      },
+      {
+        "name": "portrait",
+        "value": "max-aspect-ratio: 1/1"
       }
     ]
   },
   "components": [
     {
-      "name": "Gold Button",
+      "name": "Key Button",
       "kind": "button",
-      "refersTo": "button-gold",
-      "description": "Primary action, one per row, always the email action.",
-      "html": "<a class=\"ds-btn ds-btn--gold\" href=\"#\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M4 6.5h16v11H4z\"/><path d=\"m4.5 7 7.5 6 7.5-6\"/></svg>Email Myat</a>",
-      "css": ":host{--black:#0b0906;--pitch:#050403;--umber:#1a130d;--bronze:#b07a3c;--gold:#f2c572;--ember:#ff8a3d;--bone:#efe6d6;--ash:#a8998a;--display:\"Cinzel\",\"Trajan Pro\",\"Times New Roman\",serif;--credit:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border:1px solid rgba(176,122,60,0.7);color:var(--bone);background:rgba(5,4,3,0.55);font-family:var(--credit);font-weight:600;font-size:15px;line-height:1;text-transform:uppercase;letter-spacing:0.16em;text-decoration:none;border-radius:0;cursor:pointer;transition:background-color .25s var(--out),color .25s var(--out),border-color .25s var(--out),transform .25s var(--out);} .ds-btn:hover{background:var(--bronze);border-color:var(--bronze);color:var(--black);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:2px solid var(--gold);outline-offset:4px;} .ds-btn--gold{background:var(--gold);border-color:var(--gold);color:var(--black);} .ds-btn--gold:hover{background:var(--bone);border-color:var(--bone);color:var(--black);}"
+      "refersTo": "button-key",
+      "description": "The one primary action per frame, always email. Bone fill, sodium on hover.",
+      "html": "<a class=\"ds-btn ds-btn-key\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"square\" stroke-linejoin=\"miter\" aria-hidden=\"true\"><path d=\"M4 6.5h16v11H4z\"/><path d=\"m4.5 7 7.5 6 7.5-6\"/></svg>Email Myat</a>",
+      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:0;text-decoration:none;cursor:pointer;font-family:var(--face);font-stretch:75%;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;font-size:15px;line-height:1;transition:background-color .2s var(--out),color .2s var(--out),border-color .2s var(--out);} .ds-btn:focus-visible{outline:2px solid var(--sodium);outline-offset:4px;} .ds-btn:active{transform:translateY(1px);} .ds-btn-key{background:var(--bone);color:var(--void);border:1px solid var(--bone);} .ds-btn-key:hover{background:var(--sodium);border-color:var(--sodium);}"
     },
     {
-      "name": "Bronze Outline Button",
+      "name": "Ghost Button",
       "kind": "button",
-      "refersTo": "button-bronze",
-      "description": "Secondary actions such as LinkedIn and Download CV.",
-      "html": "<a class=\"ds-btn\" href=\"#\"><svg width=\"18\" height=\"18\" viewBox=\"0 0 24 24\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" stroke-linecap=\"round\" stroke-linejoin=\"round\"><path d=\"M12 5v12M6.5 11.5 12 17l5.5-5.5M6 20h12\"/></svg>Download CV</a>",
-      "css": ":host{--black:#0b0906;--pitch:#050403;--umber:#1a130d;--bronze:#b07a3c;--gold:#f2c572;--ember:#ff8a3d;--bone:#efe6d6;--ash:#a8998a;--display:\"Cinzel\",\"Trajan Pro\",\"Times New Roman\",serif;--credit:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border:1px solid rgba(176,122,60,0.7);color:var(--bone);background:rgba(5,4,3,0.55);font-family:var(--credit);font-weight:600;font-size:15px;line-height:1;text-transform:uppercase;letter-spacing:0.16em;text-decoration:none;border-radius:0;cursor:pointer;transition:background-color .25s var(--out),color .25s var(--out),border-color .25s var(--out),transform .25s var(--out);} .ds-btn:hover{background:var(--bronze);border-color:var(--bronze);color:var(--black);} .ds-btn:active{transform:translateY(1px);} .ds-btn:focus-visible{outline:2px solid var(--gold);outline-offset:4px;} "
-    },
-    {
-      "name": "Kit Tag",
-      "kind": "chip",
-      "refersTo": "kit-tag",
-      "description": "Static skill tag with a bronze hairline.",
-      "html": "<ul class=\"ds-kit\"><li>Intune</li><li>Entra ID</li><li>Microsoft 365</li></ul>",
-      "css": ":host{--black:#0b0906;--pitch:#050403;--umber:#1a130d;--bronze:#b07a3c;--gold:#f2c572;--ember:#ff8a3d;--bone:#efe6d6;--ash:#a8998a;--display:\"Cinzel\",\"Trajan Pro\",\"Times New Roman\",serif;--credit:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-kit{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:10px;} .ds-kit li{padding:9px 14px;border:1px solid rgba(176,122,60,0.45);font-family:var(--credit);font-weight:600;font-size:15px;line-height:1;text-transform:uppercase;letter-spacing:0.12em;color:var(--bone);}"
+      "refersTo": "button-ghost",
+      "description": "Secondary actions (LinkedIn, CV, external links). Hairline outline that floods bone on hover.",
+      "html": "<div style=\"background:#0b0b0c;padding:24px;display:flex;gap:12px\"><a class=\"ds-btn ds-btn-ghost\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"square\" stroke-linejoin=\"miter\" aria-hidden=\"true\"><path d=\"M12 5v12M6.5 11.5 12 17l5.5-5.5M6 20h12\"/></svg>Download CV</a><a class=\"ds-btn ds-btn-ghost\" href=\"#\">LinkedIn<svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"square\" stroke-linejoin=\"miter\" aria-hidden=\"true\"><path d=\"M8 16 16 8M9.5 8H16v6.5\"/></svg></a></div>",
+      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:0;text-decoration:none;cursor:pointer;font-family:var(--face);font-stretch:75%;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;font-size:15px;line-height:1;transition:background-color .2s var(--out),color .2s var(--out),border-color .2s var(--out);} .ds-btn:focus-visible{outline:2px solid var(--sodium);outline-offset:4px;} .ds-btn:active{transform:translateY(1px);} .ds-btn-ghost{background:rgba(5,5,5,0.5);color:var(--bone);border:1px solid rgba(236,235,231,0.42);} .ds-btn-ghost:hover{background:var(--bone);border-color:var(--bone);color:var(--void);}"
     },
     {
       "name": "Matte Bar",
       "kind": "nav",
       "refersTo": "matte-bar",
-      "description": "Fixed letterbox bar carrying wordmark, running act and menu.",
-      "html": "<header class=\"ds-matte\"><a class=\"ds-matte__mark\" href=\"#\">Myat Thu</a><span class=\"ds-matte__act\">Act II &#183; The Record</span><button class=\"ds-matte__btn\" type=\"button\">Scenes</button></header>",
-      "css": ":host{--black:#0b0906;--pitch:#050403;--umber:#1a130d;--bronze:#b07a3c;--gold:#f2c572;--ember:#ff8a3d;--bone:#efe6d6;--ash:#a8998a;--display:\"Cinzel\",\"Trajan Pro\",\"Times New Roman\",serif;--credit:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-matte{display:flex;align-items:flex-end;gap:24px;height:52px;padding:0 32px 14px;background:var(--pitch);box-shadow:0 1px 0 rgba(176,122,60,0.18);font-family:var(--credit);font-weight:600;font-size:15px;line-height:1;text-transform:uppercase;letter-spacing:0.2em;color:var(--ash);} .ds-matte__mark{color:var(--bone);text-decoration:none;font-family:var(--display);font-weight:700;letter-spacing:0.16em;font-size:16px;} .ds-matte__act{color:var(--gold);flex:1;} .ds-matte__btn{background:none;border:0;padding:4px 0;cursor:pointer;color:var(--bone);font:inherit;letter-spacing:inherit;text-transform:inherit;} .ds-matte__btn:hover,.ds-matte__mark:hover{color:var(--gold);} .ds-matte a:focus-visible,.ds-matte__btn:focus-visible{outline:2px solid var(--gold);outline-offset:4px;}"
+      "description": "The fixed 35mm matte: wordmark, live level name, Levels menu; retracts on level cards.",
+      "html": "<header class=\"ds-matte\"><a class=\"ds-matte__mark\" href=\"#\">Myat Thu</a><span class=\"ds-matte__level\">The City</span><button class=\"ds-matte__menu\" type=\"button\">Levels<i></i></button></header>",
+      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-matte{display:flex;align-items:center;gap:24px;height:48px;padding:0 32px;background:var(--pitch);color:var(--ash);border-bottom:1px solid rgba(236,235,231,0.08);font-family:var(--face);font-stretch:75%;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;font-size:15px;line-height:1;} .ds-matte__mark{color:var(--bone);text-decoration:none;font-stretch:125%;font-weight:500;letter-spacing:0.32em;} .ds-matte__level{flex:1;color:var(--bone);} .ds-matte__menu{display:inline-flex;align-items:center;gap:12px;background:none;border:0;padding:4px 0;color:var(--bone);font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;} .ds-matte__menu i{position:relative;width:26px;height:9px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor;} .ds-matte__menu:hover{color:var(--sodium);} .ds-matte a:focus-visible,.ds-matte__menu:focus-visible{outline:2px solid var(--sodium);outline-offset:4px;}"
     },
     {
-      "name": "Title Card",
+      "name": "Dream Clock",
       "kind": "custom",
-      "refersTo": "display-act",
-      "description": "Act opener: gold Cinzel numeral over a flanked credit-caps act name.",
-      "html": "<h2 class=\"ds-card\"><span class=\"ds-card__n\">Act II</span><span class=\"ds-card__t\">The Record</span></h2>",
-      "css": ":host{--black:#0b0906;--pitch:#050403;--umber:#1a130d;--bronze:#b07a3c;--gold:#f2c572;--ember:#ff8a3d;--bone:#efe6d6;--ash:#a8998a;--display:\"Cinzel\",\"Trajan Pro\",\"Times New Roman\",serif;--credit:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-card{margin:0;padding:48px 16px;display:grid;justify-items:center;gap:20px;text-align:center;background:var(--black);} .ds-card__n{font-family:var(--display);font-weight:700;font-size:96px;line-height:0.88;letter-spacing:0.05em;color:var(--gold);text-shadow:0 22px 70px rgba(255,138,61,0.26);} .ds-card__t{display:flex;align-items:center;gap:22px;font-family:var(--credit);font-weight:600;font-size:20px;line-height:1;letter-spacing:0.52em;padding-left:0.52em;text-transform:uppercase;color:var(--bone);} .ds-card__t::before,.ds-card__t::after{content:\"\";width:60px;height:1px;background:var(--bronze);}"
+      "description": "Bottom matte clock with the level's time rate; turns forward red when time runs backwards.",
+      "html": "<div class=\"ds-clockbar\"><span class=\"ds-clock\"><b>&times;20</b><span>00:42:10</span></span><span class=\"ds-depth\"><i></i></span></div><div class=\"ds-clockbar ds-is-backwards\"><span class=\"ds-clock\"><b>Reverse</b><span>00:03:51</span></span><span class=\"ds-depth\"><i style=\"transform:scaleX(.7)\"></i></span></div>",
+      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-clockbar{display:flex;align-items:center;gap:24px;height:48px;padding:0 32px;background:var(--pitch);border-top:1px solid rgba(236,235,231,0.08);font-family:var(--face);font-stretch:75%;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;font-size:15px;line-height:1;} .ds-clock{display:inline-flex;align-items:baseline;gap:14px;color:var(--bone);letter-spacing:0.12em;font-variant-numeric:tabular-nums;} .ds-clock b{min-width:4.2em;font-weight:600;color:var(--ash);} .ds-is-backwards .ds-clock b,.ds-is-backwards .ds-clock span{color:var(--forward);} .ds-depth{position:relative;flex:1;height:1px;background:rgba(236,235,231,0.14);} .ds-depth i{position:absolute;inset:0;background:var(--bone);transform-origin:left;transform:scaleX(.4);}"
     },
     {
-      "name": "Role Meta Row",
-      "kind": "custom",
-      "refersTo": "label",
-      "description": "Company in gold, then ash meta separated by bronze dots, closed by a bronze rule.",
-      "html": "<div class=\"ds-role\"><h3 class=\"ds-role__t\">Service Desk Analyst</h3><p class=\"ds-role__meta\"><b>IPH Limited</b><span>Melbourne</span><span>Since May 2025</span></p></div>",
-      "css": ":host{--black:#0b0906;--pitch:#050403;--umber:#1a130d;--bronze:#b07a3c;--gold:#f2c572;--ember:#ff8a3d;--bone:#efe6d6;--ash:#a8998a;--display:\"Cinzel\",\"Trajan Pro\",\"Times New Roman\",serif;--credit:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-role{background:var(--black);padding:24px;} .ds-role__t{margin:0;font-family:var(--display);font-weight:700;font-size:40px;line-height:1.05;letter-spacing:0.02em;color:var(--bone);} .ds-role__meta{display:flex;flex-wrap:wrap;align-items:center;gap:8px 18px;margin:12px 0 0;padding-bottom:18px;border-bottom:1px solid rgba(176,122,60,0.35);font-family:var(--credit);font-weight:600;font-size:15px;line-height:1.3;letter-spacing:0.2em;text-transform:uppercase;color:var(--ash);} .ds-role__meta b{color:var(--gold);font-weight:600;} .ds-role__meta span::before{content:\"\";display:inline-block;width:4px;height:4px;margin:0 18px 3px 0;border-radius:50%;background:var(--bronze);}"
-    },
-    {
-      "name": "Notice Plaque",
+      "name": "Level Card",
       "kind": "card",
-      "refersTo": "notice-plaque",
-      "description": "Double-ruled umber plaque for certification details.",
-      "html": "<div class=\"ds-plaque\"><div class=\"ds-plaque__in\"><h3 class=\"ds-plaque__t\">Endpoint Administrator</h3><p class=\"ds-plaque__p\">Deploying, configuring and protecting Windows endpoints at scale with Intune.</p><a class=\"ds-plaque__link\" href=\"#\">Official certification page</a></div></div>",
-      "css": ":host{--black:#0b0906;--pitch:#050403;--umber:#1a130d;--bronze:#b07a3c;--gold:#f2c572;--ember:#ff8a3d;--bone:#efe6d6;--ash:#a8998a;--display:\"Cinzel\",\"Trajan Pro\",\"Times New Roman\",serif;--credit:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-plaque{width:min(560px,100%);background:var(--umber);border:1px solid var(--bronze);padding:8px;box-shadow:0 40px 100px -20px rgba(0,0,0,0.9);} .ds-plaque__in{border:1px solid rgba(176,122,60,0.35);padding:32px;} .ds-plaque__t{margin:0 0 20px;padding-bottom:18px;border-bottom:1px solid rgba(176,122,60,0.45);font-family:var(--display);font-weight:700;font-size:32px;line-height:1.05;letter-spacing:0.02em;color:var(--bone);} .ds-plaque__p{margin:0 0 24px;font-family:var(--text);font-size:18.5px;line-height:1.6;color:#ddd3c3;} .ds-plaque__link{display:inline-flex;align-items:center;min-height:48px;padding:0 20px;border:1px solid var(--bronze);color:var(--gold);text-decoration:none;font-family:var(--credit);font-weight:600;font-size:15px;line-height:1;text-transform:uppercase;letter-spacing:0.18em;} .ds-plaque__link:hover{background:var(--gold);color:var(--black);border-color:var(--gold);} .ds-plaque__link:focus-visible{outline:2px solid var(--gold);outline-offset:4px;}"
+      "description": "Full-frame title card for a dream level: wide thin title, one condensed descriptor below. Limbo is shader-drawn; its plate is pending.",
+      "html": "<header class=\"ds-card\"><h2 class=\"ds-card__h\"><span class=\"ds-card__t\">The City</span><span class=\"ds-card__d\">Time runs twenty times slower down here</span></h2></header>",
+      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-card{display:grid;place-items:center;min-height:320px;padding:48px 24px;text-align:center;background:radial-gradient(60% 50% at 50% 30%,rgba(240,164,58,0.12),transparent 70%),var(--void);} .ds-card__h{margin:0;display:grid;gap:24px;justify-items:center;} .ds-card__t{font-family:var(--face);font-stretch:125%;font-weight:200;font-size:clamp(38px,7.6vw,96px);line-height:1;letter-spacing:0.16em;margin-right:-0.16em;text-transform:uppercase;color:var(--bone);} .ds-card__d{font-family:var(--face);font-stretch:75%;font-weight:600;font-size:16px;line-height:1.3;letter-spacing:0.3em;padding-left:0.3em;text-transform:uppercase;color:var(--stone);}"
     },
     {
-      "name": "Credit Roll",
+      "name": "Room Heading",
       "kind": "custom",
-      "refersTo": "label",
-      "description": "End-credit pairs: ash terms right, bone values left.",
-      "html": "<dl class=\"ds-roll\"><div><dt>Currently</dt><dd>IPH Limited</dd></div><div><dt>Based in</dt><dd>Melbourne</dd></div></dl>",
-      "css": ":host{--black:#0b0906;--pitch:#050403;--umber:#1a130d;--bronze:#b07a3c;--gold:#f2c572;--ember:#ff8a3d;--bone:#efe6d6;--ash:#a8998a;--display:\"Cinzel\",\"Trajan Pro\",\"Times New Roman\",serif;--credit:\"Barlow Condensed\",\"Arial Narrow\",sans-serif;--text:\"Barlow\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-roll{margin:0;padding:32px;display:grid;gap:28px;background:var(--black);} .ds-roll>div{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:baseline;} .ds-roll dt{text-align:right;font-family:var(--credit);font-weight:600;font-size:15px;line-height:1.4;letter-spacing:0.28em;text-transform:uppercase;color:var(--ash);} .ds-roll dd{margin:0;font-family:var(--credit);font-weight:600;font-size:22px;line-height:1.4;letter-spacing:0.1em;text-transform:uppercase;color:var(--bone);}"
+      "description": "Wide uppercase heading whose hairline runs to the room's edge.",
+      "html": "<h3 class=\"ds-room__h\">The record</h3>",
+      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-room__h{display:flex;align-items:center;gap:24px;margin:0;font-family:var(--face);font-stretch:125%;font-weight:300;font-size:clamp(28px,3.4vw,50px);line-height:1.05;letter-spacing:0.12em;text-transform:uppercase;color:var(--bone);background:var(--void);padding:24px;} .ds-room__h::after{content:\"\";flex:1;height:1px;background:rgba(236,235,231,0.14);}"
+    },
+    {
+      "name": "Kit Tag",
+      "kind": "chip",
+      "refersTo": "kit-tag",
+      "description": "Static skill tag: hairline outline, condensed caps.",
+      "html": "<ul class=\"ds-kit\"><li>Microsoft Intune</li><li>Entra ID</li><li>PowerShell</li></ul>",
+      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-kit{list-style:none;margin:0;padding:24px;display:flex;flex-wrap:wrap;gap:10px;background:var(--void);} .ds-kit li{padding:9px 14px;border:1px solid rgba(236,235,231,0.26);font-family:var(--face);font-stretch:75%;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;font-size:15px;line-height:1;letter-spacing:0.12em;color:var(--bone);}"
+    },
+    {
+      "name": "Certificate Notice",
+      "kind": "card",
+      "refersTo": "notice-card",
+      "description": "The one raised surface: graphite notice with usage panels and a verify link.",
+      "html": "<div class=\"ds-notice\"><h3 class=\"ds-notice__t\">Endpoint Administrator <span>MD-102</span></h3><div class=\"ds-use\"><b>IPH Limited, current</b><span>SOE laptop and device builds.</span></div><a class=\"ds-verify\" href=\"#\">Verify the credential<svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"square\" stroke-linejoin=\"miter\" aria-hidden=\"true\"><path d=\"M8 16 16 8M9.5 8H16v6.5\"/></svg></a></div>",
+      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-notice{width:min(680px,100%);padding:clamp(26px,4vw,46px);background:var(--graphite);border:1px solid rgba(236,235,231,0.16);box-shadow:0 40px 100px -20px rgba(0,0,0,0.9);color:var(--bone);font-family:var(--face);} .ds-notice__t{margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid rgba(236,235,231,0.14);font-stretch:112%;font-weight:400;font-size:32px;line-height:1.1;} .ds-notice__t span{font-stretch:75%;font-weight:600;font-size:0.42em;letter-spacing:0.2em;color:var(--ash);vertical-align:0.4em;margin-left:0.4em;text-transform:uppercase;} .ds-use{display:grid;gap:4px;padding:14px 16px;margin-bottom:24px;border:1px solid rgba(236,235,231,0.14);background:rgba(5,5,5,0.35);} .ds-use b{font-family:var(--face);font-stretch:75%;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;font-size:15px;line-height:1;line-height:1.3;} .ds-use span{font-size:17px;line-height:1.5;color:var(--stone);} .ds-verify{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;border:1px solid var(--bone);color:var(--bone);text-decoration:none;font-family:var(--face);font-stretch:75%;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;font-size:15px;line-height:1;transition:background-color .2s var(--out),color .2s var(--out);} .ds-verify:hover{background:var(--bone);color:var(--void);} .ds-verify:focus-visible{outline:2px solid var(--sodium);outline-offset:4px;}"
+    },
+    {
+      "name": "Logo Plate",
+      "kind": "custom",
+      "refersTo": "logo-plate",
+      "description": "Pale plate behind a grayscale company logo; colour returns on hover or focus.",
+      "html": "<a class=\"ds-plate\" href=\"#\"><svg viewBox=\"0 0 120 40\" width=\"100%\" height=\"100%\" aria-hidden=\"true\"><rect x=\"8\" y=\"12\" width=\"104\" height=\"16\" fill=\"#3a3936\"/></svg></a>",
+      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-plate{display:grid;place-items:center;width:180px;aspect-ratio:3/2;padding:14%;background:#e4e2dc;transition:background-color .3s var(--out);} .ds-plate svg{filter:grayscale(1) contrast(1.05);} .ds-plate:hover,.ds-plate:focus-visible{background:#f3f2ee;} .ds-plate:focus-visible{outline:2px solid var(--sodium);outline-offset:4px;}"
     }
   ],
   "narrative": {
-    "northStar": "The Director's Cut",
-    "overview": "The page is a film print, not a page. Everything plays inside a 2.39:1 letterbox: two pitch-black matte bars pinned top and bottom carry the navigation, the running act, a timecode and the first actions, and the picture between them is graded crushed black with molten gold as the single light source. Sections are acts. Each act opens on a full-viewport title card in carved Roman capitals, and every sequence rides one easing curve, the speed ramp: time slams in, hangs in slow motion, then whips out. A WebGL light field of god rays, smoke and embers runs behind the picture, and its clock follows the ramp, so the embers freeze whenever a title hangs.\n\nDensity is cinematic: one idea per frame, huge display type, long dark pauses, and reading text set large (19px body, 15px floor for every label) because the owner has flagged small type before. Materials are physical and warm: hammered bronze shields carry company marks, struck bronze coins carry certifications, photographs are pushed into a sepia, high-contrast bronze grade with a soft-light bronze wash and a vignette. Film grain sits over everything at 7.5% opacity. Nothing is rounded except metal, which is round.\n\nEvery module degrades. Without JavaScript, WebGL or motion the acts print as a plain readable document: beats become one quiet list, cards drop their full-viewport height, and the cold open and flare never appear.",
+    "northStar": "Going Under",
+    "overview": "Scrolling is a descent. The page starts in reality at a table under one lamp, goes under through a short trailer of beats, and walks four dream levels (The City, The Hotel, The Inversion, Limbo) before the kick returns it to reality with the top still spinning. Every level shares one graphite world and one variable face; what changes per level is the light field behind the page, the speed of time on the matte clock, and the way content enters. The visual system is the camera and the grade, not the set dressing.\n\nThe world is graphite with no blue. Near-black ground, concrete greys, bone white type. The only warmth is practical light, a sodium amber lamp, used for focus, hover and the lamp itself. Tenet red marks forward time and lives only inside the inversion. Typography is Archivo alone, stretched wide and thin for title cards, condensed for the chrome that frames the film, and set at normal width for reading. Density is low and type is large: body copy is 19px and no reading text drops below 15px.\n\nFraming is the signature. A 35mm matte sits at the top and bottom of the viewport, carrying the name, the current level, the dream clock and contact. On every level card the bars retract and the card fills the frame like an IMAX shot, then the bars return. A live, machined steel spinning top (Three.js) opens and closes the film.",
     "keyCharacteristics": [
-      "A fixed letterbox matte (52px, 46px under 760px) that thickens to true 2.39:1 during title cards and relaxes to reading height between them.",
-      "One light: gold and ember glow from above and below; there is no cool color anywhere.",
-      "Carved Roman display capitals, condensed tracked credit labels, a plain humanist sans for reading.",
-      "Square corners on every rectangle; circles only for struck or hammered metal.",
-      "The speed ramp as the single motion grammar, with a reduced-motion path that removes it entirely."
+      "Graphite and bone, no blue anywhere, warmth only from practical light.",
+      "One variable face (Archivo) at three widths: 125% for title cards, 75% for chrome, 100% for reading.",
+      "Square corners throughout; hairline bone rules at low alpha do the dividing.",
+      "A fixed 35mm matte that retracts to full frame on level cards.",
+      "A WebGL light field behind the page, one world per level, stilled under reduced motion.",
+      "Evidence imagery graded to monochrome; colour returns only on interaction."
     ],
     "rules": [
       {
-        "name": "The One Light Rule",
-        "body": "Gold is the only light. Anything that glows, is selected, is focused or is hovered turns gold; ember may only appear as the glow around gold, never as its own fill or text.",
+        "name": "The No Blue Rule",
+        "body": "Nothing in the world carries a blue hue: not the greys, not the shader, not the photographs. Greys sit at a faint warm cast (hue near 90 in OKLCH, chroma under 0.01).",
         "section": "colors"
       },
       {
-        "name": "The Warm Grade Rule",
-        "body": "Every neutral is a warm umber. Pure grey, pure white text and any cool hue are outside the grade; the brightest text is bone.",
+        "name": "The Practical Light Rule",
+        "body": "Sodium is light, not paint. It appears where something is lit or answered (focus, hover, the lamp), and never as a section fill, border colour or text colour at rest.",
         "section": "colors"
       },
       {
-        "name": "The Alpha Bronze Rule",
-        "body": "Bronze dividers are drawn as bronze at reduced alpha on black (about 0.18 for quiet row rules, 0.35 for section rules, 0.45 to 0.7 for control borders), not as separate grey tokens.",
+        "name": "The Forward Time Rule",
+        "body": "Forward red appears only inside the inversion. Outside it, emphasis is bone against stone or ash.",
         "section": "colors"
       },
       {
-        "name": "The Three Voices Rule",
-        "body": "Cinzel titles, Barlow Condensed credits, Barlow reads. A face never borrows another's job: no condensed body copy, no Cinzel labels, no tracked caps in paragraphs.",
+        "name": "The One Face Rule",
+        "body": "Archivo is the only family, on the site and in the printed CV. Hierarchy comes from width and weight, never from a second face.",
         "section": "typography"
       },
       {
-        "name": "The Fifteen Floor Rule",
-        "body": "No HTML label, caption or chrome text is set below 15px, and no reading text below 17px.",
+        "name": "The Optical Centre Rule",
+        "body": "Centred, widely tracked capitals carry a negative right margin (or matching left padding) equal to their letter-spacing so the trailing track does not push them off centre.",
         "section": "typography"
       },
       {
-        "name": "The Wide-Track Balance Rule",
-        "body": "Any label tracked at 0.3em or more is padded on the left by its own tracking value so the block centers optically.",
+        "name": "The Fifteen Pixel Floor",
+        "body": "No text on screen is smaller than 15px. The owner flagged small type; labels gain tracking, not shrinkage.",
         "section": "typography"
       },
       {
-        "name": "The Lit From Above Rule",
-        "body": "Every shadow falls downward and is soft and long. Light comes from the top of the frame (god rays, the gold radial, the highlight on the portrait), so no shadow is cast sideways or upward.",
+        "name": "The Graphite Only Rule",
+        "body": "Graphite is the only raised surface colour. Anything that floats above the page is graphite with a bone hairline at 0.16 alpha; nothing is lighter than graphite except a logo plate.",
         "section": "elevation"
       },
       {
-        "name": "The Grain On Top Rule",
-        "body": "Film grain (7.5% opacity, warm fractal noise, stepping at 0.9s only on fine pointers with motion allowed) sits above the picture and below the cold open. It is never louder than the image.",
+        "name": "The Field Behind Rule",
+        "body": "The light field is ambience, never content. It sits at z-index 0 behind everything, is pointer-transparent, and freezes to a single frame under reduced motion.",
         "section": "elevation"
       }
     ],
     "dos": [
-      "Do keep gold (#f2c572) as the only lit color: hover, focus, selection, active and progress all resolve to gold.",
-      "Do set every title in Cinzel 700 and every label in Barlow Condensed 600 uppercase at 15px or larger with 0.12em to 0.3em tracking.",
-      "Do keep reading text in Barlow at 17px or larger, bone for lead lines and dimmed bone for supporting lines.",
-      "Do keep rectangles square and reserve circles for metal, light and slate dots.",
-      "Do grade every photograph (sepia and contrast filter, 42% bronze soft-light, vignette) and frame scene shots at 2.39:1.",
-      "Do route every timed sequence through the speed ramp and give each a reduced-motion path that shows the final state with no movement.",
-      "Do pad every full-height section by the matte height so nothing plays under the bars."
+      "Do keep every surface in the graphite ramp (void, pitch, graphite) with bone, stone and ash for type.",
+      "Do reserve sodium for focus, hover and lamplight, and forward red for the inversion.",
+      "Do set every word in Archivo, choosing width by role: 125% titles, 75% chrome, 100% reading.",
+      "Do keep corners square and divide with 1px bone hairlines at 0.08 to 0.26 alpha.",
+      "Do grade evidence photographs and logos to grayscale (contrast 1.22 to 1.32, brightness 0.8 to 0.82) and let colour return only on interaction.",
+      "Do frame each level with a full-viewport card that retracts the matte, and keep the matte reachable by focus.",
+      "Do give every motion a calm path: the field freezes, the cold open is skipped, cards and notices appear without travel."
     ],
     "donts": [
-      "Don't introduce a cool hue, a pure grey or pure white text; the grade is warm umber to bone.",
-      "Don't use ember (#ff8a3d) as a fill or text color; it exists only as glow.",
-      "Don't round buttons, tags, frames or plaques.",
-      "Don't add mid-level card elevation or sideways shadows; objects are either on the ground or heavy and lit from above.",
-      "Don't stack a small tracked label above a heading as a prefix; slates label frames from a corner or from below.",
-      "Don't use em dashes in any copy."
+      "Don't introduce any blue, including cool greys, link blue or blue-tinted shader light.",
+      "Don't use forward red outside the inversion, or sodium as a resting fill or text colour.",
+      "Don't add a second typeface or a serif display; hierarchy is width and weight within Archivo.",
+      "Don't round corners on controls, frames or containers.",
+      "Don't set screen text below 15px.",
+      "Don't put a small tracked label above a heading; the level card's single descriptor sits below its title.",
+      "Don't use hard offset shadows; depth is soft hang or light."
     ]
   }
 }
