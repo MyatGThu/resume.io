@@ -10,7 +10,7 @@
 
   /* The site's grade, printed: a pitch title band under one amber lamp line, then pale paper in graphite ink. No blue. */
   :root {
-    --pitch: #050505; --ink: #161616; --bone: #ecebe7; --sodium: #f0a43a;
+    --pitch: #050505; --ink: #161616; --bone: #ecebe7; 
     --rule: #c9c7c1; --mark: #8a8780; --label: #3a3936; --paper: #f5f4f0; --ash: #5f5d58;
     --face: "Archivo", "Helvetica Neue", Arial, sans-serif;
   }
@@ -26,14 +26,12 @@
   /* Wide tracking only on decorative labels: tracked words extract as spaced letters in applicant tracking systems. */
   /* Title band: the letterbox */
   .band { position: relative; background: var(--pitch); color: var(--bone); padding: 12mm 16mm 10mm; }
-  .band::after { content: ""; position: absolute; left: 16mm; right: 16mm; bottom: 0; height: 0.5mm; background: var(--sodium); }
-  .band__slate { margin: 0 0 5mm; font-family: var(--face); font-stretch: 75%; font-weight: 600; font-size: 8.5pt; letter-spacing: 0.3em; text-transform: uppercase; color: #9b9993; }
-  .band__slate b { color: var(--sodium); font-weight: 600; }
-  .band h1 { margin: 0; font-family: var(--face); font-stretch: 125%; font-weight: 300; font-size: 38pt; line-height: 1; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bone); }
+  .band::after { content: ""; position: absolute; left: 16mm; right: 16mm; bottom: 0; height: 0.3mm; background: #5f5d58; }
+    .band h1 { margin: 0; font-family: var(--face); font-stretch: 125%; font-weight: 300; font-size: 38pt; line-height: 1; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bone); }
   .band__role { margin: 3.5mm 0 0; font-family: var(--face); font-stretch: 75%; font-weight: 600; font-size: 12pt; letter-spacing: 0.06em; text-transform: uppercase; color: var(--bone); }
   .band__contact { display: flex; flex-wrap: wrap; gap: 2mm 7mm; margin: 6mm 0 0; padding: 0; list-style: none; font-size: 9pt; color: #cfccc6; }
   .band__contact li { display: flex; align-items: center; gap: 1.8mm; }
-  .band__contact svg { width: 3.6mm; height: 3.6mm; fill: none; stroke: var(--sodium); stroke-width: 1.5; }
+  .band__contact svg { width: 3.6mm; height: 3.6mm; fill: none; stroke: #9b9993; stroke-width: 1.5; }
 
   .slim { display: flex; justify-content: space-between; align-items: baseline; background: var(--pitch); padding: 6mm 16mm 5mm; }
   .slim b { font-family: var(--face); font-stretch: 125%; font-weight: 400; font-size: 12pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bone); }
@@ -58,7 +56,7 @@
   .pts li { position: relative; padding-left: 4.2mm; }
   .pts li + li { margin-top: 0.9mm; }
   .pts li::before { content: ""; position: absolute; left: 0.4mm; top: 2.05mm; width: 1.5mm; height: 1.5mm; border-radius: 50%; background: var(--mark); }
-  .pts li.win::before { background: var(--sodium); }
+  .pts li.win::before { background: var(--ink); }
   .pts b { font-weight: 600; }
 
   /* Sidebar */
@@ -108,7 +106,6 @@
 
 <div class="page">
   <header class="band">
-    <p class="band__slate">Curriculum vitae <b>·</b> Melbourne <b>·</b> 2026</p>
     <h1>Myat Thu</h1>
     <p class="band__role">Service Desk Analyst · Microsoft endpoint, identity and cloud</p>
     <ul class="band__contact">
@@ -199,7 +196,7 @@
       <section class="side">
         <h2>Side project</h2>
         <div class="side__top"><h3>Poker Money</h3><span><a href="https://pokermoney.org/">pokermoney.org</a></span></div>
-        <p class="side__tag" style="color:#ef5a43">Poker night, settled.</p>
+        <p class="side__tag">Poker night, settled.</p>
         <ul class="pts">
           <li>A free web app for private home poker games: buy-ins and cash-outs go in, and it settles who pays whom in the fewest transfers. It keeps the score and never touches the money.</li>
           <li>Lead contributor, built with three friends and run as a live service.</li>

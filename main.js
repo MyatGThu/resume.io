@@ -86,26 +86,33 @@
     "    c += amber * exp(-length(r) * 9.0) * 0.12;",
     "    col += c * w(2.0);",
     "  }",
-    /* the inversion: concrete, dust falling the wrong way, and the line on the floor */
+    /* the inversion: concrete, and dust falling the wrong way */
     "  if (w(3.0) > 0.0) {",
     "    vec2 p = uv * vec2(asp, 1.0);",
     "    vec3 c = vec3(0.06) * fbm(p * 3.0) + white * motes(p * 24.0, 0.3, 0.08, 0.78) * 0.35;",
-    "    float line = exp(-pow((uv.y - 0.18 - (uv.x - 0.5) * 0.35) * 220.0, 2.0)) * smoothstep(1.0, 0.2, uv.y);",
-    "    c += vec3(0.85, 0.26, 0.18) * line * 0.35;",
     "    col += c * w(3.0);",
     "  }",
-    /* limbo: a grey sea under a low sky, one fire on the shore */
+    /* limbo: a grey swell under a low sky, towers crumbling on the horizon, one fire on the shore */
     "  if (w(4.0) > 0.0) {",
-    "    float hz = 0.46; vec3 c = vec3(0.0);",
-    "    if (uv.y < hz) {",
-    "      float dep = 1.0 / (hz - uv.y + 0.03);",
-    "      float wave = sin(dep * 2.2 + fbm(vec2(uv.x * 3.0 * dep * 0.15, dep * 0.4)) * 4.0 - uTime * 0.9);",
-    "      c += vec3(0.12) * smoothstep(0.82, 1.0, wave) * smoothstep(0.0, hz, uv.y) + vec3(0.03);",
+    "    float hz = 0.46, x = uv.x * asp; vec3 c = vec3(0.0);",
+    "    vec2 fire = vec2(-0.42 * asp, -0.07);",
+    "    if (uv.y >= hz) {",
+    "      c += vec3(0.075) * fbm(vec2(x * 1.4 + uTime * 0.01, uv.y * 3.0)) * smoothstep(1.0, hz, uv.y) + vec3(0.024);",
+    "      float cell = floor(x * 13.0), fx = fract(x * 13.0);",
+    "      float tall = 0.05 + pow(h(vec2(cell, 3.0)), 2.0) * 0.26, broken = step(0.45, h(vec2(cell, 1.0)));",
+    "      float roof = tall * (1.0 - broken * 0.6 * smoothstep(0.2, 1.0, fx)) + (h(vec2(floor(x * 140.0), cell)) - 0.5) * 0.03 * broken;",
+    "      float tower = step(0.3, fx) * step(fx, 0.68) * step(uv.y - hz, roof) * step(0.42, h(vec2(cell, 5.0)));",
+    "      float haze = 1.0 - smoothstep(0.0, 0.3, uv.y - hz) * 0.5;",
+    "      c = mix(c, vec3(0.012 + 0.018 * (1.0 - haze)), tower);",
     "    } else {",
-    "      c += vec3(0.07) * fbm(vec2(uv.x * asp * 1.6 + uTime * 0.01, uv.y * 3.0)) * smoothstep(1.0, hz, uv.y) + vec3(0.02);",
+    "      float dep = 1.0 / (hz - uv.y + 0.035);",
+    "      float swell = fbm(vec2(x * 0.18 * dep + uTime * 0.04, dep * 0.32 - uTime * 0.22));",
+    "      c += vec3(0.018) + vec3(0.1) * swell * smoothstep(0.0, hz, uv.y) + vec3(0.07) * smoothstep(0.66, 0.82, swell) * smoothstep(0.05, hz, uv.y);",
+    "      float lane = exp(-abs(q.x - fire.x) * (14.0 + dep * 1.5)) * smoothstep(fire.y + 0.02, fire.y - 0.35, q.y);",
+    "      c += amber * lane * smoothstep(0.45, 0.75, swell) * 0.45;",
     "    }",
-    "    c += amber * exp(-length((q - vec2(-0.42 * asp, -0.1)) * vec2(1.0, 1.6)) * 26.0) * 0.6;",
-    "    c += vec3(0.1) * exp(-abs(uv.y - hz) * 90.0);",
+    "    c += amber * exp(-length((q - fire) * vec2(1.0, 1.6)) * 26.0) * 0.6;",
+    "    c += vec3(0.1) * exp(-abs(uv.y - hz) * 120.0);",
     "    col += c * w(4.0);",
     "  }",
     /* a beat lands: one ring through the frame */
@@ -226,7 +233,7 @@
   function coldOpen(done) {
     var open = document.getElementById("open");
     var letters = document.querySelectorAll(".title__word b");
-    var after = document.querySelectorAll(".title__log, .title__acts, .title__cue, .title__slate");
+    var after = document.querySelectorAll(".title__log, .title__acts, .title__cue");
     var ident = document.querySelector(".open__ident"), tick = document.getElementById("openTick");
     var skip = document.getElementById("openSkip");
 
@@ -270,8 +277,8 @@
     document.querySelectorAll(".card").forEach(function (card) {
       var t = card.querySelector(".card__t"), d = card.querySelector(".card__d"), plate = card.querySelector(".card__plate");
       var tl = gsap.timeline({ paused: true });
-      tl.fromTo(t, { opacity: 0, letterSpacing: "0.5em" }, { opacity: 1, letterSpacing: "0.16em", duration: 0.55, ease: "power2.out" }, 0)
-        .fromTo(d, { opacity: 0 }, { opacity: 1, duration: 0.2, ease: "none" }, 0.3);
+      tl.fromTo(t, { opacity: 0, letterSpacing: "0.5em" }, { opacity: 1, letterSpacing: "0.16em", duration: 0.4, ease: "power2.out" }, 0)
+        .fromTo(d, { opacity: 0 }, { opacity: 1, duration: 0.08, ease: "none" }, 0.08);
       if (plate) tl.fromTo(plate, { scale: 1.16 }, { scale: 1, duration: 1, ease: "none" }, 0);
       var struck = false;
       ScrollTrigger.create({
@@ -335,9 +342,9 @@
     ScrollTrigger.create({ trigger: hotel, start: "top bottom", end: "bottom top", onUpdate: function (self) { film.turn = Math.sin(self.progress * Math.PI); } });
     document.querySelectorAll(".scene").forEach(function (scene, i) {
       var frame = scene.querySelector(".shot__frame");
-      gsap.fromTo(frame, { rotation: i % 2 ? -90 : 90, scale: 0.62 }, {
+      gsap.fromTo(frame, { rotation: i % 2 ? -90 : 90, scale: function () { return window.innerWidth < 760 ? 0.36 : 0.62; } }, {
         rotation: 0, scale: 1, ease: hold,
-        scrollTrigger: { trigger: scene, start: "top 100%", end: "top 35%", scrub: true }
+        scrollTrigger: { trigger: scene, start: "top 100%", end: "top 10%", scrub: true }
       });
     });
   }
@@ -489,7 +496,7 @@
 
     function show(cert, trigger) {
       code.textContent = cert.querySelector(".cert__code").textContent;
-      title.textContent = cert.querySelector(".cert__name").textContent;
+      title.textContent = cert.querySelector(".cert__title").textContent;
       body.innerHTML = cert.querySelector(".cert__info").innerHTML;
       modal.classList.add("is-open");
       root.classList.add("is-locked");

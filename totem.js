@@ -13,7 +13,7 @@ import {
 /* three shots: behind the name, overhead through the descent, low and close at the kick */
 var SHOTS = {
   title: { pos: [0, 0.95, 7.5], look: [0, 1.64, 0], fov: 30 },
-  above: { pos: [0.2, 4.4, 0.6], look: [0, 0.3, 0], fov: 26 },
+  above: { pos: [0.15, 6, -0.25], look: [0, 0, -0.85], fov: 26 },
   end: { pos: [0.6, 0.9, 6.2], look: [0, 0.02, 0], fov: 28 }
 };
 
