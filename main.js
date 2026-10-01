@@ -102,7 +102,6 @@
     "      float tall = 0.05 + pow(h(vec2(cell, 3.0)), 2.0) * 0.26, broken = step(0.45, h(vec2(cell, 1.0)));",
     "      float roof = tall * (1.0 - broken * 0.6 * smoothstep(0.2, 1.0, fx)) + (h(vec2(floor(x * 140.0), cell)) - 0.5) * 0.03 * broken;",
     "      float tower = step(0.3, fx) * step(fx, 0.68) * step(uv.y - hz, roof) * step(0.42, h(vec2(cell, 5.0)));",
-    "      tower *= 1.0 - broken * step(0.78, h(floor(vec2(x * 90.0, uv.y * 140.0)))) * step(roof * 0.35, uv.y - hz);",
     "      float haze = 1.0 - smoothstep(0.0, 0.3, uv.y - hz) * 0.5;",
     "      c = mix(c, vec3(0.012 + 0.018 * (1.0 - haze)), tower);",
     "    } else {",
