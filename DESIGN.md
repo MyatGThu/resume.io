@@ -148,7 +148,7 @@ Scrolling is a descent. The page starts in reality at a table under one lamp, go
 
 The world is graphite with no blue. Near-black ground, concrete greys, bone white type. The only warmth is practical light, a sodium amber lamp, used for focus, hover and the lamp itself. Tenet red marks forward time and lives only inside the inversion. Typography is Archivo alone, stretched wide and thin for title cards, condensed for the chrome that frames the film, and set at normal width for reading. Density is low and type is large: body copy is 19px and no reading text drops below 15px.
 
-Framing is the signature. A 35mm matte sits at the top and bottom of the viewport, carrying the name, the current level, the dream clock and contact. On every level card the bars retract and the card fills the frame like an IMAX shot, then the bars return. A live, machined steel spinning top (Three.js) opens and closes the film.
+Framing is the signature. A 35mm matte sits at the top and bottom of the viewport, carrying the name, the current level, the dream clock and contact. On every level card the bars cut away and the card fills the frame like an IMAX shot, then cut back: a hard cut, never a slide, as The Dark Knight cuts between 35mm and IMAX. The finale stays full frame, as The Odyssey does. A live, machined steel spinning top (Three.js) opens and closes the film.
 
 **Key Characteristics:**
 - Graphite and bone, no blue anywhere, warmth only from practical light.

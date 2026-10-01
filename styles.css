@@ -119,11 +119,11 @@ a { color: inherit; text-underline-offset: 0.22em; text-decoration-thickness: 1p
   position: fixed; left: 0; right: 0; z-index: 60;
   display: flex; align-items: center; gap: 24px; padding: 0 var(--gut);
   background: var(--pitch); color: var(--ash); font-size: 15px; line-height: 1;
-  transition: transform 0.6s var(--out);
 }
 .matte--top { top: 0; height: var(--mt); border-bottom: 1px solid rgba(236, 235, 231, 0.08); }
 .matte--bottom { bottom: 0; height: var(--mb); border-top: 1px solid rgba(236, 235, 231, 0.08); }
-/* IMAX: the bars leave the frame while a level card plays, unless something inside them has focus */
+/* IMAX: the bars leave the frame while a level card plays, and for the finale, unless something inside them has focus.
+   A hard cut, as The Dark Knight cuts between 35mm and IMAX: no slide. */
 .is-imax .matte--top:not(:focus-within) { transform: translateY(-100%); }
 .is-imax .matte--bottom:not(:focus-within) { transform: translateY(100%); }
 .matte > * { transition: opacity 0.7s var(--out); }

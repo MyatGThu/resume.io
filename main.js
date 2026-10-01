@@ -401,6 +401,8 @@
       onUpdate: function (self) {
         var cut = self.progress > 0.985 ? 1 : 0;
         if (cut !== film.cut) { film.cut = cut; end.classList.toggle("is-cut", !!cut); if (cut) braam(end.querySelector(".end__line"), end); }
+        /* the finale is all IMAX, as The Odyssey is: the bars do not come back */
+        root.classList.toggle("is-imax", self.progress > 0.6);
       }
     });
   }
