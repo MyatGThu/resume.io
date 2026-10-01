@@ -102,14 +102,16 @@
     "      float tall = 0.05 + pow(h(vec2(cell, 3.0)), 2.0) * 0.26, broken = step(0.45, h(vec2(cell, 1.0)));",
     "      float roof = tall * (1.0 - broken * 0.6 * smoothstep(0.2, 1.0, fx)) + (h(vec2(floor(x * 140.0), cell)) - 0.5) * 0.03 * broken;",
     "      float tower = step(0.3, fx) * step(fx, 0.68) * step(uv.y - hz, roof) * step(0.42, h(vec2(cell, 5.0)));",
+    "      tower *= 1.0 - broken * step(0.78, h(floor(vec2(x * 90.0, uv.y * 140.0)))) * step(roof * 0.35, uv.y - hz);",
     "      float haze = 1.0 - smoothstep(0.0, 0.3, uv.y - hz) * 0.5;",
     "      c = mix(c, vec3(0.012 + 0.018 * (1.0 - haze)), tower);",
     "    } else {",
     "      float dep = 1.0 / (hz - uv.y + 0.035);",
     "      float swell = fbm(vec2(x * 0.18 * dep + uTime * 0.04, dep * 0.32 - uTime * 0.22));",
-    "      c += vec3(0.018) + vec3(0.1) * swell * smoothstep(0.0, hz, uv.y) + vec3(0.07) * smoothstep(0.66, 0.82, swell) * smoothstep(0.05, hz, uv.y);",
-    "      float lane = exp(-abs(q.x - fire.x) * (14.0 + dep * 1.5)) * smoothstep(fire.y + 0.02, fire.y - 0.35, q.y);",
-    "      c += amber * lane * smoothstep(0.45, 0.75, swell) * 0.45;",
+    "      float crest = smoothstep(0.58, 0.7, swell) * (1.0 - smoothstep(0.7, 0.8, swell));",
+    "      c += vec3(0.02) + vec3(0.13) * swell * smoothstep(0.0, hz, uv.y) + vec3(0.2) * crest * smoothstep(0.02, hz, uv.y);",
+    "      float lane = exp(-abs(q.x - fire.x) * (6.0 + dep * 0.6)) * smoothstep(fire.y + 0.02, fire.y - 0.4, q.y);",
+    "      c += amber * lane * (crest * 1.2 + smoothstep(0.5, 0.75, swell) * 0.4);",
     "    }",
     "    c += amber * exp(-length((q - fire) * vec2(1.0, 1.6)) * 26.0) * 0.6;",
     "    c += vec3(0.1) * exp(-abs(uv.y - hz) * 120.0);",
@@ -341,11 +343,11 @@
     if (!hotel) return;
     ScrollTrigger.create({ trigger: hotel, start: "top bottom", end: "bottom top", onUpdate: function (self) { film.turn = Math.sin(self.progress * Math.PI); } });
     document.querySelectorAll(".scene").forEach(function (scene, i) {
-      var frame = scene.querySelector(".shot__frame");
-      gsap.fromTo(frame, { rotation: i % 2 ? -90 : 90, scale: function () { return window.innerWidth < 760 ? 0.36 : 0.62; } }, {
-        rotation: 0, scale: 1, ease: hold,
-        scrollTrigger: { trigger: scene, start: "top 100%", end: "top 10%", scrub: true }
-      });
+      /* the whole room rolls level, as the corridor does; the shot rolls further and lands true */
+      var frame = scene.querySelector(".shot__frame"), side = i % 2 ? -1 : 1, wide = window.innerWidth >= 760;
+      var roll = { trigger: scene, start: "top 100%", end: "top 55%", scrub: true };
+      gsap.fromTo(scene, { rotation: side * 14, transformOrigin: "50% 0%" }, { rotation: 0, ease: hold, scrollTrigger: roll });
+      if (wide) gsap.fromTo(frame, { rotation: side * 76, scale: 0.62 }, { rotation: 0, scale: 1, ease: hold, scrollTrigger: roll });
     });
   }
 

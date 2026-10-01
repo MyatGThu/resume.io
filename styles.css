@@ -453,7 +453,7 @@ main { position: relative; z-index: 2; overflow-x: hidden; overflow-x: clip; }
   :root { --mt: 46px; --mb: 46px; }
   body { font-size: 18px; }
   .matte { gap: 18px; letter-spacing: 0.14em; }
-  .matte__level, .depth, .matte__cta span { display: none; }
+  .matte__level, .depth, .matte__cta span, .title__cue { display: none; }
   .matte--bottom .matte__cta:first-of-type { margin-left: auto; }
   .menu-btn span { display: none; }
   .title__word { letter-spacing: 0.12em; margin-right: -0.12em; }
