@@ -32,7 +32,7 @@ jobs:
         # The commit SHA stamps the asset query strings as a cache-bust.
         run: |
           mkdir _site
-          cp -r index.html styles.css main.js aspis.js assets vendor _site/
+          cp -r index.html styles.css main.js totem.js assets vendor _site/
           sed -i "s/__BUILD__/${GITHUB_SHA}/g" _site/index.html
 
       - name: Setup Pages

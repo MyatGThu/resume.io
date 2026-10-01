@@ -10,39 +10,43 @@ related_targets: []
 Scope: the whole single-page resume. Visitor mode: Experience.
 
 Audience and action: potential employers skim, understand the record, then
-email, open LinkedIn or download the CV. Proof is the CV record only.
+email, open LinkedIn or download the CV. Proof is the CV record, the
+owner's verification links and the Poker Money README.
 
-Chosen direction: Director's cut in acts. Memorable moment: each act title
-card slams in, hangs in slow motion while the embers freeze, then whips out.
+Chosen direction: Levels, a Christopher Nolan descent (The Dark Knight,
+Inception, Tenet, The Odyssey). The owner retired the Snyder bronze world
+and every "Act" label. Memorable moment: the spinning top, live in 3D, that
+opens the film on a table and closes it still spinning before the cut.
 
-Unresolved: personal certificate links, a correct Trinity mark, real
-workplace photographs (stock stands in, credited).
+Unresolved: real workplace photographs (stock stands in, credited).
 
 ## Direction contract
 
-THESIS: The resume is a Zack Snyder feature, not a portfolio page: cold open,
-five acts, end credits. Signature interaction is the speed ramp, slam then
-slow motion then whip, and the ember field's clock follows it. Refuses the
-dark hero plus stacked fade-up sections every portfolio ships.
+THESIS: Scrolling is going under. The resume descends four dream levels,
+each in one Nolan world, and time dilates as it falls: the matte clock slows
+per level and runs backwards in the inversion. Refuses the dark hero plus
+numbered sections every film-themed portfolio ships.
 
-OWN-WORLD: 2.39:1 letterbox matte in crushed black #0b0906 over smoke
-#2a211a, bronze #b07a3c, molten gold #f2c572 as the only light source.
-Carved Roman capitals for title cards, condensed credit-block sans for
-slates and credits, a plain sans for reading. Embers, ash, god rays from
-above, film grain, bronze shields for company marks, struck coins for seals.
+OWN-WORLD: Graphite, no blue: near-black #0b0b0c, concrete greys, bone white
+type. Warmth only as practical light, sodium amber; Tenet red marks forward
+time and only inside the inversion. One variable face, Archivo: expanded
+thin capitals for title cards, condensed caps for chrome, plain for reading.
+IMAX switch: thin 35mm bars that retract to full frame on every level card.
+Totems for certifications, a machined steel top as the hero object.
 
-STORY: The visitor meets Myat as the title, watches the record, field
-reports and certifications play as acts, comes to believe he is the steady
-escalation point who turns repeat problems into process, and acts from the
-end credits.
+STORY: The visitor wakes in reality at the table, goes under through the
+trailer, walks the City (lead, record), the Hotel (field reports), the
+Inversion (Poker Money, totems) and Limbo (training, credits), and acts from
+the end, where the top keeps spinning.
 
-FIRST VIEWPORT: After the cold open, a letterboxed frame: MYAT THU in gold
-Roman capitals near full width over a low horizon of god rays and rising
-embers, the logline under it, a slate top left, email and LinkedIn set in
-the bottom matte as the first actions.
+FIRST VIEWPORT: Full-frame black; a live steel top spins on a dark table
+under one amber lamp, MYAT THU in wide thin white capitals across it, the
+logline below, email as the white primary action, LinkedIn and CV beside.
 
-FORM: Director's cut in acts, position 1 of 7 on the grounded list; the
-owner chose it over the assigned position 3, storyboard to screen. Seed key
-1c3e79ac.
+FORM: Levels, position 1 of 7 on the grounded list, chosen by the owner as
+the pick over the assigned position 7, the architect's maze. Seed key
+1221d541. Raises kept from declined challengers: one fact held at a time
+with tabular figures (collider display), idle levels fade back to dark
+(night sea), everything on one drafting grid (pattern envelope).
 
 FINISH: unreviewed and undocumented is unfinished; this build ends with the finish review, the verdict, DESIGN.md, and every shipping raster carrying its provenance
