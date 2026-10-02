@@ -6,24 +6,18 @@
 <title>Myat Thu, CV</title>
 <meta name="author" content="Myat Thu" />
 <style>
-  @font-face { font-family: "Cinzel"; src: url("../assets/fonts/cinzel.woff2") format("woff2"); font-weight: 500 900; }
-  @font-face { font-family: "Barlow Condensed"; src: url("../assets/fonts/barlow-condensed-600.woff2") format("woff2"); font-weight: 600; }
-  @font-face { font-family: "Barlow"; src: url("../assets/fonts/barlow-400.woff2") format("woff2"); font-weight: 400; }
-  @font-face { font-family: "Barlow"; src: url("../assets/fonts/barlow-400-italic.woff2") format("woff2"); font-weight: 400; font-style: italic; }
-  @font-face { font-family: "Barlow"; src: url("../assets/fonts/barlow-600.woff2") format("woff2"); font-weight: 600; }
+  @font-face { font-family: "Archivo"; src: url("../assets/fonts/archivo.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; }
 
-  /* The site's grade, printed: a pitch title band lit gold, then warm paper in umber ink. */
+  /* The site's grade, printed: a pitch title band, then pale paper in graphite ink. No blue. */
   :root {
-    --pitch: #050403; --umber: #1a130d; --gold: #f2c572; --bronze: #b07a3c;
-    --rule: #c9a77c; --ink-bronze: #7a4f1f; --paper: #f7f0e4; --ash: #5e5246; --bone: #efe6d6;
-    --display: "Cinzel", "Trajan Pro", "Times New Roman", serif;
-    --credit: "Barlow Condensed", "Arial Narrow", sans-serif;
-    --read: "Barlow", "Helvetica Neue", Arial, sans-serif;
+    --pitch: #050505; --ink: #161616; --bone: #ecebe7; 
+    --rule: #c9c7c1; --mark: #8a8780; --label: #3a3936; --paper: #f5f4f0; --ash: #5f5d58;
+    --face: "Archivo", "Helvetica Neue", Arial, sans-serif;
   }
   @page { size: A4; margin: 0; }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
-  body { font-family: var(--read); font-size: 9.4pt; line-height: 1.44; color: var(--umber); background: var(--paper); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: var(--face); font-size: 9.4pt; line-height: 1.44; color: var(--ink); background: var(--paper); -webkit-print-color-adjust: exact; print-color-adjust: exact; }
   a { color: inherit; text-decoration: none; }
 
   .page { position: relative; width: 210mm; height: 297mm; overflow: hidden; background: var(--paper); break-after: page; }
@@ -32,39 +26,37 @@
   /* Wide tracking only on decorative labels: tracked words extract as spaced letters in applicant tracking systems. */
   /* Title band: the letterbox */
   .band { position: relative; background: var(--pitch); color: var(--bone); padding: 12mm 16mm 10mm; }
-  .band::after { content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 1.2mm; background: linear-gradient(90deg, var(--bronze), var(--gold) 50%, var(--bronze)); }
-  .band__slate { margin: 0 0 5mm; font-family: var(--credit); font-weight: 600; font-size: 8.5pt; letter-spacing: 0.3em; text-transform: uppercase; color: #a8998a; }
-  .band__slate b { color: var(--gold); font-weight: 600; }
-  .band h1 { margin: 0; font-family: var(--display); font-weight: 700; font-size: 44pt; line-height: 0.95; letter-spacing: 0.04em; color: var(--gold); }
-  .band__role { margin: 3.5mm 0 0; font-family: var(--credit); font-weight: 600; font-size: 12pt; letter-spacing: 0.06em; text-transform: uppercase; color: var(--bone); }
-  .band__contact { display: flex; flex-wrap: wrap; gap: 2mm 7mm; margin: 6mm 0 0; padding: 0; list-style: none; font-size: 9pt; color: #ddd3c3; }
+  .band::after { content: ""; position: absolute; left: 16mm; right: 16mm; bottom: 0; height: 0.3mm; background: #5f5d58; }
+    .band h1 { margin: 0; font-family: var(--face); font-stretch: 125%; font-weight: 300; font-size: 38pt; line-height: 1; letter-spacing: 0.1em; text-transform: uppercase; color: var(--bone); }
+  .band__role { margin: 3.5mm 0 0; font-family: var(--face); font-stretch: 75%; font-weight: 600; font-size: 12pt; letter-spacing: 0.06em; text-transform: uppercase; color: var(--bone); }
+  .band__contact { display: flex; flex-wrap: wrap; gap: 2mm 7mm; margin: 6mm 0 0; padding: 0; list-style: none; font-size: 9pt; color: #cfccc6; }
   .band__contact li { display: flex; align-items: center; gap: 1.8mm; }
-  .band__contact svg { width: 3.6mm; height: 3.6mm; fill: none; stroke: var(--gold); stroke-width: 1.6; }
+  .band__contact svg { width: 3.6mm; height: 3.6mm; fill: none; stroke: #9b9993; stroke-width: 1.5; }
 
   .slim { display: flex; justify-content: space-between; align-items: baseline; background: var(--pitch); padding: 6mm 16mm 5mm; }
-  .slim b { font-family: var(--display); font-weight: 700; font-size: 15pt; letter-spacing: 0.06em; color: var(--gold); }
-  .slim span { font-family: var(--credit); font-weight: 600; font-size: 8.5pt; letter-spacing: 0.06em; text-transform: uppercase; color: #a8998a; }
+  .slim b { font-family: var(--face); font-stretch: 125%; font-weight: 400; font-size: 12pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--bone); }
+  .slim span { font-family: var(--face); font-stretch: 75%; font-weight: 600; font-size: 8.5pt; letter-spacing: 0.06em; text-transform: uppercase; color: #9b9993; }
 
   .body { display: grid; grid-template-columns: minmax(0, 1fr) 56mm; gap: 9mm; padding: 9mm 16mm 0; }
 
-  h2 { display: flex; align-items: center; gap: 3mm; margin: 0 0 3.5mm; font-family: var(--display); font-weight: 700; font-size: 12.5pt; letter-spacing: 0.06em; color: var(--umber); }
+  h2 { display: flex; align-items: center; gap: 3mm; margin: 0 0 3.5mm; font-family: var(--face); font-stretch: 125%; font-weight: 500; font-size: 10pt; letter-spacing: 0.16em; text-transform: uppercase; color: var(--ink); }
   h2::after { content: ""; flex: 1; height: 0.3mm; background: var(--rule); }
   section + section { margin-top: 6mm; }
 
   .summary { margin: 0; font-size: 10pt; line-height: 1.5; }
 
   .job { break-inside: avoid; }
-  .job + .job { margin-top: 4.6mm; padding-top: 4mm; border-top: 0.2mm solid #e2d2b9; }
+  .job + .job { margin-top: 4.6mm; padding-top: 4mm; border-top: 0.2mm solid #dcdad4; }
   .job__top { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
-  .job h3 { margin: 0; font-family: var(--display); font-weight: 700; font-size: 11.2pt; line-height: 1.2; letter-spacing: 0.02em; }
-  .job__when { flex: none; font-family: var(--credit); font-weight: 600; font-size: 8.5pt; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ash); }
-  .job__org { margin: 0.8mm 0 1.8mm; font-family: var(--credit); font-weight: 600; font-size: 9pt; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-bronze); }
+  .job h3 { margin: 0; font-family: var(--face); font-weight: 600; font-size: 11.2pt; line-height: 1.2; }
+  .job__when { flex: none; font-family: var(--face); font-stretch: 75%; font-weight: 600; font-size: 8.5pt; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ash); }
+  .job__org { margin: 0.8mm 0 1.8mm; font-family: var(--face); font-stretch: 75%; font-weight: 600; font-size: 9pt; letter-spacing: 0.06em; text-transform: uppercase; color: var(--label); }
   .job__org span { color: var(--ash); }
   ul.pts { margin: 0; padding: 0; list-style: none; }
   .pts li { position: relative; padding-left: 4.2mm; }
   .pts li + li { margin-top: 0.9mm; }
-  .pts li::before { content: ""; position: absolute; left: 0.4mm; top: 2.05mm; width: 1.5mm; height: 1.5mm; border-radius: 50%; background: var(--bronze); }
-  .pts li.win::before { background: var(--gold); box-shadow: 0 0 0 0.35mm var(--ink-bronze); }
+  .pts li::before { content: ""; position: absolute; left: 0.4mm; top: 2.05mm; width: 1.5mm; height: 1.5mm; border-radius: 50%; background: var(--mark); }
+  .pts li.win::before { background: var(--ink); }
   .pts b { font-weight: 600; }
 
   /* Sidebar */
@@ -73,35 +65,35 @@
   .cert + .cert { margin-top: 3.4mm; }
   .cert img { width: 10mm; height: 10mm; }
   .cert b { display: block; font-weight: 600; line-height: 1.3; }
-  .cert small { display: block; margin-top: 0.6mm; font-family: var(--credit); font-weight: 600; font-size: 7.8pt; line-height: 1.35; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ash); }
-  .cert a small { color: var(--ink-bronze); }
+  .cert small { display: block; margin-top: 0.6mm; font-family: var(--face); font-stretch: 75%; font-weight: 600; font-size: 7.8pt; line-height: 1.35; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ash); }
+  .cert a small { color: var(--label); }
   .forge { margin: 3.6mm 0 0; padding: 2.4mm 3mm; border: 0.25mm solid var(--rule); font-size: 8.8pt; }
-  .forge b { color: var(--ink-bronze); }
+  .forge b { color: var(--label); }
   .tags { display: flex; flex-wrap: wrap; gap: 1.6mm; margin: 0; padding: 0; list-style: none; }
-  .tags li { padding: 1mm 2mm; border: 0.25mm solid var(--rule); font-family: var(--credit); font-weight: 600; font-size: 8pt; line-height: 1.2; letter-spacing: 0.06em; text-transform: uppercase; }
+  .tags li { padding: 1mm 2mm; border: 0.25mm solid var(--rule); font-family: var(--face); font-stretch: 75%; font-weight: 600; font-size: 8pt; line-height: 1.2; letter-spacing: 0.06em; text-transform: uppercase; }
   dl.study { margin: 0; }
   .study div + div { margin-top: 2.6mm; }
   .study dt { font-weight: 600; line-height: 1.3; }
   .study dd { margin: 0.4mm 0 0; color: var(--ash); }
 
-  .side { margin-top: 7mm; padding: 5mm 6mm 5.5mm; background: var(--umber); color: var(--bone); break-inside: avoid; }
-  .side h2 { color: var(--gold); }
-  .side h2::after { background: rgba(176, 122, 60, 0.6); }
+  .side { margin-top: 7mm; padding: 5mm 6mm 5.5mm; background: var(--ink); color: var(--bone); break-inside: avoid; }
+  .side h2 { color: var(--bone); }
+  .side h2::after { background: rgba(236, 235, 231, 0.3); }
   .side__top { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
-  .side__top h3 { margin: 0; font-family: var(--display); font-weight: 700; font-size: 14pt; color: var(--gold); }
-  .side__top span { font-family: var(--credit); font-weight: 600; font-size: 8.5pt; letter-spacing: 0.06em; text-transform: uppercase; color: #a8998a; }
-  .side__tag { margin: 0.8mm 0 2.4mm; font-family: var(--credit); font-weight: 600; font-size: 9pt; letter-spacing: 0.06em; text-transform: uppercase; }
-  .side .pts li { color: #e2d8c8; }
-  .side .pts li::before { background: var(--gold); }
-  .side a { color: var(--gold); }
+  .side__top h3 { margin: 0; font-family: var(--face); font-stretch: 125%; font-weight: 400; font-size: 13pt; letter-spacing: 0.14em; text-transform: uppercase; color: var(--bone); }
+  .side__top span { font-family: var(--face); font-stretch: 75%; font-weight: 600; font-size: 8.5pt; letter-spacing: 0.06em; text-transform: uppercase; color: #9b9993; }
+  .side__tag { margin: 0.8mm 0 2.4mm; font-family: var(--face); font-stretch: 75%; font-weight: 600; font-size: 9pt; letter-spacing: 0.06em; text-transform: uppercase; }
+  .side .pts li { color: #cfccc6; }
+  .side .pts li::before { background: #9b9993; }
+  .side a { color: var(--bone); }
 
   .reports { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 7mm; margin: 0; padding: 0 16mm; }
   .reports h2 { grid-column: 1 / -1; margin: 9mm 0 -1mm; }
-  .reports h3 { margin: 0; font-family: var(--display); font-weight: 700; font-size: 10.5pt; line-height: 1.2; }
-  .reports small { display: block; margin: 0.8mm 0 1.6mm; font-family: var(--credit); font-weight: 600; font-size: 8.2pt; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-bronze); }
+  .reports h3 { margin: 0; font-family: var(--face); font-weight: 600; font-size: 10.5pt; line-height: 1.2; }
+  .reports small { display: block; margin: 0.8mm 0 1.6mm; font-family: var(--face); font-stretch: 75%; font-weight: 600; font-size: 8.2pt; letter-spacing: 0.06em; text-transform: uppercase; color: var(--label); }
   .reports p { margin: 0; font-size: 8.9pt; line-height: 1.45; }
 
-  .foot { position: absolute; left: 16mm; right: 16mm; bottom: 9mm; display: flex; justify-content: space-between; padding-top: 2.4mm; border-top: 0.25mm solid var(--rule); font-family: var(--credit); font-weight: 600; font-size: 8pt; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ash); }
+  .foot { position: absolute; left: 16mm; right: 16mm; bottom: 9mm; display: flex; justify-content: space-between; padding-top: 2.4mm; border-top: 0.25mm solid var(--rule); font-family: var(--face); font-stretch: 75%; font-weight: 600; font-size: 8pt; letter-spacing: 0.22em; text-transform: uppercase; color: var(--ash); }
 </style>
 </head>
 <body>
@@ -114,7 +106,6 @@
 
 <div class="page">
   <header class="band">
-    <p class="band__slate">Curriculum vitae <b>·</b> Melbourne <b>·</b> 2026</p>
     <h1>Myat Thu</h1>
     <p class="band__role">Service Desk Analyst · Microsoft endpoint, identity and cloud</p>
     <ul class="band__contact">
@@ -162,10 +153,10 @@
     <aside>
       <section>
         <h2>Certified</h2>
-        <a class="cert" href="https://learn.microsoft.com/en-us/users/myatthu-3654/credentials/b391b70c1e987b36"><img src="../assets/material/coin.webp" alt="" /><span><b>Microsoft 365 Certified: Endpoint Administrator Associate (MD-102)</b><small>Earned Nov 2024 · Verify</small></span></a>
-        <a class="cert" href="https://learn.microsoft.com/en-us/users/myatthu-3654/credentials/c57150026e0a8b4b"><img src="../assets/material/coin.webp" alt="" /><span><b>Security, Compliance, and Identity Fundamentals (SC-900)</b><small>Earned Oct 2023 · Verify</small></span></a>
-        <a class="cert" href="https://www.coursera.org/account/accomplishments/professional-cert/QH5CTZA7SMXQ"><img src="../assets/material/coin.webp" alt="" /><span><b>Google IT Support Professional Certificate</b><small>Earned Jun 2023 · Verify</small></span></a>
-        <a class="cert" href="https://learn.microsoft.com/en-us/users/myatthu-3654/credentials/298e478868f6cdff"><img src="../assets/material/coin.webp" alt="" /><span><b>Microsoft Certified: Azure Fundamentals (AZ-900)</b><small>Earned Nov 2022 · Verify</small></span></a>
+        <a class="cert" href="https://learn.microsoft.com/en-us/users/myatthu-3654/credentials/b391b70c1e987b36"><img src="img/top.png" alt="" /><span><b>Microsoft 365 Certified: Endpoint Administrator Associate (MD-102)</b><small>Earned Nov 2024 · Verify</small></span></a>
+        <a class="cert" href="https://learn.microsoft.com/en-us/users/myatthu-3654/credentials/c57150026e0a8b4b"><img src="img/bishop.png" alt="" /><span><b>Security, Compliance, and Identity Fundamentals (SC-900)</b><small>Earned Oct 2023 · Verify</small></span></a>
+        <a class="cert" href="https://www.coursera.org/account/accomplishments/professional-cert/QH5CTZA7SMXQ"><img src="img/chip.png" alt="" /><span><b>Google IT Support Professional Certificate</b><small>Earned Jun 2023 · Verify</small></span></a>
+        <a class="cert" href="https://learn.microsoft.com/en-us/users/myatthu-3654/credentials/298e478868f6cdff"><img src="img/die.png" alt="" /><span><b>Microsoft Certified: Azure Fundamentals (AZ-900)</b><small>Earned Nov 2022 · Verify</small></span></a>
         <p class="forge"><b>In progress:</b> SC-300, Identity and Access Administrator.</p>
       </section>
       <section>
@@ -230,7 +221,7 @@
       </section>
       <section>
         <h2>Availability</h2>
-        <p >Open to full-time and contract roles in Melbourne, and replies within a day. The full record, with every certification verifiable, plays at <a href="https://myatgthu.github.io/resume.io/" style="color:var(--ink-bronze);font-weight:600">myatgthu.github.io/resume.io</a>.</p>
+        <p >Open to full-time and contract roles in Melbourne, and replies within a day. The full record, with every certification verifiable, plays at <a href="https://myatgthu.github.io/resume.io/" style="color:var(--label);font-weight:600">myatgthu.github.io/resume.io</a>.</p>
       </section>
     </aside>
   </div>
