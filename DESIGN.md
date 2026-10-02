@@ -255,7 +255,7 @@ Blunt and lit from inside.
 - **Kit tags:** Transparent with a bone hairline at 0.26, 9px by 14px, label voice at 0.12em tracking. Static, not interactive.
 
 ### Cards / Containers
-- **Level card:** A full-viewport frame with a raster plate at 0.9 opacity under a void gradient scrim, the title in Display Card and one Label Card descriptor below. City, Hotel and Inversion carry plates; Limbo is currently drawn by the shader alone, its plate (assets/levels/limbo.webp) pending.
+- **Level card:** A full-viewport frame with a raster plate at 0.9 opacity under a void gradient scrim, the title in Display Card and one Label Card descriptor below. Every level carries a plate (assets/levels/: city, hotel, inversion, limbo), generated with ElevenLabs and graded to the no-blue rule.
 - **Notice (certificate):** Graphite, bone hairline at 0.16, Notice lift shadow, max 680px, rises 16px in 0.4s. Close control is a 44px square outline. Usage entries inside are half-pitch panels with a 0.14 hairline.
 - **Logo plate:** Pale plate behind a grayscale logo; hover lightens the plate and returns the logo to colour. Each opens the company site.
 
