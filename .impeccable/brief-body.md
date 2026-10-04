@@ -1,10 +1,3 @@
----
-version: 1
-slug: "index-html"
-primary_target: "index.html"
-related_targets: []
----
-
 # Surface brief: the resume (index.html)
 
 Scope: the whole single-page resume. Visitor mode: Persuade.

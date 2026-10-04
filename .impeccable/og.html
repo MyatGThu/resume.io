@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8" />
+<title>og</title>
+<style>
+@font-face{font-family:'Archivo';src:url('../assets/fonts/archivo.woff2') format('woff2-variations'),url('../assets/fonts/archivo.woff2') format('woff2');font-weight:100 900;font-stretch:62% 125%;font-style:normal}
+*{box-sizing:border-box;margin:0}
+html,body{width:2400px;height:1260px}
+body{background:#eceef0;color:#10161c;font-family:'Archivo',sans-serif;font-variant-numeric:tabular-nums;-webkit-font-smoothing:antialiased;position:relative;overflow:hidden}
+.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase}
+.strip{position:absolute;inset:0 0 auto 0;height:84px;display:flex;align-items:center;gap:40px;padding:0 120px;border-bottom:2px solid #aeb6bd;font-size:22px;color:#5b656e}
+.strip b{color:#10161c;font-weight:600}
+.rail{position:absolute;top:200px;bottom:120px;left:120px;width:120px;border-left:2px solid #aeb6bd}
+.rail span{position:absolute;left:0;top:var(--at);transform:translateY(-50%);display:flex;align-items:center;gap:16px;font-size:20px;color:#5b656e}
+.rail span::before{content:'';width:20px;height:2px;background:#aeb6bd}
+.unit{position:absolute;top:236px;left:290px;padding-left:40px;border-left:6px solid #1557c0}
+.unit i{display:block;font-size:22px;color:#1557c0;font-style:normal;margin-bottom:14px}
+.unit b{display:block;font-size:46px;font-weight:600;letter-spacing:-.02em}
+.unit em{display:block;font-size:32px;font-style:normal;color:#39434c;margin-top:6px}
+.datum{position:absolute;left:120px;right:120px;top:520px;height:0;border-top:2px solid #10161c}
+.block{position:absolute;right:120px;bottom:120px;width:1360px;border:2px solid #10161c;background:#e4e7ea;padding:72px 80px}
+.block h1{font-size:200px;font-weight:600;font-stretch:92%;letter-spacing:-.035em;line-height:.9}
+.block p{font-size:46px;color:#39434c;margin-top:18px;padding-bottom:44px;border-bottom:2px solid #aeb6bd}
+.facts{display:flex;gap:80px;padding-top:44px;font-size:26px;color:#5b656e}
+.facts b{display:block;color:#10161c;font-weight:400;font-stretch:100%;letter-spacing:0;text-transform:none;font-size:32px;margin-top:10px}
+.legend{position:absolute;left:290px;bottom:160px;display:grid;gap:22px;font-size:22px;color:#5b656e}
+.legend li{display:flex;align-items:center;gap:20px;list-style:none}
+.legend i{width:20px;height:20px}
+</style></head><body>
+<div class="strip ann"><b>MT&#8209;01</b><span>Myat Thu, record of service</span></div>
+<div class="rail ann">
+  <span style="--at:6%">2026</span><span style="--at:24%">2025</span><span style="--at:42%">2024</span>
+  <span style="--at:60%">2023</span><span style="--at:78%">2022</span><span style="--at:94%">2019</span>
+</div>
+<div class="unit"><i class="ann">Current</i><b>IPH Limited</b><em>Service Desk Analyst</em></div>
+<hr class="datum" />
+<ul class="legend ann">
+  <li><i style="background:#1557c0"></i>Current</li>
+  <li><i style="background:#126b41"></i>Verified</li>
+  <li><i style="background:#a04a06"></i>In preparation</li>
+</ul>
+<div class="block">
+  <h1>Myat Thu</h1>
+  <p>Service Desk Analyst</p>
+  <div class="facts ann">
+    <div>Location<b>Melbourne, Australia</b></div>
+    <div>Status<b>Open to full-time and contract</b></div>
+  </div>
+</div>
+</body></html>

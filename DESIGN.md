@@ -1,293 +1,309 @@
 ---
-name: Myat Thu, Going Under
-description: A resume as a Nolan descent. Graphite with no blue, bone white type in one variable face, warmth only from practical sodium light, Tenet red only inside the inversion.
+name: Myat Thu, Record of Service
+description: A resume drawn as a rack elevation. A cool drafting sheet with a title block at monumental scale, one variable face in condensed caps for annotation, true 1px hairlines, and a patch-cable colour code that only ever marks state.
 colors:
-  void: "#0b0b0c"
-  pitch: "#050505"
-  graphite: "#171717"
-  ash: "#9b9993"
-  stone: "#cfccc6"
-  bone: "#ecebe7"
-  sodium: "#f0a43a"
-  forward: "#e5533d"
-  plate: "#e4e2dc"
-  paper: "#f5f4f0"
-  ink: "#161616"
-  rule: "#c9c7c1"
-  print-ash: "#5f5d58"
-  print-label: "#3a3936"
+  sheet: "#eceef0"
+  sheet-2: "#e4e7ea"
+  sheet-3: "#dadee2"
+  ink: "#10161c"
+  ink-2: "#39434c"
+  ink-3: "#5b656e"
+  rule: "#aeb6bd"
+  rule-2: "#c8ced3"
+  blue: "#1557c0"
+  amber: "#a04a06"
+  red: "#c6302b"
+  green: "#126b41"
 typography:
-  display:
+  name:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(42px, 8.4vw, 148px)"
-    fontWeight: 300
-    lineHeight: 1
-    letterSpacing: "0.2em"
-    fontVariation: "'wdth' 125"
-  display-card:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(38px, 7.6vw, 136px)"
-    fontWeight: 200
-    lineHeight: 1
-    letterSpacing: "0.16em"
-    fontVariation: "'wdth' 125"
-  beat:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(36px, 6.2vw, 104px)"
-    fontWeight: 300
-    lineHeight: 1.06
-    letterSpacing: "0.02em"
-    fontVariation: "'wdth' 112"
-  headline:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(28px, 3.4vw, 50px)"
-    fontWeight: 300
-    lineHeight: 1.05
-    letterSpacing: "0.12em"
-    fontVariation: "'wdth' 125"
-  title:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(30px, 3.2vw, 46px)"
-    fontWeight: 400
-    lineHeight: 1.08
-    letterSpacing: "0.01em"
-    fontVariation: "'wdth' 112"
-  title-plain:
-    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(24px, 2.3vw, 32px)"
+    fontSize: "clamp(2.75rem, 8vw, 5rem)"
     fontWeight: 600
-    lineHeight: 1.15
-    fontVariation: "'wdth' 100"
-  body-lead:
+    lineHeight: 0.95
+    letterSpacing: "-0.035em"
+    fontVariation: "'wdth' 92"
+  close:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(21px, 1.9vw, 26px)"
+    fontSize: "clamp(1.8rem, 4.2vw, 3.1rem)"
+    fontWeight: 600
+    lineHeight: 1.12
+    letterSpacing: "-0.032em"
+  part:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(1.6rem, 3.2vw, 2.5rem)"
+    fontWeight: 600
+    lineHeight: 1.12
+    letterSpacing: "-0.028em"
+  role:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(1.2rem, 2.2vw, 1.5rem)"
+    fontWeight: 600
+    lineHeight: 1.12
+    letterSpacing: "-0.02em"
+  lede:
+    fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
+    fontSize: "clamp(1.0625rem, 1.5vw, 1.1875rem)"
     fontWeight: 400
-    lineHeight: 1.45
+    lineHeight: 1.62
+    letterSpacing: "0"
   body:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "19px"
+    fontSize: "17px"
     fontWeight: 400
-    lineHeight: 1.65
-    fontFeature: "'tnum' 1"
-    fontVariation: "'wdth' 100"
-  label:
+    lineHeight: 1.6
+    letterSpacing: "0"
+  annotation:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "15px"
+    fontSize: "10.5px"
     fontWeight: 600
-    lineHeight: 1
-    letterSpacing: "0.18em"
-    fontVariation: "'wdth' 75"
-  label-card:
+    lineHeight: 1.5
+    letterSpacing: "0.1em"
+    textTransform: "uppercase"
+    fontVariation: "'wdth' 80"
+  field:
     fontFamily: "Archivo, Helvetica Neue, Arial, sans-serif"
-    fontSize: "clamp(15px, 1.3vw, 18px)"
+    fontSize: "10px"
     fontWeight: 600
-    lineHeight: 1.3
-    letterSpacing: "0.3em"
-    fontVariation: "'wdth' 75"
+    lineHeight: 1.5
+    letterSpacing: "0.1em"
+    textTransform: "uppercase"
+    fontVariation: "'wdth' 80"
 rounded:
-  none: "0px"
+  all: "0"
 spacing:
-  matte: "48px"
-  gutter: "clamp(20px, 5vw, 72px)"
-  room-max: "1240px"
-  room-gap: "clamp(112px, 14vw, 200px)"
-  level-tail: "clamp(88px, 12vw, 184px)"
-  control-height: "48px"
+  s1: "8px"
+  s2: "16px"
+  s3: "24px"
+  s4: "32px"
+  s5: "48px"
+  s6: "64px"
+  s7: "96px"
+  s8: "128px"
 components:
-  button-key:
-    backgroundColor: "{colors.bone}"
-    textColor: "{colors.void}"
-    typography: "{typography.label}"
-    rounded: "{rounded.none}"
-    padding: "0 22px"
-    height: "48px"
-  button-key-hover:
-    backgroundColor: "{colors.sodium}"
-    textColor: "{colors.void}"
-  button-ghost:
-    backgroundColor: "rgba(5, 5, 5, 0.5)"
-    textColor: "{colors.bone}"
-    typography: "{typography.label}"
-    rounded: "{rounded.none}"
-    padding: "0 22px"
-    height: "48px"
-  button-ghost-hover:
-    backgroundColor: "{colors.bone}"
-    textColor: "{colors.void}"
-  matte-bar:
-    backgroundColor: "{colors.pitch}"
-    textColor: "{colors.ash}"
-    typography: "{typography.label}"
-    height: "48px"
-    padding: "0 clamp(20px, 5vw, 72px)"
-  kit-tag:
-    backgroundColor: "transparent"
-    textColor: "{colors.bone}"
-    typography: "{typography.label}"
-    rounded: "{rounded.none}"
-    padding: "9px 14px"
-  logo-plate:
-    backgroundColor: "{colors.plate}"
-    rounded: "{rounded.none}"
-    padding: "14%"
-  notice-card:
-    backgroundColor: "{colors.graphite}"
-    textColor: "{colors.bone}"
-    rounded: "{rounded.none}"
-    padding: "clamp(26px, 4vw, 46px)"
-    width: "min(680px, 100%)"
+  - Control
+  - Title block
+  - Rack unit
+  - Credential row
+  - Case file plate
+  - Drawing strip
+  - Legend
+  - Signature plate
 ---
 
-# Design System: Myat Thu, Going Under
+# Design System: Myat Thu, Record of Service
 
 ## Overview
 
-**Creative North Star: "Going Under"**
+The record drawn as the document this trade actually signs off: a dimensioned
+elevation with a title block, not a styled CV. It refuses both of the ruts a
+support engineer's portfolio falls into, the dark terminal and the sidebar with
+skill bars, by borrowing the one document format the audience reads every week.
 
-Scrolling is a descent. The page starts in reality at a table under one lamp, goes under through a short trailer of beats, and walks four dream levels (The City, The Hotel, The Inversion, Limbo) before the kick returns it to reality with the top still spinning. Every level shares one graphite world and one variable face; what changes per level is the light field behind the page, the speed of time on the matte clock, and the way content enters. The visual system is the camera and the grade, not the set dressing.
+The visitor lands on a full-bleed drafting sheet. A scale runs the full height
+of the left edge carrying the years. The current post, IPH Limited, is already
+on the rails. A datum line crosses the sheet, and under it the title block sits
+lower right at monumental scale with the name, the role, three fields and the
+three actions. Then the sheet is read downward: four roles as rack units with
+their date spans as dimensions, three case files as detail callouts, five
+certifications as a schedule, Poker Money as the one detail drawn out, study
+and kit as a short schedule, and a sign-off with a signature plate.
 
-The world is graphite with no blue. Near-black ground, concrete greys, bone white type. The only warmth is practical light, a sodium amber lamp, used for focus, hover and the lamp itself. Tenet red marks forward time and lives only inside the inversion. Typography is Archivo alone, stretched wide and thin for title cards, condensed for the chrome that frames the film, and set at normal width for reading. Density is low and type is large: body copy is 19px and no reading text drops below 15px.
-
-Framing is the signature. A 35mm matte sits at the top and bottom of the viewport, carrying the name, the current level, the dream clock and contact. On every level card the bars cut away and the card fills the frame like an IMAX shot, then cut back: a hard cut, never a slide, as The Dark Knight cuts between 35mm and IMAX. The finale stays full frame, as The Odyssey does. A live, machined steel spinning top (Three.js) opens and closes the film.
-
-**Key Characteristics:**
-- Graphite and bone, no blue anywhere, warmth only from practical light.
-- One variable face (Archivo) at three widths: 125% for title cards, 75% for chrome, 100% for reading.
-- Square corners throughout; hairline bone rules at low alpha do the dividing.
-- A fixed 35mm matte that retracts to full frame on level cards.
-- A WebGL light field behind the page, one world per level, stilled under reduced motion.
-- Evidence imagery graded to monochrome; colour returns only on interaction.
+This world replaces "Going Under", the Nolan descent that preceded it. The four
+dream levels, the dream clock, the film credits, the totem framing and every
+piece of 3D are retired at the owner's instruction, along with GSAP,
+ScrollTrigger, Lenis and three.js. What ships is `index.html`, `styles.css`,
+`main.js` and `assets/`. There is no build step.
 
 ## Colors
 
-A near-neutral graphite ramp with a faint warm cast, one practical-light amber, and one time-coded red.
+The sheet is cool on purpose. Cream was the obvious ground for a document and
+it is exactly why this one is not cream: a blue-grey sheet reads as a working
+drawing rather than stationery.
 
 ### Primary
-- **Bone White** (bone): All primary type, the key button fill, the depth bar, matte highlights and selection background. It is the light the page reads by.
+
+`ink #10161c` on `sheet #eceef0`. 15.6:1. Every heading, every control border,
+the datum, and the title block outline.
 
 ### Secondary
-- **Sodium Lamp** (sodium): Practical light only. Focus outlines (2px, 4px offset), hover on the key button, matte links, menu button and level list entries, the caret, and the radial lamp glow on the body without WebGL. Also the amber in the shader (lamp cone, city street light, hotel sconces, limbo fire).
+
+`blue #1557c0`, patch blue. The current post and nothing else: the marker on
+the live rack unit, its dimension label, the "Current" flag, and the underline
+on the sheet index entry you are reading.
 
 ### Tertiary
-- **Forward Red** (forward): Tenet red. The matte clock when time runs backwards, the Poker Money tagline, and the inversion's card descriptor. Never outside the inversion.
+
+`amber #a04a06` in progress, `green #126b41` verified, `red #c6302b`
+escalation. Each appears only as a flag or a legend swatch. Red is held in
+reserve and is currently unused on the page, which is the point: it is the
+escalation colour.
 
 ### Neutral
-- **Void** (void): The ground. Page background, theme colour, button text on bone.
-- **Pitch** (pitch): Matte bars, the cold open, the dailies strip, scrims (levels menu at 0.97, notice backdrop at 0.86) and the end cut to black.
-- **Graphite** (graphite): The only raised surface. Notice card, portrait and shot frames before the image loads.
-- **Ash** (ash): Metadata and chrome: slates, credits labels, dates, the clock rate, photo credits. 6.9:1 on void.
-- **Stone** (stone): Supporting reading text: loglines, story paragraphs, notes, role points.
-- **Logo Plate** (plate): The pale card behind company and school logos so their marks read on the dark; lightens to #f3f2ee on hover.
-- **Paper, Ink, Rule, Print Ash, Print Label** (paper, ink, rule, print-ash, print-label): The printed CV only. Pale paper in graphite ink under a pitch title band; rules at rule, dates at print-ash, organisations at print-label.
+
+`ink-2 #39434c` for body copy at 8.7:1, `ink-3 #5b656e` for annotation at
+5.1:1, `rule #aeb6bd` and `rule-2 #c8ced3` for hairlines, `sheet-2 #e4e7ea`
+for the one filled surface, the title block.
 
 ### Named Rules
-**The No Blue Rule.** Nothing in the world carries a blue hue: not the greys, not the shader, not the photographs. Greys sit at a faint warm cast (hue near 90 in OKLCH, chroma under 0.01).
 
-**The Practical Light Rule.** Sodium is light, not paint. It appears where something is lit or answered (focus, hover, the lamp), and never as a section fill, border colour or text colour at rest.
-
-**The Forward Time Rule.** Forward red appears only inside the inversion. Outside it, emphasis is bone against stone or ash.
+- Colour marks state. A colour used for emphasis, decoration or mood is a
+  defect, not a variation.
+- The legend in the first viewport is the only place the code is spelled out.
+  Because it is spelled out once, nothing else needs a caption.
+- No surface, border or heading is ever tinted with a patch colour.
+- The ground never warms toward cream.
 
 ## Typography
 
-**Display Font:** Archivo variable (weight 100 to 900, width 62% to 125%), with Helvetica Neue and Arial
-**Body Font:** Archivo at 100% width
-**Label/Mono Font:** Archivo at 75% width, uppercase
-
-**Character:** One family plays every role by changing width. Wide thin capitals read as title cards; condensed tracked capitals read as edge code and slates; plain width reads as the record.
+One typeface, Archivo variable, self-hosted at `assets/fonts/archivo.woff2`.
+It carries the whole sheet through two voices: condensed caps at `wdth 80` for
+every annotation, and the plain width for everything meant to be read.
+`font-variant-numeric: tabular-nums` is set on `body`, so every date, dimension
+and credential ID lines up in its column without further thought.
 
 ### Hierarchy
-- **Display** (300, clamp(42px, 8.4vw, 148px), 1, width 125%, tracking 0.2em): The name in reality, uppercase.
-- **Display Card** (200, clamp(38px, 7.6vw, 136px), 1, width 125%, tracking 0.16em): Level card titles. The end line uses the same voice at clamp(36px, 6.4vw, 112px).
-- **Beat** (300, clamp(36px, 6.2vw, 104px), 1.06, width 112%): The trailer beats, one fact held at a time, max 18ch.
-- **Headline** (300, clamp(28px, 3.4vw, 50px), 1.05, width 125%, tracking 0.12em, uppercase): Room headings, followed by a hairline that runs to the edge.
-- **Title** (400, clamp(30px, 3.2vw, 46px), 1.08, width 112%): Field report headings, notice titles, training headings.
-- **Title Plain** (600, clamp(24px, 2.3vw, 32px), 1.15, width 100%): Role titles and certificate names.
-- **Body Lead** (400, clamp(21px, 1.9vw, 26px), 1.45): The first paragraph of the lead story and the logline band (18px to 22px).
-- **Body** (400, 19px, 1.65; 18px under 760px): Reading text, 44ch to 60ch measure, tabular figures throughout.
-- **Label** (600, 15px, width 75%, tracking 0.18em, uppercase): All chrome: matte, buttons, slates, notes terms, credits labels, kit tags, certificate codes.
-- **Label Card** (600, clamp(15px, 1.3vw, 18px), width 75%, tracking 0.3em, uppercase): The single descriptor line beneath a level card title.
+
+| Role | Size | Use |
+|---|---|---|
+| name | clamp(2.75rem, 8vw, 5rem) | The name in the title block. The one monumental element. |
+| close | clamp(1.8rem, 4.2vw, 3.1rem) | The sign-off statement. |
+| part | clamp(1.6rem, 3.2vw, 2.5rem) | The record, Case files, Credentials, Poker Money, Study and kit. |
+| role | clamp(1.2rem, 2.2vw, 1.5rem) | A job title on a rack unit, a case file heading. |
+| lede | clamp(1.0625rem, 1.5vw, 1.1875rem) | One paragraph under a part heading. |
+| body | 17px / 1.6 | Scope paragraphs, bullets, spec values. |
+| annotation | 10.5px caps, 0.1em | Labels, dimensions, flags, captions, the sheet index. |
+| field | 10px caps, 0.1em | Drawing number, revision, sheet count. |
 
 ### Named Rules
-**The One Face Rule.** Archivo is the only family, on the site and in the printed CV. Hierarchy comes from width and weight, never from a second face.
 
-**The Optical Centre Rule.** Centred, widely tracked capitals carry a negative right margin (or matching left padding) equal to their letter-spacing so the trailing track does not push them off centre.
-
-**The Fifteen Pixel Floor.** No text on screen is smaller than 15px. The owner flagged small type; labels gain tracking, not shrinkage.
+- Reading columns are capped at `--measure`, 68ch. Only the elevation, the
+  schedule and the rules run the full width of the sheet.
+- Annotation is never used as body copy and body copy is never set in caps.
+- No second typeface, no monospace, no system display stack.
+- No kicker or eyebrow above a heading, ever.
 
 ## Layout
 
-All spacing sits on a 4px grid up to 48px and an 8px grid above it (1px and 2px are reserved for hairlines and offsets). The page is a vertical film. Full-viewport frames (100svh) carry the title, the trailer, each level card, the credits and the kick; between cards, rooms hold the record at a max width of 1240px with a fluid side gutter of clamp(20px, 5vw, 72px). The fixed matte reserves 48px top and bottom (46px under 760px), and full-frame sections pad by the matte height so nothing sits under the bars.
+A single centred sheet, `--sheet-max` 1280px, with a fluid gutter of
+`clamp(20px, 5vw, 72px)`. Everything spaces on an 8px base through `--s1` to
+`--s8`. Parts are separated by 128px of padding and a 1px rule that runs the
+full sheet width, which is why every rule on the page shares one right edge.
 
-Rooms follow each other at clamp(112px, 14vw, 200px); a level ends with clamp(88px, 12vw, 184px) of dark before the next card. Within rooms, content sits on two-column grids (lead 0.8fr / 1fr, scene 1.25fr / 0.9fr alternating sides, sheet 0.95fr / 1fr, training 1fr / 1fr, roles 150px to 200px plate column) with gaps scaled by clamp. Certificates sit four across, two under 980px. Definition lists (notes, credits roll) pair a narrow condensed term column with a reading column and stack under 760px.
+The first viewport is a grid of three rows: the scale and the live unit, the
+datum, then the legend and the title block side by side. The scale is absolute
+and spans the whole hero, so the datum crosses it the way a datum crosses a
+scale on a real elevation.
 
-Breakpoints: 980px collapses the two-column rooms; 760px shrinks the matte, hides the level label, depth bar and scroll cue, and tightens title tracking; 420px tightens buttons and certificates; portrait aspect (at most 1/1) moves the spinning top's still frame below the name.
+Breakpoints: 1080px drops the drawing title from the strip, 900px stacks every
+two-column arrangement, 720px grows the strip to a 44px touch target, 560px
+makes the controls full width and folds the signature plate.
 
 ## Elevation & Depth
 
-Depth is light, not lift. The page is flat bone type on void, with depth supplied by the WebGL light field behind it, a fine animated grain (6% opacity) above it, and scrims of pitch. Shadows are long, soft and dark, used only on photographic frames and the one raised notice, as if objects hang in a dark room under an overhead lamp.
-
-### Shadow Vocabulary
-- **Frame hang** (`box-shadow: 0 30px 80px -20px rgba(0, 0, 0, 0.85)`): Portrait and field report frames (the shot uses -24px spread).
-- **Strip hang** (`box-shadow: 0 40px 90px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(236, 235, 231, 0.08)`): The tilted dailies strip.
-- **Notice lift** (`box-shadow: 0 40px 100px -20px rgba(0, 0, 0, 0.9)`): The certificate notice over its pitch scrim.
-- **Totem cast** (`filter: drop-shadow(0 26px 24px rgba(0, 0, 0, 0.8))`): Totem objects, which are cut-out rasters.
+There is none. The stylesheet contains no `box-shadow` at all. Depth is carried
+by hairlines, by the one filled surface, and by space.
 
 ### Named Rules
-**The Graphite Only Rule.** Graphite is the only raised surface colour. Anything that floats above the page is graphite with a bone hairline at 0.16 alpha; nothing is lighter than graphite except a logo plate.
 
-**The Field Behind Rule.** The light field is ambience, never content. It sits at z-index 0 behind everything, is pointer-transparent, and freezes to a single frame under reduced motion.
+- No shadow, no gradient, no glass, no blur, no rounded corner.
+- `--radius` does not exist. Every corner on the sheet is square.
+- If two things need separating, use a 1px rule or use space.
 
 ## Shapes
 
-Every corner is square (0px): buttons, tags, frames, plates, notices, matte. Dividers are 1px bone hairlines at low alpha (0.08 on the matte, 0.1 to 0.14 between rows, 0.18 under headings, 0.26 on tags, 0.42 on ghost buttons). Images are cropped to film formats: 2.39:1 for field reports, 4:5 for the portrait, 3:2 for logo plates, phone-height frames on the dailies strip. Icons are 18px line drawings with square caps and mitred joins at 1.5px stroke, drawn in currentColor. The printed CV's round bullet dots are its one curve.
+Squares and lines. Rack rails, year ticks, leader lines on bullets, bordered
+plates around photographs, square legend swatches, a square portrait plate, and
+a 3px patch marker on the live unit. The only circle on the page is the 8px
+availability dot in the title block.
 
 ## Components
 
-### Buttons
-Blunt and lit from inside.
-- **Shape:** Square (0px), 48px tall, 22px side padding, 10px icon gap, condensed label voice.
-- **Key:** Bone fill with void text; one per frame, always the email action. Hover turns it sodium.
-- **Ghost:** Half-pitch fill with a bone hairline at 0.42; hover floods it bone with void text. Active nudges 1px down.
-- **Verify link:** Inside the notice, a full bone outline ghost that floods bone on hover.
-- **Focus:** Sodium outline, 2px, 4px offset, on every control.
+### Control
 
-### Chips
-- **Kit tags:** Transparent with a bone hairline at 0.26, 9px by 14px, label voice at 0.12em tracking. Static, not interactive.
+`.ctl` is the only interactive shape: a 48px drawn button with a 1px ink
+border. `.ctl--key` is the filled variant and there is exactly one per frame,
+always email. It fills ink on hover and patch blue when it is the key control.
+`.ctl--sm` is the 38px variant used inside an opened credential.
 
-### Cards / Containers
-- **Level card:** A full-viewport frame with a raster plate at 0.9 opacity under a void gradient scrim, the title in Display Card and one Label Card descriptor below. Every level carries a plate (assets/levels/: city, hotel, inversion, limbo), generated with ElevenLabs and graded to the no-blue rule.
-- **Notice (certificate):** Graphite, bone hairline at 0.16, Notice lift shadow, max 680px, rises 16px in 0.4s. Close control is a 44px square outline. Usage entries inside are half-pitch panels with a 0.14 hairline.
-- **Logo plate:** Pale plate behind a grayscale logo; hover lightens the plate and returns the logo to colour. Each opens the company site.
+### Title block
 
-### Navigation
-- **Matte:** Fixed pitch bars at top and bottom, condensed label voice in ash. Top carries the wordmark (125% width, 0.32em tracking), the live level name and the Levels menu button (two lines that cross on open). Bottom carries the dream clock, a 1px depth bar and contact. Bars retract on level cards unless focus is inside them.
-- **Levels menu:** A pitch scrim at 0.97 that opens from a horizontal slit (clip-path inset 50% to 0 in 0.55s). Entries are wide thin titles over condensed descriptions, divided by hairlines; hover and focus light the title sodium.
+`.block` is the only filled surface on the sheet. Name, role, three fields as a
+definition list, the three actions, and a revision strip. It owns the first
+viewport at full scale.
 
-### Dream Clock
-The bottom matte's clock reads hours, minutes and seconds in tabular figures beside a rate: ×1 in reality, ×20 in the City, ×400 in the Hotel, Reverse in the Inversion (counting down and turning forward red), and ∞ with dashes in Limbo.
+### Rack unit
 
-### Spinning Top
-A Three.js machined steel top (metalness 1, roughness 0.24, warm grey #d6d2ca) on a pool of lamplight, lit by a warm key light (#ffc98a) and a bone rim. A WebP poster frame stands in without WebGL or under reduced motion.
+`.unit` is one role. The date span sits in its own 150px column as the
+dimension label; the body carries the logo plate, the role, the organisation
+with its annotations, a scope paragraph and leader-line bullets. `data-state="live"`
+turns the dimension blue and adds the patch marker.
 
-### Dailies Strip
-The side project shown as a pitch film strip, tilted -3deg (-2deg on phones, flat under reduced motion), with sprocket rows of bone dashes and condensed edge code. App frames are desaturated to 0.55 and travel with the scroll.
+### Credential row
+
+`.cred` wraps a native `<details>`. No JavaScript is involved: the summary is
+the row, the plus rotates to a cross when open, and the row still works with
+scripts blocked. Every row carries the same five fields in the same order, so
+the schedule scans in one pass. The AZ-104 row is a static variant with no
+disclosure because there is nothing yet to verify.
+
+### Case file plate
+
+`.file__shot` is a bordered plate holding a grayscale photograph with its
+subject annotated beneath. The plate keeps the same width whichever side of the
+alternation it falls on.
+
+### Drawing strip
+
+`.strip` is fixed at the top carrying the drawing number, the drawing title and
+the sheet index. Every destination is visible; the current part is underlined
+in patch blue by an IntersectionObserver in `main.js`. Below 1080px the drawing
+title drops; below that the index scrolls horizontally rather than hiding.
+
+### Legend
+
+`.legend` is the key, bottom left of the first viewport under the datum. Three
+swatches, three words.
+
+### Signature plate
+
+`.sign` closes the sheet: a square grayscale portrait, who drew it and where,
+and the drawing fields closing on the right edge.
+
+## Motion
+
+One authored moment and one state duration. On load the datum draws itself
+across the sheet over 900ms and the year ticks ink in behind it on a 90ms
+stagger. Everything else is a 180ms transition on
+`cubic-bezier(0.2, 0, 0, 1)`.
+
+The opening is gated behind an `.is-plotting` class that `main.js` adds only
+when the tab is visible and reduced motion is not requested. The stylesheet's
+default is the finished state. This matters: animation frames are suspended in
+a background tab, so an entrance that started from `opacity: 0` would hand a
+visitor a blank sheet. It is also why nothing animates on scroll.
 
 ## Do's and Don'ts
 
 ### Do:
-- **Do** keep every surface in the graphite ramp (void, pitch, graphite) with bone, stone and ash for type.
-- **Do** reserve sodium for focus, hover and lamplight, and forward red for the inversion.
-- **Do** set every word in Archivo, choosing width by role: 125% titles, 75% chrome, 100% reading.
-- **Do** keep corners square and divide with 1px bone hairlines at 0.08 to 0.26 alpha.
-- **Do** grade evidence photographs and logos to grayscale (contrast 1.22 to 1.32, brightness 0.8 to 0.82) and let colour return only on interaction.
-- **Do** frame each level with a full-viewport card that retracts the matte, and keep the matte reachable by focus.
-- **Do** give every motion a calm path: the field freezes, the cold open is skipped, cards and notices appear without travel.
+
+- Draw a component rather than style a box: rails, leader lines, plates, a
+  legend, a revision block.
+- Put a number in tabular figures and give it a column.
+- Label with condensed caps at 10 to 11px.
+- Give a photograph a bordered plate and an annotated caption, in grayscale.
+- Use a native element when one exists.
+- Keep one filled control per frame, always email.
+- Cap a new reading column at the measure.
 
 ### Don't:
-- **Don't** introduce any blue, including cool greys, link blue or blue-tinted shader light.
-- **Don't** use forward red outside the inversion, or sodium as a resting fill or text colour.
-- **Don't** add a second typeface or a serif display; hierarchy is width and weight within Archivo.
-- **Don't** round corners on controls, frames or containers.
-- **Don't** set screen text below 15px.
-- **Don't** put a small tracked label above a heading; the level card's single descriptor sits below its title.
-- **Don't** use hard offset shadows; depth is soft hang or light.
+
+- Don't add a kicker or an eyebrow above a heading.
+- Don't tint a surface, a border or a heading with a patch colour.
+- Don't introduce a second typeface, a monospace face, or a system display
+  stack.
+- Don't reach for a shadow or a radius to separate two things.
+- Don't hide a destination behind a hover, an overlay or a gesture.
+- Don't animate on scroll, and don't reintroduce a library to do it.
+- Don't warm the ground toward cream.
+- Don't invent a claim. Every fact traces to the CV, the signed position
+  description or the Poker Money README.

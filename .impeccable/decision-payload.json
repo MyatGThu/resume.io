@@ -1,0 +1,135 @@
+{
+  "title": "Choose the visual world",
+  "question": "The Inception world is retired. The roll assigned Rack Elevation. Keep it, take an alternate, or re-roll.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Rack Elevation",
+      "kicker": "THE ROLL",
+      "lineage": "IT infrastructure elevation drawings and patch schedules",
+      "thesis": "The record drawn as the document this trade actually signs off: a dimensioned elevation with a title block, not a styled CV. Refuses the dark terminal portfolio and the sidebar-and-skill-bars resume in one move.",
+      "palette": ["#eceef0", "#10161c", "#aab3bb", "#1557c0", "#c6302b", "#17794a"],
+      "materials": [
+        "cool drafting sheet, never cream",
+        "hairline grid at true 1px",
+        "U-numbered rails",
+        "leader lines and callouts",
+        "engineering title block",
+        "patch-cable colour code"
+      ],
+      "viewport": "The title block at monumental scale, bottom-right where every drawing puts it, carrying MYAT THU, Service Desk Analyst, Melbourne, available, and the three actions as drawn controls. The elevation starts immediately beside it, roles stacked as rack units with their years as U-numbers.",
+      "risk": "A drawing can hide the offer. If the title block is not immediately legible as a resume header, a recruiter with 40 seconds bounces.",
+      "raised": [
+        {
+          "from": "challenger-sneaker",
+          "raise": "One identical label schema repeated on every unit, so the whole elevation scans in a single pass."
+        },
+        {
+          "from": "challenger-hypercard",
+          "raise": "Every destination is a visible drawn control on the sheet. No hidden navigation, no hover-to-discover."
+        },
+        {
+          "from": "challenger-synth",
+          "raise": "One datum line the entire sheet hangs from, so nothing floats."
+        },
+        {
+          "from": "challenger-flagship",
+          "raise": "One element owns the first viewport at full scale rather than a polite hero band."
+        }
+      ],
+      "hero": "https://impeccable.style/worlds/cards/craft-making-glazier-colorfield-partition-hero.webp"
+    },
+    {
+      "id": "model-pick",
+      "label": "The Runbook",
+      "kicker": "IMPECCABLE'S PICK",
+      "lineage": "standard operating procedure binders and change records",
+      "thesis": "The site is the artefact he is actually known for: a written procedure anyone on the desk can run. Numbered steps, pre-conditions, rollback, revision block, sign-off.",
+      "palette": ["#f4f3ef", "#14181d", "#9aa1a8", "#b4541f"],
+      "materials": ["SOP binder", "numbered steps", "revision block", "wet-signature sign-off"],
+      "viewport": "A procedure sheet: document number, revision, owner, effective date, then step 01 as the opening statement.",
+      "risk": "This topped my own list, which is the honest warning: it is the first place most runs land for a process-driven subject, and a document-shaped site can read as plain rather than considered."
+    },
+    {
+      "id": "challenger-splitflap",
+      "label": "Split-Flap Concourse",
+      "verdict": "competitive",
+      "lineage": "rail concourse departure boards",
+      "thesis": "The record as a departures board: roles as rows ranked by date, status in amber, the whole thing readable in one upward glance.",
+      "palette": ["#111111", "#ffffff", "#e8a33d", "#8c2f2a"],
+      "materials": ["matte flap faces", "brushed steel frame", "fixed character cells"],
+      "viewport": "A ruled board, roles as rows, columns that never move.",
+      "case": "Fuses well and holds product clarity: a service desk is a queue, a board is maximally scannable, and the table stays semantic underneath. Loses on the brief, not on craft.",
+      "risk": "The per-character flap cascade is exactly the cleverness you ruled out, and black flaps with an amber accent sits close to the terminal-portfolio rut.",
+      "hero": "https://impeccable.style/worlds/cards/signals-instruments-split-flap-concourse-hero.webp"
+    },
+    {
+      "id": "challenger-glazier",
+      "label": "Colorfield Partition",
+      "verdict": "competitive",
+      "lineage": "steel-framed glazed partition walls",
+      "thesis": "A black glazing grid of mostly clear panes where exactly one pane lights for what matters now. Colour is rationed to the live fact.",
+      "palette": ["#141414", "#f2f4f3", "#1b48b8", "#b8671a"],
+      "materials": ["matte glazing bars", "seeded white glass", "one saturated pane"],
+      "viewport": "A wall elevation read left to right, one pane holding one statement.",
+      "case": "Holds product clarity cleanly: one pane one fact, hierarchy by pane size rather than type weight, and the rationing of colour is genuinely disciplined.",
+      "risk": "Glazing is not this audience's world, so the metaphor needs explaining, and a resume cannot afford a page of explanation.",
+      "hero": "https://impeccable.style/worlds/cards/craft-making-glazier-colorfield-partition-hero.webp"
+    },
+    {
+      "id": "challenger-sneaker",
+      "label": "Sneaker Archive Wall",
+      "verdict": "declined",
+      "lineage": "stacked shoebox walls",
+      "palette": ["#c4571f", "#141414", "#f6f3ec"],
+      "materials": ["box board", "silhouette line art"],
+      "case": "Fuses poorly: an IT hiring manager does not identify with sneaker archiving, and lids that must be opened bury the facts you asked me to keep in the open.",
+      "kept": "One identical label schema on every unit, so the whole wall scans at once.",
+      "hero": "https://impeccable.style/worlds/cards/textiles-weave-drape-fashion-sneaker-box-stacks-hero.webp"
+    },
+    {
+      "id": "challenger-hypercard",
+      "label": "HyperCard Stack",
+      "verdict": "declined",
+      "lineage": "one-bit HyperCard shoebox stacks",
+      "palette": ["#000000", "#ffffff"],
+      "materials": ["one-bit dither", "pixel menus"],
+      "case": "Fuses poorly: the nostalgia belongs to a different crowd, and one-bit pixel type fights the large readable type this site is committed to.",
+      "kept": "Every destination is a visible control, never hidden behind a hover.",
+      "hero": "https://impeccable.style/worlds/cards/medium-native-hypercard-stack-shoebox-hero.webp"
+    },
+    {
+      "id": "challenger-synth",
+      "label": "Grid Horizon",
+      "verdict": "declined",
+      "lineage": "retro synth cover grids",
+      "palette": ["#2b1b4d", "#e62a8b", "#2ad4e6"],
+      "materials": ["wireframe grid", "banded sun"],
+      "case": "Fuses poorly on both axes, and it is built on the WebGL you asked me to remove.",
+      "kept": "One datum line the whole sheet hangs from.",
+      "hero": "https://impeccable.style/worlds/cards/digital-design-canon-grid-horizon-sunset-hero.webp"
+    },
+    {
+      "id": "challenger-flagship",
+      "label": "Fashion Flagship",
+      "verdict": "declined",
+      "lineage": "luxury fashion digital flagships",
+      "palette": ["#f7f6f3", "#101010"],
+      "materials": ["monumental editorial type", "full-bleed imagery"],
+      "case": "Fuses poorly: it needs photography this site does not have, and vast negative space around slow imagery is precisely the arrangement that buries a record.",
+      "kept": "One element owns the first viewport at full scale.",
+      "hero": "https://impeccable.style/worlds/cards/luxury-fashion-flagship-hero.webp"
+    }
+  ],
+  "canon": true,
+  "canonCard": {
+    "label": "The category standard",
+    "thesis": "The conventional professional resume page, executed impeccably: header, experience, skills, certifications, contact, one column, system type, restrained accent.",
+    "palette": ["#ffffff", "#111827", "#2563eb"],
+    "materials": ["clean grid", "system type stack"],
+    "viewport": "The arrangement a recruiter expects, at full craft and nothing more.",
+    "risk": "Indistinguishable from every other competent resume site by design, which is sometimes exactly the right trade."
+  },
+  "reroll": { "registers": ["safer", "bolder"] },
+  "steer": true
+}

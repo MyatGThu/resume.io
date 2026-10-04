@@ -1,496 +1,386 @@
 {
   "schemaVersion": 2,
-  "generatedAt": "2026-10-01T00:00:00+00:00",
-  "title": "Design System: Myat Thu, Going Under",
+  "generatedAt": "2026-10-04T05:10:00+00:00",
+  "title": "Design System: Myat Thu, Record of Service",
   "extensions": {
     "colorMeta": {
-      "void": {
+      "sheet": {
         "role": "neutral",
-        "displayName": "Void",
-        "canonical": "oklch(15.0% 0.002 286)",
+        "displayName": "Sheet",
+        "canonical": "oklch(93.8% 0.004 247)",
         "tonalRamp": [
-          "#0b0b0c",
-          "#242425",
-          "#3f3f41",
-          "#5d5d5f",
-          "#7d7d7e",
-          "#9e9ea0",
-          "#c4c4c5",
-          "#eeeef0"
+          "#181818",
+          "#424343",
+          "#717273",
+          "#a5a7a8",
+          "#d9dbdd",
+          "#eff1f3",
+          "#f5f6f7",
+          "#fcfdfd"
         ]
       },
-      "pitch": {
+      "sheet-2": {
         "role": "neutral",
-        "displayName": "Pitch",
-        "canonical": "oklch(11.5% 0.000 90)",
+        "displayName": "Sheet, filled",
+        "canonical": "oklch(91.4% 0.005 247)",
         "tonalRamp": [
-          "#0b0b0b",
-          "#242424",
-          "#404040",
-          "#5d5d5d",
-          "#7d7d7d",
-          "#9e9e9e",
-          "#c4c4c4",
-          "#eeeeee"
+          "#171717",
+          "#404142",
+          "#6d6f70",
+          "#a0a2a4",
+          "#d2d5d7",
+          "#e9ebee",
+          "#f1f3f4",
+          "#fbfcfc"
         ]
       },
-      "graphite": {
+      "sheet-3": {
         "role": "neutral",
-        "displayName": "Graphite",
-        "canonical": "oklch(20.5% 0.000 90)",
+        "displayName": "Sheet, pressed",
+        "canonical": "oklch(88.2% 0.006 247)",
         "tonalRamp": [
-          "#0b0b0b",
-          "#242424",
-          "#404040",
-          "#5d5d5d",
-          "#7d7d7d",
-          "#9e9e9e",
-          "#c4c4c4",
-          "#eeeeee"
-        ]
-      },
-      "ash": {
-        "role": "neutral",
-        "displayName": "Ash",
-        "canonical": "oklch(68.3% 0.009 92)",
-        "tonalRamp": [
-          "#0c0b07",
-          "#26241f",
-          "#41403a",
-          "#5f5d58",
-          "#7f7d77",
-          "#a09e98",
-          "#c6c4be",
-          "#f1eee8"
-        ]
-      },
-      "stone": {
-        "role": "neutral",
-        "displayName": "Stone",
-        "canonical": "oklch(84.6% 0.009 85)",
-        "tonalRamp": [
-          "#0d0b07",
-          "#26241f",
-          "#423f3b",
-          "#605d58",
-          "#807d77",
-          "#a19e98",
-          "#c7c4be",
-          "#f1eee8"
-        ]
-      },
-      "bone": {
-        "role": "primary",
-        "displayName": "Bone White",
-        "canonical": "oklch(94.0% 0.005 95)",
-        "tonalRamp": [
-          "#0c0b09",
-          "#252421",
-          "#40403d",
-          "#5e5e5a",
-          "#7e7d7a",
-          "#9f9e9b",
-          "#c5c4c0",
-          "#efeeea"
-        ]
-      },
-      "sodium": {
-        "role": "secondary",
-        "displayName": "Sodium Lamp",
-        "canonical": "oklch(77.6% 0.146 71)",
-        "tonalRamp": [
-          "#170700",
-          "#351e00",
-          "#593703",
-          "#7f5311",
-          "#a96f19",
-          "#d78c14",
-          "#fab55c",
-          "#ffebd4"
-        ]
-      },
-      "forward": {
-        "role": "tertiary",
-        "displayName": "Forward Red",
-        "canonical": "oklch(63.5% 0.185 31)",
-        "tonalRamp": [
-          "#220000",
-          "#4c0000",
-          "#771406",
-          "#ae1701",
-          "#d5432e",
-          "#fc6851",
-          "#fdac9d",
-          "#ffe9e4"
-        ]
-      },
-      "plate": {
-        "role": "neutral",
-        "displayName": "Logo Plate",
-        "canonical": "oklch(91.3% 0.008 91)",
-        "tonalRamp": [
-          "#0c0b07",
-          "#252420",
-          "#41403b",
-          "#5f5d58",
-          "#7f7d78",
-          "#a09e99",
-          "#c6c4be",
-          "#f0eee8"
-        ]
-      },
-      "paper": {
-        "role": "neutral",
-        "displayName": "Print Paper",
-        "canonical": "oklch(96.7% 0.005 95)",
-        "tonalRamp": [
-          "#0c0b09",
-          "#252421",
-          "#40403d",
-          "#5e5e5a",
-          "#7e7d7a",
-          "#9f9e9b",
-          "#c5c4c0",
-          "#efeeea"
+          "#161617",
+          "#3d3e3f",
+          "#696b6c",
+          "#999b9e",
+          "#c9ccd0",
+          "#e1e4e7",
+          "#eceef0",
+          "#fafafb"
         ]
       },
       "ink": {
-        "role": "neutral",
-        "displayName": "Print Ink",
-        "canonical": "oklch(20.0% 0.000 90)",
+        "role": "primary",
+        "displayName": "Ink",
+        "canonical": "oklch(18.5% 0.012 251)",
         "tonalRamp": [
-          "#0b0b0b",
-          "#242424",
-          "#404040",
-          "#5d5d5d",
-          "#7d7d7d",
-          "#9e9e9e",
-          "#c4c4c4",
-          "#eeeeee"
+          "#020203",
+          "#040608",
+          "#080b0d",
+          "#0b0f14",
+          "#0f141a",
+          "#3b4045",
+          "#838689",
+          "#dededf"
+        ]
+      },
+      "ink-2": {
+        "role": "neutral",
+        "displayName": "Ink, secondary",
+        "canonical": "oklch(35.8% 0.019 248)",
+        "tonalRamp": [
+          "#060708",
+          "#101315",
+          "#1b2024",
+          "#282f35",
+          "#343e46",
+          "#5d656c",
+          "#989da2",
+          "#e3e5e6"
+        ]
+      },
+      "ink-3": {
+        "role": "neutral",
+        "displayName": "Ink, annotation",
+        "canonical": "oklch(49.5% 0.017 248)",
+        "tonalRamp": [
+          "#090a0b",
+          "#191c1f",
+          "#2c3035",
+          "#40474d",
+          "#545d65",
+          "#798188",
+          "#aaafb4",
+          "#e8e9eb"
         ]
       },
       "rule": {
         "role": "neutral",
-        "displayName": "Print Rule",
-        "canonical": "oklch(83.0% 0.009 91)",
+        "displayName": "Hairline",
+        "canonical": "oklch(76.5% 0.009 248)",
         "tonalRamp": [
-          "#0c0b07",
-          "#25241f",
-          "#41403b",
-          "#5f5d58",
-          "#7f7d78",
-          "#a09e99",
-          "#c6c4be",
-          "#f0eee8"
+          "#111213",
+          "#313335",
+          "#54575b",
+          "#7a7f84",
+          "#a0a7ae",
+          "#bdc3c9",
+          "#d5d9dd",
+          "#f4f5f6"
         ]
       },
-      "print-ash": {
+      "rule-2": {
         "role": "neutral",
-        "displayName": "Print Ash",
-        "canonical": "oklch(47.9% 0.008 89)",
+        "displayName": "Hairline, light",
+        "canonical": "oklch(84.2% 0.007 247)",
         "tonalRamp": [
-          "#0d0b07",
-          "#262420",
-          "#41403b",
-          "#5f5d58",
-          "#7f7d78",
-          "#a09e99",
-          "#c6c4be",
-          "#f1eee8"
+          "#141515",
+          "#383a3b",
+          "#606365",
+          "#8c9094",
+          "#b8bec2",
+          "#d2d7db",
+          "#e2e6e8",
+          "#f7f8f9"
         ]
       },
-      "print-label": {
-        "role": "neutral",
-        "displayName": "Print Label",
-        "canonical": "oklch(34.5% 0.005 92)",
+      "blue": {
+        "role": "secondary",
+        "displayName": "Patch blue, current",
+        "canonical": "oklch(47.5% 0.178 262)",
         "tonalRamp": [
-          "#0c0b09",
-          "#252421",
-          "#41403d",
-          "#5f5d5a",
-          "#7e7d7a",
-          "#9f9e9b",
-          "#c5c4c0",
-          "#f0eeea"
+          "#020913",
+          "#061836",
+          "#0a2a5c",
+          "#0f3d86",
+          "#1350b1",
+          "#3f75cb",
+          "#85a8de",
+          "#dee7f6"
+        ]
+      },
+      "amber": {
+        "role": "tertiary",
+        "displayName": "Patch amber, in progress",
+        "canonical": "oklch(50.5% 0.126 52)",
+        "tonalRamp": [
+          "#100701",
+          "#2d1502",
+          "#4d2403",
+          "#703404",
+          "#934406",
+          "#b16b33",
+          "#cea17e",
+          "#f2e6dc"
+        ]
+      },
+      "red": {
+        "role": "tertiary",
+        "displayName": "Patch red, escalation",
+        "canonical": "oklch(53.5% 0.189 27)",
+        "tonalRamp": [
+          "#140504",
+          "#370d0c",
+          "#5f1715",
+          "#8b221e",
+          "#b62c28",
+          "#d05551",
+          "#e19391",
+          "#f7e2e1"
+        ]
+      },
+      "green": {
+        "role": "tertiary",
+        "displayName": "Patch green, verified",
+        "canonical": "oklch(47.0% 0.102 158)",
+        "tonalRamp": [
+          "#020b06",
+          "#051e12",
+          "#09331f",
+          "#0d4b2e",
+          "#11623c",
+          "#3d8663",
+          "#84b29c",
+          "#deeae4"
         ]
       }
     },
     "typographyMeta": {
-      "display": {
-        "displayName": "Display",
-        "purpose": "The name in reality."
+      "name": {
+        "displayName": "Title block name",
+        "purpose": "The one monumental element. Archivo 600 at wdth 92, tracked to -0.035em."
       },
-      "display-card": {
-        "displayName": "Display Card",
-        "purpose": "Level card titles and the end line."
+      "part": {
+        "displayName": "Part heading",
+        "purpose": "Names each part of the sheet: the record, case files, credentials."
       },
-      "beat": {
-        "displayName": "Beat",
-        "purpose": "Trailer beats, one fact at a time."
+      "close": {
+        "displayName": "Close",
+        "purpose": "The sign-off statement, the only other type allowed near display scale."
       },
-      "headline": {
-        "displayName": "Headline",
-        "purpose": "Room headings with a trailing hairline."
+      "role": {
+        "displayName": "Role",
+        "purpose": "The job title on a rack unit and the heading on a case file."
       },
-      "title": {
-        "displayName": "Title",
-        "purpose": "Field report, notice and training headings."
-      },
-      "title-plain": {
-        "displayName": "Title Plain",
-        "purpose": "Role titles and certificate names."
-      },
-      "body-lead": {
-        "displayName": "Body Lead",
-        "purpose": "Lead paragraph and logline."
+      "lede": {
+        "displayName": "Lede",
+        "purpose": "One paragraph under a part heading, capped at the measure."
       },
       "body": {
         "displayName": "Body",
-        "purpose": "Reading text, tabular figures."
+        "purpose": "Scope paragraphs, bullets and spec values. 17px at 1.6."
       },
-      "label": {
-        "displayName": "Label",
-        "purpose": "All chrome: matte, buttons, slates, terms, tags."
+      "annotation": {
+        "displayName": "Annotation",
+        "purpose": "Condensed caps at wdth 80, tracked 0.1em: every label, dimension, flag and field."
       },
-      "label-card": {
-        "displayName": "Label Card",
-        "purpose": "The one descriptor beneath a level card title."
+      "dimension": {
+        "displayName": "Dimension",
+        "purpose": "The date span beside a rack unit, read as the unit's position on the scale."
+      },
+      "tick": {
+        "displayName": "Scale tick",
+        "purpose": "A year on the left-hand scale in the first viewport."
+      },
+      "field": {
+        "displayName": "Title block field",
+        "purpose": "Drawing number, revision and sheet count in the strip, title block and sign-off."
       }
     },
-    "shadows": [
-      {
-        "name": "frame-hang",
-        "value": "0 30px 80px -20px rgba(0, 0, 0, 0.85)",
-        "purpose": "Portrait frame; field report frames use a -24px spread."
-      },
-      {
-        "name": "strip-hang",
-        "value": "0 40px 90px -30px rgba(0, 0, 0, 0.9), 0 0 0 1px rgba(236, 235, 231, 0.08)",
-        "purpose": "The tilted dailies film strip."
-      },
-      {
-        "name": "notice-lift",
-        "value": "0 40px 100px -20px rgba(0, 0, 0, 0.9)",
-        "purpose": "The certificate notice over its pitch scrim."
-      },
-      {
-        "name": "totem-cast",
-        "value": "drop-shadow(0 26px 24px rgba(0, 0, 0, 0.8))",
-        "purpose": "filter on cut-out totem rasters."
-      }
-    ],
+    "shadows": [],
     "motion": [
       {
-        "name": "out",
-        "value": "cubic-bezier(0.16, 1, 0.3, 1)",
-        "purpose": "Default CSS easing for state, matte retraction and menu reveal."
+        "name": "ease",
+        "value": "cubic-bezier(0.2, 0, 0, 1)",
+        "purpose": "The only easing in the stylesheet. State changes, hover, the disclosure cross, the opening."
       },
       {
-        "name": "hold",
-        "value": "cubic in-out (4t^3 / 1 - (-2t+2)^3/2)",
-        "purpose": "Scroll-scrubbed travel: hold on the frame, travel between (hotel roll, dailies run)."
+        "name": "t",
+        "value": "180ms",
+        "purpose": "The only transition duration. Hover, focus and disclosure all run at it."
       },
       {
-        "name": "state",
-        "value": "0.2s",
-        "purpose": "Button and link colour changes."
+        "name": "plot",
+        "value": "scaleX(0) to scaleX(1) over 900ms",
+        "purpose": "The one authored moment: the datum draws itself across the sheet on load."
       },
       {
-        "name": "matte-retract",
-        "value": "0.6s",
-        "purpose": "Bars leave and return around level cards (IMAX)."
+        "name": "ink",
+        "value": "opacity 0 to 1 over 380ms, staggered 90ms",
+        "purpose": "The year ticks on the scale appear in sequence behind the datum."
       },
       {
-        "name": "menu-slit",
-        "value": "clip-path inset(50% 0 50% 0) to inset(0) over 0.55s",
-        "purpose": "Levels menu opens from a horizontal slit."
-      },
-      {
-        "name": "notice-rise",
-        "value": "translateY(16px) to none, 0.4s",
-        "purpose": "Certificate notice entrance."
-      },
-      {
-        "name": "card-title",
-        "value": "letter-spacing 0.5em to 0.16em, opacity 0 to 1, power2.out",
-        "purpose": "Level card title lands as the bars retract; plate scales 1.16 to 1."
-      },
-      {
-        "name": "smooth-scroll",
-        "value": "Lenis duration 1.1",
-        "purpose": "Page scroll; jumps use 1.6s."
-      },
-      {
-        "name": "field-pace",
-        "value": "[1, 0.5, 0.25, 1, 0.08]",
-        "purpose": "Shader time scale per level: reality, city, hotel, inversion, limbo."
-      },
-      {
-        "name": "reduced-motion",
-        "value": "prefers-reduced-motion: reduce",
-        "purpose": "Field renders one still frame, cold open skipped, transitions and notice animation removed, dailies strip flattened, top shown as poster."
+        "name": "is-plotting",
+        "value": "class gate on the html element",
+        "purpose": "main.js adds it only when the tab is visible and motion is welcome. The stylesheet default is the finished state, so nothing can be stranded invisible in a background tab or with scripts off."
       }
     ],
     "breakpoints": [
       {
-        "name": "collapse",
-        "value": "980px"
+        "name": "index-label",
+        "value": "1080px"
+      },
+      {
+        "name": "stack",
+        "value": "900px"
+      },
+      {
+        "name": "strip-touch",
+        "value": "720px"
       },
       {
         "name": "phone",
-        "value": "760px"
-      },
-      {
-        "name": "narrow",
-        "value": "420px"
-      },
-      {
-        "name": "portrait",
-        "value": "max-aspect-ratio: 1/1"
+        "value": "560px"
       }
     ]
   },
   "components": [
     {
-      "name": "Key Button",
+      "name": "Control",
       "kind": "button",
-      "refersTo": "button-key",
-      "description": "The one primary action per frame, always email. Bone fill, sodium on hover.",
-      "html": "<a class=\"ds-btn ds-btn-key\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"square\" stroke-linejoin=\"miter\" aria-hidden=\"true\"><path d=\"M4 6.5h16v11H4z\"/><path d=\"m4.5 7 7.5 6 7.5-6\"/></svg>Email Myat</a>",
-      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:0;text-decoration:none;cursor:pointer;font-family:var(--face);font-stretch:75%;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;font-size:15px;line-height:1;transition:background-color .2s var(--out),color .2s var(--out),border-color .2s var(--out);} .ds-btn:focus-visible{outline:2px solid var(--sodium);outline-offset:4px;} .ds-btn:active{transform:translateY(1px);} .ds-btn-key{background:var(--bone);color:var(--void);border:1px solid var(--bone);} .ds-btn-key:hover{background:var(--sodium);border-color:var(--sodium);}"
+      "refersTo": "ctl",
+      "description": "Every destination on the sheet is a drawn control with a visible border. One filled control per frame, always email.",
+      "html": "<a class=\"ctl ctl-key\" href=\"#\">Email Myat</a> <a class=\"ctl\" href=\"#\">Download CV</a>",
+      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.ctl{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;border:1px solid var(--ink);border-radius:0;text-decoration:none;color:var(--ink);font-size:15px;font-weight:600;transition:background 180ms var(--ease),color 180ms var(--ease),border-color 180ms var(--ease);}.ctl:hover{background:var(--ink);color:var(--sheet);}.ctl-key{background:var(--ink);color:var(--sheet);}.ctl-key:hover{background:var(--blue);border-color:var(--blue);}"
     },
     {
-      "name": "Ghost Button",
-      "kind": "button",
-      "refersTo": "button-ghost",
-      "description": "Secondary actions (LinkedIn, CV, external links). Hairline outline that floods bone on hover.",
-      "html": "<div style=\"background:#0b0b0c;padding:24px;display:flex;gap:12px\"><a class=\"ds-btn ds-btn-ghost\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"square\" stroke-linejoin=\"miter\" aria-hidden=\"true\"><path d=\"M12 5v12M6.5 11.5 12 17l5.5-5.5M6 20h12\"/></svg>Download CV</a><a class=\"ds-btn ds-btn-ghost\" href=\"#\">LinkedIn<svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"square\" stroke-linejoin=\"miter\" aria-hidden=\"true\"><path d=\"M8 16 16 8M9.5 8H16v6.5\"/></svg></a></div>",
-      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-btn{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 22px;border-radius:0;text-decoration:none;cursor:pointer;font-family:var(--face);font-stretch:75%;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;font-size:15px;line-height:1;transition:background-color .2s var(--out),color .2s var(--out),border-color .2s var(--out);} .ds-btn:focus-visible{outline:2px solid var(--sodium);outline-offset:4px;} .ds-btn:active{transform:translateY(1px);} .ds-btn-ghost{background:rgba(5,5,5,0.5);color:var(--bone);border:1px solid rgba(236,235,231,0.42);} .ds-btn-ghost:hover{background:var(--bone);border-color:var(--bone);color:var(--void);}"
-    },
-    {
-      "name": "Matte Bar",
-      "kind": "nav",
-      "refersTo": "matte-bar",
-      "description": "The fixed 35mm matte: wordmark, live level name, Levels menu; retracts on level cards.",
-      "html": "<header class=\"ds-matte\"><a class=\"ds-matte__mark\" href=\"#\">Myat Thu</a><span class=\"ds-matte__level\">The City</span><button class=\"ds-matte__menu\" type=\"button\">Levels<i></i></button></header>",
-      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-matte{display:flex;align-items:center;gap:24px;height:48px;padding:0 32px;background:var(--pitch);color:var(--ash);border-bottom:1px solid rgba(236,235,231,0.08);font-family:var(--face);font-stretch:75%;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;font-size:15px;line-height:1;} .ds-matte__mark{color:var(--bone);text-decoration:none;font-stretch:125%;font-weight:500;letter-spacing:0.32em;} .ds-matte__level{flex:1;color:var(--bone);} .ds-matte__menu{display:inline-flex;align-items:center;gap:12px;background:none;border:0;padding:4px 0;color:var(--bone);font:inherit;letter-spacing:inherit;text-transform:inherit;cursor:pointer;} .ds-matte__menu i{position:relative;width:26px;height:9px;border-top:1.5px solid currentColor;border-bottom:1.5px solid currentColor;} .ds-matte__menu:hover{color:var(--sodium);} .ds-matte a:focus-visible,.ds-matte__menu:focus-visible{outline:2px solid var(--sodium);outline-offset:4px;}"
-    },
-    {
-      "name": "Dream Clock",
-      "kind": "custom",
-      "description": "Bottom matte clock with the level's time rate; turns forward red when time runs backwards.",
-      "html": "<div class=\"ds-clockbar\"><span class=\"ds-clock\"><b>&times;20</b><span>00:42:10</span></span><span class=\"ds-depth\"><i></i></span></div><div class=\"ds-clockbar ds-is-backwards\"><span class=\"ds-clock\"><b>Reverse</b><span>00:03:51</span></span><span class=\"ds-depth\"><i style=\"transform:scaleX(.7)\"></i></span></div>",
-      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-clockbar{display:flex;align-items:center;gap:24px;height:48px;padding:0 32px;background:var(--pitch);border-top:1px solid rgba(236,235,231,0.08);font-family:var(--face);font-stretch:75%;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;font-size:15px;line-height:1;} .ds-clock{display:inline-flex;align-items:baseline;gap:14px;color:var(--bone);letter-spacing:0.12em;font-variant-numeric:tabular-nums;} .ds-clock b{min-width:4.2em;font-weight:600;color:var(--ash);} .ds-is-backwards .ds-clock b,.ds-is-backwards .ds-clock span{color:var(--forward);} .ds-depth{position:relative;flex:1;height:1px;background:rgba(236,235,231,0.14);} .ds-depth i{position:absolute;inset:0;background:var(--bone);transform-origin:left;transform:scaleX(.4);}"
-    },
-    {
-      "name": "Level Card",
+      "name": "Title block",
       "kind": "card",
-      "description": "Full-frame title card for a dream level: wide thin title, one condensed descriptor below. Each of the four levels carries its own generated plate.",
-      "html": "<header class=\"ds-card\"><h2 class=\"ds-card__h\"><span class=\"ds-card__t\">The City</span><span class=\"ds-card__d\">Time runs twenty times slower down here</span></h2></header>",
-      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-card{display:grid;place-items:center;min-height:320px;padding:48px 24px;text-align:center;background:radial-gradient(60% 50% at 50% 30%,rgba(240,164,58,0.12),transparent 70%),var(--void);} .ds-card__h{margin:0;display:grid;gap:24px;justify-items:center;} .ds-card__t{font-family:var(--face);font-stretch:125%;font-weight:200;font-size:clamp(38px,7.6vw,96px);line-height:1;letter-spacing:0.16em;margin-right:-0.16em;text-transform:uppercase;color:var(--bone);} .ds-card__d{font-family:var(--face);font-stretch:75%;font-weight:600;font-size:16px;line-height:1.3;letter-spacing:0.3em;padding-left:0.3em;text-transform:uppercase;color:var(--stone);}"
+      "refersTo": "block",
+      "description": "The lower-right block every drawing carries, at monumental scale: the name, the role, three fields and the three actions.",
+      "html": "<div class=\"block\"><h1>Myat Thu</h1><p class=\"role\">Service Desk Analyst</p><dl><div><dt class=\"ann\">Location</dt><dd>Melbourne, Australia</dd></div><div><dt class=\"ann\">Reply</dt><dd>Within a day</dd></div></dl><p class=\"rev ann\"><span>Drawn by M. Thu</span><span>Rev 4</span><span>Sheet 1 of 1</span></p></div>",
+      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.block{width:min(560px,100%);border:1px solid var(--ink);background:var(--sheet-2);padding:32px;color:var(--ink);}.block h1{margin:0;font-size:clamp(2.75rem,8vw,5rem);font-weight:600;font-stretch:92%;letter-spacing:-.035em;line-height:.95;}.role{margin:8px 0 0;font-size:1.3rem;color:var(--ink-2);padding-bottom:24px;border-bottom:1px solid var(--rule);}dl{display:grid;gap:10px;padding:24px 0;margin:0;}dl>div{display:grid;grid-template-columns:5.5em 1fr;gap:16px;align-items:baseline;}dt{font-size:10.5px;color:var(--ink-3);}dd{margin:0;font-size:15px;}.rev{display:flex;gap:24px;margin:32px 0 0;padding-top:16px;border-top:1px solid var(--rule);font-size:10px;color:var(--ink-3);}"
     },
     {
-      "name": "Room Heading",
-      "kind": "custom",
-      "description": "Wide uppercase heading whose hairline runs to the room's edge.",
-      "html": "<h3 class=\"ds-room__h\">The record</h3>",
-      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-room__h{display:flex;align-items:center;gap:24px;margin:0;font-family:var(--face);font-stretch:125%;font-weight:300;font-size:clamp(28px,3.4vw,50px);line-height:1.05;letter-spacing:0.12em;text-transform:uppercase;color:var(--bone);background:var(--void);padding:24px;} .ds-room__h::after{content:\"\";flex:1;height:1px;background:rgba(236,235,231,0.14);}"
+      "name": "Rack unit",
+      "kind": "list-item",
+      "refersTo": "unit",
+      "description": "One role on the elevation. The date span is the dimension label at the left; the live unit alone takes patch blue.",
+      "html": "<li class=\"unit\" data-state=\"live\"><p class=\"dim ann\"><b>May 2025</b><span>to now</span></p><div><h3>Service Desk Analyst</h3><p class=\"org\">IPH Limited <span class=\"ann\">Melbourne</span></p><ul class=\"pts\"><li>Second-level escalation point for the service desk</li><li>Builds laptops and mobiles to the standard operating environment</li></ul></div></li>",
+      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.unit{display:grid;grid-template-columns:150px 1fr;gap:48px;padding:48px 0;border-bottom:1px solid var(--rule);list-style:none;color:var(--ink);}.dim{margin:0;font-size:11px;color:var(--ink-3);line-height:1.5;}.dim b{display:block;font-size:13px;color:var(--blue);}.dim span{display:block;}h3{margin:0;font-size:1.5rem;font-weight:600;letter-spacing:-.02em;}.org{margin:4px 0 0;font-size:15px;font-weight:600;color:var(--ink-2);}.org span{font-size:10.5px;color:var(--ink-3);margin-left:10px;}.pts{margin:24px 0 0;padding:0;display:grid;gap:10px;list-style:none;}.pts li{position:relative;padding-left:24px;color:var(--ink-2);line-height:1.55;}.pts li::before{content:\"\";position:absolute;left:0;top:.68em;width:10px;height:1px;background:var(--rule);}"
     },
     {
-      "name": "Kit Tag",
-      "kind": "chip",
-      "refersTo": "kit-tag",
-      "description": "Static skill tag: hairline outline, condensed caps.",
-      "html": "<ul class=\"ds-kit\"><li>Microsoft Intune</li><li>Entra ID</li><li>PowerShell</li></ul>",
-      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-kit{list-style:none;margin:0;padding:24px;display:flex;flex-wrap:wrap;gap:10px;background:var(--void);} .ds-kit li{padding:9px 14px;border:1px solid rgba(236,235,231,0.26);font-family:var(--face);font-stretch:75%;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;font-size:15px;line-height:1;letter-spacing:0.12em;color:var(--bone);}"
+      "name": "Credential row",
+      "kind": "disclosure",
+      "refersTo": "cred",
+      "description": "A native details element. One identical label schema per row so the schedule scans in a single pass; the plus turns to a cross when open.",
+      "html": "<li class=\"cred\"><details><summary class=\"row\"><span class=\"ann code\">MD-102</span><span class=\"nm\">Endpoint Administrator</span><span class=\"ann mut\">Microsoft</span><span class=\"ann mut\">23 Nov 2024</span><span class=\"ann flag\">Verified</span><svg class=\"plus\" viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><path d=\"M12 7v10M7 12h10\"/></svg></summary><div class=\"detail\"><p>Deploying and protecting Windows endpoints at scale with Intune.</p></div></details></li>",
+      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.cred{border-bottom:1px solid var(--rule);list-style:none;color:var(--ink);}.row{display:grid;grid-template-columns:7em minmax(0,1fr) 7.5em 8.5em 8em 24px;align-items:center;gap:16px;padding:24px 0;cursor:pointer;list-style:none;transition:background 180ms var(--ease);}.row::-webkit-details-marker{display:none;}.row:hover{background:var(--sheet-2);}.code{font-size:12px;}.nm{font-size:16px;font-weight:600;letter-spacing:-.012em;}.mut{font-size:10.5px;color:var(--ink-3);}.flag{justify-self:end;font-size:10px;color:var(--green);}.plus{justify-self:end;color:var(--ink-3);transition:transform 180ms var(--ease),color 180ms var(--ease);}details[open] .plus{transform:rotate(45deg);color:var(--ink);}.detail{padding-bottom:32px;max-width:68ch;color:var(--ink-2);line-height:1.62;}"
     },
     {
-      "name": "Certificate Notice",
-      "kind": "card",
-      "refersTo": "notice-card",
-      "description": "The one raised surface: graphite notice with usage panels and a verify link.",
-      "html": "<div class=\"ds-notice\"><h3 class=\"ds-notice__t\">Endpoint Administrator <span>MD-102</span></h3><div class=\"ds-use\"><b>IPH Limited, current</b><span>SOE laptop and device builds.</span></div><a class=\"ds-verify\" href=\"#\">Verify the credential<svg viewBox=\"0 0 24 24\" width=\"14\" height=\"14\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.5\" stroke-linecap=\"square\" stroke-linejoin=\"miter\" aria-hidden=\"true\"><path d=\"M8 16 16 8M9.5 8H16v6.5\"/></svg></a></div>",
-      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-notice{width:min(680px,100%);padding:clamp(26px,4vw,46px);background:var(--graphite);border:1px solid rgba(236,235,231,0.16);box-shadow:0 40px 100px -20px rgba(0,0,0,0.9);color:var(--bone);font-family:var(--face);} .ds-notice__t{margin:0 0 24px;padding-bottom:20px;border-bottom:1px solid rgba(236,235,231,0.14);font-stretch:112%;font-weight:400;font-size:32px;line-height:1.1;} .ds-notice__t span{font-stretch:75%;font-weight:600;font-size:0.42em;letter-spacing:0.2em;color:var(--ash);vertical-align:0.4em;margin-left:0.4em;text-transform:uppercase;} .ds-use{display:grid;gap:4px;padding:14px 16px;margin-bottom:24px;border:1px solid rgba(236,235,231,0.14);background:rgba(5,5,5,0.35);} .ds-use b{font-family:var(--face);font-stretch:75%;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;font-size:15px;line-height:1;line-height:1.3;} .ds-use span{font-size:17px;line-height:1.5;color:var(--stone);} .ds-verify{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;border:1px solid var(--bone);color:var(--bone);text-decoration:none;font-family:var(--face);font-stretch:75%;font-weight:600;text-transform:uppercase;letter-spacing:0.18em;font-size:15px;line-height:1;transition:background-color .2s var(--out),color .2s var(--out);} .ds-verify:hover{background:var(--bone);color:var(--void);} .ds-verify:focus-visible{outline:2px solid var(--sodium);outline-offset:4px;}"
+      "name": "Case file plate",
+      "kind": "figure",
+      "refersTo": "file",
+      "description": "A photograph behind a bordered plate with its subject annotated beneath, the way a detail is called out on a drawing. Grayscale keeps the sheet cool.",
+      "html": "<figure class=\"plate\"><img src=\"assets/photos/dock.jpg\" alt=\"A desk running two screens from a single hub\" /><figcaption class=\"ann\">Endpoint, rollout</figcaption></figure>",
+      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.plate{margin:0;border:1px solid var(--rule);background:var(--sheet-2);}.plate img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;filter:grayscale(1) contrast(1.04);}figcaption{padding:10px 16px;border-top:1px solid var(--rule);font-size:10.5px;color:var(--ink-3);}"
     },
     {
-      "name": "Logo Plate",
-      "kind": "custom",
-      "refersTo": "logo-plate",
-      "description": "Pale plate behind a grayscale company logo; colour returns on hover or focus.",
-      "html": "<a class=\"ds-plate\" href=\"#\"><svg viewBox=\"0 0 120 40\" width=\"100%\" height=\"100%\" aria-hidden=\"true\"><rect x=\"8\" y=\"12\" width=\"104\" height=\"16\" fill=\"#3a3936\"/></svg></a>",
-      "css": ":host{--void:#0b0b0c;--pitch:#050505;--graphite:#171717;--ash:#9b9993;--stone:#cfccc6;--bone:#ecebe7;--sodium:#f0a43a;--forward:#e5533d;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--out:cubic-bezier(0.16,1,0.3,1);} .ds-plate{display:grid;place-items:center;width:180px;aspect-ratio:3/2;padding:14%;background:#e4e2dc;transition:background-color .3s var(--out);} .ds-plate svg{filter:grayscale(1) contrast(1.05);} .ds-plate:hover,.ds-plate:focus-visible{background:#f3f2ee;} .ds-plate:focus-visible{outline:2px solid var(--sodium);outline-offset:4px;}"
+      "name": "Drawing strip",
+      "kind": "navigation",
+      "refersTo": "strip",
+      "description": "The fixed strip carrying the drawing number and the sheet index. Every destination is visible; the current part is underlined in patch blue.",
+      "html": "<header class=\"strip\"><span class=\"ann no\">MT-01</span><span class=\"t\">Myat Thu, record of service</span><nav class=\"ix\"><a class=\"ann\" href=\"#a\" aria-current=\"true\">Elevation</a><a class=\"ann\" href=\"#b\">Case files</a><a class=\"ann\" href=\"#c\">Credentials</a></nav></header>",
+      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.strip{display:flex;align-items:stretch;gap:24px;height:40px;padding:0 24px;background:var(--sheet);border-bottom:1px solid var(--rule);font-size:11px;color:var(--ink-3);}.no,.t{display:flex;align-items:center;flex:none;}.no{color:var(--ink);font-stretch:80%;font-weight:600;letter-spacing:.1em;}.t{letter-spacing:.04em;}.ix{margin-left:auto;display:flex;gap:24px;}.ix a{position:relative;display:flex;align-items:center;font-size:10.5px;color:var(--ink-3);text-decoration:none;white-space:nowrap;transition:color 180ms var(--ease);}.ix a::after{content:\"\";position:absolute;left:0;right:0;bottom:9px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform 180ms var(--ease);}.ix a:hover{color:var(--ink);}.ix a:hover::after{transform:scaleX(1);}.ix a[aria-current=\"true\"]{color:var(--ink);}.ix a[aria-current=\"true\"]::after{background:var(--blue);transform:scaleX(1);}"
+    },
+    {
+      "name": "Legend",
+      "kind": "key",
+      "refersTo": "legend",
+      "description": "The drawing's key. It is the only place the patch-cable code is spelled out, and it is why colour never needs a caption anywhere else.",
+      "html": "<ul class=\"legend ann\"><li><i data-key=\"live\"></i>Current</li><li><i data-key=\"verified\"></i>Verified</li><li><i data-key=\"progress\"></i>In preparation</li></ul>",
+      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.legend{display:grid;gap:10px;margin:0;padding:0;list-style:none;}.legend li{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--ink-3);}.legend i{width:10px;height:10px;flex:none;border:1px solid var(--ink);}[data-key=\"live\"]{background:var(--blue);border-color:var(--blue);}[data-key=\"verified\"]{background:var(--green);border-color:var(--green);}[data-key=\"progress\"]{background:var(--amber);border-color:var(--amber);}"
+    },
+    {
+      "name": "Signature plate",
+      "kind": "figure",
+      "refersTo": "sign",
+      "description": "The sheet is signed. A small grayscale portrait plate, who drew it and where, with the drawing fields closing on the right edge.",
+      "html": "<div class=\"sign\"><img src=\"assets/portrait.jpg\" alt=\"Myat Thu\" /><p class=\"who\"><span class=\"ann\">Drawn by</span><b>Myat Thu</b><span class=\"ann\">Melbourne, Australia</span></p><p class=\"rev ann\"><span>Drawing MT-01</span><span>Rev 4</span><span>Sheet 1 of 1</span></p></div>",
+      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.sign{display:grid;grid-template-columns:72px auto 1fr;align-items:center;gap:24px;padding-top:24px;border-top:1px solid var(--rule);color:var(--ink);}.sign img{width:72px;height:72px;object-fit:cover;object-position:50% 22%;border:1px solid var(--rule);filter:grayscale(1) contrast(1.04);}.who{display:grid;gap:1px;margin:0;}.who span{font-size:10px;color:var(--ink-3);}.who b{font-size:15px;font-weight:600;}.rev{justify-self:end;display:flex;gap:24px;margin:0;font-size:10px;color:var(--ink-3);}"
     }
   ],
   "narrative": {
-    "northStar": "Going Under",
-    "overview": "Scrolling is a descent. The page starts in reality at a table under one lamp, goes under through a short trailer of beats, and walks four dream levels (The City, The Hotel, The Inversion, Limbo) before the kick returns it to reality with the top still spinning. Every level shares one graphite world and one variable face; what changes per level is the light field behind the page, the speed of time on the matte clock, and the way content enters. The visual system is the camera and the grade, not the set dressing.\n\nThe world is graphite with no blue. Near-black ground, concrete greys, bone white type. The only warmth is practical light, a sodium amber lamp, used for focus, hover and the lamp itself. Tenet red marks forward time and lives only inside the inversion. Typography is Archivo alone, stretched wide and thin for title cards, condensed for the chrome that frames the film, and set at normal width for reading. Density is low and type is large: body copy is 19px and no reading text drops below 15px.\n\nFraming is the signature. A 35mm matte sits at the top and bottom of the viewport, carrying the name, the current level, the dream clock and contact. On every level card the bars retract and the card fills the frame like an IMAX shot, then the bars return. A live, machined steel spinning top (Three.js) opens and closes the film.",
+    "northStar": "Record of Service",
+    "overview": "The record drawn as the document this trade actually signs off: a dimensioned elevation with a title block, not a styled CV. A cool drafting sheet, never cream. One variable face, Archivo, condensed caps for every annotation and tabular figures on every number. The patch-cable code is the only colour and it marks state alone. The visitor reads the title block, learns who this is and what to do in one glance, then reads down the elevation: four roles as rack units with their years as dimensions, three case files as detail callouts, four certifications as verified items carrying credential IDs, study and kit as a schedule, Poker Money as the one detail drawn out. They act from the title block or the close.",
     "keyCharacteristics": [
-      "Graphite and bone, no blue anywhere, warmth only from practical light.",
-      "One variable face (Archivo) at three widths: 125% for title cards, 75% for chrome, 100% for reading.",
-      "Square corners throughout; hairline bone rules at low alpha do the dividing.",
-      "A fixed 35mm matte that retracts to full frame on level cards.",
-      "A WebGL light field behind the page, one world per level, stilled under reduced motion.",
-      "Evidence imagery graded to monochrome; colour returns only on interaction."
+      "A cool sheet at #eceef0 and ink at #10161c. Never cream, never a dark terminal.",
+      "True 1px hairlines are the only divider. No shadows anywhere in the stylesheet.",
+      "Archivo alone, condensed caps at wdth 80 for annotation and plain for reading.",
+      "Tabular figures globally, so every date and dimension column lines up.",
+      "Colour is state and nothing else: blue current, amber in progress, red escalation, green verified.",
+      "One element owns the first viewport at full scale, the title block, lower right where a drawing puts it.",
+      "Every destination is a drawn control with a visible border. Nothing is found by hovering.",
+      "One datum line the whole sheet hangs from, and one scale running its full height."
     ],
     "rules": [
-      {
-        "name": "The No Blue Rule",
-        "body": "Nothing in the world carries a blue hue: not the greys, not the shader, not the photographs. Greys sit at a faint warm cast (hue near 90 in OKLCH, chroma under 0.01).",
-        "section": "colors"
-      },
-      {
-        "name": "The Practical Light Rule",
-        "body": "Sodium is light, not paint. It appears where something is lit or answered (focus, hover, the lamp), and never as a section fill, border colour or text colour at rest.",
-        "section": "colors"
-      },
-      {
-        "name": "The Forward Time Rule",
-        "body": "Forward red appears only inside the inversion. Outside it, emphasis is bone against stone or ash.",
-        "section": "colors"
-      },
-      {
-        "name": "The One Face Rule",
-        "body": "Archivo is the only family, on the site and in the printed CV. Hierarchy comes from width and weight, never from a second face.",
-        "section": "typography"
-      },
-      {
-        "name": "The Optical Centre Rule",
-        "body": "Centred, widely tracked capitals carry a negative right margin (or matching left padding) equal to their letter-spacing so the trailing track does not push them off centre.",
-        "section": "typography"
-      },
-      {
-        "name": "The Fifteen Pixel Floor",
-        "body": "No text on screen is smaller than 15px. The owner flagged small type; labels gain tracking, not shrinkage.",
-        "section": "typography"
-      },
-      {
-        "name": "The Graphite Only Rule",
-        "body": "Graphite is the only raised surface colour. Anything that floats above the page is graphite with a bone hairline at 0.16 alpha; nothing is lighter than graphite except a logo plate.",
-        "section": "elevation"
-      },
-      {
-        "name": "The Field Behind Rule",
-        "body": "The light field is ambience, never content. It sits at z-index 0 behind everything, is pointer-transparent, and freezes to a single frame under reduced motion.",
-        "section": "elevation"
-      }
+      "One identical label schema on every rack unit and every credential row, so the sheet scans in a single pass.",
+      "Colour may only mark state. A colour used for emphasis, decoration or mood is a defect.",
+      "Every rule is 1px and either --rule, --rule-2 or --ink. The 3px patch marker on the live unit is the one exception.",
+      "No shadow, no gradient, no glass, no rounded corner. Radius is zero everywhere.",
+      "Reading columns are capped at the 68ch measure. Only the elevation, the schedule and the rules run full width.",
+      "Motion is one authored moment plus 180ms state transitions. Anything else is removed.",
+      "The opening must be gated so the finished state is the default. A hidden tab or a blocked script must never leave a visitor a blank sheet.",
+      "No libraries and no build step. The stylesheet and the short main.js are the whole front end.",
+      "Every claim traces to the CV, the signed position description or the Poker Money README."
     ],
     "dos": [
-      "Do keep every surface in the graphite ramp (void, pitch, graphite) with bone, stone and ash for type.",
-      "Do reserve sodium for focus, hover and lamplight, and forward red for the inversion.",
-      "Do set every word in Archivo, choosing width by role: 125% titles, 75% chrome, 100% reading.",
-      "Do keep corners square and divide with 1px bone hairlines at 0.08 to 0.26 alpha.",
-      "Do grade evidence photographs and logos to grayscale (contrast 1.22 to 1.32, brightness 0.8 to 0.82) and let colour return only on interaction.",
-      "Do frame each level with a full-viewport card that retracts the matte, and keep the matte reachable by focus.",
-      "Do give every motion a calm path: the field freezes, the cold open is skipped, cards and notices appear without travel."
+      "Draw a component rather than style a box: rails, leader lines, plates, a legend, a revision block.",
+      "Put a number in tabular figures and give it a column.",
+      "Label with condensed caps at 10 to 11px and let the label carry the annotation voice.",
+      "Give a photograph a bordered plate and an annotated caption, in grayscale.",
+      "Use a native element when one exists. The credential rows are details elements and need no script.",
+      "Keep one filled control per frame, always email.",
+      "Cap a new reading column at the measure."
     ],
     "donts": [
-      "Don't introduce any blue, including cool greys, link blue or blue-tinted shader light.",
-      "Don't use forward red outside the inversion, or sodium as a resting fill or text colour.",
-      "Don't add a second typeface or a serif display; hierarchy is width and weight within Archivo.",
-      "Don't round corners on controls, frames or containers.",
-      "Don't set screen text below 15px.",
-      "Don't put a small tracked label above a heading; the level card's single descriptor sits below its title.",
-      "Don't use hard offset shadows; depth is soft hang or light."
+      "Do not add a kicker or an eyebrow above a heading.",
+      "Do not tint a surface, a border or a heading with a patch colour to make it feel designed.",
+      "Do not introduce a second typeface, a monospace face, or a system display stack.",
+      "Do not reach for a shadow or a radius to separate two things. Use a hairline or space.",
+      "Do not hide a destination behind a hover, an overlay or a gesture.",
+      "Do not animate anything on scroll, and do not reintroduce a library to do it.",
+      "Do not warm the ground toward cream. The sheet is cool by decision."
     ]
   }
 }

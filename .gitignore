@@ -3,3 +3,7 @@ node_modules/
 .impeccable/review/
 # Playwright CLI output (may contain credentials)
 .playwright-cli/
+# Impeccable engine binary: downloaded per platform by the launcher, never committed
+.claude/skills/impeccable/scripts/bin/
+# Impeccable question-server runtime state
+.impeccable/questions/

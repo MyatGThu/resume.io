@@ -1,98 +1,83 @@
-# Myat Thu · Going Under
+# Myat Thu, record of service
 
 Portfolio of **Myat Thu**, a Service Desk Analyst in Melbourne working across
-Microsoft endpoint, identity and cloud. The resume is a descent through four
-dream levels, after Christopher Nolan's The Dark Knight, Inception, Tenet and
-The Odyssey, and is deployed to GitHub Pages.
+Microsoft endpoint, identity and cloud. The resume is drawn as a rack
+elevation: a cool drafting sheet, an engineering title block, true 1px
+hairlines, and a patch-cable colour code that only ever marks state. It is
+deployed to GitHub Pages.
 
 **Live:** https://myatgthu.github.io/resume.io/
 
-## The descent
+## The sheet
 
-One page. You wake in reality, go under through the trailer, walk four
-levels, and come back up with the kick.
+One page, read top to bottom the way an elevation is read.
 
-- **Cold open.** Black frame, "A Myat Thu film" tracking out, a five second
-  countdown, then a hard cut: the name folds up off the floor the way a
-  street does in a dream. It can be skipped and plays once per tab.
-- **Reality.** A machined steel spinning top, rendered live in Three.js,
-  spins on a dark table under one lamp beneath the name.
-- **Going under.** Trailer intertitles, one fact at a time, each landing with
-  a jolt. The camera rises overhead and watches the top spin.
-- **The City** (The Dark Knight). The lead and the record. Roles light up
-  like windows, floor by floor; each employer's mark opens its website.
-- **The Hotel** (Inception). Field reports. Gravity turns: each frame rotates
-  in from the wall as the corridor rolls behind it.
-- **The Inversion** (Tenet). The side project, Poker Money, on a strip of
-  dailies running the wrong way, and the totems: four certifications kept as
-  Cobb's top, Arthur's die, Ariadne's bishop and Eames's poker chip. Check
-  one for what it covers, where it works, when it was earned, and Myat's
-  verification link. Entropy runs backwards here, and so does the clock.
-- **Limbo** (Inception, The Odyssey). The training and the end credits, over
-  a grey sea with one fire on the shore. No clock.
-- **The kick.** The top is back, wobbling. The page cuts to black before it
-  falls: "Still spinning." Then email, LinkedIn, the CV, and a way back up.
+- **Title block.** Name, role, location, availability and the three actions
+  (email, LinkedIn, the CV) at monumental scale in the first viewport, with a
+  year scale on the left rail and the current post already on the rails.
+- **The record.** Four roles as rack units. The date span is the dimension
+  label; each employer's mark opens its website in a new tab.
+- **Case files.** Three detail callouts: the dock rollout, the service desk
+  playbook, the standard device build.
+- **Credentials.** Four verified certifications as native `<details>` rows:
+  what each covers, where it is used in the record, the credential ID and the
+  owner's own verification link. AZ-104 is on the schedule as in preparation.
+- **Poker Money.** The side project, with three frames from the app.
+- **Study and kit**, then the sign-off with the same three actions.
 
-## The signatures
+## The colour code
 
-- **Time dilation.** The light field slows level by level, and the matte
-  clock runs in dream time: twenty times faster in the city, four hundred in
-  the hotel, backwards in the inversion, and not at all in limbo.
-- **The IMAX switch.** Reading happens between thin 35mm bars. On every
-  level card the bars leave the frame and the level's plate fills it.
-- **Hard cuts.** Titles do not fade out; they end.
-
-## The grade
-
-Graphite, with no blue anywhere: near-black, concrete greys, bone white type.
-Warmth comes only from practical light (a lamp, a fire, sodium streetlight).
-Tenet red marks forward time, and only inside the inversion. One variable
-face, Archivo: expanded thin capitals for titles, condensed capitals for
-chrome, plain for reading.
+Colour is state and nothing else: blue for the current post, amber for in
+progress, red for escalation, green for verified. Everything else is ink on
+the sheet.
 
 ## Stack
 
-Vanilla HTML, CSS and JS with no build step. GSAP, ScrollTrigger and Lenis
-are vendored; the light field is one raw WebGL fragment shader that blends a
-look per level. The spinning top is the only Three.js on the page:
-`vendor/three.min.js` is three r186 tree-shaken to the names `totem.js`
-imports (rebuild it with esbuild if that list changes), loaded with a dynamic
-`import()` after first paint.
+Vanilla HTML, CSS and JS with no build step and no libraries. The one
+authored moment, the datum plotting and the year ticks inking in, is a CSS
+animation gated behind an `is-plotting` class that a two-line script in the
+`<head>` adds only when the tab is visible and motion is welcome; the
+finished sheet is the default state. `main.js` marks the current sheet-index
+entry and opens the credential rows for printing, and the page reads
+correctly with it blocked.
 
 ```
-index.html            # the descent
-styles.css            # the grade, the matte, every level's material
-main.js               # level clock, light field, cold open, level motion, notice
-totem.js              # the 3D spinning top: lathe, lamp, shots, wobble, the cut
-assets/               # portrait, logos, photographs, level plates, totems, CV, font
-cv/                   # CV source: cv.html, printed to the PDF by render.cjs
-vendor/               # GSAP, ScrollTrigger, Lenis, three.js (tree-shaken)
-.github/workflows/    # GitHub Pages: publishes only the files above
+index.html            # the sheet
+styles.css            # the drafting sheet, the title block, every component
+main.js               # sheet index marker, print expansion of the credentials
+assets/               # portrait, logos, photographs, Poker Money frames, CV, font, og image
+cv/                   # CV source: cv.html, printed to assets/Myat-Thu-CV.pdf by render.cjs
+.github/workflows/    # GitHub Pages: publishes index.html, styles.css, main.js and assets/
 PRODUCT.md            # product truth for design work
-.impeccable/          # design brief, totem generator, review evidence (not published)
+DESIGN.md             # the design system this sheet is drawn to
+.impeccable/          # design brief and review evidence (not published)
 .claude/              # Claude Code skills and agents used while building
 ```
 
 ## Accessibility
 
-With reduced motion there is no cold open, no scroll pinning and no moving
-light or top: a rendered poster of the top stands in, and the whole record
-reads top to bottom with every word in place. The page is readable without
-JavaScript or WebGL. Totems and the levels menu are keyboard reachable, the
-certification notice is a labelled dialog that traps focus, closes on Escape
-and returns focus, and every text colour holds at least 5.3:1 on its ground.
+One `h1`, no skipped heading levels, a skip link, and a visible focus ring on
+every control including the credential rows. With reduced motion there is no
+opening animation and no smooth scrolling, and the whole record reads top to
+bottom with every word in place. Decorative images carry empty alt text and
+company marks are named on their links. Every text colour holds at least
+4.7:1 on its ground.
 
 ## Notes
 
 - Every fact traces to the CV in `assets/`, the owner's verification links,
   or the Poker Money README; nothing on the page is invented.
-- The City, Hotel and Inversion plates were generated with ElevenLabs
-  (Seedream); each file's sidecar holds its exact prompt. The totems and the
-  top are procedural Three.js renders (`.impeccable/totems.js`, `totem.js`).
-- Field report photographs are Unsplash stock (Jannis Brandt, Viktor
-  Talashuk, Samsung Memory), credited on the page and in the end credits.
+- Field photographs are Unsplash stock (Jannis Brandt, Viktor Talashuk,
+  Samsung Memory), credited on the page.
+- `assets/og.png` is rendered from `.impeccable/og.html` with Playwright. Each
+  shipped raster's `.json` sidecar records where it came from.
 - The CV is designed in `cv/cv.html` and printed to `assets/Myat-Thu-CV.pdf`
-  with `NODE_PATH=$(npm root -g) node cv/render.cjs` (needs Playwright).
-- Design work used the [Impeccable](https://github.com/pbakaus/impeccable)
-  skill. Its automatic design-detector hooks are not enabled; turn them on
-  with `/impeccable hooks on` if wanted.
+  with `NODE_PATH=$(npm root -g) node cv/render.cjs` (needs the Playwright
+  package). The Playwright CLI works too, served over HTTP so the font loads:
+  `npx playwright pdf --paper-format=A4 http://127.0.0.1:8777/cv/cv.html assets/Myat-Thu-CV.pdf`.
+- Design work used the [Impeccable](https://github.com/pbakaus/impeccable),
+  taste and web-design-guidelines skills, with Addy Osmani's accessibility and
+  seo skills for audits. Impeccable's design-detector hooks are configured per
+  machine in `.claude/settings.local.json`, which is not committed; set them up
+  with `/impeccable hooks on`. Its engine binary downloads on first run and is
+  ignored by git.
