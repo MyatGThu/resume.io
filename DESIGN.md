@@ -90,8 +90,8 @@ spacing:
   matte: "48px"
   gutter: "clamp(20px, 5vw, 72px)"
   room-max: "1240px"
-  room-gap: "clamp(110px, 14vw, 200px)"
-  level-tail: "clamp(90px, 12vw, 180px)"
+  room-gap: "clamp(112px, 14vw, 200px)"
+  level-tail: "clamp(88px, 12vw, 184px)"
   control-height: "48px"
 components:
   button-key:
@@ -216,9 +216,9 @@ A near-neutral graphite ramp with a faint warm cast, one practical-light amber, 
 
 ## Layout
 
-The page is a vertical film. Full-viewport frames (100svh) carry the title, the trailer, each level card, the credits and the kick; between cards, rooms hold the record at a max width of 1240px with a fluid side gutter of clamp(20px, 5vw, 72px). The fixed matte reserves 48px top and bottom (46px under 760px), and full-frame sections pad by the matte height so nothing sits under the bars.
+All spacing sits on a 4px grid up to 48px and an 8px grid above it (1px and 2px are reserved for hairlines and offsets). The page is a vertical film. Full-viewport frames (100svh) carry the title, the trailer, each level card, the credits and the kick; between cards, rooms hold the record at a max width of 1240px with a fluid side gutter of clamp(20px, 5vw, 72px). The fixed matte reserves 48px top and bottom (46px under 760px), and full-frame sections pad by the matte height so nothing sits under the bars.
 
-Rooms follow each other at clamp(110px, 14vw, 200px); a level ends with clamp(90px, 12vw, 180px) of dark before the next card. Within rooms, content sits on two-column grids (lead 0.8fr / 1fr, scene 1.25fr / 0.9fr alternating sides, sheet 0.95fr / 1fr, training 1fr / 1fr, roles 150px to 200px plate column) with gaps scaled by clamp. Certificates sit four across, two under 980px. Definition lists (notes, credits roll) pair a narrow condensed term column with a reading column and stack under 760px.
+Rooms follow each other at clamp(112px, 14vw, 200px); a level ends with clamp(88px, 12vw, 184px) of dark before the next card. Within rooms, content sits on two-column grids (lead 0.8fr / 1fr, scene 1.25fr / 0.9fr alternating sides, sheet 0.95fr / 1fr, training 1fr / 1fr, roles 150px to 200px plate column) with gaps scaled by clamp. Certificates sit four across, two under 980px. Definition lists (notes, credits roll) pair a narrow condensed term column with a reading column and stack under 760px.
 
 Breakpoints: 980px collapses the two-column rooms; 760px shrinks the matte, hides the level label, depth bar and scroll cue, and tightens title tracking; 420px tightens buttons and certificates; portrait aspect (at most 1/1) moves the spinning top's still frame below the name.
 
