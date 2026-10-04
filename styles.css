@@ -101,7 +101,7 @@ a { color: inherit; text-decoration: none; }
   padding: 10px 16px;
   background: var(--ink);
   color: var(--sheet);
-  font-size: 14px;
+  font-size: 16px;
   font-weight: 600;
   transform: translateY(-200%);
   transition: transform var(--t) var(--ease);
@@ -110,11 +110,14 @@ a { color: inherit; text-decoration: none; }
 
 /* --- shared ink ----------------------------------------------------------- */
 
-/* drawing annotation: condensed caps, used for labels and measurements only */
-.strip, .index a, .unit__dim, .unit__org span, .block__facts dt, .block__rev,
-.cred__code, .cred__issuer, .cred__date, .cred__flag, .cred__id,
-.file__shot figcaption, .spec dt, .file__credit, .notes__h, .unit__state,
+/* drawing annotation: condensed caps, labels only, one 12px step. The values a
+   recruiter reads (dates, issuers, credential IDs, photo credits) are not
+   annotation: they are set in the plain width at 13px. */
+.strip, .index a, .unit__org span, .block__facts dt, .block__rev,
+.cred__code, .cred__flag,
+.file__shot figcaption, .spec dt, .notes__h, .unit__state,
 .sign__who span, .sign__rev {
+  font-size: 12px;
   font-stretch: 80%;
   font-weight: 600;
   letter-spacing: 0.1em;
@@ -131,9 +134,9 @@ a { color: inherit; text-decoration: none; }
   align-items: center;
   gap: 10px;
   min-height: 48px;
-  padding: 0 20px;
+  padding: 0 18px;
   border: 1px solid var(--ink);
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   letter-spacing: 0.01em;
   background: transparent;
@@ -158,7 +161,6 @@ a { color: inherit; text-decoration: none; }
   padding: 0 var(--gutter);
   background: var(--sheet);
   border-bottom: 1px solid var(--rule);
-  font-size: 11px;
   color: var(--ink-3);
 }
 .strip__no, .strip__t { display: flex; align-items: center; flex: none; }
@@ -166,15 +168,16 @@ a { color: inherit; text-decoration: none; }
 .strip__t {
   text-transform: none;
   letter-spacing: 0.04em;
+  font-size: 13px;
   font-stretch: 100%;
   font-weight: 400;
 }
 
-/* The index is a scroll container, so a focus ring drawn outside a link is
-   clipped. Each link carries 8px of side padding (the list gap gives it
-   back) and draws its ring inside that padding instead. */
-.index { margin-left: auto; margin-right: -8px; min-width: 0; overflow-x: auto; scrollbar-width: none; }
-.index::-webkit-scrollbar { width: 0; height: 0; display: none; }
+/* The index never scrolls, so nothing in it is ever cut. A phone shows three
+   of the six entries (the 720px query below); the rest are a scroll away.
+   Each link carries 8px of side padding (the list gap gives it back) and
+   draws its focus ring inside that padding, clear of the strip's edges. */
+.index { margin-left: auto; margin-right: -8px; }
 .index ul { display: flex; align-items: stretch; height: 100%; gap: var(--s1); }
 .index li { display: flex; }
 .index a {
@@ -182,7 +185,6 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
   padding: 0 8px;
-  font-size: 10.5px;
   color: var(--ink-3);
   white-space: nowrap;
   transition: color var(--t) var(--ease);
@@ -206,10 +208,12 @@ a { color: inherit; text-decoration: none; }
 .index a[aria-current="true"]::after { background: var(--blue); transform: scaleX(1); }
 
 @media (max-width: 1080px) { .strip__t { display: none; } }
-@media (max-width: 720px) { :root { --strip-h: 44px; } }
+@media (max-width: 720px) {
+  :root { --strip-h: 45px; } /* 44px links plus the strip's 1px rule */
+  .index .index__minor { display: none; }
+}
 @media (max-width: 560px) {
-  .strip { gap: var(--s2); }
-  .index { margin-left: -8px; }
+  .strip { gap: var(--s1); }
   .index ul { gap: 0; }
 }
 
@@ -224,11 +228,17 @@ a { color: inherit; text-decoration: none; }
 /* --- hero / title block --------------------------------------------------- */
 
 .hero {
+  /* The first view's vertical budget. The padding and the scale rail both
+     read it so they never drift apart, and short viewports tighten all of it
+     in one place (the max-height query below). */
+  --hero-pt: calc(var(--strip-h) + var(--s5));
+  --hero-pb: var(--s6);
+  --hero-top: 200px;
   position: relative;
   display: grid;
-  grid-template-rows: minmax(200px, 1fr) auto auto;
+  grid-template-rows: minmax(var(--hero-top), 1fr) auto auto;
   min-height: 100svh;
-  padding: calc(var(--strip-h) + var(--s5)) 0 var(--s6);
+  padding: var(--hero-pt) 0 var(--hero-pb);
 }
 
 .hero__top { display: grid; align-items: end; }
@@ -237,8 +247,9 @@ a { color: inherit; text-decoration: none; }
    the way an elevation is actually drawn. */
 .hero__rail {
   position: absolute;
-  top: calc(var(--strip-h) + var(--s5));
-  bottom: var(--s6);
+  z-index: 1; /* above the datum, so a year label knocks the line out where they meet */
+  top: var(--hero-pt);
+  bottom: var(--hero-pb);
   left: 0;
   width: 60px;
   border-left: 1px solid var(--rule);
@@ -249,7 +260,7 @@ a { color: inherit; text-decoration: none; }
   left: 0;
   display: flex;
   align-items: center;
-  gap: 8px;
+  gap: 4px;
   transform: translateY(-50%);
 }
 .hero__rail .tick::before { content: ''; width: 10px; height: 1px; background: var(--rule); }
@@ -260,12 +271,17 @@ a { color: inherit; text-decoration: none; }
 .is-plotting .hero__rail .tick:nth-child(4) { animation-delay: 430ms; }
 .is-plotting .hero__rail .tick:nth-child(5) { animation-delay: 520ms; }
 .is-plotting .hero__rail .tick:nth-child(6) { animation-delay: 610ms; }
+.is-plotting .hero__rail .tick:nth-child(7) { animation-delay: 700ms; }
+.is-plotting .hero__rail .tick:nth-child(8) { animation-delay: 790ms; }
 @keyframes ink { from { opacity: 0; } to { opacity: 1; } }
 
 .hero__rail .tick b {
-  font-size: 10px;
+  padding: 0 4px;
+  background: var(--sheet);
+  font-size: 12px;
   font-weight: 600;
   font-stretch: 80%;
+  line-height: 1.2;
   letter-spacing: 0.1em;
   color: var(--ink-3);
 }
@@ -274,21 +290,23 @@ a { color: inherit; text-decoration: none; }
   align-self: end;
   margin-left: 80px;
   position: relative;
-  padding-left: var(--s3);
-  border-left: 3px solid var(--blue);
 }
+/* The live marker is the legend's blue square, repeated beside the label on
+   each live unit (the swatch rules are with the legend, below). */
 .unit__state {
-  font-size: 10.5px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
   color: var(--blue);
   margin-bottom: var(--s1);
 }
 .hero__unit .unit__org {
-  font-size: clamp(1.1rem, 2vw, 1.45rem);
+  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
   font-weight: 600;
   letter-spacing: -0.015em;
 }
 .hero__unit .unit__role { font-size: 1rem; color: var(--ink-2); }
-.hero__unit .unit__span { font-size: 14px; color: var(--ink-3); margin-top: 2px; }
+.hero__unit .unit__span { font-size: 13px; color: var(--ink-3); margin-top: 2px; }
 
 .datum {
   height: 0;
@@ -324,15 +342,27 @@ a { color: inherit; text-decoration: none; }
   display: flex;
   align-items: center;
   gap: 10px;
-  font-size: 11px;
+  font-size: 12px;
   font-stretch: 80%;
   font-weight: 600;
   letter-spacing: 0.1em;
   text-transform: uppercase;
   color: var(--ink-3);
 }
-.legend i { width: 10px; height: 10px; flex: none; border: 1px solid var(--ink); }
-.legend i[data-key="live"] { background: var(--blue); border-color: var(--blue); }
+/* The patch swatch, drawn once: the legend spells the code out, and the two
+   live units carry the same blue square beside their own label. */
+.legend i,
+.unit__state::before,
+.unit[data-state="live"] .unit__dim b::after {
+  content: '';
+  width: 10px;
+  height: 10px;
+  flex: none;
+  border: 1px solid var(--ink);
+}
+.legend i[data-key="live"],
+.unit__state::before,
+.unit[data-state="live"] .unit__dim b::after { background: var(--blue); border-color: var(--blue); }
 .legend i[data-key="verified"] { background: var(--green); border-color: var(--green); }
 .legend i[data-key="progress"] { background: var(--amber); border-color: var(--amber); }
 
@@ -350,27 +380,25 @@ a { color: inherit; text-decoration: none; }
   line-height: 0.95;
 }
 .block__role {
-  font-size: clamp(1.05rem, 2vw, 1.3rem);
+  font-size: clamp(1.0625rem, 1.5vw, 1.1875rem);
   color: var(--ink-2);
   margin-top: var(--s1);
   padding-bottom: var(--s3);
   border-bottom: 1px solid var(--rule);
 }
-.block__facts { display: grid; gap: 10px; padding: var(--s3) 0; }
+.block__facts { display: grid; gap: 10px; padding-top: var(--s3); }
 .block__facts > div { display: grid; grid-template-columns: 5.5em 1fr; gap: var(--s2); align-items: baseline; }
-.block__facts dt { font-size: 10.5px; color: var(--ink-3); }
-.block__facts dd { font-size: 15px; display: flex; align-items: flex-start; gap: 8px; }
-.dot { width: 8px; height: 8px; margin-top: 8px; border-radius: 50%; background: var(--green); flex: none; }
+.block__facts dt { color: var(--ink-3); }
+.block__facts dd { font-size: 16px; }
 
-.block__acts { display: flex; flex-wrap: wrap; gap: var(--s1); padding-top: var(--s1); }
+.block__acts { display: flex; flex-wrap: wrap; gap: var(--s1); padding-top: var(--s3); }
 .block__rev {
   display: flex;
   flex-wrap: wrap;
   gap: var(--s3);
-  margin-top: var(--s4);
+  margin-top: var(--s3);
   padding-top: var(--s2);
   border-top: 1px solid var(--rule);
-  font-size: 10px;
   color: var(--ink-3);
 }
 
@@ -403,10 +431,10 @@ a { color: inherit; text-decoration: none; }
   padding: var(--s5) 0;
   border-bottom: 1px solid var(--rule);
 }
-.unit__dim { font-size: 11px; color: var(--ink-3); line-height: 1.5; }
-.unit__dim b { display: block; font-size: 13px; color: var(--ink); }
+.unit__dim { font-size: 13px; color: var(--ink-3); line-height: 1.5; }
+.unit__dim b { display: block; color: var(--ink); font-weight: 600; }
 .unit__dim span { display: block; }
-.unit[data-state="live"] .unit__dim b { color: var(--blue); }
+.unit[data-state="live"] .unit__dim b { display: flex; align-items: center; gap: 10px; color: var(--blue); }
 
 .unit__head { display: flex; align-items: flex-start; gap: var(--s3); }
 .unit__mark {
@@ -428,12 +456,11 @@ a { color: inherit; text-decoration: none; }
   align-items: baseline;
   gap: 10px;
   margin-top: 4px;
-  font-size: 15px;
+  font-size: 16px;
   font-weight: 600;
   color: var(--ink-2);
 }
 .unit__body .unit__org span {
-  font-size: 10.5px;
   font-weight: 600;
   color: var(--ink-3);
 }
@@ -466,12 +493,11 @@ a { color: inherit; text-decoration: none; }
 .file__shot figcaption {
   padding: 10px var(--s2);
   border-top: 1px solid var(--rule);
-  font-size: 10.5px;
   color: var(--ink-3);
 }
-.file__body h3 { font-size: clamp(1.25rem, 2.2vw, 1.6rem); letter-spacing: -0.022em; }
+.file__body h3 { font-size: clamp(1.2rem, 2.2vw, 1.5rem); letter-spacing: -0.022em; }
 .file__ctx { max-width: var(--measure); margin-top: 10px; color: var(--ink-2); line-height: 1.62; text-wrap: pretty; }
-.file__credit { margin-top: var(--s3); font-size: 10px; color: var(--ink-3); }
+.file__credit { margin-top: var(--s3); font-size: 13px; color: var(--ink-3); }
 
 /* --- spec lists ----------------------------------------------------------- */
 
@@ -483,8 +509,8 @@ a { color: inherit; text-decoration: none; }
   padding: 12px 0;
   border-bottom: 1px solid var(--rule-2);
 }
-.spec dt { font-size: 10.5px; color: var(--ink-3); padding-top: 3px; }
-.spec dd { font-size: 15px; color: var(--ink-2); line-height: 1.55; }
+.spec dt { color: var(--ink-3); padding-top: 3px; }
+.spec dd { font-size: 16px; color: var(--ink-2); line-height: 1.55; }
 
 /* --- credentials ---------------------------------------------------------- */
 
@@ -504,10 +530,10 @@ summary.cred__row::-webkit-details-marker { display: none; }
 summary.cred__row:hover { background: var(--sheet-2); }
 summary.cred__row:hover .cred__plus { color: var(--blue); }
 
-.cred__code { font-size: 12px; color: var(--ink); }
+.cred__code { color: var(--ink); }
 .cred__name { font-size: 16px; font-weight: 600; letter-spacing: -0.012em; }
-.cred__issuer, .cred__date { font-size: 10.5px; color: var(--ink-3); }
-.cred__flag { justify-self: end; font-size: 10px; color: var(--green); }
+.cred__issuer, .cred__date { font-size: 13px; color: var(--ink-3); }
+.cred__flag { justify-self: end; color: var(--green); }
 .cred[data-state="progress"] .cred__flag { color: var(--amber); }
 .cred[data-state="progress"] .cred__code,
 .cred[data-state="progress"] .cred__name { color: var(--ink-2); }
@@ -524,7 +550,7 @@ summary.cred__row:hover .cred__plus { color: var(--blue); }
   max-width: var(--measure);
 }
 .cred__detail > p { color: var(--ink-2); line-height: 1.62; text-wrap: pretty; }
-.cred__id { margin-top: var(--s3); font-size: 10px; color: var(--ink-3); }
+.cred__id { margin-top: var(--s3); font-size: 13px; color: var(--ink-3); }
 .cred__detail .ctl { margin-top: var(--s2); }
 
 /* --- project -------------------------------------------------------------- */
@@ -537,12 +563,12 @@ summary.cred__row:hover .cred__plus { color: var(--blue); }
 /* --- notes ---------------------------------------------------------------- */
 
 .notes { margin-top: var(--s6); display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr); gap: var(--s6); }
-.notes__h { font-size: 10.5px; color: var(--ink-3); padding-bottom: var(--s2); border-bottom: 1px solid var(--ink); }
+.notes__h { color: var(--ink-3); padding-bottom: var(--s2); border-bottom: 1px solid var(--ink); }
 
 .schools { display: grid; gap: 2px; }
 .schools li { display: flex; align-items: center; gap: var(--s3); padding: var(--s3) 0; border-bottom: 1px solid var(--rule-2); }
 .schools img { width: 40px; height: 40px; object-fit: contain; flex: none; }
-.schools strong { display: block; font-size: 15px; font-weight: 600; }
+.schools strong { display: block; font-size: 16px; font-weight: 600; }
 .schools span { font-size: 13px; color: var(--ink-3); }
 
 .kit { display: flex; flex-wrap: wrap; gap: var(--s1); margin-top: var(--s3); }
@@ -558,7 +584,7 @@ summary.cred__row:hover .cred__plus { color: var(--blue); }
 .part--end { padding-bottom: var(--s7); }
 .end__h, .end__sub { max-width: 900px; }
 .end__h { font-size: clamp(1.8rem, 4.2vw, 3.1rem); font-weight: 600; letter-spacing: -0.032em; text-wrap: balance; }
-.end__sub { margin-top: var(--s2); font-size: 1.125rem; color: var(--ink-2); }
+.end__sub { margin-top: var(--s2); font-size: clamp(1.0625rem, 1.5vw, 1.1875rem); color: var(--ink-2); }
 .end__acts { display: flex; flex-wrap: wrap; gap: var(--s1); margin-top: var(--s4); }
 .sign {
   display: grid;
@@ -578,15 +604,14 @@ summary.cred__row:hover .cred__plus { color: var(--blue); }
   filter: grayscale(1) contrast(1.04);
 }
 .sign__who { display: grid; gap: 1px; }
-.sign__who span { font-size: 10px; color: var(--ink-3); }
-.sign__who b { font-size: 15px; font-weight: 600; letter-spacing: -0.01em; }
+.sign__who span { color: var(--ink-3); }
+.sign__who b { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
 .sign__rev {
   justify-self: end;
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-end;
   gap: var(--s3);
-  font-size: 10px;
   color: var(--ink-3);
 }
 
@@ -594,7 +619,7 @@ summary.cred__row:hover .cred__plus { color: var(--blue); }
 
 @media (max-width: 900px) {
   body { font-size: 16px; }
-  .hero { min-height: auto; grid-template-rows: auto auto auto; padding-bottom: var(--s5); }
+  .hero { min-height: auto; grid-template-rows: auto auto auto; --hero-pb: var(--s5); }
   .hero__rail { display: none; }
   .hero__unit { margin-left: 0; }
   .hero__foot { grid-template-columns: 1fr; gap: var(--s4); }
@@ -608,7 +633,7 @@ summary.cred__row:hover .cred__plus { color: var(--blue); }
   .file:nth-child(even) .file__shot { order: 0; }
 
   .cred__row { grid-template-columns: auto auto 1fr 24px; gap: 4px var(--s2); padding: var(--s3) 0; }
-  .cred__code { grid-area: 1 / 1 / 2 / 4; font-size: 11px; }
+  .cred__code { grid-area: 1 / 1 / 2 / 4; }
   .cred__name { grid-area: 2 / 1 / 3 / 4; }
   .cred__issuer { grid-area: 3 / 1 / 4 / 2; }
   .cred__date { grid-area: 3 / 2 / 4 / 3; }
@@ -625,6 +650,18 @@ summary.cred__row:hover .cred__plus { color: var(--blue); }
   .spec > div { grid-template-columns: 1fr; gap: 4px; }
   .proj__frames { grid-template-columns: 1fr 1fr; }
   .proj__frames img:nth-child(3) { display: none; }
+}
+
+/* Short viewports (most laptops, every phone held upright): tighten the first
+   view so the three actions and the fields under them stay on screen. */
+@media (max-height: 860px) {
+  .hero { --hero-pt: calc(var(--strip-h) + var(--s3)); --hero-pb: var(--s5); --hero-top: 120px; }
+  .datum { margin: var(--s3) 0; }
+  .block { padding: var(--s3); }
+  .block__name { font-size: clamp(2.75rem, min(8vw, 11.5vh), 5rem); }
+  .block__role { padding-bottom: var(--s2); }
+  .block__acts, .block__facts { padding-top: var(--s2); }
+  .block__rev { margin-top: var(--s2); }
 }
 
 /* --- reduced motion ------------------------------------------------------- */

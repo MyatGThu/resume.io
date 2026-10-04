@@ -21,7 +21,7 @@ One page, read top to bottom the way an elevation is read.
   playbook, the standard device build.
 - **Credentials.** Four verified certifications as native `<details>` rows:
   what each covers, where it is used in the record, the credential ID and the
-  owner's own verification link. AZ-104 is on the schedule as in preparation.
+  owner's own verification link. AZ-104 is on the schedule as in progress.
 - **Poker Money.** The side project, with three frames from the app.
 - **Study and kit**, then the sign-off with the same three actions.
 

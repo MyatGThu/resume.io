@@ -210,17 +210,25 @@
         "displayName": "Body",
         "purpose": "Scope paragraphs, bullets and spec values. 17px at 1.6."
       },
+      "ui": {
+        "displayName": "UI text",
+        "purpose": "Controls, spec values, organisation and credential names: 16px, the step between body and the value."
+      },
+      "value": {
+        "displayName": "Value",
+        "purpose": "Dates, issuers, credential IDs, the to-now span and photo credits. 13px, plain width, tabular, sentence case."
+      },
       "annotation": {
         "displayName": "Annotation",
-        "purpose": "Condensed caps at wdth 80, tracked 0.1em: every label, dimension, flag and field."
+        "purpose": "Condensed caps at wdth 80, tracked 0.1em, always 12px: every label, flag, caption, field and year tick. Nothing on the sheet is smaller."
       },
       "dimension": {
         "displayName": "Dimension",
-        "purpose": "The date span beside a rack unit, read as the unit's position on the scale."
+        "purpose": "The date span beside a rack unit, read as the unit's position on the scale. A value, not a label: 13px, plain width, sentence case."
       },
       "tick": {
         "displayName": "Scale tick",
-        "purpose": "A year on the left-hand scale in the first viewport."
+        "purpose": "A year on the left-hand scale in the first viewport. One tick per year from 2026 (top) to 2019 (bottom), evenly spaced, so the scale is to scale."
       },
       "field": {
         "displayName": "Title block field",
@@ -271,6 +279,10 @@
       {
         "name": "phone",
         "value": "560px"
+      },
+      {
+        "name": "short",
+        "value": "max-height 860px"
       }
     ]
   },
@@ -281,31 +293,31 @@
       "refersTo": "ctl",
       "description": "Every destination on the sheet is a drawn control with a visible border. One filled control per frame, always email.",
       "html": "<a class=\"ctl ctl-key\" href=\"#\">Email Myat</a> <a class=\"ctl\" href=\"#\">Download CV</a>",
-      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.ctl{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 20px;border:1px solid var(--ink);border-radius:0;text-decoration:none;color:var(--ink);font-size:15px;font-weight:600;transition:background 180ms var(--ease),color 180ms var(--ease),border-color 180ms var(--ease);}.ctl:hover{background:var(--ink);color:var(--sheet);}.ctl-key{background:var(--ink);color:var(--sheet);}.ctl-key:hover{background:var(--blue);border-color:var(--blue);}"
+      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.ctl{display:inline-flex;align-items:center;gap:10px;min-height:48px;padding:0 18px;border:1px solid var(--ink);border-radius:0;text-decoration:none;color:var(--ink);font-size:16px;font-weight:600;transition:background 180ms var(--ease),color 180ms var(--ease),border-color 180ms var(--ease);}.ctl:hover{background:var(--ink);color:var(--sheet);}.ctl-key{background:var(--ink);color:var(--sheet);}.ctl-key:hover{background:var(--blue);border-color:var(--blue);}"
     },
     {
       "name": "Title block",
       "kind": "card",
       "refersTo": "block",
-      "description": "The lower-right block every drawing carries, at monumental scale: the name, the role, three fields and the three actions.",
+      "description": "The lower-right block every drawing carries, at monumental scale: the name, the role, the three actions and three fields.",
       "html": "<div class=\"block\"><h1>Myat Thu</h1><p class=\"role\">Service Desk Analyst</p><dl><div><dt class=\"ann\">Location</dt><dd>Melbourne, Australia</dd></div><div><dt class=\"ann\">Reply</dt><dd>Within a day</dd></div></dl><p class=\"rev ann\"><span>Drawn by M. Thu</span><span>Rev 4</span><span>Sheet 1 of 1</span></p></div>",
-      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.block{width:min(560px,100%);border:1px solid var(--ink);background:var(--sheet-2);padding:32px;color:var(--ink);}.block h1{margin:0;font-size:clamp(2.75rem,8vw,5rem);font-weight:600;font-stretch:92%;letter-spacing:-.035em;line-height:.95;}.role{margin:8px 0 0;font-size:1.3rem;color:var(--ink-2);padding-bottom:24px;border-bottom:1px solid var(--rule);}dl{display:grid;gap:10px;padding:24px 0;margin:0;}dl>div{display:grid;grid-template-columns:5.5em 1fr;gap:16px;align-items:baseline;}dt{font-size:10.5px;color:var(--ink-3);}dd{margin:0;font-size:15px;}.rev{display:flex;gap:24px;margin:32px 0 0;padding-top:16px;border-top:1px solid var(--rule);font-size:10px;color:var(--ink-3);}"
+      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.block{width:min(560px,100%);border:1px solid var(--ink);background:var(--sheet-2);padding:32px;color:var(--ink);}.block h1{margin:0;font-size:clamp(2.75rem,8vw,5rem);font-weight:600;font-stretch:92%;letter-spacing:-.035em;line-height:.95;}.role{margin:8px 0 0;font-size:clamp(1.0625rem,1.5vw,1.1875rem);color:var(--ink-2);padding-bottom:24px;border-bottom:1px solid var(--rule);}dl{display:grid;gap:10px;padding:24px 0;margin:0;}dl>div{display:grid;grid-template-columns:5.5em 1fr;gap:16px;align-items:baseline;}dt{font-size:12px;color:var(--ink-3);}dd{margin:0;font-size:16px;}.rev{display:flex;gap:24px;margin:32px 0 0;padding-top:16px;border-top:1px solid var(--rule);font-size:12px;color:var(--ink-3);}"
     },
     {
       "name": "Rack unit",
       "kind": "list-item",
       "refersTo": "unit",
-      "description": "One role on the elevation. The date span is the dimension label at the left; the live unit alone takes patch blue.",
-      "html": "<li class=\"unit\" data-state=\"live\"><p class=\"dim ann\"><b>May 2025</b><span>to now</span></p><div><h3>Service Desk Analyst</h3><p class=\"org\">IPH Limited <span class=\"ann\">Melbourne</span></p><ul class=\"pts\"><li>Second-level escalation point for the service desk</li><li>Builds laptops and mobiles to the standard operating environment</li></ul></div></li>",
-      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.unit{display:grid;grid-template-columns:150px 1fr;gap:48px;padding:48px 0;border-bottom:1px solid var(--rule);list-style:none;color:var(--ink);}.dim{margin:0;font-size:11px;color:var(--ink-3);line-height:1.5;}.dim b{display:block;font-size:13px;color:var(--blue);}.dim span{display:block;}h3{margin:0;font-size:1.5rem;font-weight:600;letter-spacing:-.02em;}.org{margin:4px 0 0;font-size:15px;font-weight:600;color:var(--ink-2);}.org span{font-size:10.5px;color:var(--ink-3);margin-left:10px;}.pts{margin:24px 0 0;padding:0;display:grid;gap:10px;list-style:none;}.pts li{position:relative;padding-left:24px;color:var(--ink-2);line-height:1.55;}.pts li::before{content:\"\";position:absolute;left:0;top:.68em;width:10px;height:1px;background:var(--rule);}"
+      "description": "One role on the elevation. The date span is the dimension label at the left; the live unit alone takes patch blue and the legend's blue swatch.",
+      "html": "<li class=\"unit\" data-state=\"live\"><p class=\"dim\"><b>May 2025</b><span>to now</span></p><div><h3>Service Desk Analyst</h3><p class=\"org\">IPH Limited <span class=\"ann\">Melbourne</span></p><ul class=\"pts\"><li>Second-level escalation point for the service desk</li><li>Builds laptops and mobiles to the standard operating environment</li></ul></div></li>",
+      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.unit{display:grid;grid-template-columns:150px 1fr;gap:48px;padding:48px 0;border-bottom:1px solid var(--rule);list-style:none;color:var(--ink);}.dim{margin:0;font-size:13px;color:var(--ink-3);line-height:1.5;}.dim b{display:flex;align-items:center;gap:10px;font-weight:600;color:var(--blue);}.dim b::after{content:\"\";width:10px;height:10px;flex:none;background:var(--blue);border:1px solid var(--blue);}.dim span{display:block;}h3{margin:0;font-size:1.5rem;font-weight:600;letter-spacing:-.02em;}.org{margin:4px 0 0;font-size:16px;font-weight:600;color:var(--ink-2);}.org span{font-size:12px;color:var(--ink-3);margin-left:10px;}.pts{margin:24px 0 0;padding:0;display:grid;gap:10px;list-style:none;}.pts li{position:relative;padding-left:24px;color:var(--ink-2);line-height:1.55;}.pts li::before{content:\"\";position:absolute;left:0;top:.68em;width:10px;height:1px;background:var(--rule);}"
     },
     {
       "name": "Credential row",
       "kind": "disclosure",
       "refersTo": "cred",
       "description": "A native details element. One identical label schema per row so the schedule scans in a single pass; the plus turns to a cross when open.",
-      "html": "<li class=\"cred\"><details><summary class=\"row\"><span class=\"ann code\">MD-102</span><span class=\"nm\">Endpoint Administrator</span><span class=\"ann mut\">Microsoft</span><span class=\"ann mut\">23 Nov 2024</span><span class=\"ann flag\">Verified</span><svg class=\"plus\" viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><path d=\"M12 7v10M7 12h10\"/></svg></summary><div class=\"detail\"><p>Deploying and protecting Windows endpoints at scale with Intune.</p></div></details></li>",
-      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.cred{border-bottom:1px solid var(--rule);list-style:none;color:var(--ink);}.row{display:grid;grid-template-columns:7em minmax(0,1fr) 7.5em 8.5em 8em 24px;align-items:center;gap:16px;padding:24px 0;cursor:pointer;list-style:none;transition:background 180ms var(--ease);}.row::-webkit-details-marker{display:none;}.row:hover{background:var(--sheet-2);}.code{font-size:12px;}.nm{font-size:16px;font-weight:600;letter-spacing:-.012em;}.mut{font-size:10.5px;color:var(--ink-3);}.flag{justify-self:end;font-size:10px;color:var(--green);}.plus{justify-self:end;color:var(--ink-3);transition:transform 180ms var(--ease),color 180ms var(--ease);}details[open] .plus{transform:rotate(45deg);color:var(--ink);}.detail{padding-bottom:32px;max-width:68ch;color:var(--ink-2);line-height:1.62;}"
+      "html": "<li class=\"cred\"><details><summary class=\"row\"><span class=\"ann code\">MD-102</span><span class=\"nm\">Endpoint Administrator</span><span class=\"mut\">Microsoft</span><span class=\"mut\">23 Nov 2024</span><span class=\"ann flag\">Verified</span><svg class=\"plus\" viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" fill=\"none\" stroke=\"currentColor\" stroke-width=\"1.6\" aria-hidden=\"true\"><path d=\"M12 7v10M7 12h10\"/></svg></summary><div class=\"detail\"><p>Deploying and protecting Windows endpoints at scale with Intune.</p></div></details></li>",
+      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.cred{border-bottom:1px solid var(--rule);list-style:none;color:var(--ink);}.row{display:grid;grid-template-columns:7em minmax(0,1fr) 7.5em 8.5em 8em 24px;align-items:center;gap:16px;padding:24px 0;cursor:pointer;list-style:none;transition:background 180ms var(--ease);}.row::-webkit-details-marker{display:none;}.row:hover{background:var(--sheet-2);}.code{font-size:12px;}.nm{font-size:16px;font-weight:600;letter-spacing:-.012em;}.mut{font-size:13px;color:var(--ink-3);}.flag{justify-self:end;font-size:12px;color:var(--green);}.plus{justify-self:end;color:var(--ink-3);transition:transform 180ms var(--ease),color 180ms var(--ease);}details[open] .plus{transform:rotate(45deg);color:var(--ink);}.detail{padding-bottom:32px;max-width:68ch;color:var(--ink-2);line-height:1.62;}"
     },
     {
       "name": "Case file plate",
@@ -313,23 +325,23 @@
       "refersTo": "file",
       "description": "A photograph behind a bordered plate with its subject annotated beneath, the way a detail is called out on a drawing. Grayscale keeps the sheet cool.",
       "html": "<figure class=\"plate\"><img src=\"assets/photos/dock.jpg\" alt=\"A desk running two screens from a single hub\" /><figcaption class=\"ann\">Endpoint, rollout</figcaption></figure>",
-      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.plate{margin:0;border:1px solid var(--rule);background:var(--sheet-2);}.plate img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;filter:grayscale(1) contrast(1.04);}figcaption{padding:10px 16px;border-top:1px solid var(--rule);font-size:10.5px;color:var(--ink-3);}"
+      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.plate{margin:0;border:1px solid var(--rule);background:var(--sheet-2);}.plate img{display:block;width:100%;aspect-ratio:16/10;object-fit:cover;filter:grayscale(1) contrast(1.04);}figcaption{padding:10px 16px;border-top:1px solid var(--rule);font-size:12px;color:var(--ink-3);}"
     },
     {
       "name": "Drawing strip",
       "kind": "navigation",
       "refersTo": "strip",
-      "description": "The fixed strip carrying the drawing number and the sheet index. Every destination is visible; the current part is underlined in patch blue.",
-      "html": "<header class=\"strip\"><span class=\"ann no\">MT-01</span><span class=\"t\">Myat Thu, record of service</span><nav class=\"ix\"><a class=\"ann\" href=\"#a\" aria-current=\"true\">Elevation</a><a class=\"ann\" href=\"#b\">Case files</a><a class=\"ann\" href=\"#c\">Credentials</a></nav></header>",
-      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.strip{display:flex;align-items:stretch;gap:24px;height:40px;padding:0 24px;background:var(--sheet);border-bottom:1px solid var(--rule);font-size:11px;color:var(--ink-3);}.no,.t{display:flex;align-items:center;flex:none;}.no{color:var(--ink);font-stretch:80%;font-weight:600;letter-spacing:.1em;}.t{letter-spacing:.04em;}.ix{margin-left:auto;display:flex;gap:24px;}.ix a{position:relative;display:flex;align-items:center;font-size:10.5px;color:var(--ink-3);text-decoration:none;white-space:nowrap;transition:color 180ms var(--ease);}.ix a::after{content:\"\";position:absolute;left:0;right:0;bottom:9px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform 180ms var(--ease);}.ix a:hover{color:var(--ink);}.ix a:hover::after{transform:scaleX(1);}.ix a[aria-current=\"true\"]{color:var(--ink);}.ix a[aria-current=\"true\"]::after{background:var(--blue);transform:scaleX(1);}"
+      "description": "The fixed strip carrying the drawing number and the sheet index. Every destination is visible and the index never scrolls (a phone shows three entries); the current part is underlined in patch blue.",
+      "html": "<header class=\"strip\"><span class=\"ann no\">MT-01</span><span class=\"t\">Myat Thu, record of service</span><nav class=\"ix\"><a class=\"ann\" href=\"#a\" aria-current=\"true\">Record</a><a class=\"ann\" href=\"#b\">Case files</a><a class=\"ann\" href=\"#c\">Credentials</a></nav></header>",
+      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.strip{display:flex;align-items:stretch;gap:24px;height:40px;padding:0 24px;background:var(--sheet);border-bottom:1px solid var(--rule);font-size:12px;color:var(--ink-3);}.no,.t{display:flex;align-items:center;flex:none;}.no{color:var(--ink);font-stretch:80%;font-weight:600;letter-spacing:.1em;}.t{letter-spacing:.04em;font-size:13px;}.ix{margin-left:auto;display:flex;gap:24px;}.ix a{position:relative;display:flex;align-items:center;font-size:12px;color:var(--ink-3);text-decoration:none;white-space:nowrap;transition:color 180ms var(--ease);}.ix a::after{content:\"\";position:absolute;left:0;right:0;bottom:9px;height:1px;background:var(--ink);transform:scaleX(0);transform-origin:left;transition:transform 180ms var(--ease);}.ix a:hover{color:var(--ink);}.ix a:hover::after{transform:scaleX(1);}.ix a[aria-current=\"true\"]{color:var(--ink);}.ix a[aria-current=\"true\"]::after{background:var(--blue);transform:scaleX(1);}"
     },
     {
       "name": "Legend",
       "kind": "key",
       "refersTo": "legend",
       "description": "The drawing's key. It is the only place the patch-cable code is spelled out, and it is why colour never needs a caption anywhere else.",
-      "html": "<ul class=\"legend ann\"><li><i data-key=\"live\"></i>Current</li><li><i data-key=\"verified\"></i>Verified</li><li><i data-key=\"progress\"></i>In preparation</li></ul>",
-      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.legend{display:grid;gap:10px;margin:0;padding:0;list-style:none;}.legend li{display:flex;align-items:center;gap:10px;font-size:11px;color:var(--ink-3);}.legend i{width:10px;height:10px;flex:none;border:1px solid var(--ink);}[data-key=\"live\"]{background:var(--blue);border-color:var(--blue);}[data-key=\"verified\"]{background:var(--green);border-color:var(--green);}[data-key=\"progress\"]{background:var(--amber);border-color:var(--amber);}"
+      "html": "<ul class=\"legend ann\"><li><i data-key=\"live\"></i>Current</li><li><i data-key=\"verified\"></i>Verified</li><li><i data-key=\"progress\"></i>In progress</li></ul>",
+      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.legend{display:grid;gap:10px;margin:0;padding:0;list-style:none;}.legend li{display:flex;align-items:center;gap:10px;font-size:12px;color:var(--ink-3);}.legend i{width:10px;height:10px;flex:none;border:1px solid var(--ink);}[data-key=\"live\"]{background:var(--blue);border-color:var(--blue);}[data-key=\"verified\"]{background:var(--green);border-color:var(--green);}[data-key=\"progress\"]{background:var(--amber);border-color:var(--amber);}"
     },
     {
       "name": "Signature plate",
@@ -337,7 +349,7 @@
       "refersTo": "sign",
       "description": "The sheet is signed. A small grayscale portrait plate, who drew it and where, with the drawing fields closing on the right edge.",
       "html": "<div class=\"sign\"><img src=\"assets/portrait.jpg\" alt=\"Myat Thu\" /><p class=\"who\"><span class=\"ann\">Drawn by</span><b>Myat Thu</b><span class=\"ann\">Melbourne, Australia</span></p><p class=\"rev ann\"><span>Drawing MT-01</span><span>Rev 4</span><span>Sheet 1 of 1</span></p></div>",
-      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.sign{display:grid;grid-template-columns:72px auto 1fr;align-items:center;gap:24px;padding-top:24px;border-top:1px solid var(--rule);color:var(--ink);}.sign img{width:72px;height:72px;object-fit:cover;object-position:50% 22%;border:1px solid var(--rule);filter:grayscale(1) contrast(1.04);}.who{display:grid;gap:1px;margin:0;}.who span{font-size:10px;color:var(--ink-3);}.who b{font-size:15px;font-weight:600;}.rev{justify-self:end;display:flex;gap:24px;margin:0;font-size:10px;color:var(--ink-3);}"
+      "css": ":host{--sheet:#eceef0;--sheet-2:#e4e7ea;--ink:#10161c;--ink-2:#39434c;--ink-3:#5b656e;--rule:#aeb6bd;--rule-2:#c8ced3;--blue:#1557c0;--amber:#a04a06;--green:#126b41;--face:\"Archivo\",\"Helvetica Neue\",Arial,sans-serif;--ease:cubic-bezier(0.2,0,0,1);font-family:var(--face);font-variant-numeric:tabular-nums;}.ann{font-stretch:80%;font-weight:600;letter-spacing:.1em;text-transform:uppercase;}.sign{display:grid;grid-template-columns:72px auto 1fr;align-items:center;gap:24px;padding-top:24px;border-top:1px solid var(--rule);color:var(--ink);}.sign img{width:72px;height:72px;object-fit:cover;object-position:50% 22%;border:1px solid var(--rule);filter:grayscale(1) contrast(1.04);}.who{display:grid;gap:1px;margin:0;}.who span{font-size:12px;color:var(--ink-3);}.who b{font-size:16px;font-weight:600;}.rev{justify-self:end;display:flex;gap:24px;margin:0;font-size:12px;color:var(--ink-3);}"
     }
   ],
   "narrative": {
@@ -356,7 +368,7 @@
     "rules": [
       "One identical label schema on every rack unit and every credential row, so the sheet scans in a single pass.",
       "Colour may only mark state. A colour used for emphasis, decoration or mood is a defect.",
-      "Every rule is 1px and either --rule, --rule-2 or --ink. The 3px patch marker on the live unit is the one exception.",
+      "Every rule is 1px and either --rule, --rule-2 or --ink. There is no thick stripe: the live marker is a square swatch.",
       "No shadow, no gradient, no glass, no rounded corner. Radius is zero everywhere.",
       "Reading columns are capped at the 68ch measure. Only the elevation, the schedule and the rules run full width.",
       "Motion is one authored moment plus 180ms state transitions. Anything else is removed.",
@@ -367,7 +379,7 @@
     "dos": [
       "Draw a component rather than style a box: rails, leader lines, plates, a legend, a revision block.",
       "Put a number in tabular figures and give it a column.",
-      "Label with condensed caps at 10 to 11px and let the label carry the annotation voice.",
+      "Label with condensed caps at 12px and let the label carry the annotation voice. Set the values a recruiter reads in the plain width at 13px.",
       "Give a photograph a bordered plate and an annotated caption, in grayscale.",
       "Use a native element when one exists. The credential rows are details elements and need no script.",
       "Keep one filled control per frame, always email.",
@@ -380,7 +392,8 @@
       "Do not reach for a shadow or a radius to separate two things. Use a hairline or space.",
       "Do not hide a destination behind a hover, an overlay or a gesture.",
       "Do not animate anything on scroll, and do not reintroduce a library to do it.",
-      "Do not warm the ground toward cream. The sheet is cool by decision."
+      "Do not warm the ground toward cream. The sheet is cool by decision.",
+      "Do not set any text under 12px, and do not mark a unit with a side stripe."
     ]
   }
 }
