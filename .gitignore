@@ -7,3 +7,7 @@ node_modules/
 .claude/skills/impeccable/scripts/bin/
 # Impeccable question-server runtime state
 .impeccable/questions/
+
+# unlazy skill working state
+/.unlazy/
+.unlazy-hook-state.json
