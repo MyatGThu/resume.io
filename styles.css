@@ -115,7 +115,7 @@ a { color: inherit; text-decoration: none; }
    annotation: they are set in the plain width at 13px. */
 .strip, .index a, .unit__org span, .block__facts dt, .block__rev,
 .cred__code, .cred__flag,
-.file__shot figcaption, .hobby__plate figcaption, .spec dt, .notes__h, .unit__state,
+.file__shot figcaption, .hobby__plate figcaption, .spec dt, .notes__h, .unit__state, .unit__pd > summary,
 .sign__who span, .sign__rev {
   font-size: 12px;
   font-stretch: 80%;
@@ -488,6 +488,26 @@ a { color: inherit; text-decoration: none; }
   background: var(--rule);
 }
 
+/* A unit's position description in full, behind a native disclosure drawn
+   like a credential row, so the rack stays scannable. */
+.unit__pd { margin: var(--s3) 0 0 80px; max-width: var(--measure); border-top: 1px solid var(--rule-2); border-bottom: 1px solid var(--rule-2); }
+.unit__pd > summary {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  min-height: 48px;
+  cursor: pointer;
+  list-style: none;
+  color: var(--ink-2);
+  transition: color var(--t) var(--ease);
+}
+.unit__pd > summary::-webkit-details-marker { display: none; }
+.unit__pd > summary:hover { color: var(--ink); }
+.unit__pd > summary:hover .cred__plus { color: var(--blue); }
+.unit__pd[open] .cred__plus { transform: rotate(45deg); color: var(--ink); }
+.unit__pd .spec { margin: 0; }
+.unit__pd[open] { border-bottom: 0; } /* the last spec row closes it */
+
 /* --- case files ----------------------------------------------------------- */
 
 .files { margin-top: var(--s6); display: grid; gap: var(--s6); }
@@ -674,7 +694,7 @@ summary.cred__row:hover .cred__plus { color: var(--blue); }
   .part { padding: var(--s7) 0; }
 
   .unit { grid-template-columns: 1fr; gap: var(--s3); }
-  .unit__scope, .unit__pts { margin-left: 0; }
+  .unit__scope, .unit__pts, .unit__pd { margin-left: 0; }
   .file, .file:nth-child(even), .proj, .notes { grid-template-columns: 1fr; gap: var(--s4); }
   .file:nth-child(even) .file__shot { order: 0; }
 
@@ -786,7 +806,8 @@ summary.cred__row:hover .cred__plus { color: var(--blue); }
   .is-armed [data-plot="hobbies"]:not(.is-in) .hobby__glyph * { stroke-dashoffset: 1; }
 
   /* an opened credential unfolds rather than appearing */
-  .cred__d[open] .cred__detail { animation: rise 260ms var(--ease) both; }
+  .cred__d[open] .cred__detail,
+  .unit__pd[open] .spec { animation: rise 260ms var(--ease) both; }
 }
 
 /* The carriage: the strip's hairline inks across as the sheet is read. */
