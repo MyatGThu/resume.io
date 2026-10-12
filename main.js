@@ -1,15 +1,36 @@
-/* Sheet index: mark the part currently crossing the middle of the viewport,
-   and open the credential rows while the sheet prints. Everything else on
+/* Plot each part in as it arrives, mark the part currently crossing the
+   middle of the viewport in the sheet index, and open the credential rows
+   while the sheet prints. Everything else on
    this page is HTML and CSS: the credential rows are native <details>, the
    opening is a CSS animation gated by the two-line script in the <head>,
    and the sheet reads correctly with this file blocked. */
 (function () {
   'use strict';
 
+  /* Plot each part as it reaches the reader. Armed only when the tab is
+     visible, motion is welcome and the observer exists; otherwise nothing
+     waits and the finished sheet is what loads. An element plots once. */
+  var root = document.documentElement;
+  var plots = Array.prototype.slice.call(document.querySelectorAll('[data-plot]'));
+  function land(el) { el.classList.add('is-in'); }
+  if (plots.length && 'IntersectionObserver' in window && !document.hidden &&
+      !matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var po = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (!entry.isIntersecting) return;
+        land(entry.target);
+        po.unobserve(entry.target);
+      });
+    }, { rootMargin: '0px 0px -8% 0px', threshold: 0 });
+    plots.forEach(function (el) { po.observe(el); });
+    root.classList.add('is-armed');
+  }
+
   /* Print every credential in full. A closed <details> cannot be opened by
      CSS alone, so open the rows for the print run and close them after. */
   var opened = [];
   window.addEventListener('beforeprint', function () {
+    plots.forEach(land);
     opened = Array.prototype.filter.call(
       document.querySelectorAll('details'),
       function (d) { return !d.open; }

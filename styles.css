@@ -115,7 +115,7 @@ a { color: inherit; text-decoration: none; }
    annotation: they are set in the plain width at 13px. */
 .strip, .index a, .unit__org span, .block__facts dt, .block__rev,
 .cred__code, .cred__flag,
-.file__shot figcaption, .spec dt, .notes__h, .unit__state,
+.file__shot figcaption, .hobby__plate figcaption, .spec dt, .notes__h, .unit__state,
 .sign__who span, .sign__rev {
   font-size: 12px;
   font-stretch: 80%;
@@ -208,6 +208,7 @@ a { color: inherit; text-decoration: none; }
 .index a[aria-current="true"]::after { background: var(--blue); transform: scaleX(1); }
 
 @media (max-width: 1080px) { .strip__t { display: none; } }
+@media (max-width: 1080px) { .index .index__wide { display: none; } } /* seven entries only fit beside a full-width strip */
 @media (max-width: 720px) {
   :root { --strip-h: 45px; } /* 44px links plus the strip's 1px rule */
   .index .index__minor { display: none; }
@@ -422,7 +423,13 @@ a { color: inherit; text-decoration: none; }
 
 /* --- elevation ------------------------------------------------------------ */
 
-.stack { margin-top: var(--s6); border-top: 1px solid var(--rule); }
+.stack {
+  margin-top: var(--s6);
+  border-top: 1px solid var(--rule);
+  /* units slide in from behind the rack's edge; the margin keeps focus rings */
+  overflow: clip;
+  overflow-clip-margin: var(--s1);
+}
 
 .unit {
   display: grid;
@@ -579,6 +586,45 @@ summary.cred__row:hover .cred__plus { color: var(--blue); }
   color: var(--ink-2);
 }
 
+/* --- off the clock -------------------------------------------------------- */
+
+/* Four detail plates, drawn like the case files: a bordered plate with its
+   subject annotated beneath, then the note. The glyphs are line drawings in
+   ink, plotted in as the part arrives (see motion, below). */
+.hobbies { margin-top: var(--s6); display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: var(--s5) var(--s4); }
+.hobby__plate {
+  margin: 0;
+  border: 1px solid var(--rule);
+  background: var(--sheet-2);
+  transition: border-color var(--t) var(--ease);
+}
+.hobby:hover .hobby__plate { border-color: var(--ink); }
+.hobby__glyph {
+  display: block;
+  width: 80px;
+  height: 80px;
+  margin: var(--s5) auto;
+  fill: none;
+  stroke: var(--ink);
+  stroke-width: 1.2; /* 80px from a 64 unit box: draws a 1.5px line */
+  stroke-linejoin: round;
+  stroke-linecap: round;
+  stroke-dasharray: 1; /* every shape has pathLength="1", so one dash is the whole line */
+}
+.hobby__plate figcaption { padding: 10px var(--s2); border-top: 1px solid var(--rule); color: var(--ink-3); }
+.hobby h3 { margin-top: var(--s3); font-size: clamp(1.125rem, 1.6vw, 1.25rem); letter-spacing: -0.018em; text-wrap: balance; }
+.hobby p { margin-top: var(--s1); font-size: 16px; color: var(--ink-2); line-height: 1.55; text-wrap: pretty; }
+@media (max-width: 1080px) { .hobbies { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 560px) {
+  /* a phone reads the plates as a schedule: the plate beside its note */
+  .hobbies { grid-template-columns: 1fr; gap: var(--s4); }
+  .hobby { display: grid; grid-template-columns: 104px minmax(0, 1fr); grid-template-rows: auto 1fr; column-gap: var(--s3); align-items: start; }
+  .hobby__plate { grid-row: 1 / span 2; }
+  .hobby__glyph { width: 56px; height: 56px; margin: var(--s2) auto; }
+  .hobby__plate figcaption { padding: 6px var(--s1); text-align: center; }
+  .hobby h3 { margin-top: 0; }
+}
+
 /* --- sign-off ------------------------------------------------------------- */
 
 .part--end { padding-bottom: var(--s7); }
@@ -664,6 +710,107 @@ summary.cred__row:hover .cred__plus { color: var(--blue); }
   .block__rev { margin-top: var(--s2); }
 }
 
+/* --- motion ----------------------------------------------------------------- */
+
+/* Three kinds of movement, all of them things a drawing or a rack does:
+   1. The opening. Gated on .is-plotting (the inline script in the <head>):
+      the datum plots, the year ticks ink in, then the current post and the
+      title block rise onto the sheet.
+   2. Plotting on arrival. main.js adds .is-armed only when the tab is
+      visible, motion is welcome and IntersectionObserver exists, then .is-in
+      on each [data-plot] as it reaches the viewport. Without .is-armed none
+      of the waiting states below apply, so the finished sheet is still the
+      default and nothing can be stranded hidden.
+   3. Live state. The blue swatch blinks like a port's link light, and the
+      strip's hairline is a plotter carriage that tracks the scroll. */
+@media (prefers-reduced-motion: no-preference) {
+  .is-plotting .hero__unit { animation: rise 640ms var(--ease) 420ms both; }
+  .is-plotting .block { animation: rise 760ms var(--ease) 560ms both; }
+  .is-plotting .legend li { animation: ink 380ms var(--ease) both; }
+  .is-plotting .legend li:nth-child(1) { animation-delay: 900ms; }
+  .is-plotting .legend li:nth-child(2) { animation-delay: 990ms; }
+  .is-plotting .legend li:nth-child(3) { animation-delay: 1080ms; }
+
+  .legend i[data-key="live"],
+  .unit__state::before,
+  .unit[data-state="live"] .unit__dim b::after { animation: link 3.4s steps(1, end) infinite; }
+
+  /* stagger index for any list inside a plotted element */
+  [data-plot] :is(li, img):nth-child(2) { --n: 1; }
+  [data-plot] :is(li, img):nth-child(3) { --n: 2; }
+  [data-plot] :is(li, img):nth-child(4) { --n: 3; }
+  [data-plot] :is(li, img):nth-child(5) { --n: 4; }
+  [data-plot] :is(li, img):nth-child(6) { --n: 5; }
+  [data-plot] :is(li, img):nth-child(7) { --n: 6; }
+  [data-plot] :is(li, img):nth-child(8) { --n: 7; }
+  [data-plot] :is(li, img):nth-child(9) { --n: 8; }
+  [data-plot] :is(li, img):nth-child(10) { --n: 9; }
+  [data-plot] :is(li, img):nth-child(11) { --n: 10; }
+  [data-plot] :is(li, img):nth-child(12) { --n: 11; }
+
+  .is-armed [data-plot],
+  .is-armed [data-plot] :where(.unit__dim, .file__body, .cred, .proj__frames img, .schools li, .kit li, .hobby) {
+    transition: opacity 560ms var(--ease), transform 560ms var(--ease);
+  }
+
+  /* headings and ledes rise */
+  .is-armed [data-plot="part"]:not(.is-in) { opacity: 0; transform: translateY(12px); }
+  .is-armed .part__lede[data-plot] { transition-delay: 90ms; }
+
+  /* a rack unit slots in from the right, then its dimension is written */
+  .is-armed [data-plot="unit"]:not(.is-in) { opacity: 0; transform: translateX(40px); }
+  .is-armed [data-plot="unit"] .unit__dim { transition-delay: 240ms; }
+  .is-armed [data-plot="unit"]:not(.is-in) .unit__dim { opacity: 0; transform: translateY(6px); }
+
+  /* a case file's photograph is wiped onto its plate, the notes follow */
+  .is-armed [data-plot="file"] .file__shot { clip-path: inset(0 0 0 0); transition: clip-path 900ms var(--ease); }
+  .is-armed [data-plot="file"]:not(.is-in) .file__shot { clip-path: inset(0 100% 0 0); }
+  .is-armed [data-plot="file"] .file__body { transition-delay: 200ms; }
+  .is-armed [data-plot="file"]:not(.is-in) .file__body { opacity: 0; transform: translateY(12px); }
+
+  /* credentials come up row by row, and each flag links up as it lands */
+  .is-armed [data-plot="sched"] .cred { transition-delay: calc(var(--n, 0) * 80ms); }
+  .is-armed [data-plot="sched"]:not(.is-in) .cred { opacity: 0; transform: translateY(10px); }
+  .is-armed [data-plot="sched"].is-in .cred__flag { animation: link-up 900ms steps(1, end) both; animation-delay: calc(var(--n, 0) * 80ms + 360ms); }
+
+  /* Poker Money's frames, the study rows and the kit */
+  .is-armed [data-plot] :where(.schools li, .kit li) { transition-delay: calc(var(--n, 0) * 60ms); }
+  .is-armed [data-plot="frames"] img { transition-delay: calc(var(--n, 0) * 110ms); }
+  .is-armed [data-plot="frames"]:not(.is-in) img { opacity: 0; transform: translateY(24px); }
+  .is-armed [data-plot="notes"]:not(.is-in) :is(.schools li, .kit li) { opacity: 0; transform: translateY(8px); }
+
+  /* hobbies: each plate lands, then its line drawing is plotted */
+  .is-armed [data-plot="hobbies"] .hobby { transition-delay: calc(var(--n, 0) * 100ms); }
+  .is-armed [data-plot="hobbies"]:not(.is-in) .hobby { opacity: 0; transform: translateY(16px); }
+  .is-armed [data-plot="hobbies"] .hobby__glyph * { transition: stroke-dashoffset 1200ms var(--ease) calc(var(--n, 0) * 100ms + 240ms); }
+  .is-armed [data-plot="hobbies"]:not(.is-in) .hobby__glyph * { stroke-dashoffset: 1; }
+
+  /* an opened credential unfolds rather than appearing */
+  .cred__d[open] .cred__detail { animation: rise 260ms var(--ease) both; }
+}
+
+/* The carriage: the strip's hairline inks across as the sheet is read. */
+@supports (animation-timeline: scroll()) {
+  @media (prefers-reduced-motion: no-preference) {
+    .strip::after {
+      content: '';
+      position: absolute;
+      left: 0;
+      right: 0;
+      bottom: -1px;
+      height: 1px;
+      background: var(--ink);
+      transform-origin: left center;
+      animation: plot linear both;
+      animation-timeline: scroll(root block);
+    }
+  }
+}
+
+@keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
+@keyframes link { 0% { opacity: 1; } 82% { opacity: 0.3; } 85% { opacity: 1; } 89% { opacity: 0.3; } 92% { opacity: 1; } }
+@keyframes link-up { 0% { opacity: 0.25; } 25% { opacity: 1; } 40% { opacity: 0.25; } 60% { opacity: 1; } }
+
 /* --- reduced motion ------------------------------------------------------- */
 
 @media (prefers-reduced-motion: reduce) {
@@ -684,4 +831,5 @@ summary.cred__row:hover .cred__plus { color: var(--blue); }
   .part { padding: 18pt 0; break-inside: avoid; }
   .unit, .file, .cred { break-inside: avoid; }
   .cred__plus { display: none; }
+  [data-plot], [data-plot] * { opacity: 1 !important; transform: none !important; clip-path: none !important; stroke-dashoffset: 0 !important; transition: none !important; animation: none !important; }
 }
