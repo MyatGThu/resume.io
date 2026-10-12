@@ -23,7 +23,10 @@ One page, read top to bottom the way an elevation is read.
   what each covers, where it is used in the record, the credential ID and the
   owner's own verification link. AZ-104 is on the schedule as in progress.
 - **Poker Money.** The side project, with three frames from the app.
-- **Study and kit**, then the sign-off with the same three actions.
+- **Study and kit.**
+- **Off the clock.** Four hobbies as line-drawn detail plates: football,
+  video games, apps built with AI for an audience of one, and learning.
+- The sign-off with the same three actions.
 
 ## The colour code
 
@@ -33,13 +36,17 @@ the sheet.
 
 ## Stack
 
-Vanilla HTML, CSS and JS with no build step and no libraries. The one
-authored moment, the datum plotting and the year ticks inking in, is a CSS
-animation gated behind an `is-plotting` class that a two-line script in the
-`<head>` adds only when the tab is visible and motion is welcome; the
-finished sheet is the default state. `main.js` marks the current sheet-index
-entry and opens the credential rows for printing, and the page reads
-correctly with it blocked.
+Vanilla HTML, CSS and JS with no build step and no libraries. Motion is CSS:
+the opening (the datum plotting, the year ticks inking in, the title block
+rising) is gated behind an `is-plotting` class that a two-line script in the
+`<head>` adds only when the tab is visible and motion is welcome. As the sheet
+is read, `main.js` arms an IntersectionObserver that plots each part in once:
+rack units slot in, case-file photographs wipe onto their plates, credential
+rows link up, and the hobby glyphs draw themselves. The current post's swatch
+blinks like a link light and the strip's hairline tracks the scroll. The
+finished sheet is the default state throughout. `main.js` also marks the
+current sheet-index entry and opens the credential rows for printing, and the
+page reads correctly with it blocked.
 
 ```
 index.html            # the sheet

@@ -111,8 +111,9 @@ the sheet, and under it the title block sits lower right at monumental scale
 with the name, the role, the three actions and three fields. Then the sheet is
 read downward: four roles as rack units with their date spans as dimensions,
 three case files as detail callouts, five certifications as a schedule, Poker
-Money as the one detail drawn out, study and kit as a short schedule, and a
-sign-off with a signature plate.
+Money as the one detail drawn out, study and kit as a short schedule, four
+hobbies as detail plates under "Off the clock", and a sign-off with a
+signature plate.
 
 This world replaces "Going Under", the Nolan descent that preceded it. The four
 dream levels, the dream clock, the film credits, the totem framing and every
@@ -301,6 +302,19 @@ the reader is in. The first entry is named "Record" to match its heading.
 swatches, three words: Current, Verified, In progress. The amber state is
 called "In progress" everywhere it appears.
 
+### Hobby plate
+
+`.hobby` sits in the "Off the clock" part: a bordered plate on `sheet-2`
+holding a line drawing in ink (football, controller, phone, open book), its
+subject annotated beneath like a case file's photograph, then the hobby as an
+`h3` and one sentence of note. Four across, two below 1080px, and on a phone
+the plate sits beside its note as a schedule row. Every shape in a glyph
+carries `pathLength="1"`, so a single dash is the whole line and the motion
+below can plot it. The hobbies are the owner's own list: football, MOBAs and
+Souls-like single-player games (never horror), building apps with AI that
+nobody else will use, and learning new skills and technology. Below 1080px
+the part's index entry is hidden, since seven entries only fit a full strip.
+
 ### Signature plate
 
 `.sign` closes the sheet: a square grayscale portrait, who drew it and where,
@@ -308,16 +322,36 @@ and the drawing fields closing on the right edge.
 
 ## Motion
 
-One authored moment and one state duration. On load the datum draws itself
-across the sheet over 900ms and the year ticks ink in behind it on a 90ms
-stagger. Everything else is a 180ms transition on
-`cubic-bezier(0.2, 0, 0, 1)`.
+Every movement is something a drawing or a rack actually does. Entrances run
+560ms, the photograph wipe 900ms and glyph plotting 1200ms, all on
+`cubic-bezier(0.2, 0, 0, 1)`. State changes stay a 180ms transition on the
+same curve.
 
-The opening is gated behind an `.is-plotting` class that `main.js` adds only
-when the tab is visible and reduced motion is not requested. The stylesheet's
-default is the finished state. This matters: animation frames are suspended in
-a background tab, so an entrance that started from `opacity: 0` would hand a
-visitor a blank sheet. It is also why nothing animates on scroll.
+- **The opening.** Gated behind `.is-plotting`, which the inline script in the
+  `<head>` adds before first paint, only when the tab is visible and reduced
+  motion is not requested. The datum draws itself across the sheet over
+  900ms, the year ticks ink in on a 90ms stagger, then the current post and
+  the title block rise 16px onto the sheet and the legend inks in.
+- **Plotting on arrival.** `main.js` adds `.is-armed` to the root under the
+  same conditions, plus IntersectionObserver support, and then `.is-in` on
+  each `[data-plot]` element once as it reaches the viewport. Part headings
+  and ledes rise 12px. A rack unit slots in 40px from the right, from behind
+  the rack's clipped edge, and its date dimension is written 240ms later. A
+  case file's photograph is wiped onto its plate left to right. Credential
+  rows come up 80ms apart and each flag blinks as it links up. Poker Money's
+  frames, the study rows and the kit chips rise in turn. Each hobby plate
+  lands, then its line drawing is plotted stroke by stroke.
+- **Live state.** The blue swatches of the current post blink like a port's
+  link light, a 3.4s cycle that is on almost all of it. The strip's bottom
+  hairline is a plotter carriage: a 1px ink line driven by a CSS scroll
+  timeline that crosses the strip as the sheet is read, where supported.
+
+The finished sheet is always the default. Without `.is-armed` (JavaScript
+blocked, a background tab, no observer, reduced motion) none of the waiting
+states apply, so nothing can be stranded hidden; printing forces every plotted
+element to its finished state, and `beforeprint` lands any that never arrived.
+Reduced motion turns off the opening, the plotting, the link light and the
+carriage. No library is involved.
 
 ## Do's and Don'ts
 
@@ -343,7 +377,9 @@ visitor a blank sheet. It is also why nothing animates on scroll.
   stack.
 - Don't reach for a shadow or a radius to separate two things.
 - Don't hide a destination behind a hover, an overlay or a gesture.
-- Don't animate on scroll, and don't reintroduce a library to do it.
+- Don't animate anything that is not drawn or racked: no parallax, no
+  scroll-jacking, no bouncing, and don't reintroduce a library for motion.
+- Don't give an element a waiting state outside `.is-armed`.
 - Don't warm the ground toward cream.
 - Don't invent a claim. Every fact traces to the CV, the signed position
   description or the Poker Money README.
