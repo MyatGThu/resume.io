@@ -1,5 +1,6 @@
 <!doctype html>
-<!-- Source of assets/Myat-Thu-CV.pdf, drawn in the site's "Record of Service" world (DESIGN.md).
+<!-- Source of assets/Myat-Thu-CV.pdf: a plain, professional resume. Real text, live links,
+     no tables or graphics, so it reads cleanly in applicant tracking systems.
      Render with: NODE_PATH=$(npm root -g) node cv/render.cjs -->
 <html lang="en-AU">
 <head>
@@ -9,298 +10,150 @@
 <style>
   @font-face { font-family: "Archivo"; src: url("../assets/fonts/archivo.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; }
 
-  /* The site's tokens, printed. A cool drafting sheet, ink hairlines, one filled surface (the title block),
-     and the patch colours only as state: blue current, green verified, amber in progress. */
-  :root {
-    --sheet: #eceef0; --sheet-2: #e4e7ea; --ink: #10161c; --ink-2: #39434c; --ink-3: #5b656e;
-    --rule: #aeb6bd; --rule-2: #c8ced3; --blue: #1557c0; --amber: #a04a06; --green: #126b41;
-    --face: "Archivo", "Helvetica Neue", Arial, sans-serif;
-  }
-  @page { size: A4; margin: 0; }
+  :root { --ink: #10161c; --ink-2: #39434c; --ink-3: #5b656e; --rule: #c8ced3; --face: "Archivo", "Helvetica Neue", Arial, sans-serif; }
+  /* margins on the page box, so a second page gets the same frame */
+  @page { size: A4; margin: 15mm 17mm 14mm; }
   * { box-sizing: border-box; }
   html, body { margin: 0; }
-  body { font-family: var(--face); font-size: 9pt; line-height: 1.45; color: var(--ink-2); background: var(--sheet);
-         font-variant-numeric: tabular-nums; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  body { font-family: var(--face); font-size: 9.4pt; line-height: 1.45; color: var(--ink-2); background: #fff; font-variant-numeric: tabular-nums; }
   a { color: inherit; text-decoration: none; }
-  h1, h2, h3, p, ul, dl, dd { margin: 0; }
+  h1, h2, h3, p, ul { margin: 0; }
   ul { padding: 0; list-style: none; }
 
-  .page { position: relative; width: 210mm; height: 297mm; overflow: hidden; background: var(--sheet); padding: 0 14mm; break-after: page; }
-  .page:last-child { break-after: auto; }
+  .page { width: 176mm; }
+  section, .job, .rows li { break-inside: avoid; }
+  h2 { break-after: avoid; }
 
-  /* Annotation: narrow caps, lightly tracked. Wide tracking extracts as spaced letters in applicant tracking systems. */
-  .an { font-stretch: 80%; font-weight: 600; font-size: 7.4pt; line-height: 1.4; letter-spacing: 0.06em; text-transform: uppercase; color: var(--ink-3); }
-  .val { font-size: 8pt; line-height: 1.45; color: var(--ink-3); }
+  header { padding-bottom: 4mm; border-bottom: 0.3mm solid var(--ink); }
+  h1 { font-weight: 600; font-size: 24pt; line-height: 1; letter-spacing: -0.03em; color: var(--ink); }
+  .title { margin-top: 1.6mm; font-size: 11.5pt; color: var(--ink); }
+  .contact { margin-top: 2.4mm; display: flex; flex-wrap: wrap; gap: 0 5mm; font-size: 9pt; color: var(--ink-2); }
 
-  /* Drawing strip */
-  .strip { display: flex; align-items: center; gap: 6mm; height: 11mm; border-bottom: 0.25mm solid var(--rule); }
-  .strip b { font-stretch: 80%; font-weight: 700; font-size: 7.6pt; letter-spacing: 0.06em; color: var(--ink); }
-  .strip span { font-size: 8pt; color: var(--ink-3); }
-  .strip .an { margin-left: auto; }
+  section { margin-top: 5mm; }
+  h2 { padding-bottom: 1.4mm; margin-bottom: 2.6mm; border-bottom: 0.25mm solid var(--rule); font-weight: 600; font-size: 9pt; letter-spacing: 0.08em; text-transform: uppercase; color: var(--ink); }
 
-  .sw { display: inline-block; width: 2.4mm; height: 2.4mm; background: var(--blue); flex: none; }
-  .sw--green { background: var(--green); }
-  .sw--amber { background: var(--amber); }
+  .summary { font-size: 9.6pt; line-height: 1.5; }
 
-  /* Opening: the title block across the sheet, the name beside the contacts */
-  .block { display: grid; grid-template-columns: minmax(0, 1fr) 92mm; column-gap: 8mm; margin-top: 6mm; background: var(--sheet-2); border: 0.25mm solid var(--ink); padding: 5mm 6mm 3.4mm; }
-  .block__id { align-self: end; }
-  .block .sub { margin-top: 0.6mm; font-size: 9pt; color: var(--ink-3); }
-  .block h1 { font-weight: 600; font-size: 34pt; line-height: 0.95; letter-spacing: -0.035em; font-stretch: 92%; color: var(--ink); }
-  .block .role { margin-top: 1.6mm; font-size: 11pt; color: var(--ink-2); }
-  .block dl { display: grid; grid-template-columns: 17mm 1fr; row-gap: 0.9mm; align-items: baseline; align-self: end; padding-left: 6mm; border-left: 0.25mm solid var(--rule); }
-  .block dd { font-size: 9pt; color: var(--ink); }
-  .block dd svg { width: 3.2mm; height: 3.2mm; margin-right: 1.4mm; vertical-align: -0.5mm; fill: none; stroke: var(--ink); stroke-width: 1.5; }
-  .rev { grid-column: 1 / -1; display: flex; gap: 6mm; margin-top: 3.4mm; padding-top: 2.2mm; border-top: 0.25mm solid var(--rule); }
+  .job + .job { margin-top: 4mm; }
+  .job__top { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+  .job h3 { font-weight: 600; font-size: 10.6pt; color: var(--ink); }
+  .when { flex: none; font-size: 9pt; color: var(--ink-3); }
+  .org { margin-top: 0.4mm; font-weight: 600; font-size: 9.4pt; color: var(--ink-2); }
+  .org span { font-weight: 400; color: var(--ink-3); }
+  .scope { margin-top: 1.2mm; }
+  .pts { margin-top: 1.2mm; display: grid; gap: 0.5mm; }
+  /* inline marker, not positioned, so bullets extract in reading order */
+  .pts li { padding-left: 4mm; text-indent: -4mm; }
+  .pts li::before { content: ""; display: inline-block; width: 1.3mm; height: 1.3mm; margin-right: 2.7mm; vertical-align: 0.2em; border-radius: 50%; background: var(--ink-3); }
 
-  .datum { height: 0; border-top: 0.25mm solid var(--ink); margin-top: 5mm; }
+  .rows li { display: flex; justify-content: space-between; align-items: baseline; gap: 4mm; }
+  .rows li + li { margin-top: 1.2mm; }
+  .rows b { font-weight: 600; color: var(--ink); }
+  .rows .r { flex: none; font-size: 9pt; color: var(--ink-3); }
+  .rows a, .project a { color: var(--ink-3); text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 0.5mm; }
 
-  /* Parts */
-  .part { padding-top: 5mm; }
-  .part + .part { margin-top: 4mm; border-top: 0.25mm solid var(--rule); }
-  .part > h2, .split h2 { font-weight: 600; font-size: 17pt; line-height: 1.12; letter-spacing: -0.028em; color: var(--ink); }
-  .lede { margin-top: 1.4mm; max-width: 176mm; font-size: 9.6pt; line-height: 1.55; color: var(--ink-2); }
-
-  /* Rack units: the date span is the dimension column */
-  .units { margin-top: 3.4mm; border-top: 0.25mm solid var(--rule); }
-  .unit { display: grid; grid-template-columns: 26mm 11mm 1fr; column-gap: 4mm; padding: 3mm 0; border-bottom: 0.25mm solid var(--rule-2); break-inside: avoid; }
-  .dim { font-size: 8.2pt; line-height: 1.35; color: var(--ink-3); }
-  .dim b { display: flex; align-items: center; gap: 1.6mm; font-weight: 600; color: var(--ink); }
-  .unit[data-state="live"] .dim b { color: var(--blue); }
-  .plate { width: 11mm; height: 11mm; border: 0.25mm solid var(--rule); display: grid; place-items: center; padding: 1.4mm; background: var(--sheet); }
-  .plate img { max-width: 100%; max-height: 100%; filter: grayscale(1); }
-  .unit h3 { font-weight: 600; font-size: 11.2pt; line-height: 1.15; letter-spacing: -0.02em; color: var(--ink); }
-  .org { margin-top: 0.4mm; display: flex; flex-wrap: wrap; align-items: baseline; gap: 0 3mm; font-weight: 600; font-size: 9.2pt; color: var(--ink-2); }
-  .scope { margin-top: 1.2mm; max-width: 142mm; }
-  .pts { margin-top: 1mm; display: grid; gap: 0.3mm; }
-  /* The dash is inline, not positioned: a positioned item is painted in a later layer and extracts out of reading order. */
-  .pts li { padding-left: 5mm; text-indent: -5mm; max-width: 142mm; }
-  .pts li::before { content: ""; display: inline-block; width: 3mm; height: 0.25mm; margin-right: 2mm; vertical-align: 0.3em; background: var(--rule); }
-
-  /* Credentials schedule */
-  .sched { width: 100%; margin-top: 4mm; border-collapse: collapse; }
-  .sched th { text-align: left; font-weight: 600; padding: 0 2mm 1.4mm 0; border-bottom: 0.25mm solid var(--ink); }
-  .sched td { padding: 1.9mm 2mm 1.9mm 0; border-bottom: 0.25mm solid var(--rule-2); vertical-align: baseline; }
-  .sched td:first-child { width: 19mm; font-weight: 600; color: var(--ink); }
-  .sched .nm { font-size: 9.4pt; color: var(--ink); }
-  .flag { display: inline-flex; align-items: center; gap: 1.6mm; }
-  .flag.ok { color: var(--green); }
-  .flag.wip { color: var(--amber); }
-  .sched a { color: var(--ink); text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 0.6mm; }
-
-  /* Case files */
-  .files { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 6mm; margin-top: 3.2mm; }
-  .file { border-top: 0.25mm solid var(--ink); padding-top: 2.4mm; }
-  .file h3 { margin-top: 0.8mm; font-weight: 600; font-size: 10.4pt; line-height: 1.2; letter-spacing: -0.015em; color: var(--ink); }
-  .file p { margin-top: 1.4mm; font-size: 8.8pt; line-height: 1.5; }
-
-  /* Poker Money and study, side by side */
-  .split { display: grid; grid-template-columns: minmax(0, 1fr) 80mm; gap: 8mm; margin-top: 5mm; padding-top: 6mm; border-top: 0.25mm solid var(--rule); }
-  .split .lede { font-size: 9.4pt; }
-  .split .lede a { color: var(--ink); font-weight: 600; text-decoration: underline; text-decoration-color: var(--rule); text-underline-offset: 0.6mm; }
-  .spec { margin-top: 3mm; display: grid; grid-template-columns: 17mm 1fr; border-top: 0.25mm solid var(--rule); }
-  .spec dt, .spec dd { padding: 1.7mm 0; border-bottom: 0.25mm solid var(--rule-2); }
-  .spec dt { padding-top: 2mm; }
-  .spec dd { font-size: 8.9pt; line-height: 1.45; }
-  .sub { margin-top: 3mm; }
-  .study { margin-top: 1.4mm; border-top: 0.25mm solid var(--ink); }
-  .study li { display: grid; grid-template-columns: 8mm 1fr; gap: 3mm; align-items: center; padding: 1.6mm 0; border-bottom: 0.25mm solid var(--rule-2); }
-  .study img { width: 8mm; max-height: 8mm; object-fit: contain; filter: grayscale(1); }
-  .study b { display: block; font-weight: 600; font-size: 9.2pt; line-height: 1.3; color: var(--ink); }
-  .kit { margin-top: 1.6mm; display: flex; flex-wrap: wrap; gap: 1.2mm; }
-  .kit li { padding: 0.6mm 1.8mm; border: 0.25mm solid var(--rule); font-size: 8pt; line-height: 1.35; color: var(--ink-2); }
-  .lang { margin-top: 2.4mm; font-size: 8.8pt; }
-  .lang .an { margin-right: 1.4mm; }
-
-  .refs { position: absolute; left: 14mm; right: 14mm; bottom: 27mm; display: flex; align-items: baseline; gap: 6mm; padding-top: 2.4mm; border-top: 0.25mm solid var(--rule); }
-  .refs h2 { font-weight: 600; font-size: 11pt; letter-spacing: -0.015em; color: var(--ink); }
-  .refs p { font-size: 9.4pt; color: var(--ink-2); }
-
-  /* Signature plate and sheet foot */
-  .sign { position: absolute; left: 14mm; right: 14mm; bottom: 9mm; display: grid; grid-template-columns: 1fr auto; align-items: end; gap: 6mm; padding-top: 3mm; border-top: 0.25mm solid var(--ink); }
-  .sign .close { font-weight: 600; font-size: 12pt; line-height: 1.2; letter-spacing: -0.02em; color: var(--ink); }
-  .sign .val { margin-top: 1mm; }
-  .sign .fields { display: grid; justify-items: end; gap: 0.8mm; }
-  .foot { position: absolute; left: 14mm; right: 14mm; bottom: 9mm; display: flex; justify-content: space-between; padding-top: 2.4mm; border-top: 0.25mm solid var(--rule); }
+  .two { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+  .skills { line-height: 1.55; }
+  .skills b, .project b { font-weight: 600; color: var(--ink); }
 </style>
 </head>
 <body>
-<svg width="0" height="0" style="position:absolute" aria-hidden="true">
-  <symbol id="i-mail" viewBox="0 0 24 24"><path d="M3.5 6h17v12h-17z" /><path d="m4 6.6 8 6.2 8-6.2" /></symbol>
-  <symbol id="i-in" viewBox="0 0 24 24"><path d="M4.5 4.5h15v15h-15z" /><path d="M8.4 10.6v6M8.4 7.5v.6M12 16.6v-6M12 13.3c0-1.7 1-2.8 2.4-2.8s2.2 1 2.2 2.7v3.4" /></symbol>
-  <symbol id="i-web" viewBox="0 0 24 24"><path d="M4 4h16v16H4zM4 9h16M9 4v16" /></symbol>
-</svg>
-
-<!-- SHEET 1: title block and the record -->
 <div class="page">
-  <header class="strip"><b>MT-01</b><span>Myat Thu, record of service</span><span class="an">Curriculum vitae · Sheet 1 of 2</span></header>
 
-  <section class="block">
-    <div class="block__id">
-      <h1>Myat Thu</h1>
-      <p class="role">Service Desk Analyst at IPH Limited</p>
-      <p class="sub">Microsoft endpoint, identity and service desk</p>
-    </div>
-    <dl>
-      <dt class="an">Email</dt><dd><a href="mailto:myatgeorgethu@gmail.com"><svg><use href="#i-mail" /></svg>myatgeorgethu@gmail.com</a></dd>
-      <dt class="an">LinkedIn</dt><dd><a href="https://www.linkedin.com/in/myat-george-thu/"><svg><use href="#i-in" /></svg>linkedin.com/in/myat-george-thu</a></dd>
-      <dt class="an">Web</dt><dd><a href="https://myatgthu.github.io/resume.io/"><svg><use href="#i-web" /></svg>myatgthu.github.io/resume.io</a></dd>
-      <dt class="an">Location</dt><dd>Melbourne, Australia</dd>
-      <dt class="an">Status</dt><dd>Open to full-time and contract</dd>
-    </dl>
-    <p class="rev"><span class="an">Drawn by M. Thu</span><span class="an">Rev 5</span><span class="an">Sheet 1 of 2</span></p>
+  <header>
+    <h1>Myat Thu</h1>
+    <p class="title">Service Desk Analyst</p>
+    <p class="contact">
+      <span>Melbourne, Australia</span>
+      <a href="mailto:myatgeorgethu@gmail.com">myatgeorgethu@gmail.com</a>
+      <a href="https://www.linkedin.com/in/myat-george-thu/">linkedin.com/in/myat-george-thu</a>
+      <a href="https://myatgthu.github.io/resume.io/">myatgthu.github.io/resume.io</a>
+    </p>
+  </header>
+
+  <section>
+    <h2>Profile</h2>
+    <p class="summary">Service Desk Analyst working across the Microsoft ecosystem: endpoint management with Intune, identity with Entra ID and Active Directory, and Microsoft 365 administration. Second-level escalation point at IPH Limited, after two years of level one and two support for more than 400 stores at The Reject Shop. Known for turning a repeat problem into a written process the whole desk can run.</p>
   </section>
 
-  <div class="datum"></div>
+  <section>
+    <h2>Experience</h2>
 
-  <section class="part">
-    <h2>The record</h2>
-    <p class="lede">Seven years keeping desks, stores and fleets running, from one service desk to four hundred shops. The habit underneath it is turning a repeat problem into a written process anyone on the desk can run.</p>
-    <div class="units">
-      <article class="unit" data-state="live">
-        <p class="dim"><b>May 2025 <i class="sw"></i></b>to now</p>
-        <div class="plate"><img src="../assets/logos/iph.png" alt="" /></div>
-        <div>
-          <h3>Service Desk Analyst</h3>
-          <p class="org">IPH Limited <span class="an">Melbourne</span><span class="an">Permanent, full time</span></p>
-          <p class="scope">First and second level support for the IT and business users of every IPH member firm across Australia and New Zealand, reporting to the Service Delivery Manager (ANZ).</p>
-          <ul class="pts">
-            <li>Second-level escalation point for the service desk, guiding, training and mentoring the team.</li>
-            <li>First point of contact by phone and ticket queue, troubleshooting onsite and remotely to SLA.</li>
-            <li>Logs every request in the ticketing system and documents each fix in the knowledge base.</li>
-            <li>Builds laptops, mobiles and computers to the SOE, and onboards and offboards users.</li>
-            <li>Active Directory, systems configuration and maintenance, meeting room AV and mobiles.</li>
-            <li>Monitors outage alerts, sends communications to all firms, and improves desk processes.</li>
-            <li>Strategic IT projects across the firms, handover to BAU, and Change Board representation.</li>
-            <li>After-hours on-call for critical incidents, cyber security controls and the annual IT audit.</li>
-          </ul>
-        </div>
-      </article>
-      <article class="unit">
-        <p class="dim"><b>Feb 2023</b>to May 2025</p>
-        <div class="plate"><img src="../assets/logos/reject-shop.png" alt="" /></div>
-        <div>
-          <h3>IT Support Analyst</h3>
-          <p class="org">The Reject Shop <span class="an">Melbourne</span></p>
-          <p class="scope">Level one and two support for more than four hundred stores, the Store Support Centre and the distribution centres, reporting to the IT Service Delivery Lead.</p>
-          <ul class="pts">
-            <li>Kept desktops, laptops and servers up every business day, with daily health checks.</li>
-            <li>Diagnosed hardware within a day and configured software within two to four hours.</li>
-            <li>SOE builds with Windows Deployment Services, and accounts ready before a starter's first day.</li>
-            <li>Active Directory, Exchange, Teams and Microsoft 365, imaging, printers and server support.</li>
-            <li>Network addressing and access, equipment rollouts, and training for users.</li>
-            <li>Cleared forty to fifty tickets on a heavy day, and led the dock rollout and its playbook.</li>
-          </ul>
-        </div>
-      </article>
-      <article class="unit">
-        <p class="dim"><b>Jul 2022</b>to Nov 2022</p>
-        <div class="plate"><img src="../assets/logos/azured.png" alt="" /></div>
-        <div>
-          <h3>Support Engineer</h3>
-          <p class="org">Azured Consulting <span class="an">Australia</span></p>
-          <p class="scope">Service desk for a managed service provider and Telstra cloud partner: level three network and firewall configuration, client cloud environments and Microsoft 365 accounts.</p>
-        </div>
-      </article>
-      <article class="unit">
-        <p class="dim"><b>Jun 2019</b>to Oct 2024</p>
-        <div class="plate"><img src="../assets/logos/myer.png" alt="" /></div>
-        <div>
-          <h3>Office Support Assistant</h3>
-          <p class="org">MYER <span class="an">Australia</span></p>
-          <p class="scope">Store operations alongside study and the early IT roles: end-of-day reporting, online returns, point of sale, and training team members on the floor systems.</p>
-        </div>
-      </article>
-    </div>
+    <article class="job">
+      <div class="job__top"><h3>Service Desk Analyst</h3><span class="when">May 2025 to present</span></div>
+      <p class="org">IPH Limited <span>· Melbourne · Permanent, full time</span></p>
+      <p class="scope">First and second level support for the IT and business users of every IPH member firm across Australia and New Zealand, reporting to the Service Delivery Manager (ANZ).</p>
+      <ul class="pts">
+        <li>Second-level escalation point for the service desk, guiding, training and mentoring the team.</li>
+        <li>First point of contact by phone and ticket queue, troubleshooting onsite and remotely to agreed SLAs.</li>
+        <li>Logs every request in the ticketing system and documents procedures, fixes and escalation paths in the knowledge base.</li>
+        <li>Builds laptops, mobiles and computers to the standard operating environment, and onboards and offboards users.</li>
+        <li>Active Directory administration, systems configuration and maintenance, meeting room AV and mobile devices.</li>
+        <li>Monitors outage alerts, sends communications to all firms, and works with the Service Delivery Manager to improve processes.</li>
+        <li>Strategic IT projects across the firms, handover to BAU support, and Change Board representation for service desk changes.</li>
+        <li>After-hours on-call for critical incidents; supports cyber security controls and the annual IT process audit.</li>
+      </ul>
+    </article>
+
+    <article class="job">
+      <div class="job__top"><h3>IT Support Analyst</h3><span class="when">Feb 2023 to May 2025</span></div>
+      <p class="org">The Reject Shop <span>· Melbourne</span></p>
+      <p class="scope">Level one and two support for more than 400 stores, the Store Support Centre and the distribution centres, reporting to the IT Service Delivery Lead.</p>
+      <ul class="pts">
+        <li>Cleared 40 to 50 tickets on a heavy day, keeping desktops, laptops and servers running with daily health checks.</li>
+        <li>Diagnosed hardware within a day and configured software within two to four hours.</li>
+        <li>Built machines to the SOE with Windows Deployment Services, with every new account ready before a starter's first day.</li>
+        <li>Active Directory, Exchange, Teams and Microsoft 365 end to end, plus imaging, printers and server support.</li>
+        <li>Managed network addressing and access, coordinated equipment rollouts, and trained users.</li>
+        <li>Replaced failing docks across the estate with daisy-chained hub monitors, and wrote the rollout playbook for the desk.</li>
+      </ul>
+    </article>
   </section>
 
-  <p class="foot"><span class="an">Drawing MT-01 · Rev 5</span><span class="an">Sheet 1 of 2</span></p>
-</div>
-
-<!-- SHEET 2: credentials, case files, Poker Money, study and kit -->
-<div class="page">
-  <header class="strip"><b>MT-01</b><span>Myat Thu, record of service</span><span class="an">Curriculum vitae · Sheet 2 of 2</span></header>
-
-  <section class="part">
-    <h2>Credentials</h2>
-    <table class="sched">
-      <thead>
-        <tr><th class="an">Code</th><th class="an">Certification</th><th class="an">Issuer</th><th class="an">Earned</th><th class="an">State</th><th class="an">Verify</th></tr>
-      </thead>
-      <tbody>
-        <tr><td>MD-102</td><td class="nm">Endpoint Administrator Associate</td><td class="val">Microsoft</td><td class="val">23 Nov 2024</td><td><span class="an flag ok"><i class="sw sw--green"></i>Verified</span></td><td class="val"><a href="https://learn.microsoft.com/en-us/users/myatthu-3654/credentials/b391b70c1e987b36">B391B70C1E987B36</a></td></tr>
-        <tr><td>SC-900</td><td class="nm">Security, Compliance and Identity</td><td class="val">Microsoft</td><td class="val">26 Oct 2023</td><td><span class="an flag ok"><i class="sw sw--green"></i>Verified</span></td><td class="val"><a href="https://learn.microsoft.com/en-us/users/myatthu-3654/credentials/c57150026e0a8b4b">C57150026E0A8B4B</a></td></tr>
-        <tr><td>Google</td><td class="nm">IT Support Professional</td><td class="val">Coursera</td><td class="val">4 Jun 2023</td><td><span class="an flag ok"><i class="sw sw--green"></i>Verified</span></td><td class="val"><a href="https://www.coursera.org/account/accomplishments/professional-cert/QH5CTZA7SMXQ">Verify on Coursera</a></td></tr>
-        <tr><td>AZ-900</td><td class="nm">Azure Fundamentals</td><td class="val">Microsoft</td><td class="val">2 Nov 2022</td><td><span class="an flag ok"><i class="sw sw--green"></i>Verified</span></td><td class="val"><a href="https://learn.microsoft.com/en-us/users/myatthu-3654/credentials/298e478868f6cdff">298E478868F6CDFF</a></td></tr>
-        <tr><td>AZ-104</td><td class="nm">Azure Administrator Associate</td><td class="val">Microsoft</td><td class="val">Pending</td><td><span class="an flag wip"><i class="sw sw--amber"></i>In progress</span></td><td class="val"></td></tr>
-      </tbody>
-    </table>
+  <section>
+    <h2>Earlier experience</h2>
+    <ul class="rows">
+      <li><span><b>Support Engineer</b>, Azured Consulting · level three network and firewall support for a Telstra cloud partner</span><span class="r">Jul to Nov 2022</span></li>
+      <li><span><b>Office Support Assistant</b>, MYER · store operations, reporting and point of sale</span><span class="r">Jun 2019 to Oct 2024</span></li>
+    </ul>
   </section>
 
-  <section class="part">
-    <h2>Case files</h2>
-    <div class="files">
-      <article class="file">
-        <p class="an">Endpoint, rollout</p>
-        <h3>Docks out, hubs in</h3>
-        <p>Retail docks kept failing across 400+ stores, each one a replacement and a callout. Replaced them with daisy-chained hub monitors and wrote the rollout playbook: simpler desks, far fewer failures.</p>
-      </article>
-      <article class="file">
-        <p class="an">Service desk, knowledge</p>
-        <h3>Memory, written down</h3>
-        <p>The same issues kept coming back to the same people. Documented procedures, knowledge articles and escalation paths, and became the second-level point, so new starters pick the desk up quickly.</p>
-      </article>
-      <article class="file">
-        <p class="an">Identity, devices</p>
-        <h3>Day-one access</h3>
-        <p>No two machines left the bench the same way. Standard builds with Active Directory and Microsoft 365 administration took joiners and leavers end to end: compliant endpoints, a tidy account lifecycle.</p>
-      </article>
-    </div>
+  <section>
+    <h2>Certifications</h2>
+    <ul class="rows">
+      <li><span><b>Microsoft 365 Certified: Endpoint Administrator Associate (MD-102)</b> · <a href="https://learn.microsoft.com/en-us/users/myatthu-3654/credentials/b391b70c1e987b36">Verify</a></span><span class="r">Nov 2024</span></li>
+      <li><span><b>Microsoft Certified: Security, Compliance, and Identity Fundamentals (SC-900)</b> · <a href="https://learn.microsoft.com/en-us/users/myatthu-3654/credentials/c57150026e0a8b4b">Verify</a></span><span class="r">Oct 2023</span></li>
+      <li><span><b>Google IT Support Professional Certificate</b>, Coursera · <a href="https://www.coursera.org/account/accomplishments/professional-cert/QH5CTZA7SMXQ">Verify</a></span><span class="r">Jun 2023</span></li>
+      <li><span><b>Microsoft Certified: Azure Fundamentals (AZ-900)</b> · <a href="https://learn.microsoft.com/en-us/users/myatthu-3654/credentials/298e478868f6cdff">Verify</a></span><span class="r">Nov 2022</span></li>
+      <li><span><b>Microsoft Certified: Azure Administrator Associate (AZ-104)</b></span><span class="r">In progress</span></li>
+    </ul>
   </section>
 
-  <section class="split">
+  <section class="two">
     <div>
-      <h2>Poker Money</h2>
-      <p class="lede">A free app for private home games at <a href="https://pokermoney.org/">pokermoney.org</a>. Buy-ins and cash-outs go in, and it works out who pays whom in the fewest transfers. It keeps the score and never touches the money.</p>
-      <dl class="spec">
-        <dt class="an">Role</dt><dd>Lead contributor, built with three friends and run as a live service.</dd>
-        <dt class="an">Build</dt><dd>A vanilla JavaScript web app on a Cloudflare Worker and D1. Installs on a phone, works offline, and ships to Android as a Trusted Web Activity.</dd>
-        <dt class="an">Security</dt><dd>Verified self-serve sign-up, roles enforced on the server including a read-only viewer, and private crews whose isolation is proven by tests.</dd>
-        <dt class="an">Proof</dt><dd>491 automated tests across 19 suites, guarding the settlement maths and keeping every crew's data separate. No ads and no tracking scripts.</dd>
-      </dl>
+      <h2>Education</h2>
+      <ul class="rows">
+        <li><span><b>Bachelor of Business, Information Systems</b><br />RMIT University</span><span class="r">2019 to 2021</span></li>
+        <li><span><b>Diploma of Information Technology</b><br />RMIT University</span><span class="r">2018</span></li>
+        <li><span><b>Foundation, Information Technology</b><br />Trinity College, University of Melbourne</span><span class="r">2016 to 2017</span></li>
+      </ul>
     </div>
     <div>
-      <h2>Study and kit</h2>
-      <p class="an sub">Study</p>
-      <ul class="study">
-        <li><img src="../assets/logos/rmit.png" alt="" /><div><b>BBus, Information Systems</b><span class="val">RMIT University, 2019 to 2021</span></div></li>
-        <li><img src="../assets/logos/rmit.png" alt="" /><div><b>Diploma of Information Technology</b><span class="val">RMIT University, 2018</span></div></li>
-        <li><img src="../assets/logos/trinity.png" alt="" /><div><b>Foundation, Information Technology</b><span class="val">Trinity College, University of Melbourne, 2016 to 2017</span></div></li>
-      </ul>
-      <p class="an sub">Kit</p>
-      <ul class="kit">
-        <li>Microsoft Intune</li><li>Entra ID</li><li>Windows Autopilot</li><li>Azure</li><li>Microsoft 365</li><li>Active Directory</li><li>PowerShell</li><li>Exchange</li><li>Teams</li><li>Endpoint security</li><li>ITSM and change</li><li>Standard builds</li>
-      </ul>
-      <p class="lang">Burmese, native. English, professional working.</p>
-      <p class="lang"><span class="an">Off the clock</span> Football, MOBAs and Souls-like games (never horror), building apps with AI for an audience of one, and learning new skills and technology.</p>
+      <h2>Skills</h2>
+      <p class="skills"><b>Endpoint and identity:</b> Microsoft Intune, Windows Autopilot, Entra ID, Active Directory, standard builds.<br /><b>Platforms:</b> Microsoft 365, Exchange, Teams, Azure, PowerShell, endpoint security.<br /><b>Service:</b> ITSM, change management, knowledge base, escalation.<br /><b>Languages:</b> Burmese (native), English (professional working).</p>
     </div>
   </section>
 
-  <section class="refs">
+  <section class="project">
+    <h2>Project</h2>
+    <p><b>Poker Money</b> · <a href="https://pokermoney.org/">pokermoney.org</a> · Lead contributor on a free web app that settles private home poker games in the fewest transfers. Vanilla JavaScript on a Cloudflare Worker and D1, installable and offline-capable, with server-enforced roles and 491 automated tests.</p>
+  </section>
+
+  <section>
     <h2>References</h2>
     <p>References are available upon request.</p>
   </section>
 
-  <footer class="sign">
-    <div>
-      <p class="close">Open to full-time and contract roles in Melbourne. Replies within a day.</p>
-      <p class="val"><a href="mailto:myatgeorgethu@gmail.com">myatgeorgethu@gmail.com</a> · <a href="https://www.linkedin.com/in/myat-george-thu/">linkedin.com/in/myat-george-thu</a> · <a href="https://myatgthu.github.io/resume.io/">myatgthu.github.io/resume.io</a></p>
-    </div>
-    <div class="fields">
-      <span class="an">Drawn by Myat Thu, Melbourne</span>
-      <span class="an">Drawing MT-01 · Rev 5 · Sheet 2 of 2</span>
-    </div>
-  </footer>
 </div>
 </body>
 </html>
