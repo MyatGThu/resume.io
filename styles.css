@@ -506,6 +506,9 @@ a { color: inherit; text-decoration: none; }
 .unit__pd > summary:hover .cred__plus { color: var(--blue); }
 .unit__pd[open] .cred__plus { transform: rotate(45deg); color: var(--ink); }
 .unit__pd .spec { margin: 0; }
+.unit__pd dd ul { display: grid; gap: 6px; }
+.unit__pd dd li { position: relative; padding-left: var(--s3); }
+.unit__pd dd li::before { content: ''; position: absolute; left: 0; top: 0.72em; width: 10px; height: 1px; background: var(--rule); }
 .unit__pd[open] { border-bottom: 0; } /* the last spec row closes it */
 
 /* --- case files ----------------------------------------------------------- */
