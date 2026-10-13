@@ -44,7 +44,6 @@
   --s5: 48px;
   --s6: 64px;
   --s7: 96px;
-  --s8: 128px;
 
   --gutter: clamp(20px, 5vw, 72px);
   --measure: 68ch;
@@ -115,7 +114,7 @@ a { color: inherit; text-decoration: none; }
    annotation: they are set in the plain width at 13px. */
 .strip, .index a, .unit__org span, .block__facts dt, .block__rev,
 .cred__code, .cred__flag,
-.file__shot figcaption, .hobby__plate figcaption, .spec dt, .notes__h, .unit__state, .unit__pd > summary,
+.file__shot figcaption, .hobby__plate figcaption, .spec dt, .notes__h, .span__foot, .unit__pd > summary,
 .sign__who span, .sign__rev {
   font-size: 12px;
   font-stretch: 80%;
@@ -228,132 +227,103 @@ a { color: inherit; text-decoration: none; }
 
 /* --- hero / title block --------------------------------------------------- */
 
+/* The first view is the title block beside the record drawn to scale: four
+   roles as spans on a real time axis, so every bar sits on the right months.
+   No forced viewport height; the content sets the height. */
 .hero {
-  /* The first view's vertical budget. The padding and the scale rail both
-     read it so they never drift apart, and short viewports tighten all of it
-     in one place (the max-height query below). */
-  --hero-pt: calc(var(--strip-h) + var(--s5));
-  --hero-pb: var(--s6);
-  --hero-top: 200px;
-  position: relative;
   display: grid;
-  grid-template-rows: minmax(var(--hero-top), 1fr) auto auto;
-  min-height: 100svh;
-  padding: var(--hero-pt) 0 var(--hero-pb);
+  grid-template-columns: minmax(0, 560px) minmax(0, 1fr);
+  gap: var(--s5);
+  align-items: end;
+  padding: calc(var(--strip-h) + var(--s6)) 0 var(--s6);
 }
 
-.hero__top { display: grid; align-items: end; }
-
-/* The scale runs the whole height of the sheet and the datum crosses it,
-   the way an elevation is actually drawn. */
-.hero__rail {
-  position: absolute;
-  z-index: 1; /* above the datum, so a year label knocks the line out where they meet */
-  top: var(--hero-pt);
-  bottom: var(--hero-pb);
-  left: 0;
-  width: 60px;
-  border-left: 1px solid var(--rule);
-}
-.hero__rail .tick {
-  position: absolute;
-  top: var(--at);
-  left: 0;
-  display: flex;
-  align-items: center;
-  gap: 4px;
-  transform: translateY(-50%);
-}
-.hero__rail .tick::before { content: ''; width: 10px; height: 1px; background: var(--rule); }
-.is-plotting .hero__rail .tick { animation: ink 380ms var(--ease) both; }
-.is-plotting .hero__rail .tick:nth-child(1) { animation-delay: 160ms; }
-.is-plotting .hero__rail .tick:nth-child(2) { animation-delay: 250ms; }
-.is-plotting .hero__rail .tick:nth-child(3) { animation-delay: 340ms; }
-.is-plotting .hero__rail .tick:nth-child(4) { animation-delay: 430ms; }
-.is-plotting .hero__rail .tick:nth-child(5) { animation-delay: 520ms; }
-.is-plotting .hero__rail .tick:nth-child(6) { animation-delay: 610ms; }
-.is-plotting .hero__rail .tick:nth-child(7) { animation-delay: 700ms; }
-.is-plotting .hero__rail .tick:nth-child(8) { animation-delay: 790ms; }
-@keyframes ink { from { opacity: 0; } to { opacity: 1; } }
-
-.hero__rail .tick b {
-  padding: 0 4px;
-  background: var(--sheet);
-  font-size: 12px;
-  font-weight: 600;
-  font-stretch: 80%;
-  line-height: 1.2;
-  letter-spacing: 0.1em;
-  color: var(--ink-3);
-}
-
-.hero__unit {
-  align-self: end;
-  margin-left: 80px;
+/* The span drawing. Two columns: who, then the track. The axis runs from
+   January 2019 (0%) to January 2027 (100%); each lane sets --from and --to
+   as a share of those 96 months, and main.js moves the live lane's --to to
+   today. */
+.span {
+  --who: 152px;
+  margin: 0;
+  display: grid;
+  grid-template-columns: var(--who) minmax(0, 1fr);
+  column-gap: var(--s3);
   position: relative;
 }
-/* The live marker is the legend's blue square, repeated beside the label on
-   each live unit (the swatch rules are with the legend, below). */
-.unit__state {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-  color: var(--blue);
-  margin-bottom: var(--s1);
+.lane { display: contents; }
+/* each lane on its own row, explicitly, so the gridline overlay can share them */
+.lane:nth-of-type(1) > * { grid-row: 1; }
+.lane:nth-of-type(2) > * { grid-row: 2; }
+.lane:nth-of-type(3) > * { grid-row: 3; }
+.lane:nth-of-type(4) > * { grid-row: 4; }
+.lane__who { grid-column: 1; }
+.lane__track { grid-column: 2; }
+.lane__who {
+  display: grid;
+  gap: 1px;
+  padding: 10px 0;
+  border-bottom: 1px solid var(--rule-2);
+  line-height: 1.35;
 }
-.hero__unit .unit__org {
-  font-size: clamp(1.2rem, 2.2vw, 1.5rem);
-  font-weight: 600;
-  letter-spacing: -0.015em;
+.lane__who b { display: flex; align-items: center; gap: 8px; font-size: 16px; font-weight: 600; letter-spacing: -0.01em; }
+.lane__who span { font-size: 13px; color: var(--ink-3); }
+.lane[data-state="live"] .lane__who b { color: var(--blue); }
+.lane__track { position: relative; border-bottom: 1px solid var(--rule-2); }
+.lane__bar {
+  position: absolute;
+  top: 50%;
+  left: var(--from);
+  width: calc(var(--to) - var(--from));
+  min-width: 4px;
+  height: 10px;
+  margin-top: -5px;
+  background: var(--ink-3);
+  transform-origin: left center;
 }
-.hero__unit .unit__role { font-size: 1rem; color: var(--ink-2); }
-.hero__unit .unit__span { font-size: 13px; color: var(--ink-3); margin-top: 2px; }
+.lane[data-state="live"] .lane__bar { background: var(--blue); }
 
-.datum {
-  height: 0;
-  margin: var(--s5) 0 var(--s5);
-  border: 0;
+/* year gridlines through the lanes, and the axis (the datum) under them */
+.span__grid { grid-column: 2; grid-row: 1 / span 4; position: relative; pointer-events: none; }
+.span__grid i { position: absolute; top: 0; bottom: 0; left: var(--at); width: 1px; background: var(--rule-2); opacity: 0.7; }
+.span__axis {
+  grid-column: 2;
+  grid-row: 5;
+  position: relative;
+  height: 32px;
   border-top: 1px solid var(--ink);
   transform-origin: left center;
 }
-
-/* The one authored moment: the sheet plots its datum and inks the year
-   ticks. Gated on .is-plotting, which the inline script in the <head> adds
-   before first paint, and only when the tab is visible and motion is
-   welcome, so the finished state is the default and nothing is ever
-   stranded mid-animation or drawn twice. */
-.is-plotting .datum { animation: plot 900ms var(--ease) both; }
-@keyframes plot { from { transform: scaleX(0); } to { transform: scaleX(1); } }
-
-.hero__foot {
-  display: grid;
-  grid-template-columns: 1fr min(560px, 100%);
-  gap: var(--s5);
-  align-items: end;
-}
-
-.legend {
-  display: grid;
-  gap: 10px;
-  align-self: start;
-  margin-left: 80px;
-  padding-top: 2px;
-}
-.legend li {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+.span__axis .tick { position: absolute; top: 0; left: var(--at); display: grid; justify-items: start; }
+.span__axis .tick::before { content: ''; width: 1px; height: 6px; background: var(--ink); }
+.span__axis .tick b {
+  margin-top: 4px;
   font-size: 12px;
-  font-stretch: 80%;
   font-weight: 600;
-  letter-spacing: 0.1em;
-  text-transform: uppercase;
+  font-stretch: 80%;
+  letter-spacing: 0.06em;
+  color: var(--ink-3);
+  transform: translateX(-50%);
+}
+.span__foot {
+  grid-column: 1 / -1;
+  grid-row: 6;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--s1) var(--s3);
+  margin-top: var(--s2);
+  padding-top: var(--s2);
+  border-top: 1px solid var(--rule);
   color: var(--ink-3);
 }
-/* The patch swatch, drawn once: the legend spells the code out, and the two
-   live units carry the same blue square beside their own label. */
+
+.legend { display: flex; flex-wrap: wrap; gap: var(--s1) var(--s3); }
+.legend li { display: flex; align-items: center; gap: 10px; }
+/* The patch swatch, drawn once: the legend spells the code out, and the live
+   lane and the live rack unit carry the same blue square. */
 .legend i,
-.unit__state::before,
+.lane[data-state="live"] .lane__who b::before,
 .unit[data-state="live"] .unit__dim b::after {
   content: '';
   width: 10px;
@@ -362,7 +332,7 @@ a { color: inherit; text-decoration: none; }
   border: 1px solid var(--ink);
 }
 .legend i[data-key="live"],
-.unit__state::before,
+.lane[data-state="live"] .lane__who b::before,
 .unit[data-state="live"] .unit__dim b::after { background: var(--blue); border-color: var(--blue); }
 .legend i[data-key="verified"] { background: var(--green); border-color: var(--green); }
 .legend i[data-key="progress"] { background: var(--amber); border-color: var(--amber); }
@@ -403,9 +373,32 @@ a { color: inherit; text-decoration: none; }
   color: var(--ink-3);
 }
 
+@media (max-width: 1080px) {
+  .hero { grid-template-columns: minmax(0, 1fr); gap: var(--s5); }
+  .block { max-width: 640px; }
+  .span { --who: 196px; }
+}
+@media (max-width: 560px) {
+  /* a phone stacks each lane: the firm and its dates, then a full-width track */
+  .span { grid-template-columns: minmax(0, 1fr); }
+  .lane__who, .lane__track, .span__axis, .span__foot { grid-column: 1; }
+  .lane__who { grid-template-columns: 1fr auto; column-gap: var(--s2); padding: 12px 0 6px; border-bottom: 0; }
+  .lane__who span:nth-child(2) { display: none; }
+  .lane__track { height: 18px; }
+  .lane:nth-of-type(1) > .lane__who { grid-row: 1; } .lane:nth-of-type(1) > .lane__track { grid-row: 2; }
+  .lane:nth-of-type(2) > .lane__who { grid-row: 3; } .lane:nth-of-type(2) > .lane__track { grid-row: 4; }
+  .lane:nth-of-type(3) > .lane__who { grid-row: 5; } .lane:nth-of-type(3) > .lane__track { grid-row: 6; }
+  .lane:nth-of-type(4) > .lane__who { grid-row: 7; } .lane:nth-of-type(4) > .lane__track { grid-row: 8; }
+  .span__grid { display: none; }
+  .span__axis { grid-row: 9; margin-top: var(--s1); }
+  .span__foot { grid-row: 10; }
+  .span__axis .tick:nth-child(even) b { visibility: hidden; } /* every other year fits */
+  .span__axis .tick:first-child b { transform: none; }
+}
+
 /* --- parts ---------------------------------------------------------------- */
 
-.part { padding: var(--s8) 0; border-top: 1px solid var(--rule); }
+.part { padding: var(--s7) 0; border-top: 1px solid var(--rule); }
 .part__h {
   font-size: clamp(1.6rem, 3.2vw, 2.5rem);
   font-weight: 600;
@@ -688,13 +681,9 @@ summary.cred__row:hover .cred__plus { color: var(--blue); }
 
 @media (max-width: 900px) {
   body { font-size: 16px; }
-  .hero { min-height: auto; grid-template-rows: auto auto auto; --hero-pb: var(--s5); }
-  .hero__rail { display: none; }
-  .hero__unit { margin-left: 0; }
-  .hero__foot { grid-template-columns: 1fr; gap: var(--s4); }
-  .legend { order: 2; margin-left: 0; }
+  .hero { padding-bottom: var(--s6); }
   .block { padding: var(--s3); }
-  .part { padding: var(--s7) 0; }
+  .part { padding: var(--s6) 0; }
 
   .unit { grid-template-columns: 1fr; gap: var(--s3); }
   .unit__scope, .unit__pts, .unit__pd { margin-left: 0; }
@@ -724,8 +713,7 @@ summary.cred__row:hover .cred__plus { color: var(--blue); }
 /* Short viewports (most laptops, every phone held upright): tighten the first
    view so the three actions and the fields under them stay on screen. */
 @media (max-height: 860px) {
-  .hero { --hero-pt: calc(var(--strip-h) + var(--s3)); --hero-pb: var(--s5); --hero-top: 120px; }
-  .datum { margin: var(--s3) 0; }
+  .hero { padding-top: calc(var(--strip-h) + var(--s4)); }
   .block { padding: var(--s3); }
   .block__name { font-size: clamp(2.75rem, min(8vw, 11.5vh), 5rem); }
   .block__role { padding-bottom: var(--s2); }
@@ -747,15 +735,19 @@ summary.cred__row:hover .cred__plus { color: var(--blue); }
    3. Live state. The blue swatch blinks like a port's link light, and the
       strip's hairline is a plotter carriage that tracks the scroll. */
 @media (prefers-reduced-motion: no-preference) {
-  .is-plotting .hero__unit { animation: rise 640ms var(--ease) 420ms both; }
-  .is-plotting .block { animation: rise 760ms var(--ease) 560ms both; }
-  .is-plotting .legend li { animation: ink 380ms var(--ease) both; }
-  .is-plotting .legend li:nth-child(1) { animation-delay: 900ms; }
-  .is-plotting .legend li:nth-child(2) { animation-delay: 990ms; }
-  .is-plotting .legend li:nth-child(3) { animation-delay: 1080ms; }
+  .is-plotting .block { animation: rise 640ms var(--ease) 80ms both; }
+  .is-plotting .span__axis { animation: plot 900ms var(--ease) 200ms both; }
+  .is-plotting .span__axis .tick { animation: ink 380ms var(--ease) both; animation-delay: calc(360ms + var(--i, 0) * 80ms); }
+  .is-plotting .lane__who { animation: ink 380ms var(--ease) 500ms both; }
+  .is-plotting .lane__bar { animation: plot 760ms var(--ease) both; }
+  .is-plotting .lane:nth-of-type(4) .lane__bar { animation-delay: 620ms; }
+  .is-plotting .lane:nth-of-type(3) .lane__bar { animation-delay: 760ms; }
+  .is-plotting .lane:nth-of-type(2) .lane__bar { animation-delay: 900ms; }
+  .is-plotting .lane:nth-of-type(1) .lane__bar { animation-delay: 1040ms; }
+  .is-plotting .span__foot { animation: ink 380ms var(--ease) 1300ms both; }
 
   .legend i[data-key="live"],
-  .unit__state::before,
+  .lane[data-state="live"] .lane__who b::before,
   .unit[data-state="live"] .unit__dim b::after { animation: link 3.4s steps(1, end) infinite; }
 
   /* stagger index for any list inside a plotted element */
@@ -831,20 +823,17 @@ summary.cred__row:hover .cred__plus { color: var(--blue); }
   }
 }
 
+@keyframes plot { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+@keyframes ink { from { opacity: 0; } to { opacity: 1; } }
 @keyframes rise { from { opacity: 0; transform: translateY(16px); } to { opacity: 1; transform: none; } }
 @keyframes link { 0% { opacity: 1; } 82% { opacity: 0.3; } 85% { opacity: 1; } 89% { opacity: 0.3; } 92% { opacity: 1; } }
 @keyframes link-up { 0% { opacity: 0.25; } 25% { opacity: 1; } 40% { opacity: 0.25; } 60% { opacity: 1; } }
 
 /* --- reduced motion ------------------------------------------------------- */
 
-@media (prefers-reduced-motion: reduce) {
-  html { scroll-behavior: auto; }
-  *, *::before, *::after {
-    animation-duration: 0.01ms !important;
-    animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
-  }
-}
+/* Every animation above sits behind no-preference, so reduced motion only
+   needs the jump-scroll back. */
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 /* --- print ---------------------------------------------------------------- */
 
