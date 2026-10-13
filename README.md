@@ -12,9 +12,9 @@ deployed to GitHub Pages.
 
 One page, read top to bottom the way an elevation is read.
 
-- **Title block.** Name, role, location, availability and the three actions
-  (email, LinkedIn, the CV) at monumental scale in the first viewport, with a
-  year scale on the left rail and the current post already on the rails.
+- **Title block.** Name, role and current employer, location, availability
+  and the three actions (email, LinkedIn, the CV), beside the record drawn to
+  scale: the four roles as spans on a real 2019 to today time axis.
 - **The record.** Four roles as rack units. The date span is the dimension
   label; each employer's mark opens its website in a new tab.
 - **Case files.** Three detail callouts: the dock rollout, the service desk
@@ -37,8 +37,8 @@ the sheet.
 ## Stack
 
 Vanilla HTML, CSS and JS with no build step and no libraries. Motion is CSS:
-the opening (the datum plotting, the year ticks inking in, the title block
-rising) is gated behind an `is-plotting` class that a two-line script in the
+the opening (the title block rising, the time axis plotting, each role's
+span extending to its dates) is gated behind an `is-plotting` class that a two-line script in the
 `<head>` adds only when the tab is visible and motion is welcome. As the sheet
 is read, `main.js` arms an IntersectionObserver that plots each part in once:
 rack units slot in, case-file photographs wipe onto their plates, credential

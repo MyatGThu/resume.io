@@ -83,7 +83,6 @@ spacing:
   s5: "48px"
   s6: "64px"
   s7: "96px"
-  s8: "128px"
 components:
   - Control
   - Title block
@@ -104,11 +103,11 @@ elevation with a title block, not a styled CV. It refuses both of the ruts a
 support engineer's portfolio falls into, the dark terminal and the sidebar with
 skill bars, by borrowing the one document format the audience reads every week.
 
-The visitor lands on a full-bleed drafting sheet. A scale runs the full height
-of the left edge carrying the years, a tick for every year from 2026 to 2019.
-The current post, IPH Limited, is already on the rails. A datum line crosses
-the sheet, and under it the title block sits lower right at monumental scale
-with the name, the role, the three actions and three fields. Then the sheet is
+The visitor lands on a drafting sheet with the title block on the left (the
+name at monumental scale, the role and current employer, the three actions and
+three fields) and, beside it, the record drawn to scale: the four roles as
+spans on a real time axis from 2019 to today, IPH Limited in blue. Then the
+sheet is
 read downward: four roles as rack units with their date spans as dimensions,
 three case files as detail callouts, five certifications as a schedule, Poker
 Money as the one detail drawn out, study and kit as a short schedule, four
@@ -130,7 +129,7 @@ drawing rather than stationery.
 ### Primary
 
 `ink #10161c` on `sheet #eceef0`. 15.6:1. Every heading, every control border,
-the datum, and the title block outline.
+the time axis, and the title block outline.
 
 ### Secondary
 
@@ -200,24 +199,22 @@ Nothing on the sheet renders under 12px.
 
 A single centred sheet, `--sheet-max` 1280px, with a fluid gutter of
 `clamp(20px, 5vw, 72px)`. Everything spaces on an 8px base through `--s1` to
-`--s8`. Parts are separated by 128px of padding and a 1px rule that runs the
-full sheet width, which is why every rule on the page shares one right edge.
+`--s7`. Parts are separated by 96px of padding (64px at 900px and below) and a
+1px rule that runs the full sheet width, which is why every rule on the page
+shares one right edge.
 
-The first viewport is a grid of three rows: the scale and the live unit, the
-datum, then the legend and the title block side by side. The scale is absolute
-and spans the whole hero, so the datum crosses it the way a datum crosses a
-scale on a real elevation. It is to scale: a tick for every year, 2026 at the
-top to 2019 at the bottom, evenly spaced from 6% to 94% of its height. A year
-label sits on a sheet-coloured plate above the datum, so where the two meet the
-label knocks the line out instead of being struck through.
+The first view is two columns: the title block (up to 560px) and the span
+drawing, bottom-aligned, with no forced viewport height, so the content sets
+the height and the record starts right under it. Below 1080px they stack.
 
-The hero vertical budget is three custom properties on `.hero` (`--hero-pt`,
-`--hero-pb`, `--hero-top`) that the padding, the first row and the scale rail
-all read. At 860px of viewport height or less they tighten together with the
-datum margins, the block padding and the name, so the title block, with its
-three actions directly under the role, sits fully inside the first view from
-1366x657 up, and the actions are on screen at 1024x700, 1280x720 and on a
-320x568 phone.
+The span drawing is a grid: who (firm, role, dates) in a 152px column, then
+the track. The axis runs January 2019 (0%) to January 2027 (100%), 96 months,
+and each lane sets `--from` and `--to` as a share of it, so every bar sits on
+its real months. `main.js` moves the live lane's end to today; without it the
+bar runs to the axis end. Year gridlines run through the lanes, the axis
+carries a tick and label per year, and the drawing's caption and the legend
+share the footer rule. On a phone each lane stacks as a name row over a
+full-width track, the gridlines drop and every other year label shows.
 
 Breakpoints: 1080px drops the drawing title from the strip, 900px stacks every
 two-column arrangement, 720px grows the strip to a 44px touch target and cuts
@@ -256,7 +253,7 @@ always email. It fills ink on hover and patch blue when it is the key control.
 `.block` is the only filled surface on the sheet. Name, role, the three
 actions, three fields as a definition list, and a revision strip. The actions
 sit directly under the role so they are on screen at first paint on a laptop.
-It owns the first viewport at full scale.
+It sits beside the span drawing, and the role line names the current employer.
 
 ### Rack unit
 
@@ -298,7 +295,7 @@ the reader is in. The first entry is named "Record" to match its heading.
 
 ### Legend
 
-`.legend` is the key, bottom left of the first viewport under the datum. Three
+`.legend` is the key, in the span drawing's footer beside its caption. Three
 swatches, three words: Current, Verified, In progress. The amber state is
 called "In progress" everywhere it appears.
 
@@ -329,9 +326,10 @@ same curve.
 
 - **The opening.** Gated behind `.is-plotting`, which the inline script in the
   `<head>` adds before first paint, only when the tab is visible and reduced
-  motion is not requested. The datum draws itself across the sheet over
-  900ms, the year ticks ink in on a 90ms stagger, then the current post and
-  the title block rise 16px onto the sheet and the legend inks in.
+  motion is not requested. The title block rises 16px onto the sheet, the
+  time axis draws itself over 900ms, its year ticks ink in on an 80ms
+  stagger, then each role's bar extends from its start date, oldest first,
+  and the caption and legend ink in.
 - **Plotting on arrival.** `main.js` adds `.is-armed` to the root under the
   same conditions, plus IntersectionObserver support, and then `.is-in` on
   each `[data-plot]` element once as it reaches the viewport. Part headings

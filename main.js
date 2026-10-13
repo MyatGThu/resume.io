@@ -1,11 +1,20 @@
-/* Plot each part in as it arrives, mark the part currently crossing the
-   middle of the viewport in the sheet index, and open the credential rows
-   while the sheet prints. Everything else on
-   this page is HTML and CSS: the credential rows are native <details>, the
+/* Run the live span to today, plot each part in as it arrives, mark the
+   part crossing the middle of the viewport in the sheet index, and open the
+   credential rows while the sheet prints. Everything else on this page is
+   HTML and CSS: the credential rows are native <details>, the
    opening is a CSS animation gated by the two-line script in the <head>,
    and the sheet reads correctly with this file blocked. */
 (function () {
   'use strict';
+
+  /* The live span runs to today: the axis is January 2019 to January 2027,
+     so a month is 1/96 of it. Without this script it runs to the axis end. */
+  var live = document.querySelector('.lane[data-state="live"]');
+  if (live) {
+    var now = new Date();
+    var months = (now.getFullYear() - 2019) * 12 + now.getMonth() + now.getDate() / 31;
+    live.style.setProperty('--to', Math.min(100, months / 96 * 100).toFixed(2) + '%');
+  }
 
   /* Plot each part as it reaches the reader. Armed only when the tab is
      visible, motion is welcome and the observer exists; otherwise nothing
